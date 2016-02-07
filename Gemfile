@@ -32,6 +32,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'figaro'
+gem 'faraday'
+gem 'faraday_middleware'
+gem 'typhoeus'
+gem 'oj'
+gem 'oj_mimic_json'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'
