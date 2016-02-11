@@ -37,8 +37,13 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     addressable (2.4.0)
     arel (6.0.3)
+    autoprefixer-rails (6.3.1)
+      execjs
+      json
     awesome_print (1.6.1)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
@@ -96,6 +101,12 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -110,6 +121,8 @@ GEM
     oj (2.14.4)
     oj_mimic_json (1.0.1)
     orm_adapter (0.5.0)
+    paloma (4.2.1)
+      jquery-rails
     pg (0.18.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -135,6 +148,8 @@ GEM
       rails-assets-jquery (> 1.8)
     rails-assets-lodash (4.1.0)
     rails-assets-normalize-scss (3.0.3)
+    rails-assets-select2 (4.0.1)
+    rails-assets-select2-bootstrap-theme (0.1.0.beta.4)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -185,6 +200,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -221,6 +239,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
+  autoprefixer-rails
   awesome_print
   byebug
   climate_control
@@ -233,8 +253,11 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
+  kaminari-bootstrap (~> 3.0.1)
   oj
   oj_mimic_json
+  paloma
   pg (~> 0.15)
   quiet_assets
   rails (= 4.2.5.1)
@@ -243,10 +266,13 @@ DEPENDENCIES
   rails-assets-jquery-ujs!
   rails-assets-lodash!
   rails-assets-normalize-scss!
+  rails-assets-select2!
+  rails-assets-select2-bootstrap-theme!
   rails_12factor
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   turbolinks
   typhoeus

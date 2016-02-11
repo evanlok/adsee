@@ -38,6 +38,12 @@ gem 'faraday_middleware'
 gem 'typhoeus'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'acts-as-taggable-on'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'autoprefixer-rails'
+gem 'simple_form'
+gem 'paloma'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'
@@ -45,6 +51,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-normalize-scss'
   gem 'rails-assets-lodash'
+  gem 'rails-assets-select2'
+  gem 'rails-assets-select2-bootstrap-theme'
 end
 
 group :development do

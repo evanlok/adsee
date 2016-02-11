@@ -1,0 +1,9 @@
+<h1 class="page-header">Edit <%= @scene.name %></h1>
+
+<%= simple_form_for [:admin, @scene] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :tags, collection: @scene.tag_list, label: 'Tags', input_html: { multiple: 'multiple' } %>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', admin_scenes_path, class: 'btn btn-default' %>
+<% end %>

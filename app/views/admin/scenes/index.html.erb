@@ -1,0 +1,30 @@
+<h1 class="page-header">Scenes</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Tags</th>
+    <th colspan="2">HAL ID</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @scenes.each do |scene| %>
+    <tr>
+      <td><%= scene.id %></td>
+      <td><%= scene.name %></td>
+      <td><%= scene.tags.map(&:name).join(', ') %></td>
+      <td><%= scene.hal_id %></td>
+      <td class="actions">
+        <%= link_to [:edit, :admin, scene], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @scenes %>
