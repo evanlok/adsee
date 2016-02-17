@@ -1,0 +1,39 @@
+<h1 class="page-header">Themes</h1>
+
+<p>
+  <%= link_to 'New Theme', new_admin_theme_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Duration</th>
+    <th colspan="2">Scenes</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @themes.each do |theme| %>
+    <tr>
+      <td><%= link_to theme.name, [:edit, :admin, theme] %></td>
+      <td><%= truncate(theme.description) %></td>
+      <td><%= number_to_duration(theme.duration) %></td>
+      <td><%= theme.scenes.map(&:name).join(', ') %></td>
+
+      <td class="actions">
+        <%= link_to [:edit, :admin, theme], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, theme], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'} do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @themes %>

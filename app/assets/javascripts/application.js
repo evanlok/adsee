@@ -15,5 +15,8 @@
 //= require bootstrap-sass-official
 //= require lodash
 //= require select2
+//= require Sortable/Sortable.js
+//= require cocoon
+//= require config
 //= require paloma
 //= require_tree .

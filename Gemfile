@@ -44,6 +44,8 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'paloma'
+gem 'acts_as_list'
+gem 'cocoon'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'
@@ -53,6 +55,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-lodash'
   gem 'rails-assets-select2'
   gem 'rails-assets-select2-bootstrap-theme'
+  gem 'rails-assets-Sortable'
 end
 
 group :development do

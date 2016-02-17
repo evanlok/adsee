@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, @song] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :url, as: :string %>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', admin_songs_path, class: 'btn btn-default' %>
+<% end %>
