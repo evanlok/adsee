@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= f.label name, local_assigns[:label_name] || name %>
+  <%= f.file_field name %>
+
+  <% if f.object.send("#{name}?") %>
+    <br>
+    <%= link_to "Download #{local_assigns[:label_name] || name}", f.object.send(name).url, target: '_blank' %>
+  <% end %>
+
+  <div class="checkbox">
+    <label>
+      <%= f.check_box "remove_#{name}" %>
+      Remove <%= local_assigns[:label_name] || name %>
+    </label>
+  </div>
+</div>

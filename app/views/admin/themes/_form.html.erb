@@ -6,23 +6,7 @@
   <%= f.association :song, include_blank: 'N/A' %>
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
   <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>
-
-  <div class="form-group">
-    <%= f.label :sample_video %>
-    <%= f.file_field :sample_video %>
-
-    <% if @theme.sample_video? %>
-      <br>
-      <%= link_to 'Download sample video', @theme.sample_video.url, target: '_blank' %>
-    <% end %>
-
-    <div class="checkbox">
-      <label>
-        <%= f.check_box :remove_sample_video %>
-        Remove sample video
-      </label>
-    </div>
-  </div>
+  <%= render 'admin/shared/file_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
 
   <h4>Scenes</h4>
 

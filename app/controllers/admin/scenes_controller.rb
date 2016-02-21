@@ -41,6 +41,6 @@ class Admin::ScenesController < Admin::BaseController
   end
 
   def scene_attributes
-    params.require(:scene).permit(:name, tags: [])
+    params.require(:scene).permit!
   end
 end
