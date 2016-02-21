@@ -1,0 +1,20 @@
+<div class="form-group">
+  <%= f.label name, local_assigns[:label_name] || name %>
+
+  <% if f.object.send("#{name}?") %>
+    <div class="form-group">
+      <%= image_tag f.object.send(name).url(local_assigns[:version]), class: 'img-thumbnail' %>
+    </div>
+  <% end %>
+
+  <%= f.file_field name %>
+
+  <% if f.object.send("#{name}?") %>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box "remove_#{name}" %>
+        Remove <%= local_assigns[:label_name] || name %>
+      </label>
+    </div>
+  <% end %>
+</div>

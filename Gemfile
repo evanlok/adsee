@@ -46,6 +46,9 @@ gem 'simple_form'
 gem 'paloma'
 gem 'acts_as_list'
 gem 'cocoon'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'
