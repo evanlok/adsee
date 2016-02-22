@@ -6,7 +6,13 @@ class Scene < ActiveRecord::Base
   # Associations
   has_many :theme_scenes, dependent: :destroy
   has_many :themes, through: :theme_scenes
+  has_many :scene_contents, dependent: :destroy
+  has_many :scene_collections, through: :scene_contents
 
   # Validations
   validates :name, presence: true
+
+  def attribute_names
+    data_attributes.map { |attr| attr['name'] }
+  end
 end

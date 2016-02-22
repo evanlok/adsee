@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221081131) do
+ActiveRecord::Schema.define(version: 20160222080227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,44 @@ ActiveRecord::Schema.define(version: 20160221081131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "scene_attributes", force: :cascade do |t|
+    t.integer  "scene_content_id"
+    t.string   "type"
+    t.string   "name"
+    t.text     "value"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "scene_attributes", ["scene_content_id"], name: "index_scene_attributes_on_scene_content_id", using: :btree
+
+  create_table "scene_collections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ad_type_id"
+    t.integer  "theme_id"
+    t.string   "color"
+    t.integer  "font_id"
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree
+  add_index "scene_collections", ["theme_id"], name: "index_scene_collections_on_theme_id", using: :btree
+  add_index "scene_collections", ["user_id"], name: "index_scene_collections_on_user_id", using: :btree
+
+  create_table "scene_contents", force: :cascade do |t|
+    t.integer  "scene_id",                          null: false
+    t.integer  "scene_collection_id",               null: false
+    t.integer  "position"
+    t.string   "transition"
+    t.float    "transition_duration", default: 0.0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "scene_contents", ["scene_collection_id", "scene_id"], name: "index_scene_contents_on_scene_collection_id_and_scene_id", using: :btree
 
   create_table "scenes", force: :cascade do |t|
     t.string   "name"
@@ -118,5 +156,17 @@ ActiveRecord::Schema.define(version: 20160221081131) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.integer  "scene_collection_id"
+    t.text     "url"
+    t.string   "resolution"
+    t.integer  "duration"
+    t.text     "thumbnail_url"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "videos", ["scene_collection_id"], name: "index_videos_on_scene_collection_id", using: :btree
 
 end
