@@ -35,3 +35,4 @@ bower.json
 
 # Ignore application configuration
 /config/application.yml
+.DS_STORE

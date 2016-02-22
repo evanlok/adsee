@@ -1,0 +1,34 @@
+<h1 class="page-header">Industries</h1>
+
+<p>
+  <%= link_to 'New Industry', new_admin_industry_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @industries.each do |industry| %>
+    <tr>
+      <td><%= link_to industry.name, [:edit, :admin, industry] %></td>
+      <td><%= industry.image_url %>
+      <td class="actions">
+        <%= link_to [:edit, :admin, industry], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, industry], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'} do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @industries %>

@@ -16,6 +16,31 @@ ActiveRecord::Schema.define(version: 20160221081131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "adsee_adtypes", force: :cascade do |t|
+    t.string   "name"
+    t.text     "image_url"
+    t.integer  "industry_id"
+    t.string   "ad_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "adsee_adtypes", ["industry_id"], name: "index_adsee_adtypes_on_industry_id", using: :btree
+
+  create_table "followers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "followed_by"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "industries", force: :cascade do |t|
+    t.string   "name"
+    t.text     "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "scenes", force: :cascade do |t|
     t.string   "name"
     t.json     "data_attributes"

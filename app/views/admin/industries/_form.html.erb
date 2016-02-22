@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @industry] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url %>
+  
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', admin_industries_path, class: 'btn btn-default' %>
+<% end %>

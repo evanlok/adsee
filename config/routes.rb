@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :scenes, only: [:index, :edit, :update, :destroy] do
       get :tags, on: :collection
     end
-
     resources :songs
     resources :themes
+    resources :industries
+    resources :adsee_adtypes
   end
 end
