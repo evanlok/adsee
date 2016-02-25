@@ -27,13 +27,6 @@ ActiveRecord::Schema.define(version: 20160221081131) do
 
   add_index "adsee_adtypes", ["industry_id"], name: "index_adsee_adtypes_on_industry_id", using: :btree
 
-  create_table "followers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "followed_by"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "industries", force: :cascade do |t|
     t.string   "name"
     t.text     "image_url"

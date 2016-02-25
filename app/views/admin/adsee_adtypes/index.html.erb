@@ -18,7 +18,7 @@
     <tr>
       <td><%= link_to adsee_adtype.name, [:edit, :admin, adsee_adtype] %></td>
       <td><%= adsee_adtype.image_url %>
-      <td><%= adsee_adtype.industry.name %>
+      <td><%= link_to adsee_adtype.industry.name, [:admin, adsee_adtype.industry] %>
       <td class="actions">
         <%= link_to [:edit, :admin, adsee_adtype], title: 'Edit' do %>
           <i class="fa fa-pencil"></i>
