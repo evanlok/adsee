@@ -1,0 +1,36 @@
+<h1 class="page-header">Ad Types</h1>
+
+<p>
+  <%= link_to 'New Ad Type', new_admin_ad_type_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Industry</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @ad_types.each do |ad_type| %>
+    <tr>
+      <td><%= link_to ad_type.name, [:edit, :admin, ad_type] %></td>
+      <td><%= image_tag ad_type.image.url(:small_square), width: 50 %>
+      <td><%= link_to ad_type.industry.name, [:edit, :admin, ad_type.industry] %>
+      <td class="actions">
+        <%= link_to [:edit, :admin, ad_type], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, ad_type], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @ad_types %>

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :songs
     resources :themes
     resources :industries
-    resources :adsee_adtypes
+    resources :ad_types
   end
 end

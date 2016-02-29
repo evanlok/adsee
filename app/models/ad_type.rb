@@ -1,8 +1,9 @@
-class Industry < ActiveRecord::Base
+class AdType < ActiveRecord::Base
   mount_uploader :image, ThumbnailUploader
 
   # Associations
-  has_many :ad_types, dependent: :nullify
+  belongs_to :industry
+  has_many :scene_collections, dependent: :nullify
 
   # Validations
   validates :name, :image, presence: true

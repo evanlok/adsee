@@ -16,13 +16,13 @@
   <% @industries.each do |industry| %>
     <tr>
       <td><%= link_to industry.name, [:edit, :admin, industry] %></td>
-      <td><%= industry.image_url %>
+      <td><%= image_tag industry.image.url(:small_square), width: 50 %>
       <td class="actions">
         <%= link_to [:edit, :admin, industry], title: 'Edit' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
 
-        <%= link_to [:admin, industry], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'} do %>
+        <%= link_to [:admin, industry], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
           <i class="fa fa-trash-o"></i>
         <% end %>
       </td>

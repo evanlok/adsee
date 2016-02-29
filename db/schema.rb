@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 20160222080227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "adsee_adtypes", force: :cascade do |t|
+  create_table "ad_types", force: :cascade do |t|
     t.string   "name"
-    t.text     "image_url"
+    t.text     "image"
     t.integer  "industry_id"
-    t.string   "ad_type"
+    t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "adsee_adtypes", ["industry_id"], name: "index_adsee_adtypes_on_industry_id", using: :btree
+  add_index "ad_types", ["industry_id"], name: "index_ad_types_on_industry_id", using: :btree
 
   create_table "industries", force: :cascade do |t|
     t.string   "name"
-    t.text     "image_url"
+    t.text     "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

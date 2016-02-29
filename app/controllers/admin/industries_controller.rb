@@ -2,7 +2,7 @@ class Admin::IndustriesController < Admin::BaseController
   before_action :load_industry, only: [:edit, :update, :destroy]
 
   def index
-    @industries = Industry.all.order(:name).page(params[:page])
+    @industries = Industry.order(:name).page(params[:page])
   end
 
   def new
