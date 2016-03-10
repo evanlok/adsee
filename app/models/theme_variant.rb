@@ -8,7 +8,9 @@ class ThemeVariant < ActiveRecord::Base
   # Validations
   validates :theme, :video_type, presence: true
 
-  accepts_nested_attributes_for :theme_variant_scenes, reject_if: proc { |attr| attr[:scene_id].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :theme_variant_scenes,
+                                reject_if: proc { |attr| attr[:scene_id].blank? },
+                                allow_destroy: true
 
   def display_name
     "#{theme.name} - #{video_type.name}"

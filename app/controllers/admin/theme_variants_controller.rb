@@ -14,7 +14,8 @@ class Admin::ThemeVariantsController < Admin::BaseController
     @theme_variant = ThemeVariant.new(theme_variant_params)
 
     if @theme_variant.save
-      redirect_to edit_admin_theme_variant_url(@theme_variant), notice: "Created Theme Variant: #{@theme_variant.display_name}"
+      redirect_to edit_admin_theme_variant_url(@theme_variant),
+                  notice: "Created Theme Variant: #{@theme_variant.display_name}"
     else
       render :new
     end
@@ -25,7 +26,8 @@ class Admin::ThemeVariantsController < Admin::BaseController
 
   def update
     if @theme_variant.update(theme_variant_params)
-      redirect_to edit_admin_theme_variant_url(@theme_variant), notice: "Updated Theme Variant: #{@theme_variant.display_name}"
+      redirect_to edit_admin_theme_variant_url(@theme_variant),
+                  notice: "Updated Theme Variant: #{@theme_variant.display_name}"
     else
       render :edit
     end

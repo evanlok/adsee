@@ -11,6 +11,8 @@ class SceneCollection < ActiveRecord::Base
   validates :user, presence: true
 
   def valid_scene_contents?
-    scene_contents.includes(:scene_attributes, :scene).all? { |scene_content| scene_content.valid? && scene_content.valid_attributes? }
+    scene_contents.includes(:scene_attributes, :scene).all? do |scene_content|
+      scene_content.valid? && scene_content.valid_attributes?
+    end
   end
 end

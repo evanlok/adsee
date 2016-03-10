@@ -18,10 +18,7 @@ class SceneAttribute < ActiveRecord::Base
   validates :scene_content, :value, presence: true
 
   def self.from_type(type)
-    if TYPE_MAPPINGS[type.to_sym]
-      TYPE_MAPPINGS[type.to_sym].constantize
-    else
-      raise UnknownAttributeTypeError, "Unknown scene attribute type: #{type}"
-    end
+    raise UnknownAttributeTypeError, "Unknown scene attribute type: #{type}" unless TYPE_MAPPINGS[type.to_sym]
+    TYPE_MAPPINGS[type.to_sym].constantize
   end
 end

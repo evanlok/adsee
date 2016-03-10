@@ -70,6 +70,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'awesome_print'
+  gem 'rubocop', require: false
 end
 
 group :development do

@@ -15,7 +15,7 @@ RSpec.describe SceneContent do
     context 'when any attribute is invalid' do
       let(:text_attr) { build(:number_attribute, name: 'attr1') }
       let(:number_attr) { build(:number_attribute, name: 'attr2', value: nil) }
-        let(:scene_content) { build(:scene_content, scene: scene, scene_attributes: [text_attr, number_attr]) }
+      let(:scene_content) { build(:scene_content, scene: scene, scene_attributes: [text_attr, number_attr]) }
       it { is_expected.to be false }
     end
 

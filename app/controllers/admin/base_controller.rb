@@ -6,9 +6,8 @@ class Admin::BaseController < ApplicationController
   private
 
   def authorize_admin
-    unless current_user.admin?
-      flash[:error] = 'You are not authorized to access this page'
-      redirect_to root_url
-    end
+    return if current_user.admin?
+    flash[:error] = 'You are not authorized to access this page'
+    redirect_to root_url
   end
 end

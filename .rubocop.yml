@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'scripts/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Metrics/LineLength:
+  Description: 'Limit lines to 120 characters.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
+  Max: 120
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 180
+
+Style/MultilineMethodCallIndentation:
+  Enabled: false

@@ -25,7 +25,8 @@ class Admin::ScenesController < Admin::BaseController
   end
 
   def tags
-    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: { taggable_type: 'Scene' }).where('tags.name ilike ?', "%#{params[:q]}%").page(params[:page])
+    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(taggings: { taggable_type: 'Scene' })
+              .where('tags.name ilike ?', "%#{params[:q]}%").page(params[:page])
 
     respond_to do |format|
       format.json do
