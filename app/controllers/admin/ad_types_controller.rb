@@ -24,7 +24,7 @@ class Admin::AdTypesController < Admin::BaseController
 
   def update
     if @ad_type.update(ad_type_params)
-      redirect_to edit_admin_ad_type(@ad_type), notice: "Updated Ad Type: #{@ad_type.name}"
+      redirect_to edit_admin_ad_type_url(@ad_type), notice: "Updated Ad Type: #{@ad_type.name}"
     else
       render :edit
     end

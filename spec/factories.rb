@@ -56,4 +56,21 @@ FactoryGirl.define do
       value 'true'
     end
   end
+
+  factory :theme do
+    name { Faker::Lorem.sentence }
+    description { Faker::Lorem.sentence }
+    photo_count { Faker::Number.number(1) }
+  end
+
+  factory :theme_variant do
+    theme
+    video_type
+    duration { Faker::Number.number(2) }
+  end
+
+  factory :video_type do
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.sentence }
+  end
 end

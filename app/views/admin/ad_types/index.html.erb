@@ -9,7 +9,7 @@
   <tr>
     <th>Name</th>
     <th>Image</th>
-    <th>Industry</th>
+    <th colspan="2">Industry</th>
   </tr>
   </thead>
 
@@ -17,8 +17,8 @@
   <% @ad_types.each do |ad_type| %>
     <tr>
       <td><%= link_to ad_type.name, [:edit, :admin, ad_type] %></td>
-      <td><%= image_tag ad_type.image.url(:small_square), width: 50 %>
-      <td><%= link_to ad_type.industry.name, [:edit, :admin, ad_type.industry] %>
+      <td><%= image_tag ad_type.image.url(:small_square), width: 50 %></td>
+      <td><%= link_to ad_type.industry.name, [:edit, :admin, ad_type.industry] %></td>
       <td class="actions">
         <%= link_to [:edit, :admin, ad_type], title: 'Edit' do %>
           <i class="fa fa-pencil"></i>

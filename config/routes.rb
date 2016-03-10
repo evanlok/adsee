@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     end
     resources :songs
     resources :themes
+    resources :theme_variants
     resources :industries
     resources :ad_types
+    resources :video_types
   end
 end

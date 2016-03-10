@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222080227) do
+ActiveRecord::Schema.define(version: 20160310040621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,20 +111,29 @@ ActiveRecord::Schema.define(version: 20160222080227) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "theme_scenes", force: :cascade do |t|
-    t.integer  "theme_id",   null: false
-    t.integer  "scene_id",   null: false
+  create_table "theme_variant_scenes", force: :cascade do |t|
+    t.integer  "theme_variant_id", null: false
+    t.integer  "scene_id",         null: false
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "theme_scenes", ["theme_id", "scene_id"], name: "index_theme_scenes_on_theme_id_and_scene_id", using: :btree
+  add_index "theme_variant_scenes", ["theme_variant_id", "scene_id"], name: "index_theme_variant_scenes_on_theme_variant_id_and_scene_id", using: :btree
+
+  create_table "theme_variants", force: :cascade do |t|
+    t.integer  "theme_id"
+    t.integer  "video_type_id"
+    t.integer  "duration",      default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "theme_variants", ["theme_id", "video_type_id"], name: "index_theme_variants_on_theme_id_and_video_type_id", unique: true, using: :btree
 
   create_table "themes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "duration"
     t.integer  "photo_count"
     t.integer  "song_id"
     t.text     "sample_video"
@@ -156,6 +165,13 @@ ActiveRecord::Schema.define(version: 20160222080227) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "video_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.integer  "scene_collection_id"

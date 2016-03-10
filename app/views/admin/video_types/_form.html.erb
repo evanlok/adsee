@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, @video_type] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', admin_video_types_path, class: 'btn btn-default' %>
+<% end %>

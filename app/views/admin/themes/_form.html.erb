@@ -1,24 +1,11 @@
 <%= simple_form_for [:admin, @theme] do |f| %>
   <%= f.input :name %>
   <%= f.input :description, input_html: { rows: 4 } %>
-  <%= f.input :duration, label: 'Duration (seconds)' %>
   <%= f.input :photo_count %>
   <%= f.association :song, include_blank: 'N/A' %>
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
   <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>
   <%= render 'admin/shared/file_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
-
-  <h4>Scenes</h4>
-
-  <ul id="scenes" class="sortable-scene-list list-unstyled">
-    <%= f.simple_fields_for :theme_scenes do |theme_scene_fields| %>
-      <%= render 'theme_scene_fields', f: theme_scene_fields %>
-    <% end %>
-  </ul>
-
-  <div class="form-group">
-    <%= link_to_add_association 'Add scene', f, :theme_scenes, class: 'btn btn-info', data: { 'association-insertion-node' => '#scenes', 'association-insertion-method' => 'append' } %>
-  </div>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', admin_themes_path, class: 'btn btn-default' %>

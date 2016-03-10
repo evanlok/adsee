@@ -1,0 +1,19 @@
+<li class="nested-fields form-group">
+  <div class="row">
+    <div class="col-xs-1 text-right">
+      <i class="handle fa fa-bars"></i>
+    </div>
+
+    <div class="col-xs-10 col-md-8">
+      <%= f.collection_select :scene_id, Scene.all, :id, :name, { prompt: 'Select a scene' }, class: 'form-control scene-select' %>
+      <%= f.hidden_field :position, class: 'theme-variant-scene-position' %>
+      <%= f.hidden_field :id %>
+    </div>
+
+    <div class="col-xs-1">
+      <%= link_to_remove_association f, class: 'remove text-danger' do %>
+        <i class="remove fa fa-times"></i>
+      <% end %>
+    </div>
+  </div>
+</li>

@@ -9,7 +9,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Duration</th>
+    <th>Variants</th>
     <th colspan="2">Scenes</th>
   </tr>
   </thead>
@@ -19,8 +19,7 @@
     <tr>
       <td><%= link_to theme.name, [:edit, :admin, theme] %></td>
       <td><%= truncate(theme.description) %></td>
-      <td><%= number_to_duration(theme.duration) %></td>
-      <td><%= theme.scenes.map(&:name).join(', ') %></td>
+      <td><%= theme.theme_variants.map { |tv| tv.video_type.name }.join(', ') %></td>
 
       <td class="actions">
         <%= link_to [:edit, :admin, theme], title: 'Edit' do %>
