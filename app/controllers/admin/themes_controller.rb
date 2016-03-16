@@ -2,7 +2,7 @@ class Admin::ThemesController < Admin::BaseController
   before_action :load_theme, only: [:edit, :update, :destroy]
 
   def index
-    @themes = Theme.includes(theme_variants: :video_type).order(:name).page(params[:page])
+    @themes = Theme.includes([:ad_type, theme_variants: :video_type]).order(:name).page(params[:page])
   end
 
   def new

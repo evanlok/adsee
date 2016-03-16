@@ -9,6 +9,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Ad Type</th>
     <th>Variants</th>
     <th colspan="2">Scenes</th>
   </tr>
@@ -19,6 +20,7 @@
     <tr>
       <td><%= link_to theme.name, [:edit, :admin, theme] %></td>
       <td><%= truncate(theme.description) %></td>
+      <td><%= link_to theme.ad_type.name, [:edit, :admin, theme.ad_type] %></td>
       <td><%= theme.theme_variants.map { |tv| tv.video_type.name }.join(', ') %></td>
 
       <td class="actions">

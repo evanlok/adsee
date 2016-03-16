@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :description, input_html: { rows: 4 } %>
   <%= f.input :photo_count %>
+  <%= f.association :ad_type, prompt: 'Select an ad type' %>
   <%= f.association :song, include_blank: 'N/A' %>
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
   <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>

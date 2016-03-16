@@ -57,10 +57,22 @@ FactoryGirl.define do
     end
   end
 
+  factory :industry do
+    name { Faker::Lorem.word }
+    image { build(:image) }
+  end
+
+  factory :ad_type do
+    name { Faker::Lorem.word }
+    industry
+    image { build(:image) }
+  end
+
   factory :theme do
     name { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
     photo_count { Faker::Number.number(1) }
+    ad_type
   end
 
   factory :theme_variant do
@@ -72,5 +84,14 @@ FactoryGirl.define do
   factory :video_type do
     name { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
+  end
+
+  factory :image, class: Rack::Test::UploadedFile do
+    initialize_with do
+      FileUtils.mkdir_p(Rails.root.join('tmp', 'test-files'))
+      file = File.new(Rails.root.join('tmp', 'test-files', 'image.jpg'), 'wb')
+      file.close
+      Rack::Test::UploadedFile.new(file.path)
+    end
   end
 end

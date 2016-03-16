@@ -3,6 +3,7 @@ class SceneCollection < ActiveRecord::Base
   belongs_to :user
   belongs_to :song
   belongs_to :ad_type
+  belongs_to :theme
   has_many :videos, dependent: :destroy
   has_many :scene_contents, -> { order(:position) }, dependent: :destroy, inverse_of: :scene_collection
   has_many :scenes, through: :scene_contents
