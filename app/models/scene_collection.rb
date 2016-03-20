@@ -16,4 +16,12 @@ class SceneCollection < ActiveRecord::Base
       scene_content.valid? && scene_content.valid_attributes?
     end
   end
+
+  def create_scene_contents_from_theme
+    return unless theme
+
+    theme.theme_variants.default.scenes.map do |scene|
+      scene_contents.create(scene: scene)
+    end
+  end
 end

@@ -49,6 +49,7 @@ gem 'cocoon'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'pundit'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'

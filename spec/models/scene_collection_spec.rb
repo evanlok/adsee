@@ -21,4 +21,27 @@ RSpec.describe SceneCollection do
       it { is_expected.to be false }
     end
   end
+
+  describe '#create_scene_contents_from_theme' do
+    context 'when theme is present' do
+      let(:theme) { create(:theme) }
+      let!(:theme_variant) { create(:theme_variant, theme: theme) }
+      let!(:scene) { create(:scene, theme_variants: [theme_variant]) }
+      let(:scene_collection) { create(:scene_collection, theme: theme) }
+
+      it 'creates scene content records from theme scenes' do
+        scene_collection.create_scene_contents_from_theme
+        expect(scene_collection.scene_contents).to_not be_empty
+      end
+    end
+
+    context 'when there is no theme' do
+      let(:scene_collection) { create(:scene_collection) }
+
+      it 'does nothing' do
+        expect(scene_collection.create_scene_contents_from_theme).to be_nil
+        expect(scene_collection.scene_contents).to be_empty
+      end
+    end
+  end
 end

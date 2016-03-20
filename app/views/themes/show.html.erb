@@ -1,0 +1,33 @@
+<h1><%= @theme.name %></h1>
+
+<p>
+  <%= link_to 'Cancel', [@theme.ad_type, Theme] %>
+</p>
+
+<div>
+  VIDEO
+</div>
+
+<div>
+  <%= simple_format @theme.description %>
+</div>
+
+<div>
+  <% if @theme.song %>
+    <div><%= @theme.song.name %></div>
+  <% end %>
+
+  <% if @theme_variant %>
+    <div><%= number_to_duration @theme_variant.duration %></div>
+  <% end %>
+
+  <div><%= @theme.photo_count %></div>
+</div>
+
+<div class="text-center">
+  <%= form_for SceneCollection.new do |f| %>
+    <%= f.hidden_field :ad_type_id, value: @theme.ad_type.id %>
+    <%= f.hidden_field :theme_id, value: @theme.id %>
+    <%= f.submit 'Build my video', class: 'btn btn-lg btn-block btn-primary' %>
+  <% end %>
+</div>

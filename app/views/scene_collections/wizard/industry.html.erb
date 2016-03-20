@@ -1,0 +1,10 @@
+<h1>What is your industry?</h1>
+
+<ul>
+  <% @industries.each do |industry| %>
+    <li>
+      <%= link_to industry.name, '#' %>
+      <%= image_tag industry.image.url(:large_square) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'home#index'
+  root 'industries#index'
+
+  resources :industries, only: [:index] do
+    resources :ad_types, only: [:index]
+  end
+
+  resources :ad_types, only: [] do
+    resources :themes, only: [:index, :show], shallow: true
+  end
+
+  resources :scene_collections, only: [:create, :edit, :update]
 
   namespace :admin do
     root 'scenes#index'

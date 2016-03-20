@@ -1,6 +1,7 @@
 <%= simple_form_for [:admin, @theme_variant] do |f| %>
   <%= f.association :theme %>
   <%= f.association :video_type %>
+  <%= f.input :duration %>
 
   <h4>Scenes</h4>
 

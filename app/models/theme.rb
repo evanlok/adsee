@@ -6,7 +6,11 @@ class Theme < ActiveRecord::Base
   # Associations
   belongs_to :song
   belongs_to :ad_type
-  has_many :theme_variants, dependent: :destroy
+  has_many :theme_variants, dependent: :destroy do
+    def default
+      first
+    end
+  end
 
   # Validations
   validates :name, :ad_type, presence: true
