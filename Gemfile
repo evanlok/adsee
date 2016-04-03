@@ -52,14 +52,11 @@ gem 'fog'
 gem 'pundit'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-jquery-ujs'
   gem 'rails-assets-bootstrap-sass-official'
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-normalize-scss'
-  gem 'rails-assets-lodash'
   gem 'rails-assets-select2'
   gem 'rails-assets-select2-bootstrap-theme'
-  gem 'rails-assets-Sortable'
 end
 
 group :development do
