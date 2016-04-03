@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -d",
     "build:production": "NODE_ENV=production webpack --config webpack.production.config.js",
-    "start": "webpack-dev-server -d --content-base public/assets/webpack --inline --hot",
+    "start": "webpack-dev-server --content-base public/assets/webpack --inline --hot",
     "eslint": "eslint client app/assets/javascripts"
   },
   "repository": {

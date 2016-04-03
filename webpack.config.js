@@ -8,6 +8,8 @@ module.exports = {
   context: __dirname,
   // the main entry point for our application's frontend JS
   entry: {app: './client/app/app.js'},
+  // Don't generate source maps in dev for faster rebuilds
+  devtool: "eval",
 
   output: {
     // this is our app/assets/javascripts directory, which is part of the Sprockets pipeline
@@ -15,13 +17,17 @@ module.exports = {
     // the filename of the compiled bundle, e.g. app/assets/javascripts/bundle.js
     filename: '[name]-bundle.js',
     // if the webpack code-splitting feature is enabled, this is the path it'll use to download bundles
-    publicPath: 'http://localhost:8080/assets/webpack/'
+    publicPath: 'http://localhost:8080/assets/webpack/',
+    pathinfo: true
   },
 
   resolve: {
     // tell webpack which extensions to auto search when it resolves modules. With this,
     // you'll be able to do `require('./utils')` instead of `require('./utils.js')`
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
+
+    // Specify the root directory for our modules so that we don't compile asset pipeline files
+    root: path.join(__dirname, 'client')
   },
 
   plugins: [

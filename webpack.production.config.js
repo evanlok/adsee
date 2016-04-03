@@ -12,4 +12,8 @@ config.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
 config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 config.plugins.push(new webpack.optimize.DedupePlugin());
 
+// Source map
+config.devtool = 'source-map';
+config.output.pathinfo = false;
+
 module.exports = config;
