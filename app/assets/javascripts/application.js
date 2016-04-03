@@ -10,13 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
 //= require bootstrap-sass-official
-//= require lodash
-//= require select2
-//= require Sortable/Sortable.js
 //= require cocoon
-//= require config
 //= require paloma
-//= require_tree .
+//= require_tree ./paloma

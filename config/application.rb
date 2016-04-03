@@ -31,5 +31,8 @@ module Adsee
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Check webpack-assets.json file for changes on each request
+    config.preloaded_webpack_assets = false
   end
 end

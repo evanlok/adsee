@@ -12,6 +12,7 @@ AllCops:
     - 'scripts/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
+    - 'node_modules/**/*'
 Rails:
   Enabled: true
 

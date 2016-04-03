@@ -36,3 +36,9 @@ bower.json
 # Ignore application configuration
 /config/application.yml
 .DS_STORE
+
+# Webpack
+node_modules
+npm-debug.log
+/public/assets/webpack
+webpack-assets.json

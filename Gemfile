@@ -64,6 +64,7 @@ end
 
 group :development do
   gem 'quiet_assets'
+  gem 'foreman'
 end
 
 group :development, :test do
