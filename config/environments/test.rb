@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Load webpack manifest file from disk
+  config.cache_webpack_assets_manifest = false
 end

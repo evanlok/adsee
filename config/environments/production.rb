@@ -1,5 +1,3 @@
-require 'webpack_assets_loader'
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -79,6 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Cache webpack-assets.json to prevent unnecessary IO
-  config.preloaded_webpack_assets = WebpackAssetsLoader.load
+  # Read webpack manifest from memory
+  config.cache_webpack_assets_manifest = true
 end
