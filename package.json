@@ -23,9 +23,12 @@
   "dependencies": {
     "angular": "^1.5.3",
     "assets-webpack-plugin": "^3.4.0",
+    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
+    "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-loader": "^0.4.3",
     "imports-loader": "^0.6.5",
     "jquery": "^2.2.2",
@@ -33,8 +36,12 @@
     "lodash": "^4.7.0",
     "ng-annotate-webpack-plugin": "^0.1.2",
     "ngtemplate-loader": "^1.3.1",
+    "node-sass": "^3.4.2",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
     "select2": "^4.0.2",
     "sortablejs": "^1.4.2",
+    "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
   },
   "devDependencies": {
