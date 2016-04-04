@@ -45,7 +45,11 @@ module.exports = {
       // bootstrap js
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},
       {test: require.resolve("lodash"), loader: "expose?_"},
-      {test: require.resolve("sortablejs"), loader: "expose?Sortable"}
+      {test: require.resolve("sortablejs"), loader: "expose?Sortable"},
+      {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './client/app')) + '/!html'}
     ]
+  },
+  devServer: {
+    contentBase: 'public/assets/webpack'
   }
 };
