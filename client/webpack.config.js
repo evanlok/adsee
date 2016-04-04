@@ -7,13 +7,13 @@ module.exports = {
   // the base path which will be used to resolve entry points
   context: __dirname,
   // the main entry point for our application's frontend JS
-  entry: {app: './client/app/app.js'},
+  entry: {app: './app/app.js'},
   // Don't generate source maps in dev for faster rebuilds
   devtool: "eval",
 
   output: {
-    // this is our app/assets/javascripts directory, which is part of the Sprockets pipeline
-    path: path.join(__dirname, 'public', 'assets', 'webpack'),
+    // Write bundles to public/assets/webpack
+    path: path.join(__dirname, '..', 'public', 'assets', 'webpack'),
     // the filename of the compiled bundle, e.g. app/assets/javascripts/bundle.js
     filename: '[name]-bundle.js',
     // if the webpack code-splitting feature is enabled, this is the path it'll use to download bundles
@@ -24,10 +24,7 @@ module.exports = {
   resolve: {
     // tell webpack which extensions to auto search when it resolves modules. With this,
     // you'll be able to do `require('./utils')` instead of `require('./utils.js')`
-    extensions: ['', '.js'],
-
-    // Specify the root directory for our modules so that we don't compile asset pipeline files
-    root: path.join(__dirname, 'client')
+    extensions: ['', '.js']
   },
 
   plugins: [
@@ -36,7 +33,7 @@ module.exports = {
     }),
 
     new ngAnnotatePlugin({add: true}),
-    new AssetsPlugin({path: path.join(__dirname, 'public', 'assets')})
+    new AssetsPlugin({path: path.join(__dirname, '..', 'public', 'assets')})
   ],
   module: {
     loaders: [
@@ -47,10 +44,10 @@ module.exports = {
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},
       {test: require.resolve("lodash"), loader: "expose?_"},
       {test: require.resolve("sortablejs"), loader: "expose?Sortable"},
-      {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './client/app')) + '/!html'}
+      {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
   },
   devServer: {
-    contentBase: 'public/assets/webpack'
+    contentBase: 'http://localhost:3000'
   }
 };
