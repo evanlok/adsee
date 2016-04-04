@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && webpack -d",
+    "build": "cd client && webpack -d --config webpack.dev.config.js",
     "build:production": "cd client && NODE_ENV=production webpack --config webpack.production.config.js",
-    "start": "cd client && webpack-dev-server --inline --hot",
+    "start": "cd client && webpack-dev-server --inline --hot --config webpack.dev.config.js",
     "eslint": "eslint client app/assets/javascripts"
   },
   "repository": {

@@ -8,8 +8,6 @@ module.exports = {
   context: __dirname,
   // the main entry point for our application's frontend JS
   entry: {app: './app/app.js'},
-  // Don't generate source maps in dev for faster rebuilds
-  devtool: "eval",
 
   output: {
     // Write bundles to public/assets/webpack
@@ -40,14 +38,10 @@ module.exports = {
       {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
       // Not all apps require jQuery. Many Rails apps do, such as those using TurboLinks or
       // bootstrap js
-      {test: /\.scss$/, loader: 'style!css?sourceMap!autoprefixer!resolve-url!sass?sourceMap'},
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},
       {test: require.resolve("lodash"), loader: "expose?_"},
       {test: require.resolve("sortablejs"), loader: "expose?Sortable"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
-  },
-  devServer: {
-    contentBase: 'http://localhost:3000'
   }
 };

@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var config = require('./webpack.config');
+var config = require('./webpack.base.config');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Use this setting when compiling assets for production
