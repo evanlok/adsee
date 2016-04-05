@@ -37,3 +37,10 @@
     Preview
   </div>
 </div>
+
+<script>
+  angular.module('adsee.themeSettings').value('fonts', '[]');
+  angular.module('adsee.themeSettings').value('songs', <%= raw @songs.to_json %>);
+</script>
+
+<div ng-view></div>
