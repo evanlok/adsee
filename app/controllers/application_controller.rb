@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || root_path)
   end
+
+  def render_json_model_errors(record)
+    render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
+  end
 end
