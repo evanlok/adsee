@@ -6,4 +6,4 @@ themeSettings
   .service('songsService', require('./songs.service'))
   .service('fontsService', require('./fonts.service'));
 
-module.exports = themeSettings;
+module.exports = themeSettings.name;

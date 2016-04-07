@@ -16,8 +16,8 @@ var themeSettings = require('./theme_settings/theme_settings.module');
 angular.module('adsee', [
     require('angular-resource'),
     require('angular-route'),
-    sceneEditor.name,
-    themeSettings.name
+    sceneEditor,
+    themeSettings
   ])
 
   .config(function($routeProvider, $locationProvider) {

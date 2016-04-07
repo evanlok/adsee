@@ -43,4 +43,7 @@ Rails.application.configure do
 
   # Load webpack manifest file from disk
   config.cache_webpack_assets_manifest = false
+
+  # Ruby buffers STDOUT so we need this in order for logging to work in foreman
+  $stdout.sync = true
 end

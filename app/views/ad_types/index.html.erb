@@ -3,7 +3,7 @@
 <ul>
   <% @ad_types.each do |ad_type| %>
     <li>
-      <%= link_to ad_type.name, [ad_type, Theme] %>
+      <%= link_to ad_type.name, [ad_type, Theme], target: '_self' %>
       <%= image_tag ad_type.image.url(:large_square) %>
     </li>
   <% end %>

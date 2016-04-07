@@ -3,7 +3,7 @@
 <ul>
   <% @industries.each do |industry| %>
     <li>
-      <%= link_to industry.name, [industry, AdType] %>
+      <%= link_to industry.name, [industry, AdType], target: '_self' %>
       <%= image_tag industry.image.url(:large_square) %>
     </li>
   <% end %>

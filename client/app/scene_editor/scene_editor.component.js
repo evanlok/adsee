@@ -1,5 +1,5 @@
 var templateUrl = require('./scene_editor.html');
-require('./scene_editor.scss');
+//require('./scene_editor.scss');
 
 var component = {
   templateUrl: templateUrl,
