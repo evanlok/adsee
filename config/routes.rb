@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :tags, on: :collection
     end
     resources :songs
+    resources :fonts
     resources :themes
     resources :theme_variants
     resources :industries

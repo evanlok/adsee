@@ -1,0 +1,34 @@
+<h1 class="page-header">Fonts</h1>
+
+<p>
+  <%= link_to 'New Font', new_admin_font_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="2">URL</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @fonts.each do |font| %>
+    <tr>
+      <td><%= font.name %></td>
+      <td><%= font.url %></td>
+      <td class="actions">
+        <%= link_to [:edit, :admin, font], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, font], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @fonts %>

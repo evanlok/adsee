@@ -2,6 +2,7 @@ class SceneCollection < ActiveRecord::Base
   # Associations
   belongs_to :user
   belongs_to :song
+  belongs_to :font
   belongs_to :ad_type
   belongs_to :theme
   has_many :videos, dependent: :destroy
