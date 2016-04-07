@@ -39,7 +39,7 @@
 </div>
 
 <script>
-  angular.module('adsee.themeSettings').value('fonts', '[]');
+  angular.module('adsee.themeSettings').value('fonts', <%= raw @fonts.to_json %>);
   angular.module('adsee.themeSettings').value('songs', <%= raw @songs.to_json %>);
 </script>
 

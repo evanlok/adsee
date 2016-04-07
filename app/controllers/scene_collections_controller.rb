@@ -23,6 +23,7 @@ class SceneCollectionsController < ApplicationController
 
   def edit
     @songs = Song.all.order(:name)
+    @fonts = Font.all.order(:name)
   end
 
   def update
