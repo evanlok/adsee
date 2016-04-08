@@ -1,7 +1,7 @@
 class SceneCollectionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.where(user: user)
     end
   end
 
@@ -10,4 +10,6 @@ class SceneCollectionPolicy < ApplicationPolicy
   end
 
   alias update? create?
+  alias destroy? create?
+  alias show? create?
 end

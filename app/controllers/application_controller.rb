@@ -10,8 +10,18 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = 'You are not authorized to perform this action.'
-    redirect_to(request.referrer || root_path)
+    error = 'You are not authorized to perform this action.'
+
+    respond_to do |format|
+      format.html do
+        flash[:alert] = error
+        redirect_to(request.referrer || root_path)
+      end
+
+      format.json do
+        render json: { errorss: [error] }, status: :forbidden
+      end
+    end
   end
 
   def render_json_model_errors(record)

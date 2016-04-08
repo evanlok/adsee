@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :themes, only: [:index, :show], shallow: true
   end
 
-  resources :scene_collections, only: [:show, :create, :edit, :update]
+  resources :scene_collections, only: [:show, :create, :edit, :update] do
+    resources :scene_contents, except: [:new, :edit], shallow: true
+  end
 
   namespace :admin do
     root 'scenes#index'

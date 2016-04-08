@@ -7,14 +7,15 @@
   <base href="/">
   <title>Adsee</title>
   <%= webpack_bundle_for('app', :css) %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= webpack_bundle_for('app', :js) %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="adsee">
-
-<%= yield %>
+<div class="container-fluid">
+  <%= yield %>
+</div>
 <%= insert_paloma_hook %>
 </body>
 </html>
