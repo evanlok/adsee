@@ -56,8 +56,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass-official'
   gem 'rails-assets-fontawesome'
   gem 'rails-assets-normalize-scss'
-  gem 'rails-assets-select2'
-  gem 'rails-assets-select2-bootstrap-theme'
 end
 
 group :development do
