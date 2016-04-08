@@ -50,6 +50,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'pundit'
+gem 'angular_rails_csrf'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass-official'

@@ -1,15 +1,19 @@
 var templateUrl = require('./scene_editor.html');
-//require('./scene_editor.scss');
 
 var component = {
   templateUrl: templateUrl,
   controller: SceneEditorController
 };
 
-function SceneEditorController($routeParams) {
+function SceneEditorController($routeParams, sceneCollectionService) {
   var vm = this;
 
   vm.sceneCollectionId = $routeParams.sceneCollectionId;
+  vm.sceneCollection = {};
+
+  sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
+    vm.sceneCollection = data;
+  });
 }
 
 module.exports = component;

@@ -5,18 +5,24 @@ var component = {
   controller: ThemeSettingsController,
   bindings: {
     sceneCollectionId: '<'
+  },
+  require: {
+    sceneEditorCtrl: '^sceneEditor'
   }
 };
 
 function ThemeSettingsController(sceneCollectionService, songsService, fontsService) {
   var vm = this;
 
-  console.log('songs', songsService.get())
-  console.log('fonts', fontsService.get())
+  vm.fonts = fontsService.get();
+  vm.songs = songsService.get();
+  vm.updateSceneCollection = updateSceneCollection;
 
-  sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-    vm.sceneCollection = data;
-  });
+  function updateSceneCollection() {
+    sceneCollectionService.update({id: vm.sceneEditorCtrl.sceneCollection.id}, vm.sceneEditorCtrl.sceneCollection).then(function onSuccess(data) {
+      vm.sceneEditorCtrl.sceneCollection = data;
+    });
+  }
 }
 
 module.exports = component;

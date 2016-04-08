@@ -48,6 +48,7 @@ module.exports = {
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},
       {test: require.resolve("lodash"), loader: "expose?_"},
       {test: require.resolve("sortablejs"), loader: "expose?Sortable"},
+      {test: require.resolve("tinycolor2"), loader: "expose?tinycolor"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
   }

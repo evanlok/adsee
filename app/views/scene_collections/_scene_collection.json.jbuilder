@@ -1,11 +1,5 @@
-json.extract! scene_collection, :id, :color
+json.extract! scene_collection, :id, :color, :font_id, :song_id
 
-json.song do
-  json.id scene_collection.song&.id
-  json.name scene_collection.song&.name
-end
-
-json.theme do
-  json.id scene_collection.theme&.id
-  json.id scene_collection.theme&.name
-end
+json.industry scene_collection.ad_type.industry.name
+json.ad_type scene_collection.ad_type.name
+json.theme scene_collection.theme&.name

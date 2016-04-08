@@ -1,3 +1,29 @@
 <div class="theme-settings">
-  Theme settings go here!
+  <div class="row">
+    <div class="col-md-4">
+      <color-picker ng-model="$ctrl.sceneEditorCtrl.sceneCollection.color"
+                    color-picker-format="'hex'"
+                    color-picker-swatch-pos="'right'"
+                    color-picker-on-change="$ctrl.updateSceneCollection()"
+      ></color-picker>
+    </div>
+
+    <div class="col-md-4">
+      <select ng-model="$ctrl.sceneEditorCtrl.sceneCollection.font_id"
+              ng-options="font.id as font.name for font in $ctrl.fonts"
+              ng-change="$ctrl.updateSceneCollection()"
+              class="form-control">
+        <option value="">Select a font</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <select ng-model="$ctrl.sceneEditorCtrl.sceneCollection.song_id"
+              ng-options="song.id as song.name for song in $ctrl.songs"
+              ng-change="$ctrl.updateSceneCollection()"
+              class="form-control">
+        <option value="">Select a song</option>
+      </select>
+    </div>
+  </div>
 </div>

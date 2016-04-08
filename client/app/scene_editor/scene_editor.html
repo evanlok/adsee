@@ -1,13 +1,35 @@
-<div class="scene-editor-text">
-  Here is some text!
+<div class="row">
+  <div class="col-md-6">
+    <h1>Video Ad</h1>
+
+    {{ $ctrl.sceneCollection.industry }} | {{ $ctrl.sceneCollection.ad_type }}
+
+    <span ng-if="$ctrl.sceneCollection.theme">
+      | {{ $ctrl.sceneCollection.theme }}
+    </span>
+  </div>
+
+  <div class="col-md-6">
+    <theme-settings scene-collection-id="$ctrl.sceneCollectionId"></theme-settings>
+  </div>
 </div>
 
-<div class="scene-editor-heading">
-  Heading abc 123
+<div class="row">
+  <div class="col-md-7">
+    PREVIEW IMAGE
+  </div>
+
+  <div class="col-md-5">
+    FIELDS AND MEDIA LIBRARY
+  </div>
 </div>
 
-<div class="adsee-helper">
-  Yellow text 123
-</div>
+<div class="row">
+  <div class="col-md-11">
+    SCENE LIST
+  </div>
 
-<theme-settings scene-collection-id="$ctrl.sceneCollectionId"></theme-settings>
+  <div class="col-md-1">
+    Preview
+  </div>
+</div>
