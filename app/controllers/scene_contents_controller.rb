@@ -1,9 +1,11 @@
 class SceneContentsController < ApplicationController
   before_action :load_scene_collection, only: [:index, :create]
   before_action :load_scene_content, except: [:index, :create]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   def index
-    @scene_contents = policy_scope(@scene_collection.scene_contents.includes(:scene))
+    @scene_contents = policy_scope(@scene_collection.scene_contents.includes(:scene, :scene_attributes))
 
     respond_to do |format|
       format.json
@@ -11,11 +13,12 @@ class SceneContentsController < ApplicationController
   end
 
   def create
-    @scene_collection.scene_contents.build(scene_content_params)
+    @scene_content = @scene_collection.scene_contents.build(scene_content_params)
+    authorize @scene_content
 
     respond_to do |format|
       format.json do
-        if @scene_collection.save
+        if @scene_content.save
           render :show
         else
           render_json_model_errors(@scene_content)

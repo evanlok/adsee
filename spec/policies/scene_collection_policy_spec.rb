@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SceneCollectionPolicy do
-  let(:user) { User.new }
+  let(:user) { User.new(id: 100) }
   subject { described_class }
 
   permissions :create?, :update? do

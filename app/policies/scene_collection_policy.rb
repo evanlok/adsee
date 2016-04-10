@@ -6,7 +6,7 @@ class SceneCollectionPolicy < ApplicationPolicy
   end
 
   def create?
-    user == record.user
+    user.id == record.user_id
   end
 
   alias update? create?

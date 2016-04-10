@@ -10,7 +10,7 @@
   </div>
 
   <div class="col-md-6">
-    <theme-settings scene-collection-id="$ctrl.sceneCollectionId"></theme-settings>
+    <theme-settings scene-collection="$ctrl.sceneCollection" on-update="$ctrl.updateSceneCollection(prop, value)"></theme-settings>
   </div>
 </div>
 
@@ -20,7 +20,9 @@
   </div>
 
   <div class="col-md-5">
-    FIELDS AND MEDIA LIBRARY
+    <content-editor scene-content="$ctrl.selectedSceneContent"
+                    on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
+    </content-editor>
   </div>
 </div>
 

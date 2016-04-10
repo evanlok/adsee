@@ -1,26 +1,26 @@
 <div class="theme-settings">
   <div class="row">
     <div class="col-md-4">
-      <color-picker ng-model="$ctrl.sceneEditorCtrl.sceneCollection.color"
+      <color-picker ng-model="$ctrl.sceneCollection.color"
                     color-picker-format="'hex'"
                     color-picker-swatch-pos="'right'"
-                    color-picker-on-change="$ctrl.updateSceneCollection()"
+                    color-picker-on-change="$ctrl.update('color')"
       ></color-picker>
     </div>
 
     <div class="col-md-4">
-      <select ng-model="$ctrl.sceneEditorCtrl.sceneCollection.font_id"
+      <select ng-model="$ctrl.sceneCollection.font_id"
               ng-options="font.id as font.name for font in $ctrl.fonts"
-              ng-change="$ctrl.updateSceneCollection()"
+              ng-change="$ctrl.update('font_id')"
               class="form-control">
         <option value="">Select a font</option>
       </select>
     </div>
 
     <div class="col-md-4">
-      <select ng-model="$ctrl.sceneEditorCtrl.sceneCollection.song_id"
+      <select ng-model="$ctrl.sceneCollection.song_id"
               ng-options="song.id as song.name for song in $ctrl.songs"
-              ng-change="$ctrl.updateSceneCollection()"
+              ng-change="$ctrl.update('song_id')"
               class="form-control">
         <option value="">Select a song</option>
       </select>

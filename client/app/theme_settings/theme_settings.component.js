@@ -4,24 +4,20 @@ var component = {
   templateUrl: templateUrl,
   controller: ThemeSettingsController,
   bindings: {
-    sceneCollectionId: '<'
-  },
-  require: {
-    sceneEditorCtrl: '^sceneEditor'
+    sceneCollection: '<',
+    onUpdate: '&'
   }
 };
 
-function ThemeSettingsController(sceneCollectionService, songsService, fontsService) {
+function ThemeSettingsController(songsService, fontsService) {
   var vm = this;
 
   vm.fonts = fontsService.get();
   vm.songs = songsService.get();
-  vm.updateSceneCollection = updateSceneCollection;
+  vm.update = update;
 
-  function updateSceneCollection() {
-    sceneCollectionService.update({id: vm.sceneEditorCtrl.sceneCollection.id}, vm.sceneEditorCtrl.sceneCollection).then(function onSuccess(data) {
-      vm.sceneEditorCtrl.sceneCollection = data;
-    });
+  function update(prop) {
+    vm.onUpdate({prop: prop, value: vm.sceneCollection[prop]});
   }
 }
 

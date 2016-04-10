@@ -20,5 +20,6 @@ angular.module('adsee', [
   require('angularjs-color-picker/dist/angularjs-color-picker'),
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),
+  require('./content_editor/content_editor.module'),
   require('./services/services.module')
 ]).config(config);
