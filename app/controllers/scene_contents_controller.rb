@@ -56,7 +56,7 @@ class SceneContentsController < ApplicationController
   private
 
   def scene_content_params
-    params.require(:scene_content).permit(:scene_id, :position, :transition, :transition_duration)
+    params.require(:scene_content).permit(:scene_id, :position, :transition_id, :transition_duration)
   end
 
   def load_scene_content

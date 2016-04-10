@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resources :industries
     resources :ad_types
     resources :video_types
+    resources :transitions
   end
 end

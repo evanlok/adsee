@@ -22,5 +22,6 @@ angular.module('adsee', [
   require('./theme_settings/theme_settings.module'),
   require('./content_editor/content_editor.module'),
   require('./scene_list/scene_list.module'),
+  require('./scene_navigator/scene_navigator.module'),
   require('./services/services.module')
 ]).config(config);

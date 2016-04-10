@@ -1,0 +1,36 @@
+<h1 class="page-header">Transitions</h1>
+
+<p>
+  <%= link_to 'New Transition', new_admin_transition_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th colspan="2">Description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @transitions.each do |transition| %>
+    <tr>
+      <td><%= transition.name %></td>
+      <td><%= transition.value %></td>
+      <td><%= truncate(transition.description) %></td>
+      <td class="actions">
+        <%= link_to [:edit, :admin, transition], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, transition], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @transitions %>

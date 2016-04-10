@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @transition] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :value %>
+  <%= f.input :description %>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', admin_transitions_path, class: 'btn btn-default' %>
+<% end %>

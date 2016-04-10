@@ -36,7 +36,7 @@ FactoryGirl.define do
   factory :scene_content do
     scene
     scene_collection
-    transition 'fade'
+    transition
     transition_duration 2.5
   end
 
@@ -93,5 +93,11 @@ FactoryGirl.define do
       file.close
       Rack::Test::UploadedFile.new(file.path)
     end
+  end
+
+  factory :transition do
+    name { Faker::Lorem.word }
+    value { Faker::Lorem.word }
+    description { Faker::Lorem.sentence }
   end
 end

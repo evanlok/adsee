@@ -1,4 +1,4 @@
-json.extract! scene_content, :id, :scene_id, :scene_collection_id, :position, :transition, :transition_duration
+json.extract! scene_content, :id, :scene_id, :scene_collection_id, :position, :transition_id, :transition_duration
 
 json.scene do
   json.id scene_content.scene.id

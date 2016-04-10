@@ -17,7 +17,35 @@
 
 <div class="row">
   <div class="col-md-7">
-    PREVIEW IMAGE
+    <div class="row">
+      <div class="col-md-12">
+        <a href="" ng-click="$ctrl.addScene()">
+          New Scene
+        </a>
+
+        <scene-navigator scene-contents="$ctrl.sceneContents"
+                         selected-scene-content="$ctrl.selectedSceneContent"
+                         on-next="$ctrl.nextSceneContent()"
+                         on-previous="$ctrl.previousSceneContent()">
+        </scene-navigator>
+
+        <div class="pull-right">
+          TRANSITION OUT:
+
+          <select ng-model="$ctrl.selectedSceneContent.transition_id"
+                  ng-options="transition.id as transition.name for transition in $ctrl.transitions"
+                  ng-change="$ctrl.updateSceneContentTransition()">
+            <option value="">Select a transition</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        PREVIEW IMAGE
+      </div>
+    </div>
   </div>
 
   <div class="col-md-5">

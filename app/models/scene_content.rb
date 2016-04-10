@@ -4,6 +4,7 @@ class SceneContent < ActiveRecord::Base
   # Associations
   belongs_to :scene
   belongs_to :scene_collection, inverse_of: :scene_contents
+  belongs_to :transition
   has_many :scene_attributes, dependent: :delete_all
 
   # Validations

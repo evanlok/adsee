@@ -5,7 +5,7 @@ var component = {
   controller: SceneEditorController
 };
 
-function SceneEditorController($routeParams, sceneCollectionService, sceneContentService, sceneAttributeService) {
+function SceneEditorController($routeParams, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -17,10 +17,14 @@ function SceneEditorController($routeParams, sceneCollectionService, sceneConten
   vm.sceneCollection = {};
   vm.sceneContents = [];
   vm.selectedSceneContent = {};
+  vm.transitions = transitionsService.get();
   vm.updateSceneCollection = updateSceneCollection;
+  vm.updateSceneContentTransition = updateSceneContentTransition;
   vm.updateSceneAttribute = updateSceneAttribute;
   vm.selectSceneContent = selectSceneContent;
   vm.addScene = addScene;
+  vm.previousSceneContent = previousSceneContent;
+  vm.nextSceneContent = nextSceneContent;
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
@@ -40,6 +44,12 @@ function SceneEditorController($routeParams, sceneCollectionService, sceneConten
 
     sceneCollectionService.update({id: vm.sceneCollection.id}, vm.sceneCollection).then(function onSuccess(data) {
       vm.sceneCollection = data;
+    });
+  }
+
+  function updateSceneContentTransition() {
+    sceneContentService.update({id: vm.selectedSceneContent.id}, vm.selectedSceneContent).then(function (data) {
+      _.merge(vm.selectedSceneContent, data);
     });
   }
 
@@ -71,6 +81,16 @@ function SceneEditorController($routeParams, sceneCollectionService, sceneConten
   
   function addScene() {
     console.log('add scene')
+  }
+
+  function previousSceneContent() {
+    var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) - 1;
+    selectSceneContent(vm.sceneContents[index]);
+  }
+
+  function nextSceneContent() {
+    var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) + 1;
+    selectSceneContent(vm.sceneContents[index]);
   }
 }
 
