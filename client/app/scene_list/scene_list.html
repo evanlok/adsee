@@ -1,0 +1,16 @@
+<ul class="list-inline">
+  <li ng-repeat="sceneContent in $ctrl.sceneContents"
+      ng-class="{selected: $ctrl.isSelected(sceneContent)}">
+    <div class="text-center">{{ sceneContent.position }}</div>
+
+    <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
+      <img ng-src="sceneContent.scene.thumbnail_url">
+    </a>
+  </li>
+
+  <li>
+    <a href="" ng-click="$ctrl.onAddScene()">
+      Add a scene
+    </a>
+  </li>
+</ul>

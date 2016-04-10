@@ -8,21 +8,32 @@ var component = {
 function SceneEditorController($routeParams, sceneCollectionService, sceneContentService, sceneAttributeService) {
   var vm = this;
 
+  vm.$onInit = function () {
+    fetchSceneCollection();
+    fetchSceneContents();
+  };
+
   vm.sceneCollectionId = $routeParams.sceneCollectionId;
   vm.sceneCollection = {};
   vm.sceneContents = [];
   vm.selectedSceneContent = {};
   vm.updateSceneCollection = updateSceneCollection;
   vm.updateSceneAttribute = updateSceneAttribute;
+  vm.selectSceneContent = selectSceneContent;
+  vm.addScene = addScene;
 
-  sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-    vm.sceneCollection = data;
-  });
+  function fetchSceneCollection() {
+    sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
+      vm.sceneCollection = data;
+    });
+  }
 
-  sceneContentService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
-    vm.sceneContents = data;
-    vm.selectedSceneContent = data[0];
-  });
+  function fetchSceneContents() {
+    sceneContentService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+      vm.sceneContents = data;
+      vm.selectedSceneContent = data[0];
+    });
+  }
 
   function updateSceneCollection(prop, value) {
     vm.sceneCollection[prop] = value;
@@ -52,6 +63,14 @@ function SceneEditorController($routeParams, sceneCollectionService, sceneConten
     }, function onError() {
       sceneAttribute.invalid = true;
     });
+  }
+
+  function selectSceneContent(sceneContent) {
+    vm.selectedSceneContent = sceneContent;
+  }
+  
+  function addScene() {
+    console.log('add scene')
   }
 }
 

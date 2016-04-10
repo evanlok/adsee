@@ -12,8 +12,11 @@ var component = {
 function ThemeSettingsController(songsService, fontsService) {
   var vm = this;
 
-  vm.fonts = fontsService.get();
-  vm.songs = songsService.get();
+  vm.$onInit = function () {
+    vm.fonts = fontsService.get();
+    vm.songs = songsService.get();
+  };
+
   vm.update = update;
 
   function update(prop) {

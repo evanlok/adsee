@@ -10,7 +10,8 @@
   </div>
 
   <div class="col-md-6">
-    <theme-settings scene-collection="$ctrl.sceneCollection" on-update="$ctrl.updateSceneCollection(prop, value)"></theme-settings>
+    <theme-settings scene-collection="$ctrl.sceneCollection"
+                    on-update="$ctrl.updateSceneCollection(prop, value)"></theme-settings>
   </div>
 </div>
 
@@ -28,7 +29,11 @@
 
 <div class="row">
   <div class="col-md-11">
-    SCENE LIST
+    <scene-list scene-contents="$ctrl.sceneContents"
+                selected-scene-content="$ctrl.selectedSceneContent"
+                on-select="$ctrl.selectSceneContent(sceneContent)"
+                on-add-scene="$ctrl.addScene()">
+    </scene-list>
   </div>
 
   <div class="col-md-1">
