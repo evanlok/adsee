@@ -1,7 +1,11 @@
 module SceneAttributes
   class Boolean < SceneAttribute
     # Validations
-    validates :value, inclusion: { in: %w(true false) }
+    validates :value, inclusion: { in: [true, false] }
+
+    def value=(val)
+      self[:value] = val.to_s
+    end
 
     def value
       case self[:value]

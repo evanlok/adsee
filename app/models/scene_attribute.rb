@@ -16,7 +16,7 @@ class SceneAttribute < ActiveRecord::Base
   belongs_to :scene_content
 
   # Validations
-  validates :scene_content, :value, presence: true
+  validates :scene_content, presence: true
 
   def self.policy_class
     SceneAttributePolicy
