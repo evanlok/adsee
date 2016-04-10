@@ -1,5 +1,6 @@
 class SceneAttributesController < ApplicationController
   after_action :verify_authorized
+  rescue_from SceneAttribute::SceneAttributeError, with: :scene_attribute_error
 
   def create
     @scene_content = SceneContent.find(params[:scene_content_id])
@@ -39,5 +40,11 @@ class SceneAttributesController < ApplicationController
 
   def scene_attribute_params
     params.require(:scene_attribute).permit(:name, :value)
+  end
+
+  def scene_attribute_error(ex)
+    respond_to do |format|
+      format.json { render json: { errors: [ex.message] }, status: :unprocessable_entity }
+    end
   end
 end

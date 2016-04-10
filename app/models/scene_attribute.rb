@@ -1,6 +1,7 @@
 class SceneAttribute < ActiveRecord::Base
-  UnknownAttributeTypeError = Class.new(StandardError)
-  ParseError = Class.new(StandardError)
+  SceneAttributeError = Class.new(StandardError)
+  UnknownAttributeTypeError = Class.new(SceneAttributeError)
+  ParseError = Class.new(SceneAttributeError)
 
   # Use strings to avoid circular autoloading errors
   TYPE_MAPPINGS = {
