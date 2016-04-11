@@ -29,6 +29,7 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
   vm.previousSceneContent = previousSceneContent;
   vm.nextSceneContent = nextSceneContent;
   vm.sceneContentPosition = sceneContentPosition;
+  vm.updateSceneContentPosition = updateSceneContentPosition;
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
@@ -82,7 +83,7 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
   function selectSceneContent(sceneContent) {
     vm.selectedSceneContent = sceneContent;
   }
-  
+
   function addScene(scene) {
     sceneContentService.save({sceneCollectionId: vm.sceneCollection.id}, {scene_id: scene.id}).then(function (data) {
       vm.sceneContents.push(data);
@@ -118,6 +119,10 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
 
   function sceneContentPosition(sceneContent) {
     return _.indexOf(vm.sceneContents, sceneContent) + 1;
+  }
+
+  function updateSceneContentPosition(sceneContent, position) {
+    sceneContentService.update({id: sceneContent.id}, {position: position});
   }
 }
 

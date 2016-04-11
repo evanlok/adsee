@@ -1,16 +1,18 @@
-<ul class="list-inline">
-  <li ng-repeat="sceneContent in $ctrl.sceneContents"
-      ng-class="{selected: $ctrl.isSelected(sceneContent)}">
-    <div class="text-center">{{ $index + 1 }}</div>
+<div class="clearfix">
+  <ul class="list-inline pull-left" ng-sortable="$ctrl.sceneListConfig">
+    <li ng-repeat="sceneContent in $ctrl.sceneContents"
+        ng-class="{selected: $ctrl.isSelected(sceneContent)}">
+      <div class="text-center">{{ $index + 1 }}</div>
 
-    <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
-      <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
-    </a>
-  </li>
+      <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
+        <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
+      </a>
+    </li>
+  </ul>
 
-  <li>
+  <div class="pull-left">
     <a ui-sref="sceneEditor.addScene">
       Add a scene
     </a>
-  </li>
-</ul>
+  </div>
+</div>

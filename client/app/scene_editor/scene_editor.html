@@ -71,7 +71,8 @@
   <div class="col-md-11">
     <scene-list scene-contents="$ctrl.sceneContents"
                 selected-scene-content="$ctrl.selectedSceneContent"
-                on-select="$ctrl.selectSceneContent(sceneContent)">
+                on-select="$ctrl.selectSceneContent(sceneContent)"
+                on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)">
     </scene-list>
   </div>
 

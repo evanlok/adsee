@@ -10,7 +10,7 @@ require('tinycolor2');
 
 // select2 and sortablejs are used in Paloma files, otherwise they should be required in the appropriate modules
 require('select2');
-require('sortablejs');
+require('sortablejs/ng-sortable');
 
 var config = require('./app.config');
 
@@ -18,6 +18,7 @@ angular.module('adsee', [
   require('angular-resource'),
   require('angularjs-color-picker/dist/angularjs-color-picker'),
   require('angular-ui-router'),
+  'ng-sortable',
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),
   require('./content_editor/content_editor.module'),
