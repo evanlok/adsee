@@ -61,9 +61,17 @@
   </div>
 
   <div class="col-md-5">
-    <content-editor scene-content="$ctrl.selectedSceneContent"
-                    on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
-    </content-editor>
+    <uib-tabset justified="true">
+      <uib-tab index="0" heading="Content Editor">
+        <content-editor scene-content="$ctrl.selectedSceneContent"
+                        on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
+        </content-editor>
+      </uib-tab>
+
+      <uib-tab index="1" heading="Media Library">
+        Media Library
+      </uib-tab>
+    </uib-tabset>
   </div>
 </div>
 

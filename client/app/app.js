@@ -18,6 +18,7 @@ angular.module('adsee', [
   require('angular-resource'),
   require('angularjs-color-picker/dist/angularjs-color-picker'),
   require('angular-ui-router'),
+  require('angular-ui-bootstrap'),
   'ng-sortable',
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),
