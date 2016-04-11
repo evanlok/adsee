@@ -32,4 +32,7 @@ Rails.application.routes.draw do
     resources :video_types
     resources :transitions
   end
+
+  # Angular route globbing
+  get '/scene_collections/:id/edit/*angular_path', to: 'scene_collections#edit'
 end

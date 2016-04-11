@@ -6,8 +6,7 @@ var component = {
   bindings: {
     sceneContents: '<',
     selectedSceneContent: '<',
-    onSelect: '&',
-    onAddScene: '&'
+    onSelect: '&'
   }
 };
 

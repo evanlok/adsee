@@ -5,19 +5,21 @@ var component = {
   controller: SceneEditorController
 };
 
-function SceneEditorController($routeParams, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
+function SceneEditorController($stateParams, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
   var vm = this;
 
   vm.$onInit = function () {
+    vm.sceneCollectionId = $stateParams.sceneCollectionId;
+    vm.sceneCollection = {};
+    vm.sceneContents = [];
+    vm.selectedSceneContent = {};
+    vm.transitions = transitionsService.get();
+    vm.displayAddScene = false;
+
     fetchSceneCollection();
     fetchSceneContents();
   };
 
-  vm.sceneCollectionId = $routeParams.sceneCollectionId;
-  vm.sceneCollection = {};
-  vm.sceneContents = [];
-  vm.selectedSceneContent = {};
-  vm.transitions = transitionsService.get();
   vm.updateSceneCollection = updateSceneCollection;
   vm.updateSceneContentTransition = updateSceneContentTransition;
   vm.updateSceneAttribute = updateSceneAttribute;
