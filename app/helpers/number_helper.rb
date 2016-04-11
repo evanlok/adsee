@@ -7,7 +7,7 @@ module NumberHelper
     if prefix_empty_durations
       format('%02d:%02d:%02d', hours, minutes, seconds)
     else
-      numbers = [hours, minutes, seconds].reject(&:zero?)
+      numbers = [hours, minutes, seconds].drop_while(&:zero?)
       format(numbers.map { '%02d' }.join(':'), *numbers)
     end
   end
