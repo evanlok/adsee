@@ -16,7 +16,6 @@ var config = require('./app.config');
 
 angular.module('adsee', [
   require('angular-resource'),
-  require('angular-route'),
   require('angularjs-color-picker/dist/angularjs-color-picker'),
   require('angular-ui-router'),
   require('./scene_editor/scene_editor.module'),
