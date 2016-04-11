@@ -25,8 +25,10 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
   vm.updateSceneAttribute = updateSceneAttribute;
   vm.selectSceneContent = selectSceneContent;
   vm.addScene = addScene;
+  vm.removeScene = removeScene;
   vm.previousSceneContent = previousSceneContent;
   vm.nextSceneContent = nextSceneContent;
+  vm.sceneContentPosition = sceneContentPosition;
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
@@ -89,6 +91,21 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
     });
   }
 
+  function removeScene(sceneContent) {
+    sceneContentService.delete({id: sceneContent.id}).then(function (data) {
+      var index = _.indexOf(vm.sceneContents, sceneContent);
+
+      if (index == 0) {
+        index = 0;
+      } else {
+        index -= 1;
+      }
+
+      _.pull(vm.sceneContents, sceneContent);
+      selectSceneContent(vm.sceneContents[index]);
+    });
+  }
+
   function previousSceneContent() {
     var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) - 1;
     selectSceneContent(vm.sceneContents[index]);
@@ -97,6 +114,10 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
   function nextSceneContent() {
     var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) + 1;
     selectSceneContent(vm.sceneContents[index]);
+  }
+
+  function sceneContentPosition(sceneContent) {
+    return _.indexOf(vm.sceneContents, sceneContent) + 1;
   }
 }
 

@@ -25,6 +25,10 @@ function sceneContentService($resource) {
   this.update = function (params, data) {
     return resource.update(params, data).$promise;
   };
+
+  this.delete = function(params, data) {
+    return resource.delete(params, data).$promise;
+  }
 }
 
 module.exports = sceneContentService;
