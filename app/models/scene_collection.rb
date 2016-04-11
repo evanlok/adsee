@@ -21,8 +21,13 @@ class SceneCollection < ActiveRecord::Base
   def create_scene_contents_from_theme
     return unless theme
 
+    self.font = theme.font
+    self.song = theme.song
+
     theme.theme_variants.default.scenes.map do |scene|
       scene_contents.create(scene: scene)
     end
+
+    save
   end
 end

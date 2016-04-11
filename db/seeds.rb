@@ -23,7 +23,7 @@ threads = []
       Theme.create(
           name: Faker::Commerce.product_name,
           description: Faker::Lorem.paragraph,
-          photo_count: rand(10),
+          photo_count: rand(3..10),
           ad_type: ad_type,
           song: Song.order('random()').first,
           font: Font.order('random()').first,
@@ -52,4 +52,19 @@ end
 
 %w(YouTube Facebook Twitter).each do |name|
   VideoType.create(name: name)
+end
+
+# Import scenes
+ScenesImporter.new.import
+
+Scene.find_each do |scene|
+  scene.update(remote_thumbnail_url: 'http://lorempixel.com/320/180/city')
+end
+
+Theme.find_each do |theme|
+  theme_variant = ThemeVariant.create(theme: theme, video_type: VideoType.order('random()').first, duration: rand(15..60))
+
+  Scene.order('random()').limit(5).each do |scene|
+    ThemeVariantScene.create(theme_variant: theme_variant, scene: scene)
+  end
 end
