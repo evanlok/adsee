@@ -14,8 +14,8 @@ function sceneContentService($resource) {
     return resource.query(params).$promise;
   };
 
-  this.save = function (params) {
-    return resource.save(params).$promise;
+  this.save = function (params, data) {
+    return resource.save(params, data).$promise;
   };
 
   this.get = function (params) {

@@ -5,7 +5,7 @@ var component = {
   controller: SceneEditorController
 };
 
-function SceneEditorController($stateParams, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
+function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -81,8 +81,12 @@ function SceneEditorController($stateParams, sceneCollectionService, sceneConten
     vm.selectedSceneContent = sceneContent;
   }
   
-  function addScene() {
-    console.log('add scene')
+  function addScene(scene) {
+    sceneContentService.save({sceneCollectionId: vm.sceneCollection.id}, {scene_id: scene.id}).then(function (data) {
+      vm.sceneContents.push(data);
+      selectSceneContent(_.last(vm.sceneContents));
+      $state.go('sceneEditor');
+    });
   }
 
   function previousSceneContent() {

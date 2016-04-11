@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :scenes, only: [:index]
+
   namespace :admin do
     root 'scenes#index'
 

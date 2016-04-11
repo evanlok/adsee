@@ -9,7 +9,7 @@ var config = function ($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('sceneEditor.addScene', {
       url: '/add_scene',
-      template: '<add-scene></add-scene>'
+      template: '<add-scene on-add-scene="$ctrl.addScene(scene)"></add-scene>'
     });
 
   $locationProvider.html5Mode(true);

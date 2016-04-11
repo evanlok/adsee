@@ -1,3 +1,17 @@
-add scene comp
+<h2>
+  <i class="fa fa-plus-circle"></i>
+  Add a scene
+</h2>
+
+<div class="row" ng-repeat="scenes in $ctrl.scenesChunks">
+  <div class="col-md-3" ng-repeat="scene in scenes">
+    <div>
+      <a href="" ng-click="$ctrl.onAddScene({scene: scene})">
+        <img ng-src="{{ scene.thumbnail_small_url }}">
+      </a>
+    </div>
+    {{ scene.name }}
+  </div>
+</div>
 
 <a ui-sref="sceneEditor">Back</a>

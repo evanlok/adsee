@@ -4,16 +4,26 @@ var component = {
   templateUrl: templateUrl,
   controller: AddSceneController,
   bindings: {
-    sceneContents: '<',
-    selectedSceneContent: '<',
-    onSelect: '&',
     onAddScene: '&'
   }
 };
 
-function AddSceneController() {
+function AddSceneController(sceneService) {
   var vm = this;
 
+  vm.$onInit = function () {
+    vm.scenes = [];
+    vm.scenesChunks = [];
+
+    fetchScenes();
+  };
+
+  function fetchScenes() {
+    sceneService.query().then(function (data) {
+      vm.scenes = data;
+      vm.scenesChunks = _.chunk(vm.scenes, 4);
+    });
+  }
 }
 
 module.exports = component;

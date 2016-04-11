@@ -4,7 +4,7 @@
     <div class="text-center">{{ sceneContent.position }}</div>
 
     <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
-      <img ng-src="sceneContent.scene.thumbnail_url">
+      <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
     </a>
   </li>
 

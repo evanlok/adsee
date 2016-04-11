@@ -1,10 +1,7 @@
 json.extract! scene_content, :id, :scene_id, :scene_collection_id, :position, :transition_id, :transition_duration
 
 json.scene do
-  json.id scene_content.scene.id
-  json.name scene_content.scene.name
-  json.thumbnail_url scene_content.scene.thumbnail.url(:large)
-  json.preview_video_url scene_content.scene.preview_video.url
+  json.partial! 'scenes/scene', scene: scene_content.scene
 end
 
 json.scene_attributes scene_content.scene.data_attributes do |data_attribute|
