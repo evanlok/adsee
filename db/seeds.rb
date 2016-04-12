@@ -11,30 +11,24 @@ User.create(
     admin: true
 )
 
-threads = []
+['Real Estate', 'Automotive', 'Restaurant'].each do |name|
+  industry = Industry.create(name: name, remote_image_url: 'http://lorempixel.com/320/180/city')
 
-['Real Estate', 'Automotive', 'Restaurant', 'Hotels', 'Events'].each do |name|
-  threads << Thread.new do
-    industry = Industry.create(name: name, remote_image_url: 'http://lorempixel.com/320/180/city')
+  3.times do |i|
+    ad_type = AdType.create(industry: industry, name: Faker::Commerce.product_name, remote_image_url: 'http://lorempixel.com/320/180/city')
 
-    3.times do |i|
-      ad_type = AdType.create(industry: industry, name: Faker::Commerce.product_name, remote_image_url: 'http://lorempixel.com/320/180/city')
-
-      Theme.create(
-          name: Faker::Commerce.product_name,
-          description: Faker::Lorem.paragraph,
-          photo_count: rand(3..10),
-          ad_type: ad_type,
-          song: Song.order('random()').first,
-          font: Font.order('random()').first,
-          remote_thumbnail_url: 'http://lorempixel.com/320/180/city',
-          remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
-      )
-    end
+    Theme.create(
+        name: Faker::Commerce.product_name,
+        description: Faker::Lorem.paragraph,
+        photo_count: rand(3..10),
+        ad_type: ad_type,
+        song: Song.order('random()').first,
+        font: Font.order('random()').first,
+        remote_thumbnail_url: 'http://lorempixel.com/320/180/city',
+        remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
+    )
   end
 end
-
-threads.each(&:join)
 
 5.times do |i|
   Song.create(name: "Song #{i}", url: "https://www.adsee.com/song-#{i}.mp3")
