@@ -8,6 +8,7 @@ class SceneCollection < ActiveRecord::Base
   has_many :videos, dependent: :destroy
   has_many :scene_contents, -> { order(:position) }, dependent: :destroy, inverse_of: :scene_collection
   has_many :scenes, through: :scene_contents
+  has_many :video_jobs, dependent: :delete_all
 
   # Validations
   validates :user, presence: true

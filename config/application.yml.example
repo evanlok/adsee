@@ -3,3 +3,6 @@ AWS_ACCESS_KEY_ID: aws_access_key
 AWS_SECRET_ACCESS_KEY: aws_secret_key
 FOG_DIRECTORY: adsee-staging
 CDN_URL: http://cdn.adsee.com
+HOST: localhost
+WEB_PORT: '3000'
+URI_SCHEME: http

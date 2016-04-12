@@ -1,13 +1,17 @@
 module HAL
   class Client
     def scenes(params = {})
-      http_client.get('/api/v1/scenes', params).body
+      http_client.get('scenes', params).body
+    end
+
+    def create_scene_collection(params)
+      http_client.post('scene_collections', params).body
     end
 
     private
 
     def http_client
-      @http_client ||= Faraday.new(ENV['HAL_URL'], headers: { 'Content-Type' => 'application/json' }) do |f|
+      @http_client ||= Faraday.new("#{ENV['HAL_URL']}/api/v1", headers: { 'Content-Type' => 'application/json' }) do |f|
         f.request :json
         f.request :retry
         f.response :logger, Rails.logger

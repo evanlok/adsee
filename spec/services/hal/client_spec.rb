@@ -14,4 +14,13 @@ RSpec.describe HAL::Client do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#create_scene_collection' do
+    it 'requests POST to scene collections API' do
+      params = { data: 123 }
+      stub = stub_request(:post, 'http://www.hal.com/api/v1/scene_collections').with(body: params.to_json)
+      subject.create_scene_collection(params)
+      expect(stub).to have_been_requested
+    end
+  end
 end

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :scenes, only: [:index]
 
+  resource :hal_callback, only: [:create]
+
   namespace :admin do
     root 'scenes#index'
 

@@ -100,4 +100,19 @@ FactoryGirl.define do
     value { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
   end
+
+  factory :font do
+    name { Faker::Lorem.sentence }
+    url { Faker::Internet.url }
+  end
+
+  factory :song do
+    name { Faker::Lorem.sentence }
+    url { Faker::Internet.url }
+  end
+
+  factory :video_job do
+    scene_collection
+    sequence(:hal_id) { |n| n }
+  end
 end
