@@ -11,6 +11,11 @@ User.create(
     admin: true
 )
 
+5.times do |i|
+  Song.create(name: "Song #{i}", url: "https://www.adsee.com/song-#{i}.mp3")
+  Font.create(name: "Font #{i}", url: "https://www.adsee.com/font-#{i}.mp3")
+end
+
 ['Real Estate', 'Automotive', 'Restaurant'].each do |name|
   industry = Industry.create(name: name, remote_image_url: 'http://lorempixel.com/320/180/city')
 
@@ -28,11 +33,6 @@ User.create(
         remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
     )
   end
-end
-
-5.times do |i|
-  Song.create(name: "Song #{i}", url: "https://www.adsee.com/song-#{i}.mp3")
-  Font.create(name: "Font #{i}", url: "https://www.adsee.com/font-#{i}.mp3")
 end
 
 {
