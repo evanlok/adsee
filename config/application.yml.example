@@ -7,3 +7,4 @@ CDN_URL: http://cdn.adsee.com
 HOST: localhost
 WEB_PORT: '3000'
 URI_SCHEME: http
+FILESTACK_API_KEY: An8Zl4flxRFClUxhxGJxgz

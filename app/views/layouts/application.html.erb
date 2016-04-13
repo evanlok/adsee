@@ -11,6 +11,14 @@
   <%= webpack_bundle_for('app', :js) %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    <% if user_signed_in? %>
+    angular.module('adsee').value('currentUserId', <%= current_user.id %>);
+    <% end %>
+
+    angular.module('adsee').constant('FILESTACK_API_KEY', '<%= ENV['FILESTACK_API_KEY'] %>');
+  </script>
 </head>
 <body ng-app="adsee">
 <div class="container-fluid">

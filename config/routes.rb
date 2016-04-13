@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :scenes, only: [:index]
+  resources :images, only: [:index, :create, :destroy]
 
   resource :hal_callback, only: [:create]
 

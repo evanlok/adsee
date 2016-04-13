@@ -1,7 +1,10 @@
 // Select2 defaults
 $.fn.select2.defaults.set('theme', 'bootstrap');
 
-var config = function ($stateProvider, $urlRouterProvider, $locationProvider) {
+// Filestack / Filepicker
+var filepicker = require('filepicker-js');
+
+var config = function ($stateProvider, $urlRouterProvider, $locationProvider, FILESTACK_API_KEY) {
   $stateProvider
     .state('sceneEditor', {
       url: '/scene_collections/:sceneCollectionId/edit',
@@ -13,6 +16,8 @@ var config = function ($stateProvider, $urlRouterProvider, $locationProvider) {
     });
 
   $locationProvider.html5Mode(true);
+
+  filepicker.setKey(FILESTACK_API_KEY);
 };
 
 module.exports = config;

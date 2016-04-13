@@ -35,6 +35,7 @@
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
+    "filepicker-js": "^2.4.7",
     "html-loader": "^0.4.3",
     "imports-loader": "^0.6.5",
     "jquery": "^2.2.2",
