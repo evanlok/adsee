@@ -1,9 +1,9 @@
 HAL_URL: http://hal-staging.herokuapp.com
-AWS_ACCESS_KEY_ID: aws_access_key
-AWS_SECRET_ACCESS_KEY: aws_secret_key
+AWS_ACCESS_KEY_ID: adsee_dev_key
+AWS_SECRET_ACCESS_KEY: adsee_dev_secret
 AWS_REGION: 'us-east-1'
-S3_BUCKET_NAME: adsee-staging
-CDN_URL: http://cdn.adsee.com
+S3_BUCKET_NAME: adsee-development
+CDN_URL: https://s3.amazonaws.com/adsee-development
 HOST: localhost
 WEB_PORT: '3000'
 URI_SCHEME: http
