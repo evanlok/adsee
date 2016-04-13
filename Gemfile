@@ -48,7 +48,7 @@ gem 'acts_as_list'
 gem 'cocoon'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'fog'
+gem 'carrierwave-aws'
 gem 'pundit'
 gem 'angular_rails_csrf'
 
