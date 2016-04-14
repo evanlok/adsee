@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   // the base path which will be used to resolve entry points
@@ -43,6 +44,13 @@ module.exports = {
           cacheDirectory: true
         }
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[name]-[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
       // Not all apps require jQuery. Many Rails apps do, such as those using TurboLinks or
       // bootstrap js
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},
@@ -51,5 +59,8 @@ module.exports = {
       {test: require.resolve("tinycolor2"), loader: "expose?tinycolor"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
+  },
+  postcss: function () {
+    return [autoprefixer]
   }
 };

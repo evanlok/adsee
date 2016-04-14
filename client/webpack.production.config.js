@@ -9,7 +9,10 @@ config.output.publicPath = '/assets/webpack/';
 config.output.filename = '[name]-bundle-[hash].js';
 
 // Optimizations
-config.module.loaders.push({test: /\.scss$/, loader: ExtractTextPlugin.extract("style", "css?sourceMap!autoprefixer!resolve-url!sass?sourceMap")});
+config.module.loaders.push({
+  test: /\.scss$/,
+  loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!resolve-url!sass?sourceMap")
+});
 
 config.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
 config.plugins.push(new webpack.optimize.UglifyJsPlugin());
