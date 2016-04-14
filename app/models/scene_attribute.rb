@@ -19,6 +19,7 @@ class SceneAttribute < ActiveRecord::Base
 
   # Validations
   validates :scene_content, presence: true
+  validates :name, uniqueness: { scope: :scene_content_id }
 
   def self.policy_class
     SceneAttributePolicy

@@ -18,4 +18,8 @@
       {{ $ctrl.sceneAttribute.display_name }}
     </label>
   </div>
+
+  <div ng-if="$ctrl.mediaInput()">
+    <media-attribute scene-attribute="$ctrl.sceneAttribute"></media-attribute>
+  </div>
 </div>

@@ -6,17 +6,20 @@ var component = {
   bindings: {}
 };
 
-function MediaLibraryController(imageService, uploaderService) {
+function MediaLibraryController(imageService, uploaderService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.images = [];
     vm.uploading = false;
+    vm.selecting = false;
+    mediaSelectorService.onMediaInsert(onMediaInsert);
 
     fetchImages();
   };
 
   vm.upload = uploadFiles;
+  vm.selectMedia = selectMedia;
 
   function fetchImages() {
     imageService.query().then(function (data) {
@@ -33,6 +36,15 @@ function MediaLibraryController(imageService, uploaderService) {
       fetchImages();
       vm.uploading = false;
     });
+  }
+
+  function selectMedia(media) {
+    vm.selecting = false;
+    mediaSelectorService.selectMedia(media);
+  }
+
+  function onMediaInsert() {
+    vm.selecting = true;
   }
 }
 

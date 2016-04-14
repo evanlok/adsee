@@ -14,6 +14,7 @@ function SceneAttributeController() {
   vm.value = vm.sceneAttribute.value;
   vm.update = update;
   vm.textInput = textInput;
+  vm.mediaInput = mediaInput;
 
   function update() {
     vm.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
@@ -21,6 +22,10 @@ function SceneAttributeController() {
   
   function textInput() {
     return _.includes(['text', 'url', 'number'], vm.sceneAttribute.type);
+  }
+
+  function mediaInput() {
+    return _.includes(['image', 'video'], vm.sceneAttribute.type);
   }
 }
 

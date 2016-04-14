@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}">
+    {{ $ctrl.sceneAttribute.display_name }}
+  </label>
+  <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
+         ng-model="$ctrl.filename"
+         ng-click="$ctrl.insertMedia()">
+
+  <input type="hidden" ng-model="$ctrl.attachment_id">
+</div>

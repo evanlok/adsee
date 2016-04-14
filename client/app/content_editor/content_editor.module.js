@@ -1,7 +1,8 @@
-var contentEditor = angular.module('contentEditor', []);
+var contentEditor = angular.module('adsee.contentEditor', []);
 
 contentEditor
   .component('contentEditor', require('./content_editor.component'))
-  .component('sceneAttribute', require('./scene_attribute.component'));
+  .component('sceneAttribute', require('./scene_attribute.component'))
+  .component('mediaAttribute', require('./media_attribute.component'));
 
 module.exports = contentEditor.name;

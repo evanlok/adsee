@@ -61,7 +61,7 @@
   </div>
 
   <div class="col-md-5">
-    <uib-tabset justified="true">
+    <uib-tabset justified="true" active="$ctrl.activeTab">
       <uib-tab index="0" heading="Content Editor">
         <content-editor scene-content="$ctrl.selectedSceneContent"
                         on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">

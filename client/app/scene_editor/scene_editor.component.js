@@ -5,7 +5,7 @@ var component = {
   controller: SceneEditorController
 };
 
-function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService) {
+function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -15,6 +15,15 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
     vm.selectedSceneContent = {};
     vm.transitions = transitionsService.get();
     vm.displayAddScene = false;
+    vm.activeTab = 0;
+
+    mediaSelectorService.onMediaInsert(function () {
+      vm.activeTab = 1;
+    });
+
+    mediaSelectorService.onMediaSelected(function () {
+      vm.activeTab = 0;
+    });
 
     fetchSceneCollection();
     fetchSceneContents();
@@ -73,7 +82,7 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
     }
 
     promise.then(function onSuccess(data) {
-      sceneAttribute.id = data.id;
+      _.merge(sceneAttribute, data);
       sceneAttribute.invalid = false;
     }, function onError() {
       sceneAttribute.invalid = true;
@@ -82,6 +91,8 @@ function SceneEditorController($stateParams, $state, sceneCollectionService, sce
 
   function selectSceneContent(sceneContent) {
     vm.selectedSceneContent = sceneContent;
+    vm.activeTab = 0;
+    mediaSelectorService.reset();
   }
 
   function addScene(scene) {

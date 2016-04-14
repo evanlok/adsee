@@ -14,13 +14,22 @@
   </div>
 
   <div>
-    <span ng-if="$ctrl.uploading">Uploading...</span>
+    <span ng-if="$ctrl.uploading">
+      <i class="fa fa-spinner fa-spin"></i>
+      Uploading...
+    </span>
   </div>
 
-  <div>
+  <div ng-class="{selecting: $ctrl.selecting}">
+    <div ng-if="$ctrl.selecting">
+      <h4>Select an image</h4>
+    </div>
+
     <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages">
       <div class="col-md-4" ng-repeat="image in imageGroup">
-        <img ng-src="{{ image.thumbnail_url }}" class="img-responsive">
+        <img class="img-responsive"
+             ng-src="{{ image.thumbnail_url }}"
+             ng-click="$ctrl.selectMedia(image)">
       </div>
     </div>
   </div>
