@@ -16,4 +16,12 @@
   <div>
     <span ng-if="$ctrl.uploading">Uploading...</span>
   </div>
+
+  <div>
+    <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages">
+      <div class="col-md-4" ng-repeat="image in imageGroup">
+        <img ng-src="{{ image.thumbnail_url }}" class="img-responsive">
+      </div>
+    </div>
+  </div>
 </div>

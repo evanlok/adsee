@@ -21,6 +21,7 @@ function MediaLibraryController(imageService, uploaderService) {
   function fetchImages() {
     imageService.query().then(function (data) {
       vm.images = data;
+      vm.groupedImages = _.chunk(vm.images, 3);
     });
   }
 
@@ -29,6 +30,7 @@ function MediaLibraryController(imageService, uploaderService) {
 
     uploaderService.uploadFiles().then(function (dialog, images) {
     }).finally(function () {
+      fetchImages();
       vm.uploading = false;
     });
   }

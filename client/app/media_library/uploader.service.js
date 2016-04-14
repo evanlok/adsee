@@ -1,20 +1,20 @@
 var filepicker = require('filepicker-js');
 
-function UploaderService($q, imageService) {
+function UploaderService($q, imageService, S3_BUCKET_NAME) {
   var pickerOptions = {
     mimetype: ['image/*', 'video/*'],
     multiple: true,
     maxSize: (50 * 1024 * 1024), // 50MB
     imageQuality: 90,
     imageDim: [1920, 1080],
-    cropRatio: 16 / 9,
-    debug: true
+    cropRatio: 16 / 9
   };
 
   var storageOptions = {
     location: 'S3',
     path: '/media_library/',
-    access: 'public'
+    access: 'public',
+    storeContainer: S3_BUCKET_NAME
   };
   
   this.uploadFiles = function () {
@@ -22,8 +22,6 @@ function UploaderService($q, imageService) {
 
     var dialog = filepicker.pickAndStore(pickerOptions, storageOptions,
       function onSuccess(blobs) {
-        console.log(blobs);
-
         generateImageVersions(blobs).then(function onSuccess(blobs) {
           deferred.resolve(dialog, blobs);
         }, function onError(dialog) {
