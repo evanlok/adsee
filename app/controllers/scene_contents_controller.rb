@@ -5,7 +5,7 @@ class SceneContentsController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def index
-    @scene_contents = policy_scope(@scene_collection.scene_contents.includes(:scene, :scene_attributes))
+    @scene_contents = policy_scope(@scene_collection.scene_contents.includes(:scene, scene_attributes: :attachment))
 
     respond_to do |format|
       format.json

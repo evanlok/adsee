@@ -55,17 +55,21 @@ FactoryGirl.define do
     factory :boolean_attribute, class: SceneAttributes::Boolean do
       value 'true'
     end
+
+    factory :image_attribute, class: SceneAttributes::Image do
+      association :attachment, factory: :image
+    end
   end
 
   factory :industry do
     name { Faker::Lorem.word }
-    image { build(:image) }
+    image { build(:uploaded_image) }
   end
 
   factory :ad_type do
     name { Faker::Lorem.word }
     industry
-    image { build(:image) }
+    image { build(:uploaded_image) }
   end
 
   factory :theme do
@@ -86,7 +90,7 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
   end
 
-  factory :image, class: Rack::Test::UploadedFile do
+  factory :uploaded_image, class: Rack::Test::UploadedFile do
     initialize_with do
       FileUtils.mkdir_p(Rails.root.join('tmp', 'test-files'))
       file = File.new(Rails.root.join('tmp', 'test-files', 'image.jpg'), 'wb')
@@ -114,5 +118,15 @@ FactoryGirl.define do
   factory :video_job do
     scene_collection
     sequence(:hal_id) { |n| n }
+  end
+
+  factory :image do
+    filename { "#{Faker::Lorem.word}.jpg" }
+    original_path 'original_path/to/file'
+    path 'path/to/file'
+    thumbnail_path 'thumbnail_path/to/file'
+    file_size 50_000
+    filestack_url 'https://www.filestack/image'
+    user
   end
 end

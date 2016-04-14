@@ -15,6 +15,7 @@ class SceneAttribute < ActiveRecord::Base
 
   # Associations
   belongs_to :scene_content
+  belongs_to :attachment, polymorphic: true
 
   # Validations
   validates :scene_content, presence: true
