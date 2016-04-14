@@ -13,7 +13,6 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.build(image_params)
     authorize @image
-    sleep 2
 
     if @image.save
       respond_to do |format|
