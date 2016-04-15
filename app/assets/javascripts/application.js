@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap-sass-official
 //= require cocoon
 //= require paloma
 //= require_tree ./paloma

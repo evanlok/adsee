@@ -1,5 +1,2 @@
-@import "../../../node_modules/angularjs-color-picker/dist/angularjs-color-picker.css";
-@import "../../../node_modules/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.css";
-@import "../../../node_modules/select2/dist/css/select2.css";
-@import "../../../node_modules/select2-bootstrap-theme/dist/select2-bootstrap.css";
-@import "modules/media_library";
+@import "layout/*";
+@import "modules/*";

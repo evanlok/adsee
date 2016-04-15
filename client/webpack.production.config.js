@@ -11,7 +11,7 @@ config.output.filename = '[name]-bundle-[hash].js';
 // Optimizations
 config.module.loaders.push({
   test: /\.scss$/,
-  loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!resolve-url!sass?sourceMap")
+  loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!resolve-url!sass?sourceMap!import-glob")
 });
 
 config.plugins.push(new webpack.optimize.OccurenceOrderPlugin());

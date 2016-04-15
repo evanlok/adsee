@@ -1,9 +1,11 @@
 // CSS
+require('./style/vendor.scss');
 require('./style/app.scss');
 
 // Globally exposed packages
 require('jquery');
 require('jquery-ujs');
+require('bootstrap-sass/assets/javascripts/bootstrap');
 require('lodash');
 require('angular');
 require('tinycolor2');

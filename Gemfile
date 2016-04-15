@@ -52,12 +52,6 @@ gem 'carrierwave-aws'
 gem 'pundit'
 gem 'angular_rails_csrf'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap-sass-official'
-  gem 'rails-assets-fontawesome'
-  gem 'rails-assets-normalize-scss'
-end
-
 group :development do
   gem 'quiet_assets'
   gem 'foreman'
