@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -43,10 +43,10 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'autoprefixer-rails'
 gem 'simple_form'
-gem 'paloma'
+gem 'paloma', '~> 4.2'
 gem 'acts_as_list'
 gem 'cocoon'
-gem 'carrierwave'
+gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'pundit'
