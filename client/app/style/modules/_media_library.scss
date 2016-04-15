@@ -1,7 +1,13 @@
 .media-library {
   .selecting {
-    img {
+    img, i {
       cursor: pointer;
+    }
+  }
+
+  .media-library-videos {
+    i {
+      font-size: 7em;
     }
   }
 }

@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   # Associations
   has_many :scene_collections, dependent: :destroy
   has_many :images
+  has_many :video_clips
 end

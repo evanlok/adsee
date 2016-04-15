@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
+  resources :video_clips, only: [:index, :create, :destroy]
 
   resource :hal_callback, only: [:create]
 

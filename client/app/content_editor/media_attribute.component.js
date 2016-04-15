@@ -27,7 +27,7 @@ var component = {
   vm.insertMedia = insertMedia;
 
   function insertMedia() {
-    mediaSelectorService.insertMedia(vm.sceneAttribute.name);
+    mediaSelectorService.insertMedia(vm.sceneAttribute.name, vm.sceneAttribute.type);
   }
 
   function onMediaSelected(media) {

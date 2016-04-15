@@ -59,6 +59,10 @@ FactoryGirl.define do
     factory :image_attribute, class: SceneAttributes::Image do
       association :attachment, factory: :image
     end
+
+    factory :video_attribute, class: SceneAttributes::Video do
+      association :attachment, factory: :video_clip
+    end
   end
 
   factory :industry do
@@ -125,6 +129,15 @@ FactoryGirl.define do
     original_path 'original_path/to/file'
     path 'path/to/file'
     thumbnail_path 'thumbnail_path/to/file'
+    file_size 50_000
+    filestack_url 'https://www.filestack/image'
+    user
+  end
+
+  factory :video_clip do
+    filename { "#{Faker::Lorem.word}.mp4" }
+    original_path 'original_path/to/file'
+    thumbnail_url { Faker::Internet.url }
     file_size 50_000
     filestack_url 'https://www.filestack/image'
     user

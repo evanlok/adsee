@@ -1,6 +1,5 @@
-/*@ngInject*/
-function ImageService($resource) {
-  var resource = $resource('/images/:id', {
+/*@ngInject*/ function VideoClipService($resource) {
+  var resource = $resource('/video_clips/:id', {
       id: '@id',
       format: 'json'
     }
@@ -15,4 +14,4 @@ function ImageService($resource) {
   };
 }
 
-module.exports = ImageService;
+module.exports = VideoClipService;

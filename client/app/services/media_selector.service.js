@@ -8,11 +8,11 @@
     mediaInsertCallbacks.push(callback);
   };
 
-  this.insertMedia = function (sceneAttributeName) {
+  this.insertMedia = function (sceneAttributeName, type) {
     currentSceneAttributeName = sceneAttributeName;
 
     _.each(mediaInsertCallbacks, function (callback) {
-      callback();
+      callback(type);
     });
   };
 

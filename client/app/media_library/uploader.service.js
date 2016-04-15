@@ -1,6 +1,7 @@
 var filepicker = require('filepicker-js');
 
-/*@ngInject*/ function UploaderService($q, imageService, S3_BUCKET_NAME) {
+/*@ngInject*/
+function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
   var pickerOptions = {
     mimetype: ['image/*', 'video/*'],
     multiple: true,
@@ -16,15 +17,29 @@ var filepicker = require('filepicker-js');
     access: 'public',
     storeContainer: S3_BUCKET_NAME
   };
-  
+
+  var mainConversionOptions = {
+    width: 1920,
+    height: 1080,
+    fit: 'crop',
+    quality: 90
+  };
+
+  var thumbnailConversionOptions = {
+    width: 320,
+    height: 180,
+    fit: 'crop',
+    quality: 90
+  };
+
   this.uploadFiles = function () {
     var deferred = $q.defer();
 
     var dialog = filepicker.pickAndStore(pickerOptions, storageOptions,
       function onSuccess(blobs) {
-        generateImageVersions(blobs).then(function onSuccess(blobs) {
-          deferred.resolve(dialog, blobs);
-        }, function onError(dialog) {
+        $q.all([generateImageVersions(blobs), saveVideoClips(blobs)]).then(function onSuccess(results) {
+          deferred.resolve(dialog, results[0], results[1]);
+        }, function onError() {
           deferred.reject(dialog);
         });
       }, function onError(FPError) {
@@ -37,34 +52,22 @@ var filepicker = require('filepicker-js');
 
   function generateImageVersions(blobs) {
     var promises = [];
+    var imageBlobs = _.filter(blobs, function (blob) {
+      return blob.mimetype.match(/image/);
+    });
 
-    _.each(blobs, function (originalBlob) {
+    _.each(imageBlobs, function (originalBlob) {
       var deferred = $q.defer();
       promises.push(deferred.promise);
 
-      var mainImage = convertImage(originalBlob,
-        {
-          width: 1920,
-          height: 1080,
-          fit: 'crop',
-          quality: 90
-        }
-      );
-
-      var thumbnailImage = convertImage(originalBlob,
-        {
-          width: 320,
-          height: 180,
-          fit: 'crop',
-          quality: 90
-        }
-      );
+      var mainImage = convertImage(originalBlob, mainConversionOptions);
+      var thumbnailImage = convertImage(originalBlob, thumbnailConversionOptions);
 
       // Don't save image if any of the conversions fail
       $q.all([mainImage, thumbnailImage]).then(function (convertedImages) {
         saveImage(originalBlob, convertedImages[0], convertedImages[1]).then(function (image) {
           deferred.resolve(image);
-        }, function onError () {
+        }, function onError() {
           deferred.reject();
         });
       });
@@ -97,6 +100,21 @@ var filepicker = require('filepicker-js');
       file_size: originalImage.size,
       filestack_url: originalImage.url
     });
+  }
+
+  function saveVideoClips(blobs) {
+    var videoBlobs = _.filter(blobs, function (blob) {
+      return blob.mimetype.match(/video/);
+    });
+
+    return $q.all(_.map(videoBlobs, function (blob) {
+      return videoClipService.save({}, {
+        filename: blob.filename,
+        original_path: blob.key,
+        filestack_url: blob.url,
+        file_size: blob.size
+      });
+    }));
   }
 }
 

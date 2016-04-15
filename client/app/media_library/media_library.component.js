@@ -6,25 +6,40 @@ var component = {
   bindings: {}
 };
 
-/*@ngInject*/ function MediaLibraryController(imageService, uploaderService, mediaSelectorService) {
+/*@ngInject*/
+function MediaLibraryController(imageService, videoClipService, uploaderService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.images = [];
+    vm.videos = [];
     vm.uploading = false;
     vm.selecting = false;
+    vm.display = {images: true, videos: false};
     mediaSelectorService.onMediaInsert(onMediaInsert);
 
     fetchImages();
+    fetchVideoClips();
   };
 
   vm.upload = uploadFiles;
   vm.selectMedia = selectMedia;
+  vm.fetchImages = fetchImages;
+  vm.fetchVideoClips = fetchVideoClips;
+  vm.showImages = showImages;
+  vm.showVideos = showVideos;
 
   function fetchImages() {
     imageService.query().then(function (data) {
       vm.images = data;
       vm.groupedImages = _.chunk(vm.images, 3);
+    });
+  }
+
+  function fetchVideoClips() {
+    videoClipService.query().then(function (data) {
+      vm.videos = data;
+      vm.groupedVideos = _.chunk(vm.videos, 2);
     });
   }
 
@@ -43,8 +58,19 @@ var component = {
     mediaSelectorService.selectMedia(media);
   }
 
-  function onMediaInsert() {
+  function onMediaInsert(type) {
+    type == 'image' ? showImages() : showVideos();
     vm.selecting = true;
+  }
+
+  function showImages() {
+    vm.display.images = true;
+    vm.display.videos = false;
+  }
+
+  function showVideos() {
+    vm.display.images = false;
+    vm.display.videos = true;
   }
 }
 

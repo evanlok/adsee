@@ -9,8 +9,8 @@
   </div>
 
   <div>
-    <a href="">images</a>
-    <a href="">videos</a>
+    <a href="" ng-click="$ctrl.showImages()">images</a>
+    <a href="" ng-click="$ctrl.showVideos()">videos</a>
   </div>
 
   <div>
@@ -22,14 +22,29 @@
 
   <div ng-class="{selecting: $ctrl.selecting}">
     <div ng-if="$ctrl.selecting">
-      <h4>Select an image</h4>
+      <h4>Select a media item</h4>
     </div>
 
-    <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages">
+    <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages" ng-show="$ctrl.display.images">
       <div class="col-md-4" ng-repeat="image in imageGroup">
         <img class="img-responsive"
              ng-src="{{ image.thumbnail_url }}"
              ng-click="$ctrl.selectMedia(image)">
+      </div>
+    </div>
+
+    <div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos" ng-show="$ctrl.display.videos">
+      <div class="col-md-6" ng-repeat="video in videoGroup">
+        <div class="text-center">
+          <i class="fa fa-file-video-o"
+             ng-click="$ctrl.selectMedia(video)">
+          </i>
+
+          <div>
+            {{ video.filename }}
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
