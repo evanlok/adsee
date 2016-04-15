@@ -4,7 +4,7 @@ $.fn.select2.defaults.set('theme', 'bootstrap');
 // Filestack / Filepicker
 var filepicker = require('filepicker-js');
 
-var config = function ($stateProvider, $urlRouterProvider, $locationProvider, FILESTACK_API_KEY) {
+var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, FILESTACK_API_KEY) {
   $stateProvider
     .state('sceneEditor', {
       url: '/scene_collections/:sceneCollectionId/edit',

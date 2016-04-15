@@ -6,7 +6,7 @@ var component = {
   bindings: {}
 };
 
-function MediaLibraryController(imageService, uploaderService, mediaSelectorService) {
+/*@ngInject*/ function MediaLibraryController(imageService, uploaderService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {

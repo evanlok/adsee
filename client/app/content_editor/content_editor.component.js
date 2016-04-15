@@ -9,7 +9,7 @@ var component = {
   }
 };
 
-function ContentEditorController() {
+/*@ngInject*/ function ContentEditorController() {
   var vm = this;
   vm.updateSceneAttribute = updateSceneAttribute;
 

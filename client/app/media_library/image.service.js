@@ -1,4 +1,4 @@
-function ImageService($resource) {
+/*@ngInject*/ function ImageService($resource) {
   var resource = $resource('/images/:id', {
       id: '@id',
       format: 'json'

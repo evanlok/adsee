@@ -9,7 +9,7 @@ var component = {
   }
 };
 
-function SceneAttributeController() {
+/*@ngInject*/ function SceneAttributeController() {
   var vm = this;
   vm.value = vm.sceneAttribute.value;
   vm.update = update;

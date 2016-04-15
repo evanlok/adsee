@@ -1,4 +1,4 @@
-function sceneAttributeService($resource) {
+/*@ngInject*/ function sceneAttributeService($resource) {
   var resource = $resource('/scene_attributes/:id', {
       id: '@id',
       format: 'json'

@@ -1,4 +1,4 @@
-function fontsService(fonts) {
+/*@ngInject*/ function fontsService(fonts) {
   this.get = function () {
     return fonts;
   };

@@ -8,7 +8,7 @@ var component = {
   }
 };
 
-function AddSceneController(sceneService) {
+/*@ngInject*/ function AddSceneController(sceneService) {
   var vm = this;
 
   vm.$onInit = function () {

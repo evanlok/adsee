@@ -5,7 +5,7 @@ var component = {
   controller: SceneEditorController
 };
 
-function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService, mediaSelectorService) {
+/*@ngInject*/ function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {

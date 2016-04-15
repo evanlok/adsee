@@ -9,7 +9,7 @@ var component = {
   }
 };
 
-function ThemeSettingsController(songsService, fontsService) {
+/*@ngInject*/ function ThemeSettingsController(songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {

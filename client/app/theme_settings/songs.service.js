@@ -1,4 +1,4 @@
-function songsService(songs) {
+/*@ngInject*/ function songsService(songs) {
   this.get = function () {
     return songs;
   };

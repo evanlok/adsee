@@ -1,4 +1,4 @@
-function MediaSelector() {
+/*@ngInject*/ function MediaSelector() {
   var mediaInsertCallbacks = [];
   var mediaSelectedCallbacks = {};
   var currentSceneAttributeName;

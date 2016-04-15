@@ -1,6 +1,6 @@
 var filepicker = require('filepicker-js');
 
-function UploaderService($q, imageService, S3_BUCKET_NAME) {
+/*@ngInject*/ function UploaderService($q, imageService, S3_BUCKET_NAME) {
   var pickerOptions = {
     mimetype: ['image/*', 'video/*'],
     multiple: true,

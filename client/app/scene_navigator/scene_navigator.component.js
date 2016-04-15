@@ -11,7 +11,7 @@ var component = {
   }
 };
 
-function SceneNavigatorController() {
+/*@ngInject*/ function SceneNavigatorController() {
   var vm = this;
   
   vm.firstScene = firstScene;

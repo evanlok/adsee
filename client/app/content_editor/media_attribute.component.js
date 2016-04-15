@@ -11,7 +11,7 @@ var component = {
   }
 };
 
-function MediaAttributeController(mediaSelectorService) {
+/*@ngInject*/ function MediaAttributeController(mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {

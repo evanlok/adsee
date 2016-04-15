@@ -1,4 +1,4 @@
-function transitionsService(transitions) {
+/*@ngInject*/ function transitionsService(transitions) {
   this.get = function () {
     return transitions;
   };

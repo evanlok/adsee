@@ -1,4 +1,4 @@
-function sceneContentService($resource) {
+/*@ngInject*/ function sceneContentService($resource) {
   var resource = $resource('/scene_contents/:id', {
       id: '@id',
       format: 'json'
