@@ -13,7 +13,7 @@ namespace :assets do
   end
 
   desc 'Compile assets with webpack'
-  task :webpack do
+  task webpack: :clobber do
     if Rails.env.development? || Rails.env.test? || ENV['CI']
       sh 'npm run build'
     else
