@@ -55,6 +55,7 @@ gem 'carrierwave-aws'
 gem 'pundit'
 gem 'angular_rails_csrf'
 gem 'newrelic_rpm'
+gem 'honeybadger', '~> 2.0'
 
 group :development do
   gem 'quiet_assets'
