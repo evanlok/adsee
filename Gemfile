@@ -54,6 +54,7 @@ gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'pundit'
 gem 'angular_rails_csrf'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'quiet_assets'
