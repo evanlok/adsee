@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
     resources :scenes, only: [:index, :edit, :update, :destroy] do
       get :tags, on: :collection
+      post :import, on: :collection
     end
     resources :songs
     resources :fonts

@@ -1,5 +1,5 @@
 class Admin::ScenesController < Admin::BaseController
-  before_action :load_scene, except: [:index, :tags]
+  before_action :load_scene, except: [:index, :tags, :import]
 
   def index
     @scenes = Scene.includes(:tags).page(params[:page])
@@ -33,6 +33,11 @@ class Admin::ScenesController < Admin::BaseController
         render json: @tags.map { |tag| { id: tag.name, text: tag.name } }
       end
     end
+  end
+
+  def import
+    ScenesImporter.new.import
+    redirect_to admin_scenes_url, notice: 'Imported latest scenes.'
   end
 
   private
