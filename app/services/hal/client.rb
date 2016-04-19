@@ -8,6 +8,10 @@ module HAL
       http_client.post('scene_collections', params).body
     end
 
+    def update_scene_collection(id, params)
+      http_client.patch("scene_collections/#{id}", params).body
+    end
+
     private
 
     def http_client

@@ -11,7 +11,7 @@ class VideoGenerator
     params = {
       font: scene_collection.font&.url,
       music: scene_collection.song&.url,
-      background_color: scene_collection.color,
+      color: scene_collection.color,
       callback_url: callback_url,
       scenes: generate_scenes_params
     }
