@@ -1,17 +1,16 @@
 <div class="media-library">
+
   <div class="clearfix">
-    <div class="pull-right">
-      <a href="" class="btn btn-primary" ng-click="$ctrl.upload()">
+    <ul class="nav nav-pills">
+      <li class="active"><a href="" ng-click="$ctrl.showImages()"> <i class="fa fa-picture-o"></i> images</a></li>
+      <li><a href="" ng-click="$ctrl.showVideos()"><i class="fa fa-film"></i> videos</a></li>
+      <li class="pull-right"><a href="" class="btn btn-primary" ng-click="$ctrl.upload()">
         <i class="fa fa-arrow-circle-up"></i>
         Upload
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </div>
 
-  <div>
-    <a href="" ng-click="$ctrl.showImages()">images</a>
-    <a href="" ng-click="$ctrl.showVideos()">videos</a>
-  </div>
 
   <div>
     <span ng-if="$ctrl.uploading">
@@ -20,13 +19,13 @@
     </span>
   </div>
 
-  <div ng-class="{selecting: $ctrl.selecting}">
+  <div ng-class="{selecting: $ctrl.selecting}" class="thumb-container">
     <div ng-if="$ctrl.selecting">
       <h4>Select a media item</h4>
     </div>
 
     <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages" ng-show="$ctrl.display.images">
-      <div class="col-md-4" ng-repeat="image in imageGroup">
+      <div class="col-md-4 image-thumbs" ng-repeat="image in imageGroup">
         <img class="img-responsive"
              ng-src="{{ image.thumbnail_url }}"
              ng-click="$ctrl.selectMedia(image)">
@@ -47,5 +46,6 @@
 
       </div>
     </div>
-  </div>
+  <div>
 </div>
+
