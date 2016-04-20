@@ -22,6 +22,7 @@ function AddSceneController(sceneService) {
   function fetchScenes() {
     sceneService.query().then(function (data) {
       vm.scenes = data;
+
       vm.groupedScenes = _.groupBy(data, 'category');
 
       _.each(vm.groupedScenes, function (scenes, category) {
@@ -32,6 +33,7 @@ function AddSceneController(sceneService) {
 
         vm.groupedScenes[category] = _.chunk(scenes, 4);
       });
+
     });
   }
 }

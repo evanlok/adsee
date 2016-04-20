@@ -258,11 +258,26 @@
   text-align: center;
   border: 2px solid $color-2;
   border-radius: 10px;
+  margin-left: 5px;
   i {
     font-size: 36px;
     display: block;
     margin-bottom: 3px;
   }
+}
+.scene-timeline-thumb {
+  img {
+    height: 80px;
+  }
+}
+.scene-number {
+  position: absolute;
+  height: 20px;
+  width: 24px;
+  color: white;
+  background-color: hsla(0, 0%, 0.0000%, 0.5000);
+  font-size: 14px;
+  border-bottom-right-radius: 5px;
 }
 .preview-button {
   height: 100%;
@@ -286,17 +301,27 @@
     color: white;
   }
 }
+.content-edit-wrapper {
+  color: white;
+  max-width: 350px;
+  margin: 0 auto ;
+  padding: 20px 30px 100px;
+}
 .add-scene-index {
-  background-color: hsl(207, 11.3139%, 15.2508%);
+  background-color: hsl(210, 10.5263%, 14.9020%);
+  color: white;
   height: 100vh;
   padding: 30px;
   h2 {
     margin-top: 0px;
   }
 }
-.content-edit-wrapper {
-  color: white;
-  max-width: 350px;
-  margin: 0 auto ;
-  padding: 20px 30px 100px;
+.scene-thumb-wrapper {
+  display: inline-block;
+  margin: 20px 10px 5px 10px;
+}
+.scene-thumb-name {
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
 }

@@ -1,8 +1,11 @@
+<div class="add-scene-index">
+
+<a ui-sref="sceneEditor" class="back-link pull-right"><i class="fa fa-chevron-left"></i> Back</a>
+
 <h2>
   <i class="fa fa-plus-circle"></i>
   Add a scene
 </h2>
-
 <div ng-repeat="(category, scenesChunks) in $ctrl.groupedScenes">
   <h3>{{ category }}</h3>
 
@@ -13,9 +16,12 @@
           <img ng-src="{{ scene.thumbnail_small_url }}">
         </a>
       </div>
-      {{ scene.name }}
+
+      <div class="scene-thumb-name">
+        {{ scene.name }}
+      </div>
+
     </div>
   </div>
-</div>
 
-<a ui-sref="sceneEditor">Back</a>
+</div>
