@@ -11,19 +11,22 @@ Rails.application.routes.draw do
     resources :themes, only: [:index, :show], shallow: true
   end
 
-  resources :scene_collections, only: [:show, :create, :edit, :update], shallow: true do
+  resources :scene_collections, only: [:show, :create, :update], shallow: true do
     resources :scene_contents, except: [:new, :edit] do
       resources :scene_attributes, only: [:create, :update]
+    end
+
+    resources :video_jobs, only: [:show] do
+      collection do
+        post :preview
+        post :generate
+      end
     end
   end
 
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]
-
-  # resource :hal_callback, only: [:create] do
-  #   post :stream, on: :collection
-  # end
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
@@ -47,5 +50,7 @@ Rails.application.routes.draw do
   end
 
   # Angular route globbing
-  get '/scene_collections/:id/edit/*angular_path', to: 'scene_collections#edit'
+  get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
+  get '/scene_collections/:id/edit/*angular_path', to: 'home#scene_editor'
+  get '/previews/:video_job_id', to: 'home#scene_editor'
 end

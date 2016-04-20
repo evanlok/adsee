@@ -63,6 +63,9 @@ module.exports = {
       {test: require.resolve("lodash"), loader: "expose?_"},
       {test: require.resolve("sortablejs"), loader: "expose?Sortable"},
       {test: require.resolve("tinycolor2"), loader: "expose?tinycolor"},
+      // videojs-contrib-hls requires this
+      {test: require.resolve("video.js"), loader: "expose?videojs"},
+      {test: require.resolve("videojs-contrib-hls/dist/videojs.hls"), loader: "imports?this=>window"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
   },

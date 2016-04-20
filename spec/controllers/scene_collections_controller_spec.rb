@@ -14,18 +14,10 @@ RSpec.describe SceneCollectionsController do
     end
   end
 
-  describe 'GET edit' do
-    it 'renders page' do
-      get :edit, id: scene_collection.id
-      expect(response).to be_success
-      expect(assigns(:scene_collection)).to eq(scene_collection)
-    end
-  end
-
   describe 'PATCH update' do
     it 'updates scene collection' do
-      patch :update, id: scene_collection, scene_collection: { color: '#ffffff' }
-      expect(response).to redirect_to(edit_scene_collection_url(scene_collection))
+      patch :update, id: scene_collection, scene_collection: { color: '#ffffff' }, format: :json
+      expect(response).to be_success
     end
   end
 end

@@ -5,7 +5,9 @@ var component = {
   controller: SceneEditorController
 };
 
-/*@ngInject*/ function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService, transitionsService, mediaSelectorService) {
+/*@ngInject*/
+function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService,
+                               transitionsService, mediaSelectorService, videoJobService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -16,6 +18,7 @@ var component = {
     vm.transitions = transitionsService.get();
     vm.displayAddScene = false;
     vm.activeTab = 0;
+    vm.previewLoading = false;
 
     mediaSelectorService.onMediaInsert(function () {
       vm.activeTab = 1;
@@ -39,6 +42,7 @@ var component = {
   vm.nextSceneContent = nextSceneContent;
   vm.sceneContentPosition = sceneContentPosition;
   vm.updateSceneContentPosition = updateSceneContentPosition;
+  vm.preview = preview;
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
@@ -134,6 +138,16 @@ var component = {
 
   function updateSceneContentPosition(sceneContent, position) {
     sceneContentService.update({id: sceneContent.id}, {position: position});
+  }
+
+  function preview() {
+    vm.previewLoading = true;
+
+    videoJobService.preview({sceneCollectionId: vm.sceneCollection.id}).then(function (videoJob) {
+      $state.go('preview', {videoJobId: videoJob.id});
+    }).finally(function () {
+      vm.previewLoading = false;
+    });
   }
 }
 

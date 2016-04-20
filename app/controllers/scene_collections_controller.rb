@@ -1,6 +1,6 @@
 class SceneCollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_scene_collection, only: [:show, :edit, :update]
+  before_action :load_scene_collection, only: [:show, :update]
   after_action :verify_authorized
 
   def show
@@ -21,23 +21,15 @@ class SceneCollectionsController < ApplicationController
     end
   end
 
-  def edit
-    @songs = Song.order(:name)
-    @fonts = Font.order(:name)
-    @transitions = Transition.order(:name)
-  end
-
   def update
     if @scene_collection.update(scene_collection_params)
       respond_to do |format|
         format.json { render :show }
-        format.html { redirect_to edit_scene_collection_url(@scene_collection) }
       end
 
     else
       respond_to do |format|
         format.json { render_json_model_errors(@scene_collection) }
-        format.html { render :edit }
       end
     end
   end

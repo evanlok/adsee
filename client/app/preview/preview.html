@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="text-center">
+      <h1>Preview</h1>
+    </div>
+
+    <video-preview stream-url="{{ $ctrl.videoJob.stream_url }}"></video-preview>
+
+    <br>
+
+    <p>
+      <a href="" class="btn btn-primary btn-block">
+        NEXT
+      </a>
+    </p>
+
+    <p class="text-center">
+      <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})">< Back to the Video Editor</a>
+    </p>
+  </div>
+</div>

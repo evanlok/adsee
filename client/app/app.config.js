@@ -13,6 +13,12 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     .state('sceneEditor.addScene', {
       url: '/add_scene',
       template: '<add-scene on-add-scene="$ctrl.addScene(scene)"></add-scene>'
+    })
+    .state('preview', {
+      url: '/previews/:videoJobId',
+      templateProvider: function ($stateParams) {
+        return '<preview video-job-id="' + $stateParams.videoJobId + '">' + '</preview>';
+      }
     });
 
   $locationProvider.html5Mode(true);
