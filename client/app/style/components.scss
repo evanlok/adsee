@@ -1,5 +1,23 @@
-.container-fluid {
-
+.main-nav {
+  position: fixed;
+  height: 100vh;
+  width: 110px;
+  margin-top: -50px;
+  -webkit-box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
+  box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
+  .logo {
+    height: 50px;
+    background-color: $color-2;
+  }
+  ul {
+    list-style: none;
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+.main-content {
+  padding-left: 125px;
 }
 .video-name-header {
   padding: 0px 25px;
@@ -90,7 +108,7 @@
   -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
 
-  padding: 15px 15px 0px;
+  padding: 15px 0px 0px 15px;
   height: 100%;
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
   z-index: 1;
@@ -250,14 +268,15 @@
   height: 100%;
   background-color: $color-2;
   color: white;
-  right: 0px;
+  right: 110px;
   position: absolute;
   vertical-align: middle;
   text-align: center;
-  padding: 20px 50px;
+  padding: 15px 30px;
   margin-top: -10px;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 22px;
   i {
     display: block;
     font-size: 40px;
@@ -277,6 +296,7 @@
 }
 .content-edit-wrapper {
   color: white;
+  max-width: 350px;
   margin: 0 auto ;
-  padding: 50px 30px 20px;
+  padding: 20px 30px 100px;
 }
