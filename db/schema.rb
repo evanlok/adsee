@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414222451) do
+ActiveRecord::Schema.define(version: 20160420194954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,9 +77,11 @@ ActiveRecord::Schema.define(version: 20160414222451) do
     t.integer  "song_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "hal_id"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree
+  add_index "scene_collections", ["hal_id"], name: "index_scene_collections_on_hal_id", using: :btree
   add_index "scene_collections", ["theme_id"], name: "index_scene_collections_on_theme_id", using: :btree
   add_index "scene_collections", ["user_id"], name: "index_scene_collections_on_user_id", using: :btree
 
@@ -216,12 +218,12 @@ ActiveRecord::Schema.define(version: 20160414222451) do
 
   create_table "video_jobs", force: :cascade do |t|
     t.integer  "scene_collection_id"
-    t.string   "hal_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.text     "stream_url"
+    t.boolean  "preview",             default: false
   end
 
-  add_index "video_jobs", ["hal_id"], name: "index_video_jobs_on_hal_id", using: :btree
   add_index "video_jobs", ["scene_collection_id"], name: "index_video_jobs_on_scene_collection_id", using: :btree
 
   create_table "video_types", force: :cascade do |t|

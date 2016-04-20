@@ -12,6 +12,14 @@ module HAL
       http_client.patch("scene_collections/#{id}", params).body
     end
 
+    def generate_scene_collection(id, params)
+      http_client.post("scene_collections/#{id}/generate", params)
+    end
+
+    def preview_scene_collection(id, params)
+      http_client.post("scene_collections/#{id}/preview", params)
+    end
+
     private
 
     def http_client

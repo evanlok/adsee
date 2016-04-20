@@ -16,13 +16,12 @@ RSpec.describe VideoGenerator do
     end
   end
 
-  describe '#run' do
+  describe '#create_or_update_scene_collection' do
     it 'sends request to HAL client' do
       params = {
         font: scene_collection.font.url,
         music: scene_collection.song.url,
         color: scene_collection.color,
-        callback_url: 'https://www.adsee.com/hal_callback',
         scenes: [
           {
             scene_id: scene.hal_id,
@@ -36,16 +35,43 @@ RSpec.describe VideoGenerator do
         ]
       }
 
-      expect_any_instance_of(HAL::Client).to receive(:create_scene_collection).with(params)
-      expect(subject).to receive(:process_response)
-      subject.run
+      expect_any_instance_of(HAL::Client)
+        .to receive(:create_scene_collection).with(params) { { id: '100' }.stringify_keys }
+      subject.create_or_update_scene_collection
+      expect(scene_collection.hal_id).to eq('100')
     end
 
-    it 'handles response from HAL' do
-      expect(scene_collection).to receive(:valid_scene_contents?) { true }
-      expect_any_instance_of(HAL::Client).to receive(:create_scene_collection) { { id: 1234 }.stringify_keys }
-      subject.run
-      expect(VideoJob.where(hal_id: '1234', scene_collection_id: scene_collection.id)).to exist
+    context 'when scene collection already exists on HAL' do
+      let(:scene_collection) { create(:scene_collection, font: font, song: song, hal_id: '1234') }
+
+      it 'updates existing record' do
+        expect_any_instance_of(HAL::Client).to receive(:update_scene_collection).with('1234', kind_of(Hash))
+        subject.create_or_update_scene_collection
+      end
+    end
+  end
+
+  describe '#preview' do
+    let(:scene_collection) { build(:scene_collection, hal_id: '555') }
+
+    it 'creates VideoJob and sends preview request' do
+      allow(subject).to receive(:create_or_update_scene_collection)
+      expect_any_instance_of(HAL::Client)
+        .to receive(:preview_scene_collection)
+              .with(scene_collection.hal_id, hash_including(:callback_url))
+      expect(subject.preview).to be_a(VideoJob)
+    end
+  end
+
+  describe '#generate' do
+    let(:scene_collection) { build(:scene_collection, hal_id: '555') }
+
+    it 'creates VideoJob and sends generate request' do
+      allow(subject).to receive(:create_or_update_scene_collection)
+      expect_any_instance_of(HAL::Client)
+        .to receive(:generate_scene_collection)
+              .with(scene_collection.hal_id, hash_including(:callback_url, :stream_callback_url))
+      expect(subject.generate).to be_a(VideoJob)
     end
   end
 end

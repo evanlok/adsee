@@ -121,7 +121,6 @@ FactoryGirl.define do
 
   factory :video_job do
     scene_collection
-    sequence(:hal_id) { |n| n }
   end
 
   factory :image do

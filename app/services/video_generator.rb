@@ -1,30 +1,58 @@
 class VideoGenerator
+  delegate :url_helpers, to: 'Rails.application.routes'
   attr_reader :scene_collection
 
   def initialize(scene_collection)
     @scene_collection = scene_collection
   end
 
-  def run
+  def create_or_update_scene_collection
     return unless scene_collection.valid_scene_contents?
 
+    if scene_collection.hal_id
+      response = client.update_scene_collection(scene_collection.hal_id, scene_collection_params)
+    else
+      response = client.create_scene_collection(scene_collection_params)
+      scene_collection.update(hal_id: response['id'])
+    end
+
+    response
+  end
+
+  def preview
+    create_or_update_scene_collection
+    video_job = VideoJob.create(scene_collection: scene_collection, preview: true)
+
     params = {
-      font: scene_collection.font&.url,
-      music: scene_collection.song&.url,
-      color: scene_collection.color,
-      callback_url: callback_url,
-      scenes: generate_scenes_params
+      callback_url: url_helpers.preview_callback_url(video_job, default_url_options)
     }
 
-    response = client.create_scene_collection(params)
-    process_response(response)
-    true
+    client.preview_scene_collection(scene_collection.hal_id, params)
+    video_job
+  end
+
+  def generate
+    create_or_update_scene_collection
+    video_job = VideoJob.create(scene_collection: scene_collection, preview: false)
+
+    params = {
+      callback_url: url_helpers.video_callback_url(video_job, default_url_options),
+      stream_callback_url: url_helpers.preview_callback_url(video_job, default_url_options)
+    }
+
+    client.generate_scene_collection(scene_collection.hal_id, params)
+    video_job
   end
 
   private
 
-  def process_response(response)
-    VideoJob.create(scene_collection: scene_collection, hal_id: response['id'])
+  def scene_collection_params
+    {
+      font: scene_collection.font&.url,
+      music: scene_collection.song&.url,
+      color: scene_collection.color,
+      scenes: generate_scenes_params
+    }
   end
 
   def generate_scenes_params
@@ -47,12 +75,7 @@ class VideoGenerator
     @client ||= HAL::Client.new
   end
 
-  def host
-    klass = ENV['URI_SCHEME'] == 'https' ? URI::HTTPS : URI::HTTP
-    klass.build(host: ENV['HOST'], port: ENV['WEB_PORT'].to_i).to_s
-  end
-
-  def callback_url
-    "#{host}/hal_callback"
+  def default_url_options
+    { host: ENV['HOST'], port: ENV['WEB_PORT'], protocol: ENV['URI_SCHEME'] }
   end
 end

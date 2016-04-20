@@ -21,7 +21,13 @@ Rails.application.routes.draw do
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]
 
-  resource :hal_callback, only: [:create]
+  # resource :hal_callback, only: [:create] do
+  #   post :stream, on: :collection
+  # end
+
+  post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
+  post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
+  post '/hal_callbacks/:video_job_id/preview', to: 'hal_callbacks#preview', as: :preview_callback
 
   namespace :admin do
     root 'scenes#index'

@@ -1,14 +1,8 @@
 class HalCallbacksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :load_video_job
 
   def create
-    begin
-      @video_job = VideoJob.find_by!(hal_id: params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      Honeybadger.notify(e)
-      render json: { errors: ['Record not found'] }, status: :not_found && return
-    end
-
     # Ignore request if a more recent video job has been executed
     most_recent_video_job = VideoJob.where(scene_collection_id: @video_job.scene_collection_id).order(:id).last
 
@@ -17,6 +11,18 @@ class HalCallbacksController < ApplicationController
         import_video(video_params)
       end
     end
+
+    render json: { status: 'ok' }
+  end
+
+  def stream
+    @video_job.update(stream_url: params[:stream_url])
+
+    render json: { status: 'ok' }
+  end
+
+  def preview
+    @video_job.update(stream_url: params[:stream_url])
 
     render json: { status: 'ok' }
   end
@@ -35,5 +41,12 @@ class HalCallbacksController < ApplicationController
     }
 
     video.save
+  end
+
+  def load_video_job
+    @video_job = VideoJob.find(params[:video_job_id])
+  rescue ActiveRecord::RecordNotFound => e
+    Honeybadger.notify(e)
+    render json: { errors: ['Record not found'] }, status: :not_found && return
   end
 end
