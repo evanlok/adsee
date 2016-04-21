@@ -41,6 +41,7 @@ input {
   font-family: $primary-font;
   font-size: 1.6rem;
 	box-sizing: border-box;
+  outline: none; 
 }
 
 html {
@@ -64,6 +65,12 @@ a {
 a:hover {
 	text-decoration: none;
 }
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
 input {
 	font-family: $primary-font;
 	font-size: 1.6rem;
@@ -101,4 +108,5 @@ select:focus {
   padding: 5px 10px;
   color: white;
 }
+
 

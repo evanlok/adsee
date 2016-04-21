@@ -62,6 +62,11 @@
           </div>
 
           <div class="scene-actionbar">
+            
+              <a href="" class="delete-scene pull-left" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent)"> 
+                <i class="fa fa-trash"></i>
+              </a>
+
               <div class="pull-left">
                 <select ng-model="$ctrl.selectedSceneContent.transition_id"
                         ng-options="transition.id as transition.name for transition in $ctrl.transitions"
@@ -70,16 +75,15 @@
                 </select>
               </div>
 
-              <div class="pull-right">
+              <div class="pull-right">Timestamp: 1:06</div>
+
+              <!-- Extra Add Scene Button -->
+              <!-- <div class="pull-right">
+>>>>>>> text field label animation
                 <a ui-sref="sceneEditor.addScene" class="new-scene button">
                   <i class="fa fa-plus-circle"></i> New Scene
                 </a>
-              </div>
-
-              <a href="" class="pull-right delete-scene" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent)"> 
-                 <i class="fa fa-trash"></i>
-              </a>
-
+              </div> -->
 
           </div>
 
