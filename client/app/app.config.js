@@ -8,7 +8,9 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
   $stateProvider
     .state('sceneEditor', {
       url: '/scene_collections/:sceneCollectionId/edit',
-      template: '<scene-editor></scene-editor>'
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<scene-editor scene-collection-id="{{ sceneCollectionId }}"></scene-editor>')($stateParams);
+      }
     })
     .state('sceneEditor.addScene', {
       url: '/add_scene',
@@ -16,9 +18,8 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('preview', {
       url: '/previews/:videoJobId',
-
-      templateProvider: /*@ngInject*/ function ($stateParams) {
-        return '<preview video-job-id="' + $stateParams.videoJobId + '">' + '</preview>';
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<preview video-job-id="{{ videoJobId }}"></preview>')($stateParams);
       }
     });
 

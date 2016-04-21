@@ -2,16 +2,18 @@ var templateUrl = require('./scene_editor.html');
 
 var component = {
   templateUrl: templateUrl,
-  controller: SceneEditorController
+  controller: SceneEditorController,
+  bindings: {
+    sceneCollectionId: '@'
+  }
 };
 
 /*@ngInject*/
-function SceneEditorController($stateParams, $state, sceneCollectionService, sceneContentService, sceneAttributeService,
+function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService) {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.sceneCollectionId = $stateParams.sceneCollectionId;
     vm.sceneCollection = {};
     vm.sceneContents = [];
     vm.selectedSceneContent = {};
