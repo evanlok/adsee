@@ -18,7 +18,79 @@
 }
 .main-content {
   padding-left: 125px;
+  margin-top: -30px;
 }
+
+.video-nav {
+
+  padding: 0px 0px 0px 20px;
+  margin-bottom: 30px;
+  position: relative;
+
+  ul {
+    padding: 0px;
+  }
+
+  li {
+    font-size: 12px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    height: 29px;
+    line-height: 29px;
+    padding: 0 29px;
+    background-color: hsl(216, 10.8345%, 14.2385%);
+    color: white;
+    a {
+      color: white;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  li:before,
+  li:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  li + li {
+    margin-left: 1px;
+  }
+  li + li:before {
+    left: 0;
+    top: 0;
+    border-top: 15px solid transparent;
+    border-left: 15px solid $color-5;
+    border-bottom: 15px solid transparent;
+  }
+  li:first-child {
+    border-radius: 20px 0 0 20px;
+  }
+  li:last-child {
+    border-radius: 0 20px 20px 0;
+  }
+  li:not(:last-child) {
+    padding-right: 20px;
+  }
+  li:not(:last-child):after {
+    z-index: 1;
+    right: -15px;
+    bottom: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid hsl(216, 10.8345%, 14.2385%);
+  }
+  li:hover {
+    background-color: $color-6;
+  }
+  li:hover:after {
+    border-left-color: $color-6;
+  }
+
+}
+
 .video-name-header {
   padding: 0px 25px;
   h1 {
@@ -112,6 +184,7 @@
   height: 100%;
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
   z-index: 1;
+  max-width: 450px;
 }
 .media-panel {
   height: 100%;
@@ -202,7 +275,10 @@
   color: white;
 }
 .scene-actionbar {
-  padding: 15px 0px 150px 25px;
+  padding: 15px 10px 150px 25px;
+  .time {
+    color: white;
+  }
 }
 .new-scene {
   border-radius: 25px;
@@ -251,12 +327,12 @@
   display: inline-block;
   height: 80px;
   float: left;
-  padding: 10px;
+  padding: 10px 15px;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
-  border: 2px solid $color-2;
+  border: 3px solid $color-2;
   border-radius: 5px;
   margin-left: 5px;
   i {
@@ -288,11 +364,12 @@
   position: absolute;
   vertical-align: middle;
   text-align: center;
-  padding: 15px 30px;
+  padding: 10px 30px;
   margin-top: -10px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 22px;
+  border: 5px solid hsl(203, 79.3427%, 35.7647%);
   i {
     display: block;
     font-size: 40px;
