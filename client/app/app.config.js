@@ -16,7 +16,8 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('preview', {
       url: '/previews/:videoJobId',
-      templateProvider: function ($stateParams) {
+
+      templateProvider: /*@ngInject*/ function ($stateParams) {
         return '<preview video-job-id="' + $stateParams.videoJobId + '">' + '</preview>';
       }
     });
