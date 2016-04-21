@@ -18,6 +18,13 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     storeContainer: S3_BUCKET_NAME
   };
 
+  var conversionStorageOptions = {
+    location: 'S3',
+    path: '/media_library/',
+    access: 'public',
+    container: S3_BUCKET_NAME
+  };
+
   var mainConversionOptions = {
     width: 1920,
     height: 1080,
@@ -79,7 +86,7 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
   function convertImage(blob, conversionOptions) {
     var deferred = $q.defer();
 
-    filepicker.convert(blob, conversionOptions, storageOptions,
+    filepicker.convert(blob, conversionOptions, conversionStorageOptions,
       function onSuccess(blob) {
         deferred.resolve(blob);
       },
