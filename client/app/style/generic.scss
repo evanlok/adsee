@@ -18,8 +18,7 @@ body {
     family: $primary-font; // variables inside partials > _variables.scss
   }
   color: $color-1;
-  background-color: $color-3;
-  
+  background-color: $color-5;
 }
 
 a {
@@ -42,38 +41,6 @@ input {
   font-size: 1.6rem;
 	box-sizing: border-box;
   outline: none; 
-}
-
-html {
-	font-size: 62.5%;
-}
-
-body {
-	font: {
-		size: 1.6rem;
-		family: $primary-font; // variables inside partials > _variables.scss
-	}
-	color: $color-1;
-	background-color: $color-3;
-	
-}
-
-a {
-	color: $color-2;
-	text-decoration: none;
-}
-a:hover {
-	text-decoration: none;
-}
-
-:focus {
-  outline-color: transparent;
-  outline-style: none;
-}
-
-input {
-	font-family: $primary-font;
-	font-size: 1.6rem;
 }
 textarea, input { outline: none; box-shadow: none }
 

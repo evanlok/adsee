@@ -1,8 +1,9 @@
 <h1>What is your industry?</h1>
 
 <ul>
+	<h4>Ad Category</h4>
   <% @industries.each do |industry| %>
-    <li>
+    <li class="template-thumb">
       <%= link_to industry.name, [industry, AdType], target: '_self' %>
       <%= image_tag industry.image.url(:large_square) %>
     </li>
