@@ -18,12 +18,13 @@
 }
 .main-content {
   padding-left: 125px;
-  margin-top: -30px;
+  margin-top: -50px;
+  height: 100vh;
 }
 
 .video-nav {
 
-  padding: 0px 0px 0px 20px;
+  padding: 20px 0px 0px 20px;
   margin-bottom: 30px;
   position: relative;
 
@@ -83,10 +84,10 @@
     border-left: 15px solid hsl(216, 10.8345%, 14.2385%);
   }
   li:hover {
-    background-color: $color-6;
+    background-color: $color-2;
   }
   li:hover:after {
-    border-left-color: $color-6;
+    border-left-color: $color-2;
   }
 
 }
@@ -184,6 +185,7 @@
   height: 100%;
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
   z-index: 1;
+  min-width: 280px;
   max-width: 450px;
 }
 .media-panel {
@@ -322,6 +324,7 @@
   z-index: 20;
   padding: 10px;
   float: left;
+  overflow: scroll;
 }
 .add-scene-button {
   display: inline-block;
@@ -370,6 +373,7 @@
   font-weight: bold;
   font-size: 22px;
   border: 5px solid hsl(203, 79.3427%, 35.7647%);
+  z-index: 100;
   i {
     display: block;
     font-size: 40px;
@@ -377,6 +381,8 @@
   }
   &:hover {
     color: white;
+    background-color: $color-6;
+    border: 5px solid $color-2;
   }
 }
 .content-edit-wrapper {
@@ -384,6 +390,9 @@
   max-width: 350px;
   margin: 0 auto ;
   padding: 20px 30px 100px;
+  h4 {
+    margin-bottom: 20px;
+  }
 }
 .add-scene-index {
   background-color: hsl(210, 10.5263%, 14.9020%);

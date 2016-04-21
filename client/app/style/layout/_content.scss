@@ -1,3 +1,7 @@
+.admin-body {
+    background-color: $color-3;
+    height: 100vh;
+}
 .main {
   padding: 20px;
 }
@@ -9,4 +13,11 @@
 }
 .main .page-header {
   margin-top: 0;
+}
+
+.admin-content {
+	font-size: 14px;
+	.row {
+		width: 100%
+	} 
 }
