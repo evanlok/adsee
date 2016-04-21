@@ -31,6 +31,7 @@ common: &default_settings
 development:
   <<: *default_settings
   app_name: AdSee (Development)
+  monitor_mode: false
 
   # NOTE: There is substantial overhead when running in developer mode.
   # Do not use for production or load testing.
