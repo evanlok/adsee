@@ -11,9 +11,10 @@ var component = {
 };
 
 /*@ngInject*/
-function VideoPreviewController() {
+function VideoPreviewController($interval, $http) {
   var vm = this;
   var player;
+  var streamUrlIntervalPromise;
 
   vm.$postLink = function () {
     setupVideoJs();
@@ -21,7 +22,7 @@ function VideoPreviewController() {
 
   vm.$onChanges = function () {
     if (vm.streamUrl) {
-      playVideo();
+      waitForStream();
     }
   };
 
@@ -35,13 +36,27 @@ function VideoPreviewController() {
     player = videojs('preview-video', {fluid: true}, function () {
       // Player (this) is initialized and ready.
       if (vm.streamUrl) {
-        playVideo();
+        waitForStream();
       }
     });
   }
 
   function playVideo() {
     player.src({src: vm.streamUrl, type: 'application/x-mpegURL'});
+    player.play();
+  }
+
+  function waitForStream() {
+    streamUrlIntervalPromise = $interval(function () {
+      fetchStreamUrl();
+    }, 1000);
+  }
+
+  function fetchStreamUrl() {
+    $http.get(vm.streamUrl).then(function onSuccess() {
+      $interval.cancel(streamUrlIntervalPromise);
+      playVideo();
+    });
   }
 }
 
