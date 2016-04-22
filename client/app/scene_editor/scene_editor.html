@@ -32,16 +32,17 @@
 
   <div class="scenes-row">
 
-    <button class="preview-button" ng-click="$ctrl.preview()" ng-disabled="$ctrl.previewLoading">
-      <i class="fa fa-play-circle-o" aria-hidden="true"></i> Preview
-    </button>
-
-    <div class="">
-      <scene-list scene-contents="$ctrl.sceneContents"
-                  selected-scene-content="$ctrl.selectedSceneContent"
-                  on-select="$ctrl.selectSceneContent(sceneContent)"
-                  on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)">
-      </scene-list>
+    <scene-list scene-contents="$ctrl.sceneContents"
+                selected-scene-content="$ctrl.selectedSceneContent"
+                on-select="$ctrl.selectSceneContent(sceneContent)"
+                on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
+                class="scene-thumbs-wrapper">
+    </scene-list>
+    
+    <div class="preview-button-wrapper">
+      <button class="preview-button" ng-click="$ctrl.preview()" ng-disabled="$ctrl.previewLoading">
+        <i class="fa fa-play-circle-o" aria-hidden="true"></i> Preview
+      </button>
     </div>
 
   </div>
