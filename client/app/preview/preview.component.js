@@ -15,9 +15,12 @@ function PreviewController($interval, videoJobService) {
 
   vm.$onInit = function () {
     vm.videoJob = {};
+    vm.publishing = false;
 
     pollStreamurl();
   };
+
+  vm.publish = publish;
 
   function pollStreamurl() {
     intervalPromise = $interval(fetchVideoJob, 1500);
@@ -30,6 +33,12 @@ function PreviewController($interval, videoJobService) {
       if (vm.videoJob.stream_url) {
         $interval.cancel(intervalPromise);
       }
+    });
+  }
+
+  function publish() {
+    videoJobService.generate({sceneCollectionId: vm.videoJob.scene_collection_id}).then(function (data) {
+      alert('Video has been published!');
     });
   }
 }
