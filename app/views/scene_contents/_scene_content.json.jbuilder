@@ -17,4 +17,5 @@ json.scene_attributes scene_content.scene.data_attributes do |data_attribute|
   end
 
   json.display_name data_attribute['display_name']
+  json.position data_attribute['position']
 end
