@@ -37,8 +37,8 @@
     display: inline-block;
     position: relative;
     vertical-align: top;
-    height: 29px;
-    line-height: 29px;
+    height: 30px;
+    line-height: 30px;
     padding: 0 29px;
     background-color: hsl(216, 10.8345%, 14.2385%);
     color: white;
@@ -147,7 +147,7 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-    height: 100vh;
+  height: 100vh;
   width: 100%;
 
 }
@@ -167,7 +167,6 @@
   -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
   
 }
@@ -180,7 +179,6 @@
   -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-
   padding: 15px 0px 0px 15px;
   height: 100%;
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
@@ -224,6 +222,7 @@
 }
 .media-library {
   padding: 15px;
+  color: white;
   .nav {
     background-color: $color-1;
     font-size: 14px;
@@ -322,9 +321,25 @@
   background-color: hsla(0, 0%, 0.0000%, 0.5000);
   bottom: 0px;
   z-index: 20;
-  padding: 10px;
+  padding: 10px 110px 10px 10px;
   float: left;
-  overflow-x: scroll;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.scene-thumbs-wrapper {
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4; 
+  -webkit-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -ms-flex-order: 1;
+  -webkit-order: 1;
+  order: 1;
 }
 .add-scene-button {
   display: inline-block;
@@ -346,9 +361,10 @@
 }
 .scene-timeline-thumb {
   img {
-    height: 80px;
+    height: 60px;
   }
 }
+
 .scene-number {
   position: absolute;
   height: 20px;
@@ -359,12 +375,23 @@
   font-size: 14px;
   border-bottom-right-radius: 5px;
 }
+.preview-button-wrapper {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2; 
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+  max-width: 164px;
+}
 .preview-button {
   height: 100%;
   background-color: $color-2;
   color: white;
-  right: 110px;
-  position: absolute;
   vertical-align: middle;
   text-align: center;
   padding: 10px 30px;
@@ -471,4 +498,8 @@
   .radio, .checkbox {
     margin-bottom: 20px;
   }
+}
+
+.preview-container {
+  width: 100%;
 }
