@@ -19,7 +19,7 @@ RSpec.describe SceneAttributes::Image do
 
   describe '#value' do
     it 'returns attachment url' do
-      expect(image_attr.value).to eq(image_attr.attachment.url)
+      expect(image_attr.value).to eq(URI.encode(image_attr.attachment.url))
     end
   end
 

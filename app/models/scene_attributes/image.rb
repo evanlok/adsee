@@ -5,7 +5,7 @@ module SceneAttributes
     validate :attachment_is_image?
 
     def value
-      attachment.url
+      URI.encode(attachment.url)
     end
 
     def value=(val)

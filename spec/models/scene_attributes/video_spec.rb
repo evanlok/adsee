@@ -19,7 +19,7 @@ RSpec.describe SceneAttributes::Video do
 
   describe '#value' do
     it 'returns attachment url' do
-      expect(video_attr.value).to eq(video_attr.attachment.url)
+      expect(video_attr.value).to eq(URI.encode(video_attr.attachment.url))
     end
   end
 
