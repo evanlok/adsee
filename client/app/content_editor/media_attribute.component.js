@@ -25,6 +25,7 @@ var component = {
   };
 
   vm.insertMedia = insertMedia;
+  vm.isVideo = isVideo;
 
   function insertMedia() {
     mediaSelectorService.insertMedia(vm.sceneAttribute.name, vm.sceneAttribute.type);
@@ -34,6 +35,10 @@ var component = {
     vm.value = media.id;
     vm.filename = media.filename;
     vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
+  }
+
+  function isVideo () {
+    return vm.sceneAttribute.type === 'video';
   }
 }
 
