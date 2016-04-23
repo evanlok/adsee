@@ -12,8 +12,8 @@ User.create(
 )
 
 5.times do |i|
-  Song.create(name: "Song #{i}", url: "https://www.adsee.com/song-#{i}.mp3")
-  Font.create(name: "Font #{i}", url: "https://www.adsee.com/font-#{i}.mp3")
+  Song.create(name: "Song #{i+1}", url: "https://s3.amazonaws.com/vejeo-stage/vidgenie/audio/music/energetic/energetic-#{i+1}.mp3")
+  Font.create(name: "Font #{i+1}", url: "https://www.adsee.com/font-#{i+1}.ttf")
 end
 
 ['Real Estate', 'Automotive', 'Restaurant'].each do |name|

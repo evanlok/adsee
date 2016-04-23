@@ -9,7 +9,8 @@ var component = {
   }
 };
 
-/*@ngInject*/ function ThemeSettingsController(songsService, fontsService) {
+/*@ngInject*/
+function ThemeSettingsController(songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -18,9 +19,18 @@ var component = {
   };
 
   vm.update = update;
+  vm.currentSongUrl = currentSongUrl;
 
   function update(prop) {
     vm.onUpdate({prop: prop, value: vm.sceneCollection[prop]});
+  }
+
+  function currentSongUrl() {
+    var song = _.find(vm.songs, {id: vm.sceneCollection.song_id});
+
+    if (song) {
+      return song.url;
+    }
   }
 }
 

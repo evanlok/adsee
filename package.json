@@ -39,6 +39,7 @@
     "file-loader": "^0.8.5",
     "filepicker-js": "^2.4.7",
     "font-awesome": "^4.6.1",
+    "howler": "^1.1.29",
     "html-loader": "^0.4.3",
     "image-webpack-loader": "^1.7.0",
     "import-glob-loader": "^1.1.0",

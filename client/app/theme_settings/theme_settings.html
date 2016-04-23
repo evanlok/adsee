@@ -17,13 +17,17 @@
       </select>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <select ng-model="$ctrl.sceneCollection.song_id"
               ng-options="song.id as song.name for song in $ctrl.songs"
               ng-change="$ctrl.update('song_id')"
               class="form-control">
         <option value="">Select a song</option>
       </select>
+    </div>
+
+    <div class="col-md-1">
+      <song-player url="{{ $ctrl.currentSongUrl() }}"></song-player>
     </div>
   </div>
 </div>
