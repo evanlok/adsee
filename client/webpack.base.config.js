@@ -8,7 +8,28 @@ module.exports = {
   // the base path which will be used to resolve entry points
   context: __dirname,
   // the main entry point for our application's frontend JS
-  entry: {app: './app/app.js'},
+  entry: {
+    app: './app/app.js',
+    vendor: [
+      'jquery', 
+      'jquery-ujs', 
+      'bootstrap-sass/assets/javascripts/bootstrap', 
+      'lodash',
+      'angular',
+      'angular-resource',
+      'angular-ui-router',
+      'angular-ui-bootstrap',
+      'angularjs-color-picker/dist/angularjs-color-picker',
+      'tinycolor2', 
+      'select2',
+      'sortablejs/ng-sortable',
+      'filepicker-js',
+      'video.js',
+      'videojs-contrib-hls/dist/videojs.hls',
+      'howler',
+      './app/vendor.js'
+    ]
+  },
 
   output: {
     // Write bundles to public/assets/webpack
@@ -32,7 +53,11 @@ module.exports = {
     }),
 
     new ngAnnotatePlugin({add: true}),
-    new AssetsPlugin({path: path.join(__dirname, '..', 'public', 'assets')})
+    new AssetsPlugin({path: path.join(__dirname, '..', 'public', 'assets')}),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      minChunks: Infinity
+    })
   ],
   module: {
     loaders: [

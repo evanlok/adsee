@@ -1,26 +1,13 @@
 // CSS
-require('./style/vendor.scss');
 require('./style/app.scss');
-
-// Globally exposed packages
-require('jquery');
-require('jquery-ujs');
-require('bootstrap-sass/assets/javascripts/bootstrap');
-require('lodash');
-require('angular');
-require('tinycolor2');
-
-// select2 and sortablejs are used in Paloma files, otherwise they should be required in the appropriate modules
-require('select2');
-require('sortablejs/ng-sortable');
 
 var config = require('./app.config');
 
 angular.module('adsee', [
-  require('angular-resource'),
-  require('angularjs-color-picker/dist/angularjs-color-picker'),
-  require('angular-ui-router'),
-  require('angular-ui-bootstrap'),
+  'ngResource',
+  'ui.router',
+  'ui.bootstrap',
+  'color.picker',
   'ng-sortable',
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),

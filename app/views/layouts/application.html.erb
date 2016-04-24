@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
   <title>Adsee</title>
+  <%= webpack_bundle_for('vendor', :css) %>
   <%= webpack_bundle_for('app', :css) %>
+  <%= webpack_bundle_for('vendor', :js) %>
   <%= webpack_bundle_for('app', :js) %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
