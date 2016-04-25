@@ -1,7 +1,7 @@
 <div ng-class="{'has-error': $ctrl.sceneAttribute.invalid}">
   <div class="form-group" ng-if="$ctrl.textInput()">
     <div class="text-input-group">
-      <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}1</span>
+      <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}</span>
       <input required="" type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control"
              ng-model="$ctrl.value"
              ng-model-options="{updateOn: 'default blur', debounce: { default: 1000, blur: 0 }}"
