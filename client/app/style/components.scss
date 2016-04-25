@@ -116,10 +116,13 @@
   float: left;
 }
 .theme-settings {
-  select, .color-picker-wrapper {
+  .theme-settings-column {
     width: 31%;
     float: left;
     margin-left: 2%;
+  }
+  select, .color-picker-wrapper {
+    width: 100%;
   }
   .form-control {
     border-radius: 30px;
@@ -127,6 +130,17 @@
   .input-group-addon {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+  }
+  .song-player {
+    position: absolute;
+    float: left;
+    padding: 3px 4px;
+    i {
+      font-size: 20px;
+    }
+  }
+  .song-select-col select {
+    padding-left: 30px;
   }
 }
 .main-image {
