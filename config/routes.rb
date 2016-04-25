@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       get :tags, on: :collection
       post :import, on: :collection
     end
+
+    resources :scene_categories
     resources :songs
     resources :fonts
     resources :themes

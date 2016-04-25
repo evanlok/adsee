@@ -8,12 +8,13 @@ var component = {
   }
 };
 
-/*@ngInject*/ function AddSceneController(sceneService) {
+/*@ngInject*/
+function AddSceneController(sceneService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.scenes = [];
-    vm.scenesChunks = [];
+    vm.groupedScenes = {};
 
     fetchScenes();
   };
@@ -21,7 +22,16 @@ var component = {
   function fetchScenes() {
     sceneService.query().then(function (data) {
       vm.scenes = data;
-      vm.scenesChunks = _.chunk(vm.scenes, 4);
+      vm.groupedScenes = _.groupBy(data, 'category');
+
+      _.each(vm.groupedScenes, function (scenes, category) {
+        if (category === 'null') {
+          delete vm.groupedScenes[category];
+          category = 'Uncategorized';
+        }
+
+        vm.groupedScenes[category] = _.chunk(scenes, 4);
+      });
     });
   }
 }

@@ -48,11 +48,15 @@ end
   VideoType.create(name: name)
 end
 
+%w(Intro Middle Outro).each do |name|
+  SceneCategory.create(name: name)
+end
+
 # Import scenes
 ScenesImporter.new.import
 
 Scene.find_each do |scene|
-  scene.update(remote_thumbnail_url: 'http://lorempixel.com/320/180/city')
+  scene.update(remote_thumbnail_url: 'http://lorempixel.com/320/180/city', scene_category: SceneCategory.order('random()').first)
 end
 
 Theme.find_each do |theme|

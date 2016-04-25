@@ -4,6 +4,7 @@ class Scene < ActiveRecord::Base
   mount_uploader :preview_video, FileUploader
 
   # Associations
+  belongs_to :scene_category
   has_many :theme_variant_scenes, dependent: :destroy
   has_many :theme_variants, through: :theme_variant_scenes
   has_many :scene_contents, dependent: :destroy

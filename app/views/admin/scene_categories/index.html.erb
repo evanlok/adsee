@@ -1,0 +1,34 @@
+<h1 class="page-header">Scene Categories</h1>
+
+<p>
+  <%= link_to 'New Scene Category', new_admin_scene_category_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @scene_categories.each do |scene_category| %>
+    <tr>
+      <td><%= link_to scene_category.name, [:edit, :admin, scene_category] %></td>
+      <td><%= truncate(scene_category.description) %></td>
+      <td class="actions">
+        <%= link_to [:edit, :admin, scene_category], title: 'Edit' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, scene_category], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @scene_categories %>

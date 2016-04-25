@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420194954) do
+ActiveRecord::Schema.define(version: 20160425181423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20160420194954) do
 
   add_index "scene_attributes", ["scene_content_id"], name: "index_scene_attributes_on_scene_content_id", using: :btree
 
+  create_table "scene_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "scene_collections", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "ad_type_id"
@@ -101,10 +108,11 @@ ActiveRecord::Schema.define(version: 20160420194954) do
     t.string   "name"
     t.json     "data_attributes"
     t.string   "hal_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.text     "thumbnail"
     t.text     "preview_video"
+    t.integer  "scene_category_id"
   end
 
   add_index "scenes", ["hal_id"], name: "index_scenes_on_hal_id", using: :btree

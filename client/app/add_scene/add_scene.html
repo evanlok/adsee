@@ -3,14 +3,18 @@
   Add a scene
 </h2>
 
-<div class="row" ng-repeat="scenes in $ctrl.scenesChunks">
-  <div class="col-md-3" ng-repeat="scene in scenes">
-    <div>
-      <a href="" ng-click="$ctrl.onAddScene({scene: scene})">
-        <img ng-src="{{ scene.thumbnail_small_url }}">
-      </a>
+<div ng-repeat="(category, scenesChunks) in $ctrl.groupedScenes">
+  <h3>{{ category }}</h3>
+
+  <div class="row" ng-repeat="scenesChunk in scenesChunks">
+    <div class="col-md-3" ng-repeat="scene in scenesChunk">
+      <div>
+        <a href="" ng-click="$ctrl.onAddScene({scene: scene})">
+          <img ng-src="{{ scene.thumbnail_small_url }}">
+        </a>
+      </div>
+      {{ scene.name }}
     </div>
-    {{ scene.name }}
   </div>
 </div>
 

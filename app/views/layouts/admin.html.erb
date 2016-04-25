@@ -5,7 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Adsee</title>
+  <%= webpack_bundle_for('vendor', :css) %>
   <%= webpack_bundle_for('app', :css) %>
+  <%= webpack_bundle_for('vendor', :js) %>
   <%= webpack_bundle_for('app', :js) %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -38,6 +40,7 @@
         <li><%= link_to 'Home', admin_root_path %></li>
         <li><%= link_to 'Ad Types', admin_ad_types_path %></li>
         <li><%= link_to 'Industries', admin_industries_path %></li>
+        <li><%= link_to 'Scene Categories', admin_scene_categories_path %></li>
         <li><%= link_to 'Scenes', admin_scenes_path %></li>
         <li><%= link_to 'Songs', admin_songs_path %></li>
         <li><%= link_to 'Fonts', admin_fonts_path %></li>
