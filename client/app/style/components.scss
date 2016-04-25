@@ -193,7 +193,7 @@
   -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-  padding: 15px 0px 0px 15px;
+  padding: 0px 0px 0px 15px;
   height: 100%;
   background-color: hsla(211, 11.0360%, 16.0141%, 1.0000);
   z-index: 1;
@@ -208,6 +208,7 @@
 .media-wrapper {
   .nav {
     background: #16191c;
+    padding-top: 15px;
   }
   .nav-tabs {
     font-size: 14px;
@@ -455,62 +456,159 @@
 }
 .content-edit-wrapper {
 
-  input[type="text"] {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0 0 1.65em 0px;
-    border: 2px solid #ccc;
-    border-radius: 1.5em;
-    resize: none;
-    background: none;
-    color: white;
-    outline: none; 
-    box-shadow: none;
-    height: 40px;
+  .form-group {
+    position: relative;
   }
-  input[type="text"][required]:focus {
-    border-color: #00bafa;
-    outline: none; 
-    box-shadow: none
+  .text-input-group {
+    input[type="text"] {
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0 0 1.65em 0px;
+      border: 2px solid #ccc;
+      border-radius: 1.5em;
+      resize: none;
+      background: none;
+      color: white;
+      outline: none; 
+      box-shadow: none;
+      height: 40px;
+      padding-left: 35px;
+    }
+    input[type="text"][required]:focus {
+      border-color: #00bafa;
+      outline: none; 
+      box-shadow: none
+    }
+    input[type="text"][required]:focus + label[placeholder]:before {
+      color: #00bafa;
+    }
+    input[type="text"][required]:focus + label[placeholder]:before,
+    input[type="text"][required]:valid + label[placeholder]:before {
+      -webkit-transition-duration: .2s;
+              transition-duration: .2s;
+      -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
+              transform: translate(0, -1.25em) scale(0.9, 0.9);
+    }
+    input[type="text"][required]:invalid + label[placeholder][alt]:before {
+      content: attr(alt);
+    }
+    input[type="text"][required] + label[placeholder] {
+      display: block;
+      pointer-events: none;
+      line-height: 1em;
+      margin-top: calc(-3em - 2px);
+      margin-bottom: calc((3em - 1em) + 2px);
+    }
+    input[type="text"][required] + label[placeholder]:before {
+      content: attr(placeholder);
+      display: inline-block;
+      margin: 0 calc(2em + 4px);
+      padding: 0 2px;
+      color: white;
+      white-space: nowrap;
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      background-image: -webkit-linear-gradient(top, #3e454c, #3e454c);
+      background-image: linear-gradient(to bottom, #3e454c, #3e454c);
+      background-size: 100% 5px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .input-group-addon {
+      position: absolute;
+      background: none;
+      border: none;
+      display: inline-block;
+      background-color: $color-2;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      width: 21px;
+      height: 21px;
+      line-height: 1.9;
+      padding: 0px;
+      font-size: 12px;
+      margin: 10px 0px 0px 9px;
+    }
   }
-  input[type="text"][required]:focus + label[placeholder]:before {
-    color: #00bafa;
-  }
-  input[type="text"][required]:focus + label[placeholder]:before,
-  input[type="text"][required]:valid + label[placeholder]:before {
-    -webkit-transition-duration: .2s;
-            transition-duration: .2s;
-    -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
-            transform: translate(0, -1.25em) scale(0.9, 0.9);
-  }
-  input[type="text"][required]:invalid + label[placeholder][alt]:before {
-    content: attr(alt);
-  }
-  input[type="text"][required] + label[placeholder] {
-    display: block;
-    pointer-events: none;
-    line-height: 1em;
-    margin-top: calc(-3em - 2px);
-    margin-bottom: calc((3em - 1em) + 2px);
-  }
-  input[type="text"][required] + label[placeholder]:before {
-    content: attr(placeholder);
-    display: inline-block;
-    margin: 0 calc(1em + 2px);
-    padding: 0 2px;
-    color: white;
-    white-space: nowrap;
-    -webkit-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-    background-image: -webkit-linear-gradient(top, #3e454c, #3e454c);
-    background-image: linear-gradient(to bottom, #3e454c, #3e454c);
-    background-size: 100% 5px;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
   .radio, .checkbox {
     margin-bottom: 20px;
+  }
+  .media-input-group {
+    border: 2px solid #ccc;
+    border-radius: 1.5em;
+    input[type="text"] {
+      box-sizing: border-box;
+      width: 100%;
+      resize: none;
+      border: none;
+      background: none;
+      color: white;
+      outline: none; 
+      box-shadow: none;
+      height: 40px;
+      padding-left: 35px;
+    }
+    input[type="text"][required]:focus {
+      border-color: #00bafa;
+      outline: none; 
+      box-shadow: none
+    }
+    input[type="text"][required]:focus + label[placeholder]:before {
+      color: #00bafa;
+    }
+    input[type="text"][required]:focus + label[placeholder]:before,
+    input[type="text"][required]:valid + label[placeholder]:before {
+      -webkit-transition-duration: .2s;
+              transition-duration: .2s;
+      -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
+              transform: translate(0, -1.25em) scale(0.9, 0.9);
+    }
+    input[type="text"][required]:invalid + label[placeholder][alt]:before {
+      content: attr(alt);
+    }
+    input[type="text"][required] + label[placeholder] {
+      display: block;
+      pointer-events: none;
+      line-height: 1em;
+      margin-top: calc(-1.65em - 2px);
+      margin-bottom: calc((1.65em - 1em) + 2px);
+    }
+    input[type="text"][required] + label[placeholder]:before {
+      content: attr(placeholder);
+      display: inline-block;
+      margin: 0 calc(2em + 4px);
+      padding: 0 2px;
+      color: white;
+      white-space: nowrap;
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      background-image: -webkit-linear-gradient(top, #3e454c, #3e454c);
+      background-image: linear-gradient(to bottom, #3e454c, #3e454c);
+      background-size: 100% 5px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .input-group-addon {
+      position: absolute;
+      background: none;
+      border: none;
+      display: inline-block;
+      background-color: $color-2;
+      color: white;
+      border-radius: 20px;
+      text-align: center;
+      width: 21px;
+      height: 21px;
+      line-height: 1.9;
+      padding: 0px;
+      font-size: 12px;
+      margin: 9px 0px 0px 8px;
+    }
+    img {
+      margin-left: 2.2em;
+      width: 76%;
+    }
   }
 }
 
