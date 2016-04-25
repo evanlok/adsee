@@ -1,7 +1,11 @@
 class SceneCollectionsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_scene_collection, only: [:show, :update]
-  after_action :verify_authorized
+  after_action :verify_authorized, except: :new
+
+  def new
+    @industries = Industry.includes(ad_types: :themes)
+  end
 
   def show
     respond_to do |format|
