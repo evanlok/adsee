@@ -30,6 +30,8 @@ function VideoPreviewController($interval, $http) {
     if (player) {
       player.dispose();
     }
+
+    $interval.cancel(streamUrlIntervalPromise);
   };
 
   function setupVideoJs() {

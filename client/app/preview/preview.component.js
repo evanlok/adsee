@@ -20,6 +20,10 @@ function PreviewController($interval, videoJobService) {
     pollStreamurl();
   };
 
+  vm.$onDestroy = function () {
+    $interval.cancel(intervalPromise);
+  };
+
   vm.publish = publish;
 
   function pollStreamurl() {
