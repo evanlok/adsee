@@ -1,35 +1,59 @@
-<h1>New Video</h1>
+<div class="video-nav">
+  <ul>
+    <li><a href="">Templates</a></li>
+    <li><a href="" class="">Targeting</a></li>
+    <li><a href="" class="">Scene Editor</a></li>
+    <li><a href="" class="">Preview</a></li>
+    <li><a href="" class="">Ad Spend</a></li>
+  </ul>
+</div>
 
-<% @industries.each do |industry| %>
-    <h2><%= industry.name %></h2>
+<div class="template-page-wrapper">
 
-    <% industry.ad_types.in_groups_of(3, false).each do |ad_type_group| %>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <% ad_type_group.each do |ad_type| %>
-                  <div class="col-sm-4">
-                    <h3><%= ad_type.name %></h3>
+  <div class="row headline-row">
+    <div class="col-md-6">
+      <h1>Select a video template</h1>
+    </div>
+    <div class="col-md-6">
+        <%= form_for SceneCollection.new do |f| %>
+            <%= f.submit 'build my own', class: 'build-my-own-button' %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 industry-wrap">
+
+      <% @industries.each do |industry| %>
+        <div class="industry-group">
+          <h2><%= industry.name %></h2>
+
+          <% industry.ad_types.in_groups_of(3, false).each do |ad_type_group| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <% ad_type_group.each do |ad_type| %>
+                        <div class="col-sm-4">
+                          <h3><%= ad_type.name %></h3>
+                        </div>
+                    <% end %>
                   </div>
-              <% end %>
-            </div>
-          </div>
+                </div>
 
-          <% ad_type_group.each do |ad_type| %>
-              <div class="col-sm-4">
-                <% ad_type.themes.in_groups_of(2, false).each do |theme_group| %>
-                    <div class="row">
-                      <% theme_group.each do |theme| %>
-                          <div class="col-sm-6">
-                            <p>
-                              <%= link_to theme, target: '_self' do %>
-                                  <%= image_tag theme.thumbnail.url(:large_square), class: 'img-responsive center-block' %>
-                              <% end %>
-                            </p>
-
-                            <div class="text-center">
-                              <%= link_to theme.name, theme, target: '_self' %>
-                            </div>
+                <% ad_type_group.each do |ad_type| %>
+                    <div class="col-sm-4">
+                      <% ad_type.themes.in_groups_of(2, false).each do |theme_group| %>
+                          <div class="row">
+                            <% theme_group.each do |theme| %>
+                                <div class="col-sm-6">
+                                    <%= link_to theme, target: '_self' do %>
+                                        <%= image_tag theme.thumbnail.url(:large_square), class: 'img-responsive center-block thumb-circle' %>
+                                    <% end %>
+                                    <div class="text-center theme-name">
+                                      <%= link_to theme.name, theme, target: '_self' %>
+                                    </div>
+                                </div>
+                            <% end %>
                           </div>
                       <% end %>
                     </div>
@@ -37,11 +61,13 @@
               </div>
           <% end %>
         </div>
-    <% end %>
-<% end %>
+      <% end %>
 
-<div class="text-center">
-  <%= form_for SceneCollection.new do |f| %>
-      <%= f.submit 'Build my own', class: 'btn btn-primary' %>
-  <% end %>
+      <div class="text-center">
+        <%= form_for SceneCollection.new do |f| %>
+            <%= f.submit 'Build my own', class: 'build-button' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
