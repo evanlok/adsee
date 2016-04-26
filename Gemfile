@@ -56,6 +56,8 @@ gem 'pundit'
 gem 'angular_rails_csrf'
 gem 'newrelic_rpm'
 gem 'honeybadger', '~> 2.0'
+gem 'omniauth-facebook'
+gem 'koala'
 
 group :development do
   gem 'quiet_assets'
