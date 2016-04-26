@@ -2,19 +2,25 @@
 
   <div class="clearfix">
     <ul class="nav nav-pills">
-      <li class="active"><a href="" ng-click="$ctrl.showImages()"> <i class="fa fa-picture-o"></i> images</a></li>
-      <li><a href="" ng-click="$ctrl.showVideos()"><i class="fa fa-film"></i> videos</a></li>
-        <li><a href="" ng-click="$ctrl.showVideos()">stock</a></li>
-      <li class="pull-right"><a href="" class="btn btn-primary" ng-click="$ctrl.upload()">
-        <i class="fa fa-arrow-circle-up"></i>
-        Upload
-      </a></li>
+      <li class="active">
+        <a href="" ng-click="$ctrl.showImages()">my images</a></li>
+      <li>
+        <a href="" ng-click="$ctrl.showVideos()">my videos</a>
+      </li>
+      <li class="stock-media pull-right">
+        stock:
+        <a href="" ng-click="$ctrl.showVideos()"><i class="fa fa-picture-o"></i></a>
+        <a href="" ng-click="$ctrl.showVideos()"><i class="fa fa-film"></i></a>
+      </li>
     </ul>
+    <a href="" class="media-upload-button" ng-click="$ctrl.upload()">
+      <i class="fa fa-upload "></i>
+      Upload Media
+    </a>
   </div>
 
-
   <div>
-    <span ng-if="$ctrl.uploading">
+    <span ng-if="$ctrl.uploading"
       <i class="fa fa-spinner fa-spin"></i>
       Uploading...
     </span>
@@ -26,6 +32,7 @@
     </div>
 
     <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages" ng-show="$ctrl.display.images">
+
       <div class="col-md-4 image-thumbs" ng-repeat="image in imageGroup">
         <img class="img-responsive"
              ng-src="{{ image.thumbnail_url }}"
