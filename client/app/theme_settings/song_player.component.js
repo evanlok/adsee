@@ -21,12 +21,17 @@ function SongPlayerController() {
   };
 
   vm.$onChanges = function () {
-    sound.unload();
+    if (sound) {
+      sound.unload();
+    }
+
     setupSoundPlayer();
   };
 
   vm.$onDestroy = function () {
-    sound.unload();
+    if (sound) {
+      sound.unload();
+    }
   };
 
   vm.play = play;
