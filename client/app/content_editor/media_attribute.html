@@ -2,12 +2,14 @@
 
   <div class="media-input-group">
       <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}</span>
-      <input required="" type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
-               ng-model="$ctrl.filename"
-               ng-click="$ctrl.insertMedia()">
-      <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="{{ $ctrl.sceneAttribute.display_name }}">
-        <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i>
+      <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="Select a file">
+        <i class="fa fa-picture-o" ng-if="$ctrl.isImage()"></i>
+        <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
       </label>
+      <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
+               ng-model="$ctrl.filename"
+               ng-click="$ctrl.insertMedia()"
+               placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
       <div class="image-padding">
         <img ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" class="img-responsive">
       </div>
