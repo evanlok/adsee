@@ -13,6 +13,7 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
+    - 'app/services/facebook/ad_video_uploader.rb'
 Rails:
   Enabled: true
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425215041) do
+ActiveRecord::Schema.define(version: 20160426180601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,35 @@ ActiveRecord::Schema.define(version: 20160425215041) do
   end
 
   add_index "ad_types", ["industry_id"], name: "index_ad_types_on_industry_id", using: :btree
+
+  create_table "facebook_ads", force: :cascade do |t|
+    t.integer  "scene_collection_id"
+    t.string   "ad_account_id"
+    t.string   "page_id"
+    t.string   "facebook_ad_id"
+    t.string   "campaign_name"
+    t.string   "ad_set_name"
+    t.string   "optimization_goal"
+    t.string   "billing_event"
+    t.string   "budget_type"
+    t.integer  "budget"
+    t.integer  "bid_amount"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "pacing_type"
+    t.jsonb    "adset_schedule"
+    t.jsonb    "targeting"
+    t.integer  "facebook_targeting_spec_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "facebook_targeting_specs", force: :cascade do |t|
+    t.string   "name"
+    t.jsonb    "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "fonts", force: :cascade do |t|
     t.string   "name"

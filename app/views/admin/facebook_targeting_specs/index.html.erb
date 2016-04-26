@@ -1,0 +1,34 @@
+<h1 class="page-header">Facebook Targeting Specs</h1>
+
+<p>
+  <%= link_to 'New Facebook Targeting Spec', new_admin_facebook_targeting_spec_path %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Data</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @fb_targeting_specs.each do |fb_targeting_spec| %>
+      <tr>
+        <td><%= link_to fb_targeting_spec.name, [:edit, :admin, fb_targeting_spec] %></td>
+        <td><%= fb_targeting_spec.data.to_json %></td>
+        <td class="actions">
+          <%= link_to [:edit, :admin, fb_targeting_spec], title: 'Edit' do %>
+              <i class="fa fa-pencil"></i>
+          <% end %>
+
+          <%= link_to [:admin, fb_targeting_spec], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @fb_targeting_specs %>

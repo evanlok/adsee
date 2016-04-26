@@ -6,6 +6,13 @@ FactoryGirl.define do
     trait :admin do
       admin true
     end
+
+    trait :facebook do
+      facebook_oauth_token { SecureRandom.hex }
+      facebook_oauth_expires_at { 60.days.from_now }
+      provider 'Facebook'
+      sequence(:uid) { |n| n }
+    end
   end
 
   factory :scene do
@@ -140,5 +147,28 @@ FactoryGirl.define do
     file_size 50_000
     filestack_url 'https://www.filestack/image'
     user
+  end
+
+  factory :facebook_targeting_spec do
+    name 'US'
+    data do
+      { geo_locations: { countries: ['US'] } }
+    end
+  end
+
+  factory :facebook_ad do
+    scene_collection
+    facebook_targeting_spec
+    ad_account_id 'act_12345'
+    page_id '45678'
+    campaign_name 'AdSee'
+    ad_set_name 'AdSee AdSet'
+    optimization_goal 'VIDEO_VIEWS'
+    billing_event 'IMPRESSIONS'
+    budget_type 'lifetime'
+    budget 5000
+    start_time { 1.day.from_now }
+    end_time { 30.days.from_now }
+    pacing_type 'standard'
   end
 end

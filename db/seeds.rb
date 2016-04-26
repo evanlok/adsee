@@ -4,11 +4,11 @@ uploads_dir = Rails.root.join('public', 'uploads')
 FileUtils.rm_rf(uploads_dir) if Dir.exist?(uploads_dir)
 
 User.create(
-    email: 'admin@adsee.com',
-    password: 'test1234',
-    first_name: 'AdSee',
-    last_name: 'Admin',
-    admin: true
+  email: 'admin@adsee.com',
+  password: 'test1234',
+  first_name: 'AdSee',
+  last_name: 'Admin',
+  admin: true
 )
 
 5.times do |i|
@@ -23,23 +23,23 @@ end
     ad_type = AdType.create(industry: industry, name: Faker::Commerce.product_name, remote_image_url: 'http://lorempixel.com/320/180/city')
 
     Theme.create(
-        name: Faker::Commerce.product_name,
-        description: Faker::Lorem.paragraph,
-        photo_count: rand(3..10),
-        ad_type: ad_type,
-        song: Song.order('random()').first,
-        font: Font.order('random()').first,
-        remote_thumbnail_url: 'http://lorempixel.com/320/180/city',
-        remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
+      name: Faker::Commerce.product_name,
+      description: Faker::Lorem.paragraph,
+      photo_count: rand(3..10),
+      ad_type: ad_type,
+      song: Song.order('random()').first,
+      font: Font.order('random()').first,
+      remote_thumbnail_url: 'http://lorempixel.com/320/180/city',
+      remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
     )
   end
 end
 
 {
-    SlideUp: 'Slide Up',
-    SlideDown: 'Slide Down',
-    FadeIn: 'Fade In',
-    FadeOut: 'Fade Out'
+  SlideUp: 'Slide Up',
+  SlideDown: 'Slide Down',
+  FadeIn: 'Fade In',
+  FadeOut: 'Fade Out'
 }.each do |k, v|
   Transition.create(name: v, value: k)
 end
@@ -66,3 +66,9 @@ Theme.find_each do |theme|
     ThemeVariantScene.create(theme_variant: theme_variant, scene: scene)
   end
 end
+
+# Ads
+FacebookTargetingSpec.create(
+  name: 'US',
+  data: { geo_locations: { countries: ['US'] } }
+)

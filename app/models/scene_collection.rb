@@ -9,6 +9,7 @@ class SceneCollection < ActiveRecord::Base
   has_many :scene_contents, -> { order(:position) }, dependent: :destroy, inverse_of: :scene_collection
   has_many :scenes, through: :scene_contents
   has_many :video_jobs, dependent: :delete_all
+  has_many :facebook_ads, dependent: :destroy
 
   # Validations
   validates :user, presence: true
@@ -30,5 +31,13 @@ class SceneCollection < ActiveRecord::Base
     end
 
     save
+  end
+
+  def video
+    if videos.loaded?
+      videos.sort_by(&:resolution).last
+    else
+      videos.order(:resolution).last
+    end
   end
 end
