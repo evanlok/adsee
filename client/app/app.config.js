@@ -21,6 +21,12 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<preview video-job-id="{{ videoJobId }}"></preview>')($stateParams);
       }
+    })
+    .state('adConfig', {
+      url: '/ad_config/:facebookAdId',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<ad-config facebook-ad-id="{{ facebookAdId }}"></ad-config>')($stateParams);
+      }
     });
 
   $locationProvider.html5Mode(true);

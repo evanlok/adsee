@@ -9,13 +9,21 @@
     <br>
 
     <p>
+      <a href="" class="btn btn-primary btn-block" ng-click="$ctrl.configureAd()" ng-disabled="$ctrl.creatingAd">
+        NEXT
+        <br>
+        <small>Select Ad Spend</small>
+      </a>
+
       <a href="" class="btn btn-primary btn-block" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
         PUBLISH VIDEO
       </a>
     </p>
 
     <p class="text-center">
-      <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})">&lt; Back to the Video Editor</a>
+      <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})">
+        &lt; Back to the Video Editor
+      </a>
     </p>
   </div>
 </div>

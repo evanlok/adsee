@@ -9,12 +9,13 @@ var component = {
 };
 
 /*@ngInject*/
-function PreviewController($interval, videoJobService) {
+function PreviewController($interval, $state, videoJobService, facebookAdService) {
   var vm = this;
   var intervalPromise;
 
   vm.$onInit = function () {
     vm.videoJob = {};
+    vm.creatingAd = false;
     vm.publishing = false;
 
     pollStreamurl();
@@ -24,6 +25,7 @@ function PreviewController($interval, videoJobService) {
     $interval.cancel(intervalPromise);
   };
 
+  vm.configureAd = configureAd;
   vm.publish = publish;
 
   function pollStreamurl() {
@@ -37,6 +39,16 @@ function PreviewController($interval, videoJobService) {
       if (vm.videoJob.stream_url) {
         $interval.cancel(intervalPromise);
       }
+    });
+  }
+
+  function configureAd() {
+    vm.creatingAd = true;
+
+    facebookAdService.save({sceneCollectionId: vm.videoJob.scene_collection_id}).then(function (data) {
+      $state.go('adConfig', {facebookAdId: data.id});
+    }).finally(function () {
+      vm.creatingAd = false;
     });
   }
 

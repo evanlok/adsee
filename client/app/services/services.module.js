@@ -5,6 +5,7 @@ services
   .service('sceneContentService', require('./scene_content.service'))
   .service('sceneAttributeService', require('./scene_attribute.service'))
   .service('mediaSelectorService', require('./media_selector.service'))
-  .service('videoJobService', require('./video_job.service'));
+  .service('videoJobService', require('./video_job.service'))
+  .service('facebookAdService', require('./facebook_ad.service'));
 
 module.exports = services.name;

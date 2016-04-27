@@ -22,6 +22,8 @@ Rails.application.routes.draw do
         post :generate
       end
     end
+
+    resources :facebook_ads, only: [:show, :create, :update]
   end
 
   resources :scenes, only: [:index]
@@ -56,4 +58,5 @@ Rails.application.routes.draw do
   get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
   get '/scene_collections/:id/edit/*angular_path', to: 'home#scene_editor'
   get '/previews/:video_job_id', to: 'home#scene_editor'
+  get '/ad_config/:facebook_ad_id', to: 'home#scene_editor'
 end
