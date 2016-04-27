@@ -11,7 +11,7 @@
                ng-click="$ctrl.insertMedia()"
                placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
       <div class="image-padding">
-        <img ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" class="img-responsive">
+        <img ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
       </div>
   </div>
 
