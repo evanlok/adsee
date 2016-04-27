@@ -1,14 +1,17 @@
+<div class="row">
+<div class="col-md-4 col-md-offset-4 login-page">
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, :required => true  %>
+      <%= f.label :email, :placeholder => "placeholder text" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %><br/>
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", :required => true %>
+      <%= f.label :password, :placeholder => "placeholder text" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
@@ -19,12 +22,14 @@
     <% end -%>
 
     <div>
-      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), target: '_self' %>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), target: '_self', class: "button" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in", class: "button" %>
     </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
