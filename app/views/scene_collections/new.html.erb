@@ -30,19 +30,11 @@
 
           <% industry.ad_types.in_groups_of(3, false).each do |ad_type_group| %>
               <div class="row">
-                <div class="col-md-12">
-                  <div class="row">
-                    <% ad_type_group.each do |ad_type| %>
-                        <div class="col-sm-4">
-                          <h3><%= ad_type.name %></h3>
-                        </div>
-                    <% end %>
-                  </div>
-                </div>
 
                 <% ad_type_group.each do |ad_type| %>
                     <div class="col-sm-4">
                       <% ad_type.themes.in_groups_of(2, false).each do |theme_group| %>
+                          <h3><%= ad_type.name %></h3>
                           <div class="row">
                             <% theme_group.each do |theme| %>
                                 <div class="col-sm-6">
