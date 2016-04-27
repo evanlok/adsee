@@ -83,5 +83,11 @@ select:focus {
 .cancel-link {
   font-size: 18px;
   font-weight: 700;
+  -webkit-font-smoothing: antialiased;
 }
-
+.back-link {
+  font-size: 18px;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+}

@@ -31,7 +31,7 @@ function AddSceneController(sceneService) {
           category = 'Uncategorized';
         }
 
-        vm.groupedScenes[category] = _.chunk(scenes, 4);
+        vm.groupedScenes[category] = _.chunk(scenes, 30);
       });
 
     });

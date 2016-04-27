@@ -10,17 +10,13 @@
   <h3>{{ category }}</h3>
 
   <div class="row" ng-repeat="scenesChunk in scenesChunks">
-    <div class="col-md-3" ng-repeat="scene in scenesChunk">
-      <div>
-        <a href="" ng-click="$ctrl.onAddScene({scene: scene})">
-          <img ng-src="{{ scene.thumbnail_small_url }}">
-        </a>
-      </div>
-
-      <div class="scene-thumb-name">
-        {{ scene.name }}
-      </div>
-
+    <div class="scene-button" ng-repeat="scene in scenesChunk">
+      <a href="" ng-click="$ctrl.onAddScene({scene: scene})" class="scene-thumb-wrapper">
+        <img ng-src="{{ scene.thumbnail_small_url }}">
+        <div class="scene-thumb-name">
+          {{ scene.name }}
+        </div>
+      </a>
     </div>
   </div>
 
