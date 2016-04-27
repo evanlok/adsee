@@ -74,6 +74,14 @@ select:focus {
   background-color: $color-2;
   padding: 5px 10px;
   color: white;
+  border: none;
+  border-radius: 100px;
+  &:hover {
+    background-color: #1d97ff;
+  }
 }
-
+.cancel-link {
+  font-size: 18px;
+  font-weight: 700;
+}
 

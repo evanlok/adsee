@@ -736,6 +736,36 @@
     margin-bottom: 20px;
   }
 }
+.theme-preview {
+  margin-top: 7%;
+}
+.theme-video-wrapper {
+  img {
+    width: 100%;
+  }
+  margin-bottom: 20px;
+}
+.theme-info-row {
+  margin-bottom: 20px;
+}
+.theme-description {
+  font-size: 16px;
+  padding-right: 25px;
+  border-right: 1px solid gray;
+}
+.theme-info-list {
+  font-size: 18px;
+  i {
+    color: $color-2;
+    font-size: 20px;
+  }
+}
+.theme-select {
+  width: 100%;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
 .build-button-bottom {
   width: 100%;
   background-color: $color-2;
