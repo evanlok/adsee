@@ -34,22 +34,34 @@ RSpec.describe FacebookAd do
       expect(subject[:campaign_id]).to eq('1234')
     end
 
-    it 'converts pacing_type to array' do
+    it 'converts pacing_type to array when set to no_pacing and bid_amount is set' do
+      facebook_ad.pacing_type = 'no_pacing'
+      facebook_ad.bid_amount = 2
       expect(subject[:pacing_type]).to eq([facebook_ad.pacing_type].to_json)
+    end
+
+    it 'does not include pacing_type for standard' do
+      expect(subject[:pacing_type]).to be nil
+    end
+
+    it 'does not include pacing_type when bid_amount is nil' do
+      facebook_ad.pacing_type = 'no_pacing'
+      facebook_ad.bid_amount = nil
+      expect(subject[:pacing_type]).to be nil
     end
 
     it 'sets daily_budget when budget_type is daily' do
       facebook_ad.budget_type = 'daily'
-      expect(subject[:daily_budget]).to eq(facebook_ad.budget)
+      expect(subject[:daily_budget]).to eq((facebook_ad.budget * 100).to_i)
     end
 
     it 'sets lifetime_budget when budget_type is lifetime' do
       facebook_ad.budget_type = 'lifetime'
-      expect(subject[:lifetime_budget]).to eq(facebook_ad.budget)
+      expect(subject[:lifetime_budget]).to eq((facebook_ad.budget * 100).to_i)
     end
 
     it 'sets bid_amount if bid_amount is set' do
-      facebook_ad.bid_amount = 400
+      facebook_ad.bid_amount = 4
       expect(subject[:bid_amount]).to eq(400)
       expect(subject.key?(:is_autobid)).to be false
     end

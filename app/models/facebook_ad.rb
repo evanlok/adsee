@@ -11,6 +11,9 @@ class FacebookAd < ActiveRecord::Base
   # Callbacks
   before_create :set_defaults
 
+  # Scope
+  scope :unpublished, -> { where(facebook_ad_id: nil) }
+
   def campaign_params
     {
       name: campaign_name,
@@ -24,13 +27,13 @@ class FacebookAd < ActiveRecord::Base
     params[:campaign_id] = campaign_id
 
     if budget_type == 'daily'
-      params[:daily_budget] = budget
+      params[:daily_budget] = (budget * 100).to_i
     else
-      params[:lifetime_budget] = budget
+      params[:lifetime_budget] = (budget * 100).to_i
     end
 
     if bid_amount
-      params[:bid_amount] = bid_amount
+      params[:bid_amount] = (bid_amount * 100).to_i
     else
       params[:is_autobid] = true
     end
@@ -71,11 +74,18 @@ class FacebookAd < ActiveRecord::Base
       targeting: facebook_targeting_spec.data.to_json
     }
 
-    params[:pacing_type] = [pacing_type].to_json if pacing_type
+    if pacing_type == 'no_pacing' && bid_amount
+      params[:pacing_type] = [pacing_type].to_json
+    end
+
     params
   end
 
   def set_defaults
     self.campaign_name ||= CAMPAIGN_NAME
+    self.optimization_goal ||= 'VIDEO_VIEWS'
+    self.billing_event ||= 'IMPRESSIONS'
+    self.budget_type ||= 'daily'
+    self.pacing_type ||= 'standard'
   end
 end

@@ -27,6 +27,8 @@ module.exports = {
       'video.js',
       'videojs-contrib-hls/dist/videojs.hls',
       'howler',
+      'format-as-currency',
+      'moment',
       './app/vendor.js'
     ]
   },

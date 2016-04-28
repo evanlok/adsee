@@ -9,6 +9,7 @@ angular.module('adsee', [
   'ui.bootstrap',
   'color.picker',
   'ng-sortable',
+  'bcherny/formatAsCurrency',
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),
   require('./content_editor/content_editor.module'),

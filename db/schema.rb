@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426180601) do
+ActiveRecord::Schema.define(version: 20160427215205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20160426180601) do
     t.string   "optimization_goal"
     t.string   "billing_event"
     t.string   "budget_type"
-    t.integer  "budget"
-    t.integer  "bid_amount"
+    t.decimal  "budget"
+    t.decimal  "bid_amount"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "pacing_type"

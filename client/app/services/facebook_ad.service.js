@@ -1,12 +1,24 @@
+var moment = require('moment');
+
 /*@ngInject*/
-function FacebookAdService($resource) {
+function FacebookAdService($resource, $http) {
   var resource = $resource('/facebook_ads/:id', {
       id: '@id',
       format: 'json'
     },
     {
-      save: {method: 'POST', url: '/scene_collections/:sceneCollectionId/facebook_ads'},
-      update: {method: 'PUT'}
+      get: {
+        transformResponse: appendTransform($http.defaults.transformResponse, parseDates)
+      },
+      save: {
+        method: 'POST',
+        url: '/scene_collections/:sceneCollectionId/facebook_ads',
+        transformResponse: appendTransform($http.defaults.transformResponse, parseDates)
+      },
+      update: {
+        method: 'PUT',
+        transformResponse: appendTransform($http.defaults.transformResponse, parseDates)
+      }
     }
   );
 
@@ -21,6 +33,26 @@ function FacebookAdService($resource) {
   this.update = function (params, data) {
     return resource.update(params, data).$promise;
   };
+
+  function parseDates(value) {
+    if (value.start_time) {
+      value.start_time = moment(value.start_time, moment.ISO_8601).toDate();
+    }
+
+    if (value.end_time) {
+      value.end_time = moment(value.end_time, moment.ISO_8601).toDate();
+    }
+
+    return value;
+  }
+
+  function appendTransform(defaults, transform) {
+    // We can't guarantee that the default transformation is an array
+    defaults = angular.isArray(defaults) ? defaults : [defaults];
+
+    // Append the new transformation to the defaults
+    return defaults.concat(transform);
+  }
 }
 
 module.exports = FacebookAdService;

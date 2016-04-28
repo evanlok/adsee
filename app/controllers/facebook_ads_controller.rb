@@ -10,7 +10,7 @@ class FacebookAdsController < ApplicationController
 
   def create
     @scene_collection = SceneCollection.find(params[:scene_collection_id])
-    @facebook_ad = @scene_collection.facebook_ads.where(facebook_ad_id: nil).order(:updated_at).last
+    @facebook_ad = @scene_collection.facebook_ads.unpublished.order(:updated_at).last
     @facebook_ad ||= @scene_collection.facebook_ads.build
     authorize @facebook_ad
     @facebook_ad.attributes = facebook_ad_params
