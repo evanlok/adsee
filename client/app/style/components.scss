@@ -33,6 +33,7 @@
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
       transition: background-color 5000s ease-in-out 0s;
+      color: white !important;
   }
 
   input[type="text"], input[type="email"], input[type="password"] {
@@ -201,12 +202,6 @@
       line-height: 1.9;
     }
   }
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-      color: white !important;
-  }
   input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     color: white;
@@ -218,6 +213,29 @@
     &:hover {
       border: 3px solid #ccc;
     }
+  }
+  input[type="text"][required]:focus + label[placeholder]:before,
+  input[type="text"][required]:valid + label[placeholder]:before,
+  input[type="email"][required]:focus + label[placeholder]:before,
+  input[type="email"][required]:valid + label[placeholder]:before,
+  input[type="password"][required]:focus + label[placeholder]:before,
+  input[type="password"][required]:valid + label[placeholder]:before {
+    -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+    -webkit-transform: translate(0, -1.35em) scale(0.9, 0.9);
+            transform: translate(0, -1.35em) scale(0.9, 0.9);
+    opacity: 1;
+  }
+  input[type="text"][required] + label[placeholder],
+  input[type="email"][required] + label[placeholder],
+  input[type="password"][required] + label[placeholder] {
+    margin-top: calc(-3em + 3px);
+    margin-bottom: calc((3em - 1em) + 2px);
+  }
+  input[type="text"][required] + label[placeholder]:before,
+  input[type="email"][required] + label[placeholder]:before,
+  input[type="password"][required] + label[placeholder]:before {
+    margin: 0 calc(2em + 15px);
   }
   .button {
     text-align: center;
