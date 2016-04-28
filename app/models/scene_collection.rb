@@ -40,4 +40,8 @@ class SceneCollection < ActiveRecord::Base
       videos.order(:resolution).last
     end
   end
+
+  def current_facebook_ad
+    @current_facebook_ad ||= facebook_ads.unpublished.order(:id).last || facebook_ads.create
+  end
 end
