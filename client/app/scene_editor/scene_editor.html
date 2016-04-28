@@ -49,14 +49,8 @@
 
   <ui-view>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div ng-if="$ctrl.selectedSceneContent.scene.preview_video_url">
-            <video-player url="{{ $ctrl.selectedSceneContent.scene.preview_video_url }}" autoplay="true"></video-player>
-          </div>
-    <!-- <div class="editor-body">
-      <div class="main-column"> -->
-
+    <div class="editor-body">
+      <div class="main-column">
 
           <div class="scene-header">
             <h4 class="pull-left">
@@ -71,8 +65,8 @@
           </div>
 
           <div class="main-image">
-            <div class="">
-              <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-house.jpg" alt="Description"/>
+            <div ng-if="$ctrl.selectedSceneContent.scene.preview_video_url">
+              <video-player url="{{ $ctrl.selectedSceneContent.scene.preview_video_url }}" autoplay="true"></video-player>
             </div>
           </div>
 
@@ -124,3 +118,4 @@
 
   </ui-view>
 </div>
+
