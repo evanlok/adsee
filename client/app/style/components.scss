@@ -24,20 +24,16 @@
   height: 100vh;
 }
 
-// Login Page 
-
-.login-page {
-  input {
-    width: 100%;
-  }
-  .button {
-    width: 100%;
-  }
-}
-
 // Input/Field Animations
 
 .text-input-group, .login-page  {
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+  }
 
   input[type="text"], input[type="email"], input[type="password"] {
     box-sizing: border-box;
@@ -67,6 +63,7 @@
   input[type="email"][required]:focus + label[placeholder]:before,
   input[type="password"][required]:focus + label[placeholder]:before {
     color: #00bafa;
+    opacity: 1;
   }
   input[type="text"][required]:focus + label[placeholder]:before,
   input[type="text"][required]:valid + label[placeholder]:before,
@@ -78,11 +75,13 @@
             transition-duration: .2s;
     -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
             transform: translate(0, -1.25em) scale(0.9, 0.9);
+    opacity: 1;
   }
   input[type="text"][required]:invalid + label[placeholder][alt]:before,
   input[type="email"][required]:invalid + label[placeholder][alt]:before,
   input[type="password"][required]:invalid + label[placeholder][alt]:before {
     content: attr(alt);
+    opacity: 1;
   }
   input[type="text"][required] + label[placeholder],
   input[type="email"][required] + label[placeholder],
@@ -92,10 +91,12 @@
     line-height: 1em;
     margin-top: calc(-3em - 2px);
     margin-bottom: calc((3em - 1em) + 2px);
+    opacity: 1;
   }
   input[type="text"][required] + label[placeholder]:before,
   input[type="email"][required] + label[placeholder]:before,
   input[type="password"][required] + label[placeholder]:before {
+    opacity: 1;
     content: attr(placeholder);
     display: inline-block;
     margin: 0 calc(2em + 4px);
@@ -175,6 +176,40 @@
     background-size: 100% 5px;
     background-repeat: no-repeat;
     background-position: center;
+  }
+}
+
+// Login Page 
+
+.login-page {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      color: white !important;
+  }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    color: white;
+    height: 50px;
+    border: 3px solid #ccc;
+  }
+  .button {
+    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+    padding: 10px;
+  }
+  .fb-button {
+    color: white;
+    background-color: hsla(221, 40.9091%, 43.1373%, 1.0000);
+    &:hover {
+      background-color: hsla(221, 60.9091%, 53.1373%, 1.0000)
+    }
   }
 }
 
