@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428004325) do
+ActiveRecord::Schema.define(version: 20160428215239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(version: 20160428004325) do
   create_table "facebook_targeting_specs", force: :cascade do |t|
     t.string   "name"
     t.jsonb    "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "thumbnail"
+    t.text     "description"
   end
 
   create_table "fonts", force: :cascade do |t|
@@ -104,6 +106,15 @@ ActiveRecord::Schema.define(version: 20160428004325) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "scene_collection_facebook_targeting_specs", force: :cascade do |t|
+    t.integer  "scene_collection_id"
+    t.integer  "facebook_targeting_spec_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "scene_collection_facebook_targeting_specs", ["scene_collection_id", "facebook_targeting_spec_id"], name: "index_scene_collection_targeting", unique: true, using: :btree
 
   create_table "scene_collections", force: :cascade do |t|
     t.integer  "user_id"

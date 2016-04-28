@@ -68,7 +68,11 @@ Theme.find_each do |theme|
 end
 
 # Ads
-FacebookTargetingSpec.create(
-  name: 'US',
-  data: { geo_locations: { countries: ['US'] } }
-)
+['Millenials', 'Just Married', 'Middle Aged', 'Gangsters'].each do |name|
+  FacebookTargetingSpec.create(
+    name: name,
+    description: Faker::Lorem.sentence,
+    data: { geo_locations: { countries: ['US'] } },
+    remote_thumbnail_url: 'http://lorempixel.com/320/180/city'
+  )
+end

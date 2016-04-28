@@ -11,6 +11,7 @@ angular.module('adsee', [
   'ng-sortable',
   'bcherny/formatAsCurrency',
   require('./shared/shared.module'),
+  require('./targeting/targeting.module'),
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),
   require('./content_editor/content_editor.module'),

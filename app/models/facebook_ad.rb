@@ -3,7 +3,7 @@ class FacebookAd < ActiveRecord::Base
 
   # Associations
   belongs_to :scene_collection
-  belongs_to :facebook_targeting_spec
+  has_many :facebook_targeting_specs, through: :scene_collection
 
   # Validations
   validates :scene_collection_id, presence: true
@@ -70,7 +70,7 @@ class FacebookAd < ActiveRecord::Base
       billing_event: billing_event,
       start_time: start_time,
       end_time: end_time,
-      targeting: facebook_targeting_spec.data.to_json
+      targeting: facebook_targeting_specs.first&.data&.to_json
     }
 
     if pacing_type == 'no_pacing' && bid_amount

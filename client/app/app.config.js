@@ -6,6 +6,12 @@ var filepicker = require('filepicker-js');
 
 var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, FILESTACK_API_KEY) {
   $stateProvider
+    .state('targeting', {
+      url: '/scene_collections/:sceneCollectionId/targeting',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<targeting scene-collection-id="{{ sceneCollectionId }}"></targeting>')($stateParams);
+      }
+    })
     .state('sceneEditor', {
       url: '/scene_collections/:sceneCollectionId/edit',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {

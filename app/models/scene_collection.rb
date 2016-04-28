@@ -10,6 +10,8 @@ class SceneCollection < ActiveRecord::Base
   has_many :scenes, through: :scene_contents
   has_many :video_jobs, dependent: :delete_all
   has_many :facebook_ads, dependent: :destroy
+  has_many :scene_collection_facebook_targeting_specs, dependent: :destroy
+  has_many :facebook_targeting_specs, through: :scene_collection_facebook_targeting_specs
 
   # Validations
   validates :user, presence: true
