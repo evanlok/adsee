@@ -3,8 +3,25 @@
     <form>
       <div class="form-group">
         <label>AD SET NAME</label>
-
         <input type="text" class="form-control" ng-model="$ctrl.facebookAd.ad_set_name">
+      </div>
+
+      <div class="form-group">
+        <label>AD ACCOUNT</label>
+        <select class="form-control"
+                ng-model="$ctrl.facebookAd.ad_account_id"
+                ng-options="adAccount.id as adAccount.name for adAccount in $ctrl.adAccounts">
+          <option value="">Select an ad account</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>FACEBOOK PAGE</label>
+        <select class="form-control"
+                ng-model="$ctrl.facebookAd.page_id"
+                ng-options="page.id as page.name for page in $ctrl.pages">
+          <option value="">Select an ad account</option>
+        </select>
       </div>
 
       <h2>How much do you want to spend?</h2>

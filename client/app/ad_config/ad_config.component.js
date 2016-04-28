@@ -9,18 +9,21 @@ var component = {
 };
 
 /*@ngInject*/
-function AdConfigController($state, facebookAdService) {
+function AdConfigController($state, facebookAdService, userService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.facebookAd = {};
     vm.adOptions = {};
+    vm.pages = [];
+    vm.adAccounts = [];
     vm.showAdvanced = false;
     vm.start = {opened: false};
     vm.end = {opened: false};
     vm.savingAd = false;
 
     fetchFacebookAd();
+    fetchUserFacebookData();
   };
 
   vm.submitAd = submitAd;
@@ -35,6 +38,13 @@ function AdConfigController($state, facebookAdService) {
     facebookAdService.get({id: vm.facebookAdId}).then(function (data) {
       vm.facebookAd = data;
       setAdOptions(vm.facebookAd);
+    });
+  }
+
+  function fetchUserFacebookData() {
+    userService.facebookData().then(function (data) {
+      vm.pages = data.pages;
+      vm.adAccounts = data.ad_accounts;
     });
   }
 

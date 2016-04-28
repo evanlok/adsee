@@ -7,6 +7,7 @@ services
   .service('mediaSelectorService', require('./media_selector.service'))
   .service('videoJobService', require('./video_job.service'))
   .service('facebookAdService', require('./facebook_ad.service'))
-  .service('facebookTargetingSpecService', require('./facebook_targeting_spec.service'));
+  .service('facebookTargetingSpecService', require('./facebook_targeting_spec.service'))
+  .service('userService', require('./user.service'));
 
 module.exports = services.name;
