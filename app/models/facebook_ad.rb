@@ -11,8 +11,7 @@ class FacebookAd < ActiveRecord::Base
   # Callbacks
   before_create :set_defaults
 
-  # Scope
-  scope :unpublished, -> { where(facebook_ad_id: nil) }
+  enum status: { unpublished: 0, publishing: 1, published: 2, failed: 3 }
 
   def campaign_params
     {

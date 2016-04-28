@@ -9,14 +9,22 @@ module Facebook
     end
 
     def run
+      facebook_ad.publishing!
+      ad = post_ad_to_facebook
+      facebook_ad.update(facebook_ad_id: ad['id'], status: :published)
+      true
+    rescue StandardError => e
+      facebook_ad.failed!
+      raise e
+    end
+
+    def post_ad_to_facebook
       campaign = find_or_create_campaign
       ad_set = create_ad_set(campaign['id'])
       video_id = client.upload_video(@scene_collection.video.url)['id']
       Facebook::VideoStatusPoller.new(video_id, @access_token).wait_for_video
       ad_creative = create_ad_creative(video_id)
-      ad = create_ad(ad_set['id'], ad_creative['id'])
-      facebook_ad.update(facebook_ad_id: ad['id'])
-      true
+      create_ad(ad_set['id'], ad_creative['id'])
     end
 
     def find_or_create_campaign
@@ -35,7 +43,7 @@ module Facebook
     end
 
     def create_ad(ad_set_id, ad_creative_id)
-      client.create_ad(ad_set_id, ad_creative_id, status: 'PAUSED', name: "AdSee - #{@scene_collection.id}")
+      client.create_ad(ad_set_id, ad_creative_id, status: 'ACTIVE', name: "AdSee - #{@scene_collection.id}")
     end
 
     private

@@ -29,6 +29,7 @@ module Facebook
 
     # https://developers.facebook.com/docs/marketing-api/adgroup
     def create_ad(ad_set_id, ad_creative_id, params = {})
+      params[:status] = 'PAUSED' unless ENV['FACEBOOK_ADS_ENABLED']
       params[:adset_id] = ad_set_id
       params[:creative] = { creative_id: ad_creative_id }.to_json
       client.put_connections(ad_account_id, 'ads', params)
