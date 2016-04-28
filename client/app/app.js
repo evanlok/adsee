@@ -19,5 +19,6 @@ angular.module('adsee', [
   require('./media_library/media_library.module'),
   require('./services/services.module'),
   require('./preview/preview.module'),
-  require('./ad_config/ad_config.module')
+  require('./ad_config/ad_config.module'),
+  require('./summary/summary.module')
 ]).config(config);

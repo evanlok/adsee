@@ -76,7 +76,7 @@ function AdConfigController($state, facebookAdService) {
 
   function submitAd() {
     vm.savingAd = true;
-    
+
     if (vm.adOptions.bidType === 'automatic') {
       vm.facebookAd.bid_amount = null;
     }

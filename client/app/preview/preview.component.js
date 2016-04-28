@@ -16,7 +16,6 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
   vm.$onInit = function () {
     vm.videoJob = {};
     vm.creatingAd = false;
-    vm.publishing = false;
 
     pollStreamurl();
   };
@@ -26,7 +25,6 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
   };
 
   vm.configureAd = configureAd;
-  vm.publish = publish;
 
   function pollStreamurl() {
     intervalPromise = $interval(fetchVideoJob, 1500);
@@ -49,12 +47,6 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
       $state.go('adConfig', {facebookAdId: data.id});
     }).finally(function () {
       vm.creatingAd = false;
-    });
-  }
-
-  function publish() {
-    videoJobService.generate({sceneCollectionId: vm.videoJob.scene_collection_id}).then(function (data) {
-      alert('Video has been published!');
     });
   }
 }

@@ -27,6 +27,12 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<ad-config facebook-ad-id="{{ facebookAdId }}"></ad-config>')($stateParams);
       }
+    })
+    .state('summary', {
+      url: '/scene_collections/:sceneCollectionId/summary',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<summary scene-collection-id="{{ sceneCollectionId }}"></summary>')($stateParams);
+      }
     });
 
   $locationProvider.html5Mode(true);
