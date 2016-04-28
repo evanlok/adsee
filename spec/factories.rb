@@ -158,7 +158,6 @@ FactoryGirl.define do
 
   factory :facebook_ad do
     scene_collection
-    facebook_targeting_spec
     ad_account_id 'act_12345'
     page_id '45678'
     campaign_name 'AdSee'

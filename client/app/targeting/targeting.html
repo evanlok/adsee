@@ -1,0 +1,27 @@
+<div class="targeting">
+  <h1>TARGET SEGMENTS</h1>
+
+  <p>
+    Select your target segment(s) and click continue
+  </p>
+
+  <div class="targeting-spec-list">
+    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
+      <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
+         ng-class="{selected: $ctrl.selected(targetingSpec)}">
+
+        <img ng-src="{{ targetingSpec.thumbnail_url }}">
+        <br>
+        <strong>{{ targetingSpec.name }}</strong>
+
+        <p>
+          {{ targetingSpec.description }}
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
+    CONTINUE
+  </button>
+</div>

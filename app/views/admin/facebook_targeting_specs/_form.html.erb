@@ -1,7 +1,10 @@
 <%= simple_form_for [:admin, @fb_targeting_spec] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :data, as: :text, input_html: { rows: 20, value: f.object.data_before_type_cast } %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :large %>
+    <%= f.input :data, as: :text, input_html: { rows: 20, value: f.object.data_before_type_cast } %>
 
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', admin_facebook_targeting_specs_path, class: 'btn btn-default' %>
+
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', admin_facebook_targeting_specs_path, class: 'btn btn-default' %>
 <% end %>

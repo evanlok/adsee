@@ -71,6 +71,15 @@ RSpec.describe FacebookAd do
       expect(subject[:is_autobid]).to be true
       expect(subject.key?(:bid_amount)).to be false
     end
+
+    context 'with targeting data' do
+      let(:targeting_spec) { create(:facebook_targeting_spec) }
+
+      it 'sets targeting data' do
+        facebook_ad.scene_collection.facebook_targeting_specs = [targeting_spec]
+        expect(subject[:targeting]).to eq(targeting_spec.data.to_json)
+      end
+    end
   end
 
   describe '#ad_creative_params' do

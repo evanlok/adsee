@@ -3,6 +3,8 @@ class SceneCollectionsController < ApplicationController
   before_action :load_scene_collection, only: [:show, :update]
   after_action :verify_authorized, except: :new
 
+  wrap_parameters include: [*SceneCollection.attribute_names, :facebook_targeting_spec_ids]
+
   def new
     @industries = Industry.includes(ad_types: :themes)
   end
@@ -19,7 +21,7 @@ class SceneCollectionsController < ApplicationController
 
     if @scene_collection.save
       @scene_collection.create_scene_contents_from_theme
-      redirect_to edit_scene_collection_url(@scene_collection)
+      redirect_to targeting_scene_collection_url(@scene_collection)
     else
       redirect_to root_path, error: 'Scene collection could not be created.'
     end
@@ -47,7 +49,9 @@ class SceneCollectionsController < ApplicationController
 
   def scene_collection_params
     if params[:scene_collection]
-      params.require(:scene_collection).permit(:theme_id, :ad_type_id, :color, :font_id, :song_id)
+      params.require(:scene_collection).permit(
+        :theme_id, :ad_type_id, :color, :font_id, :song_id, facebook_targeting_spec_ids: []
+      )
     else
       {}
     end
