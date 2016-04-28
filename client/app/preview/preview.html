@@ -1,26 +1,32 @@
 
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+  <div class="row preview-page">
+
+    <div class="video-nav">
+      <ul>
+        <li><a href="">Templates</a></li>
+        <li><a href="">Targeting</a></li>
+        <li><a href="">Scene Editor</a></li>
+        <li><a href="">Preview</a></li>
+        <li><a href="">Ad Spend</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-8 col-md-offset-2 preview-wrapper">
+
       <div class="text-center">
-        <h1>Preview</h1>
+        <h1><i class="fa fa-search" aria-hidden="true"></i> PREVIEW</h1>
       </div>
 
       <video-preview stream-url="{{ $ctrl.videoJob.stream_url }}"></video-preview>
 
-      <br>
-
-    <p>
-      <a href="" class="btn btn-primary btn-block" ng-click="$ctrl.configureAd()" ng-disabled="$ctrl.creatingAd">
-        NEXT
-        <br>
-        <small>Select Ad Spend</small>
+      <a href="" class="button" ng-click="$ctrl.configureAd()" ng-disabled="$ctrl.creatingAd">
+        NEXT:
+        <span>Select Ad Spend</span>
       </a>
-    </p>
 
-    <p class="text-center">
-      <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})">
-        &lt; Back to the Video Editor
+      <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})" class="back-link">
+        <i class="fa fa-chevron-left"></i> Back to the Video Editor
       </a>
-    </p>
 
+    </div>
   </div>
