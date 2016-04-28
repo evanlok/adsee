@@ -26,7 +26,7 @@
 
 // Input/Field Animations
 
-.text-input-group, .login-page  {
+.text-input-group, .login-page, .ad-config .form-style {
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -328,6 +328,10 @@
   }
   li:hover:after {
     border-left-color: $color-2;
+  }
+
+  @media screen and (max-width:720px) {
+    display: none;
   }
 
 }
@@ -875,7 +879,7 @@
   }
 }
 .industry-group {
-  padding: 10px 40px 20px;
+  padding: 20px 50px 20px;
   -webkit-box-shadow: inset 0px 72px 121px 21px rgba(0,0,0,0.39);
   -moz-box-shadow: inset 0px 72px 121px 21px rgba(0,0,0,0.39);
   box-shadow: inset 0px 72px 121px 21px rgba(0,0,0,0.39);
@@ -955,5 +959,116 @@
   font-size: 30px;
   &:hover {
     background-color: #1d97ff;
+  }
+}
+
+//Preview Page 
+
+.preview-page {
+
+  .preview-wrapper {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+  .button {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-weight: 700;
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+    span {
+      font-weight: 300;
+    }
+    &:hover {
+      color: white;
+    }
+  }
+  .back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+//Ad Config 
+.ad-config {
+  padding-bottom: 50px;
+  .video-nav {
+    margin-bottom: 50px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  .form-style input[type="text"] {
+    padding-left: 20px;
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+  .form-style input[type="text"][required]:focus + label[placeholder]:before,
+  .form-style input[type="text"][required]:valid + label[placeholder]:before {
+    -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
+            transform: translate(0, -1.25em) scale(0.9, 0.9);
+  }
+  .form-style input[type="text"][required] + label[placeholder] {
+    margin-top: calc(-0.75em - 15px);
+    margin-bottom: calc((1.65em - 1em) + 2px);
+  }
+  .form-style input[type="text"][required] + label[placeholder]:before {
+    margin: 0 calc(2em - 15px);
+    background-image: -webkit-linear-gradient(top, $color-5, $color-5);
+    background-image: linear-gradient(to bottom, $color-5, $color-5);
+  }
+  select {
+    width: 100%;
+    font-size: 18px;
+    border-color: white;
+    margin: 4px 0px;
+    &:hover {
+      border-color: $color-6;
+    }
+  }
+  .schedule-module {
+    input[type="text"] {
+      height: 33px;
+    }
+  }
+  .time-selectors {
+    input[type="text"] {
+      margin: 0px 3px;
+    }
+    button {
+      margin-left: 5px;
+    }
+  }
+  .budget input[type="text"] {
+    margin: 4px 0px;
+  } 
+  .next {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+  .adset-name {
+    padding-bottom: 5px;
+  }
+  .subhead {
+    color: $color-2;
+    font-weight: 700;
+  }
+  .adop-link {
+    border-bottom: 1px dotted $color-2;
+    padding-bottom: 10px;
+    display: block;
   }
 }

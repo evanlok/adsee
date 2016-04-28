@@ -21,7 +21,7 @@ body {
   background-color: $color-5;
 }
 
-a {
+a, a:visited  {
   color: $color-2;
   text-decoration: none;
   cursor: pointer;
@@ -79,6 +79,7 @@ select:focus {
   border-radius: 100px;
   &:hover {
     background-color: #1d97ff;
+    color: white;
   }
 }
 .cancel-link {
