@@ -755,29 +755,30 @@
     display: inline-block;
     float: left;
   }
-  // .play-sample {
-  //   position: absolute;
-  //   background-color: hsla(0, 0%, 0.0000%, 0.7000);
-  //   padding: 2px 7px;
-  //   color: white;
-  //   margin-left: -52px;
-  //   transition: margin 0.5s ease;
-  //   font-size: 12px;
-  //   vertical-align: middle;
-  //   border-bottom-right-radius: 10px;
-  //   i {
-  //     margin-left: 2px;
-  //     font-size: 16px;
-  //   }
-  //   &:hover {
-  //     background-color: $color-6;
-  //     margin-left: 0px;
-  //   }
-  // }
+  .play-sample {
+    position: absolute;
+    background-color: hsla(0, 0%, 0.0000%, 0.7000);
+    padding: 2px 7px;
+    color: white;
+    margin-left: -59px;
+    transition: margin 0.5s ease;
+    font-size: 14px;
+    vertical-align: middle;
+    border-bottom-right-radius: 10px;
+    width: auto;
+    i {
+      margin-left: 2px;
+      font-size: 16px;
+    }
+    &:hover {
+      background-color: $color-6;
+      margin-left: 0px;
+    }
+  }
 }
 .scene-thumb-padding {
   margin: 10px;
-  // overflow: hidden;
+  overflow: hidden;
   position: relative;
   a {
     width: 100%;
@@ -792,7 +793,7 @@
   }
   &:hover {
     img {
-      outline: 6px solid $color-6;
+      border: 1px solid $color-6;
     }
     .scene-thumb-name {
       color: $color-6;
