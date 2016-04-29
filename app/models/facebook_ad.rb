@@ -90,6 +90,10 @@ class FacebookAd < ActiveRecord::Base
       targeting_spec[:geo_locations] = geo_locations
     end
 
+    if targeting_spec[:geo_locations].blank?
+      targeting_spec[:geo_locations] = { countries: ['US'] }
+    end
+
     targeting_spec
   end
 

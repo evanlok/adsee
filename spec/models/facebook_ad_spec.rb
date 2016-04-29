@@ -99,6 +99,15 @@ RSpec.describe FacebookAd do
         end
       end
     end
+
+    context 'with no geolocation targeting data' do
+      let(:targeting_spec) { create(:facebook_targeting_spec, data: { age_min: 18 }) }
+
+      it 'defaults to US' do
+        facebook_ad.scene_collection.facebook_targeting_specs = [targeting_spec]
+        expect(subject[:targeting]).to eq({ age_min: 18, geo_locations: { countries: ['US'] } }.to_json)
+      end
+    end
   end
 
   describe '#ad_creative_params' do
