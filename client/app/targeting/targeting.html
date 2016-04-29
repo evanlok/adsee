@@ -1,27 +1,51 @@
 <div class="targeting">
-  <h1>TARGET SEGMENTS</h1>
+  <div class="row targeting-header">
 
-  <p>
-    Select your target segment(s) and click continue
-  </p>
+    <button class="button pull-right" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
+      CONTINUE
+    </button>
 
-  <div class="targeting-spec-list">
-    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
-      <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
-         ng-class="{selected: $ctrl.selected(targetingSpec)}">
+    <div class="video-nav">
+      <ul>
+        <li><a href="">Templates</a></li>
+        <li><a href="">Targeting</a></li>
+        <li><a href="">Scene Editor</a></li>
+        <li><a href="">Preview</a></li>
+        <li><a href="">Ad Spend</a></li>
+      </ul>
+    </div>
 
-        <img ng-src="{{ targetingSpec.thumbnail_url }}">
-        <br>
-        <strong>{{ targetingSpec.name }}</strong>
+    <div class="col-md-12">
 
-        <p>
-          {{ targetingSpec.description }}
-        </p>
-      </a>
+      <h1>TARGET SEGMENTS</h1>
+      <p>
+        Select your target segment(s) and click continue
+      </p>
     </div>
   </div>
 
-  <button class="btn btn-primary" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
+  <div class="row targeting-spec-list">
+    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
+      <div class="col-md-3">
+        <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
+           ng-class="{selected: $ctrl.selected(targetingSpec)}">
+
+          <img ng-src="{{ targetingSpec.thumbnail_url }}">
+          <br>
+          <strong>{{ targetingSpec.name }}</strong>
+
+          <p>
+            {{ targetingSpec.description }}
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button class="button" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
     CONTINUE
   </button>
+
 </div>
+
+
