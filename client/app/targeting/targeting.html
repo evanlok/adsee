@@ -21,7 +21,20 @@
     </div>
   </div>
 
-  <button class="btn btn-primary" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
+  <div class="form-group">
+    <label>Locations (optional)</label>
+
+    <ui-select ng-model="$ctrl.zipCodes" multiple tagging tagging-label="">
+      <ui-select-match placeholder="Select zip codes...">{{ $item }}</ui-select-match>
+
+      <ui-select-choices repeat="zipCode in [] | filter:$select.search">
+        {{ zipCode }}
+      </ui-select-choices>
+    </ui-select>
+  </div>
+
+  <button type="button" class="btn btn-primary" ng-click="$ctrl.saveTargeting()"
+          ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
     CONTINUE
   </button>
 </div>

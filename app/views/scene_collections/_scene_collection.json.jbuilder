@@ -1,4 +1,4 @@
-json.extract! scene_collection, :id, :color, :font_id, :song_id
+json.extract! scene_collection, :id, :color, :font_id, :song_id, :zip_codes
 
 json.industry scene_collection.ad_type&.industry&.name
 json.ad_type scene_collection.ad_type&.name

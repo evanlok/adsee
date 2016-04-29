@@ -16,6 +16,7 @@ function TargetingController($state, sceneCollectionService, facebookTargetingSp
     vm.targetingSpecs = [];
     vm.selectedTargetingSpecIds = [];
     vm.saving = false;
+    vm.zipCodes = [];
 
     fetchSceneCollection();
     fetchTargetingSpecs();
@@ -28,6 +29,7 @@ function TargetingController($state, sceneCollectionService, facebookTargetingSp
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
       vm.selectedTargetingSpecIds = data.facebook_targeting_spec_ids;
+      vm.zipCodes = data.zip_codes;
     });
   }
 
@@ -48,7 +50,10 @@ function TargetingController($state, sceneCollectionService, facebookTargetingSp
   function saveTargeting() {
     vm.saving = true;
 
-    sceneCollectionService.update({id: vm.sceneCollectionId}, {facebook_targeting_spec_ids: vm.selectedTargetingSpecIds}).then(function () {
+    sceneCollectionService.update({id: vm.sceneCollectionId}, {
+      facebook_targeting_spec_ids: vm.selectedTargetingSpecIds,
+      zip_codes: vm.zipCodes
+    }).then(function () {
       $state.go('sceneEditor', {sceneCollectionId: vm.sceneCollectionId});
     }).finally(function () {
       vm.saving = false;

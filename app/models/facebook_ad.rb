@@ -70,7 +70,7 @@ class FacebookAd < ActiveRecord::Base
       billing_event: billing_event,
       start_time: start_time,
       end_time: end_time,
-      targeting: facebook_targeting_specs.first&.data&.to_json
+      targeting: build_targeting_spec.to_json
     }
 
     if pacing_type == 'no_pacing' && bid_amount
@@ -78,6 +78,19 @@ class FacebookAd < ActiveRecord::Base
     end
 
     params
+  end
+
+  def build_targeting_spec
+    targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
+
+    if scene_collection.zip_codes
+      geo_locations = targeting_spec[:geo_locations] || {}
+      zip_json = scene_collection.zip_codes.map { |zip_code| { key: "US:#{zip_code}" } }
+      geo_locations[:zips] = zip_json
+      targeting_spec[:geo_locations] = geo_locations
+    end
+
+    targeting_spec
   end
 
   def set_defaults

@@ -4,7 +4,7 @@ $.fn.select2.defaults.set('theme', 'bootstrap');
 // Filestack / Filepicker
 var filepicker = require('filepicker-js');
 
-var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, FILESTACK_API_KEY) {
+var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY) {
   $stateProvider
     .state('targeting', {
       url: '/scene_collections/:sceneCollectionId/targeting',
@@ -42,6 +42,8 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     });
 
   $locationProvider.html5Mode(true);
+
+  uiSelectConfig.theme = 'bootstrap';
 
   filepicker.setKey(FILESTACK_API_KEY);
 };
