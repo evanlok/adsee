@@ -10,7 +10,7 @@
         <label>AD ACCOUNT</label>
         <select class="form-control"
                 ng-model="$ctrl.facebookAd.ad_account_id"
-                ng-options="adAccount.id as adAccount.name for adAccount in $ctrl.adAccounts">
+                ng-options="adAccount.id as $ctrl.adAccountName(adAccount) for adAccount in $ctrl.adAccounts">
           <option value="">Select an ad account</option>
         </select>
       </div>

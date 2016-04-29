@@ -33,6 +33,7 @@ function AdConfigController($state, facebookAdService, userService) {
   vm.showDatepicker = showDatepicker;
   vm.openStart = openStart;
   vm.openEnd = openEnd;
+  vm.adAccountName = adAccountName;
 
   function fetchFacebookAd() {
     facebookAdService.get({id: vm.facebookAdId}).then(function (data) {
@@ -82,6 +83,12 @@ function AdConfigController($state, facebookAdService, userService) {
 
   function openEnd() {
     vm.end.opened = true;
+  }
+
+  function adAccountName(adAccount) {
+    return _.filter([adAccount.business_name, adAccount.name], function (name) {
+      return name;
+    }).join(' - ');
   }
 
   function submitAd() {
