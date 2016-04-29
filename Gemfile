@@ -58,6 +58,8 @@ gem 'newrelic_rpm'
 gem 'honeybadger', '~> 2.0'
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'concurrent-ruby', require: 'concurrent'
+gem 'concurrent-ruby-ext'
 
 group :development do
   gem 'quiet_assets'

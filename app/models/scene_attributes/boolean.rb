@@ -17,5 +17,9 @@ module SceneAttributes
         raise ParseError, "Cannot parse boolean from value: #{self[:value]}"
       end
     end
+
+    def validatable?
+      false
+    end
   end
 end

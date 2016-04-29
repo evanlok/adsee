@@ -7,8 +7,6 @@ class VideoGenerator
   end
 
   def create_or_update_scene_collection
-    return unless scene_collection.valid_scene_contents?
-
     if scene_collection.hal_id
       response = client.update_scene_collection(scene_collection.hal_id, scene_collection_params)
     else

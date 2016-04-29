@@ -17,7 +17,10 @@ RSpec.describe HalCallbacksController do
   end
 
   describe 'POST create' do
-    it 'creates videos from request' do
+    it 'creates videos from request and posts ad to facebook' do
+      facebook_ad = double(:facebook_ad)
+      expect_any_instance_of(SceneCollection).to receive(:current_facebook_ad) { facebook_ad }
+      expect(Facebook::VideoAdManager).to receive(:new).with(facebook_ad) { double(:video_ad_manager, run: true) }
       post :create, params
       expect(response).to be_success
       expect(Video.where(scene_collection_id: scene_collection).count).to eq(2)

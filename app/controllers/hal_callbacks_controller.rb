@@ -10,6 +10,10 @@ class HalCallbacksController < ApplicationController
       params[:videos].each do |video_params|
         import_video(video_params)
       end
+
+      # TODO: Move this to a background job
+      facebook_ad = @video_job.scene_collection.current_facebook_ad
+      Facebook::VideoAdManager.new(facebook_ad).run
     end
 
     render json: { status: 'ok' }
