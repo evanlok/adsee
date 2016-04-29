@@ -46,14 +46,14 @@ class FacebookAd < ActiveRecord::Base
         page_id: page_id,
         video_data: {
           video_id: video_id,
-          title: 'Video Title',
-          description: 'Video description goes here',
-          image_url: 'https://s3.amazonaws.com/adsee-development/media_library/rZblyFgcQiGibwypA265_house.jpg',
+          title: title,
+          description: description,
+          image_url: image_url,
           call_to_action: {
-            type: 'LEARN_MORE',
+            type: call_to_action_type,
             value: {
-              link: 'https://www.adsee.com',
-              link_caption: 'AdSee'
+              link: call_to_action_link,
+              link_caption: call_to_action_link_caption
             }
           }
         }
