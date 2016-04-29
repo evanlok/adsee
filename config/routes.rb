@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     resources :facebook_ads, only: [:show, :create, :update]
   end
 
+  resources :users, only: [] do
+    collection do
+      get :facebook_data
+    end
+  end
+
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]

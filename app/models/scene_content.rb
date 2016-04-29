@@ -11,7 +11,7 @@ class SceneContent < ActiveRecord::Base
   validates :scene, :scene_collection, presence: true
 
   def valid_attributes?
-    scene_attributes_by_name = scene_attributes.index_by(&:name)
+    scene_attributes_by_name = scene_attributes.select(&:validatable?).index_by(&:name)
 
     scene.data_attributes.all? do |attr|
       scene_attribute = scene_attributes_by_name[attr['name']]
