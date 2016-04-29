@@ -33,4 +33,8 @@ class SceneAttribute < ActiveRecord::Base
   def mapped_type
     TYPE_MAPPINGS.key(type).to_s
   end
+
+  def validatable?
+    true
+  end
 end
