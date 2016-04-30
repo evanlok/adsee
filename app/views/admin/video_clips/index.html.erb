@@ -1,0 +1,34 @@
+<h1>Video Clips</h1>
+
+<p>
+  <upload-media-button></upload-media-button>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Video</th>
+    <th>Name</th>
+    <th colspan="2">Created</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @video_clips.each do |video| %>
+      <tr>
+        <td>
+          <%= link_to 'Play', '', 'video-overlay-link' => video.url, autoplay: true %>
+        </td>
+        <td><%= video.filename %></td>
+        <td><%= video.created_at.to_s(:full) %></td>
+        <td class="actions">
+          <%= link_to [:admin, video], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @video_clips %>

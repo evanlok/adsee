@@ -1,7 +1,7 @@
-var themeSettings = angular.module('adsee.themeSettings', []);
+var themeSettings = angular.module('adsee.uploader', []);
 
 themeSettings
-  .component('themeSettings', require('./theme_settings.component'))
+  .component('uploader', require('./theme_settings.component'))
   .component('songPlayer', require('./song_player.component.js'))
   .service('songsService', require('./songs.service'))
   .service('fontsService', require('./fonts.service'));

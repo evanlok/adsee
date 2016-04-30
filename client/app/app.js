@@ -11,6 +11,7 @@ angular.module('adsee', [
   'color.picker',
   'ng-sortable',
   'bcherny/formatAsCurrency',
+  require('./admin/admin.module'),
   require('./shared/shared.module'),
   require('./targeting/targeting.module'),
   require('./scene_editor/scene_editor.module'),
@@ -23,5 +24,6 @@ angular.module('adsee', [
   require('./services/services.module'),
   require('./preview/preview.module'),
   require('./ad_config/ad_config.module'),
-  require('./summary/summary.module')
+  require('./summary/summary.module'),
+  require('./media/media.module')
 ]).config(config);

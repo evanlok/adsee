@@ -28,6 +28,7 @@ class ImagesController < ApplicationController
   def destroy
     @image = Image.find(params[:id])
     authorize @image
+    @image.destroy
 
     respond_to do |format|
       format.json

@@ -1,0 +1,36 @@
+<h1>Images</h1>
+
+<p>
+  <upload-media-button></upload-media-button>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th colspan="2">Created</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @images.each do |image| %>
+      <tr>
+        <td>
+          <%= link_to image.url, target: '_blank' do %>
+              <%= image_tag image.thumbnail_url, width: 50 %>
+          <% end %>
+        </td>
+        <td><%= image.filename %></td>
+        <td><%= image.created_at.to_s(:full) %></td>
+        <td class="actions">
+          <%= link_to [:admin, image], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @images %>

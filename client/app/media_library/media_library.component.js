@@ -22,7 +22,8 @@ function MediaLibraryController(imageService, videoClipService, uploaderService,
     fetchVideoClips();
   };
 
-  vm.upload = uploadFiles;
+  vm.uploadFiles = uploadFiles;
+  vm.onUpload = onUpload;
   vm.selectMedia = selectMedia;
   vm.fetchImages = fetchImages;
   vm.fetchVideoClips = fetchVideoClips;
@@ -45,12 +46,12 @@ function MediaLibraryController(imageService, videoClipService, uploaderService,
 
   function uploadFiles() {
     vm.uploading = true;
+  }
 
-    uploaderService.uploadFiles().then(function (dialog, images) {
-    }).finally(function () {
-      fetchImages();
-      vm.uploading = false;
-    });
+  function onUpload() {
+    vm.uploading = false;
+    fetchImages();
+    fetchVideoClips();
   }
 
   function selectMedia(media) {

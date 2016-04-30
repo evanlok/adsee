@@ -28,6 +28,7 @@ class VideoClipsController < ApplicationController
   def destroy
     @video_clip = VideoClip.find(params[:id])
     authorize @video_clip
+    @video_clip.destroy
 
     respond_to do |format|
       format.json

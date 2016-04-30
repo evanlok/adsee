@@ -11,11 +11,7 @@
   <%= webpack_bundle_for('vendor', :js) %>
   <%= webpack_bundle_for('app', :js) %>
   <%= csrf_meta_tags %>
-
-  <script type="text/javascript">
-    angular.module('adsee').constant('S3_BUCKET_NAME', '<%= ENV['S3_BUCKET_NAME'] %>');
-    angular.module('adsee').constant('FILESTACK_API_KEY', '<%= ENV['FILESTACK_API_KEY'] %>');
-  </script>
+  <%= render 'layouts/angular_config' %>
 </head>
 <body ng-app="adsee">
 <div class="container-fluid">
