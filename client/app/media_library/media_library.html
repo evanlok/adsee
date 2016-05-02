@@ -31,9 +31,20 @@
       <h4>Select a media item</h4>
     </div>
 
-    <image-list images="$ctrl.images" on-select="$ctrl.selectMedia(image)" ng-show="$ctrl.display.images"></image-list>
-    <image-list images="$ctrl.stockImages" on-select="$ctrl.selectMedia(image)" ng-show="$ctrl.display.stockImages"></image-list>
-    <video-list videos="$ctrl.videos" on-select="$ctrl.selectMedia(video)" ng-show="$ctrl.display.videos"></video-list>
-    <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)" ng-show="$ctrl.display.stockVideos"></video-list>
+    <image-list images="$ctrl.images" on-select="$ctrl.selectMedia(image)"
+                allow-delete on-delete="$ctrl.deleteMedia(image, 'image')"
+                ng-show="$ctrl.display.images">
+    </image-list>
+
+    <video-list videos="$ctrl.videos" on-select="$ctrl.selectMedia(video)"
+                allow-delete on-delete="$ctrl.deleteMedia(video, 'video')"
+                ng-show="$ctrl.display.videos">
+    </video-list>
+
+    <image-list images="$ctrl.stockImages" on-select="$ctrl.selectMedia(image)"
+                ng-show="$ctrl.display.stockImages"></image-list>
+
+    <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)"
+                ng-show="$ctrl.display.stockVideos"></video-list>
   </div>
 </div>

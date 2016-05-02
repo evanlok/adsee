@@ -5,7 +5,9 @@ var component = {
   controller: ImageListController,
   bindings: {
     images: '<',
-    onSelect: '&'
+    allowDelete: '@',
+    onSelect: '&',
+    onDelete: '&'
   }
 };
 
@@ -15,6 +17,7 @@ function ImageListController() {
 
   vm.$onInit = function () {
     vm.groupedImages = _.chunk(vm.images, 3);
+    vm.showDelete = vm.allowDelete === '';
   };
 
   vm.$onChanges = function () {

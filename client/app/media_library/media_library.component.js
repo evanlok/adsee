@@ -28,6 +28,7 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
   vm.onUpload = onUpload;
   vm.selectMedia = selectMedia;
   vm.showTab = showTab;
+  vm.deleteMedia = deleteMedia;
 
   function fetchImages() {
     imageService.query().then(function (data) {
@@ -103,6 +104,20 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
     }
 
     loadedContent[type] = true;
+  }
+
+  function deleteMedia(media, type) {
+    media.$delete().then(function () {
+      if (type === 'image') {
+        vm.images = _.reject(vm.images, function (item) {
+          return item === media;
+        });
+      } else {
+        vm.videos = _.reject(vm.videos, function (item) {
+          return item === media;
+        });
+      }
+    });
   }
 }
 

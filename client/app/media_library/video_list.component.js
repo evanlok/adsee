@@ -5,7 +5,9 @@ var component = {
   controller: VideoListController,
   bindings: {
     videos: '<',
-    onSelect: '&'
+    allowDelete: '@',
+    onSelect: '&',
+    onDelete: '&'
   }
 };
 
@@ -15,6 +17,7 @@ function VideoListController() {
 
   vm.$onInit = function () {
     vm.groupedVideos = _.chunk(vm.videos, 2);
+    vm.showDelete = vm.allowDelete === '';
   };
 
   vm.$onChanges = function () {
