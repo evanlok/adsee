@@ -1,9 +1,9 @@
 class ImagesController < ApplicationController
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
 
   def index
-    @images = policy_scope(Image).order(created_at: :desc).page(params[:page]).per(50)
+    @images = params[:stock] ? Image.where(user: nil) : policy_scope(Image)
+    @images = @images.order(created_at: :desc).page(params[:page]).per(50)
 
     respond_to do |format|
       format.json
@@ -28,6 +28,7 @@ class ImagesController < ApplicationController
   def destroy
     @image = Image.find(params[:id])
     authorize @image
+    @image.destroy
 
     respond_to do |format|
       format.json

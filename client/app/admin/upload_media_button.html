@@ -1,0 +1,8 @@
+<a href="" class="btn btn-primary" upload-media-link stock-upload
+   on-upload="$ctrl.onUpload()"
+   on-convert-start="$ctrl.onConvert()"
+   ng-disabled="$ctrl.uploading">
+  <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
+  <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
+  Upload
+</a>

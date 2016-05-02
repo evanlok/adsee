@@ -1,9 +1,9 @@
 class VideoClipsController < ApplicationController
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
 
   def index
-    @video_clips = policy_scope(VideoClip).order(created_at: :desc).page(params[:page]).per(50)
+    @video_clips = params[:stock] ? VideoClip.where(user: nil) : policy_scope(VideoClip)
+    @video_clips = @video_clips.order(created_at: :desc).page(params[:page]).per(50)
 
     respond_to do |format|
       format.json
@@ -28,6 +28,7 @@ class VideoClipsController < ApplicationController
   def destroy
     @video_clip = VideoClip.find(params[:id])
     authorize @video_clip
+    @video_clip.destroy
 
     respond_to do |format|
       format.json

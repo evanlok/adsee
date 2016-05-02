@@ -2,6 +2,9 @@
   var resource = $resource('/video_clips/:id', {
       id: '@id',
       format: 'json'
+    },
+    {
+      saveStock: {method: 'POST', url: '/admin/video_clips'}
     }
   );
 
@@ -11,6 +14,10 @@
 
   this.save = function (params, data) {
     return resource.save(params, data).$promise;
+  };
+
+  this.saveStock = function (params, data) {
+    return resource.saveStock(params, data).$promise;
   };
 }
 

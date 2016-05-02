@@ -39,12 +39,18 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     quality: 90
   };
 
-  this.uploadFiles = function () {
+  var convertStartCallbacks = [];
+
+  this.uploadFiles = function (stockUpload) {
     var deferred = $q.defer();
 
     var dialog = filepicker.pickAndStore(pickerOptions, storageOptions,
       function onSuccess(blobs) {
-        $q.all([generateImageVersions(blobs), saveVideoClips(blobs)]).then(function onSuccess(results) {
+        _.each(convertStartCallbacks, function (callback) {
+          callback();
+        });
+
+        $q.all([generateImageVersions(blobs, stockUpload), saveVideoClips(blobs, stockUpload)]).then(function onSuccess(results) {
           deferred.resolve(dialog, results[0], results[1]);
         }, function onError() {
           deferred.reject(dialog);
@@ -57,7 +63,7 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     return deferred.promise;
   };
 
-  function generateImageVersions(blobs) {
+  function generateImageVersions(blobs, stockUpload) {
     var promises = [];
     var imageBlobs = _.filter(blobs, function (blob) {
       return blob.mimetype.match(/image/);
@@ -72,7 +78,7 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
 
       // Don't save image if any of the conversions fail
       $q.all([mainImage, thumbnailImage]).then(function (convertedImages) {
-        saveImage(originalBlob, convertedImages[0], convertedImages[1]).then(function (image) {
+        saveImage(originalBlob, convertedImages[0], convertedImages[1], stockUpload).then(function (image) {
           deferred.resolve(image);
         }, function onError() {
           deferred.reject();
@@ -98,8 +104,10 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     return deferred.promise;
   }
 
-  function saveImage(originalImage, convertedImage, thumbnailImage) {
-    return imageService.save({}, {
+  function saveImage(originalImage, convertedImage, thumbnailImage, stockUpload) {
+    var fnName = stockUpload ? 'saveStock' : 'save';
+
+    return imageService[fnName]({}, {
       filename: originalImage.filename,
       original_path: originalImage.key,
       path: convertedImage.key,
@@ -109,13 +117,15 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     });
   }
 
-  function saveVideoClips(blobs) {
+  function saveVideoClips(blobs, stockUpload) {
     var videoBlobs = _.filter(blobs, function (blob) {
       return blob.mimetype.match(/video/);
     });
 
     return $q.all(_.map(videoBlobs, function (blob) {
-      return videoClipService.save({}, {
+      var fnName = stockUpload ? 'saveStock' : 'save';
+
+      return videoClipService[fnName]({}, {
         filename: blob.filename,
         original_path: blob.key,
         filestack_url: blob.url,
@@ -123,6 +133,14 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
       });
     }));
   }
+
+  this.onConvertStart = function (callback) {
+    convertStartCallbacks.push(callback);
+  };
+
+  this.removeOnConvertStart = function (callback) {
+    _.pull(convertStartCallbacks, callback);
+  };
 }
 
 module.exports = UploaderService;

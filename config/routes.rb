@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     resources :video_types
     resources :transitions
     resources :facebook_targeting_specs
+    resources :images
+    resources :video_clips
   end
 
   # Angular route globbing

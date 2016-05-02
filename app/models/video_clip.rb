@@ -3,7 +3,7 @@ class VideoClip < ActiveRecord::Base
   belongs_to :user
 
   # Validations
-  validates :user_id, :original_path, presence: true
+  validates :original_path, presence: true
 
   def path
     original_path

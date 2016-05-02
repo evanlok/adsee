@@ -3,6 +3,9 @@ function ImageService($resource) {
   var resource = $resource('/images/:id', {
       id: '@id',
       format: 'json'
+    },
+    {
+      saveStock: {method: 'POST', url: '/admin/images'}
     }
   );
 
@@ -12,6 +15,10 @@ function ImageService($resource) {
 
   this.save = function (params, data) {
     return resource.save(params, data).$promise;
+  };
+  
+  this.saveStock = function (params, data) {
+    return resource.saveStock(params, data).$promise;
   };
 }
 
