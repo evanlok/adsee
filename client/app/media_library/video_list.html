@@ -1,0 +1,15 @@
+<div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos">
+  <div class="col-md-6" ng-repeat="video in videoGroup">
+    <div class="text-center">
+      <i class="fa fa-file-video-o"
+         ng-click="$ctrl.onSelect({video: video})">
+      </i>
+
+      <div>
+        <a href="" video-overlay-link="{{ video.url }}" autoplay="true">
+          {{ video.filename }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

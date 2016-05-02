@@ -13,8 +13,10 @@
   </div>
 
   <div>
-    <a href="" ng-click="$ctrl.showImages()">images</a>
-    <a href="" ng-click="$ctrl.showVideos()">videos</a>
+    <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}">images</a>
+    <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}">videos</a>
+    <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}">stock images</a>
+    <a href="" ng-click="$ctrl.showTab('stockVideos')" ng-class="{active: $ctrl.display.stockVideos}">stock videos</a>
   </div>
 
   <div>
@@ -29,29 +31,9 @@
       <h4>Select a media item</h4>
     </div>
 
-    <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages" ng-show="$ctrl.display.images">
-      <div class="col-md-4" ng-repeat="image in imageGroup">
-        <img class="img-responsive"
-             ng-src="{{ image.thumbnail_url }}"
-             ng-click="$ctrl.selectMedia(image)">
-      </div>
-    </div>
-
-    <div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos" ng-show="$ctrl.display.videos">
-      <div class="col-md-6" ng-repeat="video in videoGroup">
-        <div class="text-center">
-          <i class="fa fa-file-video-o"
-             ng-click="$ctrl.selectMedia(video)">
-          </i>
-
-          <div>
-            <a href="" video-overlay-link="{{ video.url }}" autoplay="true">
-              {{ video.filename }}
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    <image-list images="$ctrl.images" on-select="$ctrl.selectMedia(image)" ng-show="$ctrl.display.images"></image-list>
+    <image-list images="$ctrl.stockImages" on-select="$ctrl.selectMedia(image)" ng-show="$ctrl.display.stockImages"></image-list>
+    <video-list videos="$ctrl.videos" on-select="$ctrl.selectMedia(video)" ng-show="$ctrl.display.videos"></video-list>
+    <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)" ng-show="$ctrl.display.stockVideos"></video-list>
   </div>
 </div>

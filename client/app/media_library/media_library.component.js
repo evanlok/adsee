@@ -9,38 +9,47 @@ var component = {
 /*@ngInject*/
 function MediaLibraryController(imageService, videoClipService, mediaSelectorService) {
   var vm = this;
+  var loadedContent;
 
   vm.$onInit = function () {
     vm.images = [];
     vm.videos = [];
+    vm.stockImages = [];
+    vm.stockVideos = [];
     vm.uploading = false;
     vm.selecting = false;
-    vm.display = {images: true, videos: false};
+    vm.display = {images: true, videos: false, stockImages: false, stockVideos: false};
+    loadedContent = {images: false, videos: false, stockImages: false, stockVideos: false};
     mediaSelectorService.onMediaInsert(onMediaInsert);
-
-    fetchImages();
-    fetchVideoClips();
+    loadContent('images');
   };
 
   vm.onConvert = onConvert;
   vm.onUpload = onUpload;
   vm.selectMedia = selectMedia;
-  vm.fetchImages = fetchImages;
-  vm.fetchVideoClips = fetchVideoClips;
-  vm.showImages = showImages;
-  vm.showVideos = showVideos;
+  vm.showTab = showTab;
 
   function fetchImages() {
     imageService.query().then(function (data) {
       vm.images = data;
-      vm.groupedImages = _.chunk(vm.images, 3);
     });
   }
 
   function fetchVideoClips() {
     videoClipService.query().then(function (data) {
       vm.videos = data;
-      vm.groupedVideos = _.chunk(vm.videos, 2);
+    });
+  }
+
+  function fetchStockImages() {
+    imageService.query({stock: true}).then(function (data) {
+      vm.stockImages = data;
+    });
+  }
+
+  function fetchStockVideos() {
+    videoClipService.query({stock: true}).then(function (data) {
+      vm.stockVideos = data;
     });
   }
 
@@ -50,8 +59,8 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
 
   function onUpload() {
     vm.uploading = false;
-    fetchImages();
-    fetchVideoClips();
+    loadContent('images', true);
+    loadContent('videos', true);
   }
 
   function selectMedia(media) {
@@ -60,18 +69,40 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
   }
 
   function onMediaInsert(type) {
-    type == 'image' ? showImages() : showVideos();
+    type == 'image' ? showTab('images') : showTab('videos');
     vm.selecting = true;
   }
 
-  function showImages() {
-    vm.display.images = true;
-    vm.display.videos = false;
+  function showTab(type) {
+    _.each(vm.display, function (val, key) {
+      vm.display[key] = false;
+    });
+
+    loadContent(type);
+    vm.display[type] = true;
   }
 
-  function showVideos() {
-    vm.display.images = false;
-    vm.display.videos = true;
+  function loadContent(type, force) {
+    if (loadedContent[type] && !force) {
+      return;
+    }
+
+    switch (type) {
+      case 'images':
+        fetchImages();
+        break;
+      case 'videos':
+        fetchVideoClips();
+        break;
+      case 'stockImages':
+        fetchStockImages();
+        break;
+      case 'stockVideos':
+        fetchStockVideos();
+        break;
+    }
+
+    loadedContent[type] = true;
   }
 }
 
