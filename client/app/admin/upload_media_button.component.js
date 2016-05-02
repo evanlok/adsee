@@ -10,9 +10,19 @@ var component = {
 function UploadMediaButtonController($window) {
   var vm = this;
 
+  vm.$onInit = function () {
+    vm.uploading = false;
+  };
+
+  vm.onConvert = onConvert;
   vm.onUpload = onUpload;
 
+  function onConvert() {
+    vm.uploading = true;
+  }
+
   function onUpload() {
+    vm.uploading = false;
     $window.location.reload();
   }
 }

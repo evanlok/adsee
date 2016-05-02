@@ -7,7 +7,7 @@ var component = {
 };
 
 /*@ngInject*/
-function MediaLibraryController(imageService, videoClipService, uploaderService, mediaSelectorService) {
+function MediaLibraryController(imageService, videoClipService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -22,7 +22,7 @@ function MediaLibraryController(imageService, videoClipService, uploaderService,
     fetchVideoClips();
   };
 
-  vm.uploadFiles = uploadFiles;
+  vm.onConvert = onConvert;
   vm.onUpload = onUpload;
   vm.selectMedia = selectMedia;
   vm.fetchImages = fetchImages;
@@ -44,7 +44,7 @@ function MediaLibraryController(imageService, videoClipService, uploaderService,
     });
   }
 
-  function uploadFiles() {
+  function onConvert() {
     vm.uploading = true;
   }
 

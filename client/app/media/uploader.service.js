@@ -39,11 +39,17 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     quality: 90
   };
 
+  var convertStartCallbacks = [];
+
   this.uploadFiles = function (stockUpload) {
     var deferred = $q.defer();
 
     var dialog = filepicker.pickAndStore(pickerOptions, storageOptions,
       function onSuccess(blobs) {
+        _.each(convertStartCallbacks, function (callback) {
+          callback();
+        });
+
         $q.all([generateImageVersions(blobs, stockUpload), saveVideoClips(blobs, stockUpload)]).then(function onSuccess(results) {
           deferred.resolve(dialog, results[0], results[1]);
         }, function onError() {
@@ -127,6 +133,14 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
       });
     }));
   }
+
+  this.onConvertStart = function (callback) {
+    convertStartCallbacks.push(callback);
+  };
+
+  this.removeOnConvertStart = function (callback) {
+    _.pull(convertStartCallbacks, callback);
+  };
 }
 
 module.exports = UploaderService;
