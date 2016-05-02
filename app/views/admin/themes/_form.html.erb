@@ -6,7 +6,7 @@
   <%= f.association :song, include_blank: 'N/A' %>
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
   <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>
-  <%= render 'admin/shared/file_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
+  <%= render 'admin/shared/video_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', admin_themes_path, class: 'btn btn-default' %>
