@@ -1,10 +1,6 @@
 <div class="targeting">
   <div class="row targeting-header">
 
-    <button class="button pull-right" ng-click="$ctrl.saveTargeting()" ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
-      CONTINUE
-    </button>
-
     <div class="video-nav">
       <ul>
         <li><a href="">Templates</a></li>
@@ -26,17 +22,16 @@
 
   <div class="row targeting-spec-list">
     <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
-      <div class="col-md-3">
+      <div class="col-md-3 col-xs-6">
         <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
-           ng-class="{selected: $ctrl.selected(targetingSpec)}">
+           ng-class="{selected: $ctrl.selected(targetingSpec)}" style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
+           <div class="overlay-bg">
+            <h4 class="target-name">{{ targetingSpec.name }}</h4>
 
-          <img ng-src="{{ targetingSpec.thumbnail_url }}">
-          <br>
-          <strong>{{ targetingSpec.name }}</strong>
-
-          <p>
-            {{ targetingSpec.description }}
-          </p>
+            <p class="target-description">
+              {{ targetingSpec.description }}
+            </p>
+           </div>
         </a>
       </div>
     </div>
@@ -61,7 +56,7 @@
 
   </div>
 
-  <button type="button" class="button" ng-click="$ctrl.saveTargeting()"
+  <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.saveTargeting()"
           ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
     CONTINUE
   </button>

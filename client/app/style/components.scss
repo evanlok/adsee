@@ -1084,16 +1084,64 @@
 .targeting {
   padding: 20px 20px 50px;
   .targeting-header {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
-  .ui-select-container {
-    background: none;
-    border: 2px solid #ccc;
-    border-radius: 100px;
-    height: 52px;
-    &:hover {
-      border: 2px solid $color-6;
+  .targeting-spec-list {
+    .col-md-3 {
+      overflow: hidden;
+      margin-bottom: 30px;
     }
+  }
+  .target-name {
+    font-weight: bold;
+    padding-bottom: 100px;
+    padding-top: 90px;
+    -webkit-transition: padding 200ms ease-in 0s;
+    -moz-transition: padding 200ms ease-in 0s;
+    -o-transition: padding 200ms ease-in 0s;
+    transition: padding 200ms ease-in 0s;
+  }
+  .overlay-bg {
+    height: 100%;
+    width: 100%;
+    background-color: hsla(0, 0%, 0.0000%, 0.4000);
+    position: absolute;
+    padding: 10px;
+    -webkit-transition: background-color 200ms ease-in 0s;
+    -moz-transition: background-color 200ms ease-in 0s;
+    -o-transition: background-color 200ms ease-in 0s;
+    transition: background-color 200ms ease-in 0s;
+  }
+  .target-selection {
+    height: 240px;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: border 200ms ease-in 0s;
+    -moz-transition: border 200ms ease-in 0s;
+    -o-transition: border 200ms ease-in 0s;
+    transition: border 200ms ease-in 0s;
+    &:hover {
+      border: 5px solid $color-1;
+      .target-name {
+        padding-top: 10px;
+        padding-bottom: 0px;
+      }
+      .overlay-bg {
+        background-color: hsla(0, 0%, 0.0000%, 0.8000);
+      }
+    }
+  }
+  .target-description {
+    font-size: 14px;
   }
   .location-header {
     font-size: 20px;
@@ -1108,6 +1156,15 @@
     }
     .fa-stack-1x {
       line-height: 1.9;
+    }
+  }
+  .ui-select-container {
+    background: none;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    height: 52px;
+    &:hover {
+      border: 2px solid $color-6;
     }
   }
   .ui-select-multiple.ui-select-bootstrap input.ui-select-search { 
@@ -1137,5 +1194,13 @@
   }
   .dropdown-menu {
     display: none;
+  }
+  .continue-button {
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px 30px;
+    width: 100%;
+    margin-top: 20px;
   }
 }
