@@ -1,33 +1,42 @@
-<h1><%= @theme.name %></h1>
+<div class="row theme-preview">
+  <div class="col-md-6 col-md-offset-3">
 
-<p>
-  <%= link_to 'Cancel', new_scene_collection_path, target: '_self' %>
-</p>
+    <%= link_to new_scene_collection_path, target: '_self', class: 'cancel-link pull-right' do %>
+      <i class="fa fa-times"></i> CANCEL
+    <% end %>
+    
+    <h1><%= @theme.name %></h1>
 
-<div>
-  <video-player url="<%= @theme.sample_video.url %>" poster="<%= @theme.poster_image.url(:large) %>"></video-player>
-</div>
+    <div class="theme-video-wrapper">
+      <video-player url="<%= @theme.sample_video.url %>" poster="<%= @theme.poster_image.url(:large) %>"></video-player>
+    </div>
 
-<div>
-  <%= simple_format @theme.description %>
-</div>
+    <div class="row theme-info-row">
+      <div class="col-md-8 theme-description">
+          <%= simple_format @theme.description %>
+      </div>
 
-<div>
-  <% if @theme.song %>
-    <div><%= @theme.song.name %></div>
-  <% end %>
+      <div class="col-md-4 theme-info-list">
+        <% if @theme.song %>
+          <div><i class="fa fa-music fa-fw" aria-hidden="true"></i> <%= @theme.song.name %></div>
+        <% end %>
 
-  <% if @theme_variant %>
-    <div><%= number_to_duration @theme_variant.duration %></div>
-  <% end %>
+        <% if @theme_variant %>
+          <div><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> <%= number_to_duration @theme_variant.duration %></div>
+        <% end %>
 
-  <div><%= @theme.photo_count %></div>
-</div>
+        <div><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i> <%= @theme.photo_count %></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for SceneCollection.new do |f| %>
+          <%= f.hidden_field :ad_type_id, value: @theme.ad_type.id %>
+          <%= f.hidden_field :theme_id, value: @theme.id %>
+          <%= f.submit 'Build my video', class: 'button theme-select' %>
+        <% end %>
+      </div>
 
-<div class="text-center">
-  <%= form_for SceneCollection.new do |f| %>
-    <%= f.hidden_field :ad_type_id, value: @theme.ad_type.id %>
-    <%= f.hidden_field :theme_id, value: @theme.id %>
-    <%= f.submit 'Build my video', class: 'btn btn-lg btn-block btn-primary' %>
-  <% end %>
+    </div>
+  </div>
 </div>

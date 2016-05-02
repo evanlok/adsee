@@ -14,52 +14,55 @@
   <%= render 'layouts/angular_config' %>
 </head>
 <body ng-app="adsee">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'AdSee Admin', admin_root_path, class: 'navbar-brand' %>
+<div class="admin-body">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to 'AdSee Admin', admin_root_path, class: 'navbar-brand' %>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Main Site', root_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Main Site', root_path %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li><%= link_to 'Home', admin_root_path %></li>
-        <li><%= link_to 'Ad Types', admin_ad_types_path %></li>
-        <li><%= link_to 'FB Targeting Specs', admin_facebook_targeting_specs_path %></li>
-        <li><%= link_to 'Images', admin_images_path %></li>
-        <li><%= link_to 'Industries', admin_industries_path %></li>
-        <li><%= link_to 'Scene Categories', admin_scene_categories_path %></li>
-        <li><%= link_to 'Scenes', admin_scenes_path %></li>
-        <li><%= link_to 'Songs', admin_songs_path %></li>
-        <li><%= link_to 'Fonts', admin_fonts_path %></li>
-        <li><%= link_to 'Themes', admin_themes_path %></li>
-        <li><%= link_to 'Theme Variants', admin_theme_variants_path %></li>
-        <li><%= link_to 'Transitions', admin_transitions_path %></li>
-        <li><%= link_to 'Video Clips', admin_video_clips_path %></li>
-        <li><%= link_to 'Video Types', admin_video_types_path %></li>
-      </ul>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li><%= link_to 'Home', admin_root_path %></li>
+          <li><%= link_to 'Ad Types', admin_ad_types_path %></li>
+          <li><%= link_to 'FB Targeting Specs', admin_facebook_targeting_specs_path %></li>
+          <li><%= link_to 'Images', admin_images_path %></li>
+          <li><%= link_to 'Industries', admin_industries_path %></li>
+          <li><%= link_to 'Scene Categories', admin_scene_categories_path %></li>
+          <li><%= link_to 'Scenes', admin_scenes_path %></li>
+          <li><%= link_to 'Songs', admin_songs_path %></li>
+          <li><%= link_to 'Fonts', admin_fonts_path %></li>
+          <li><%= link_to 'Themes', admin_themes_path %></li>
+          <li><%= link_to 'Theme Variants', admin_theme_variants_path %></li>
+          <li><%= link_to 'Transitions', admin_transitions_path %></li>
+          <li><%= link_to 'Video Clips', admin_video_clips_path %></li>
+          <li><%= link_to 'Video Types', admin_video_types_path %></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-md-10 main">
+        <%= render 'shared/flash_messages' %>
+        <%= yield %>
+
+      </div>
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <%= render 'shared/flash_messages' %>
-      <%= yield %>
-    </div>
+    <%= insert_paloma_hook %>
   </div>
 </div>
-<%= insert_paloma_hook %>
 </body>
 </html>

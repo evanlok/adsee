@@ -1,22 +1,27 @@
 <div class="media-library">
-  <div class="clearfix">
-    <div class="pull-right">
-      <a href="" class="btn btn-primary" upload-media-link
-         on-upload="$ctrl.onUpload()"
-         on-convert-start="$ctrl.onConvert()"
-         ng-disabled="$ctrl.uploading">
-        <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
-        <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
-        Upload
-      </a>
-    </div>
-  </div>
 
   <div>
-    <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}">images</a>
-    <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}">videos</a>
-    <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}">stock images</a>
-    <a href="" ng-click="$ctrl.showTab('stockVideos')" ng-class="{active: $ctrl.display.stockVideos}">stock videos</a>
+    <ul class="nav nav-pills">
+      <li>
+        <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}">images</a>
+      </li>
+      <li>
+        <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}">videos</a>
+      </li>
+      <li class="stock-media pull-right">
+        stock:
+        <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}"><i class="fa fa-picture-o"></i></a>
+        <a href="" ng-click="$ctrl.showTab('stockVideos')" ng-class="{active: $ctrl.display.stockVideos}"><i class="fa fa-film"></i></a>
+      </li>
+    </ul>
+    <a href="" class="btn btn-primary media-upload-button" upload-media-link
+       on-upload="$ctrl.onUpload()"
+       on-convert-start="$ctrl.onConvert()"
+       ng-disabled="$ctrl.uploading">
+      <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
+      <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
+      Upload
+    </a>
   </div>
 
   <div>
@@ -26,11 +31,19 @@
     </span>
   </div>
 
-  <div ng-class="{selecting: $ctrl.selecting}">
+  <div ng-class="{selecting: $ctrl.selecting}" class="thumb-container">
     <div ng-if="$ctrl.selecting">
       <h4>Select a media item</h4>
     </div>
 
+    <!-- <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages" ng-show="$ctrl.display.images">
+
+      <div class="col-md-4 image-thumbs" ng-repeat="image in imageGroup">
+        <img class="img-responsive"
+             ng-src="{{ image.thumbnail_url }}"
+             ng-click="$ctrl.selectMedia(image)">
+      </div>
+    </div> -->
     <image-list images="$ctrl.images" on-select="$ctrl.selectMedia(image)"
                 allow-delete on-delete="$ctrl.deleteMedia(image, 'image')"
                 ng-show="$ctrl.display.images">
@@ -44,7 +57,10 @@
     <image-list images="$ctrl.stockImages" on-select="$ctrl.selectMedia(image)"
                 ng-show="$ctrl.display.stockImages"></image-list>
 
+
     <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)"
                 ng-show="$ctrl.display.stockVideos"></video-list>
   </div>
+
 </div>
+

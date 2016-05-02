@@ -1,6 +1,7 @@
 <h1>What would you like to promote?</h1>
 
 <ul>
+	<h4>Ad Category</h4>
   <% @ad_types.each do |ad_type| %>
     <li>
       <%= link_to ad_type.name, [ad_type, Theme], target: '_self' %>
