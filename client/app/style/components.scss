@@ -1086,4 +1086,56 @@
   .targeting-header {
     margin-bottom: 30px;
   }
+  .ui-select-container {
+    background: none;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    height: 52px;
+    &:hover {
+      border: 2px solid $color-6;
+    }
+  }
+  .location-header {
+    font-size: 20px;
+  }
+  .fa-stack  {
+    // float: left;
+    // position: absolute;
+    margin-right: 5px;
+    font-size: 16px;
+    .fa-circle {
+      color: $color-2;
+    }
+    .fa-stack-1x {
+      line-height: 1.9;
+    }
+  }
+  .ui-select-multiple.ui-select-bootstrap input.ui-select-search { 
+    color: white;
+    font-size: 18px;
+    margin: 5px 0px 0px 10px;;
+  }
+  .ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+    margin: 0px 3px 4px 5px;
+  }
+  html [type="button"], .btn, .btn-xs, .btn-default {
+    background: $color-2;
+    color: white;
+    -webkit-appearance: none;
+    border-radius: 40px;
+    border: none;
+    display: inline-block;
+  }
+  .btn-xs, .btn-group-xs > .btn {
+    padding: 4px 12px;
+    font-size: 16px;
+    color: white;
+    margin-left: 5px;
+    .ui-select-match-close {
+      margin-top: 3px;
+    }
+  }
+  .dropdown-menu {
+    display: none;
+  }
 }
