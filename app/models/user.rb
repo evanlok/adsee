@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     end
 
     user.facebook_oauth_token = auth.credentials.token
-    user.facebook_oauth_expires_at = Time.zone.at(auth.credentials.expires_at)
+    user.facebook_oauth_expires_at = Time.zone.at(auth.credentials.expires_at) if auth.credentials.expires_at
     user.set_info_from_facebook
     user.save
     user

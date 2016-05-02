@@ -8,7 +8,7 @@
     <h1><%= @theme.name %></h1>
 
     <div class="theme-video-wrapper">
-      <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-house.jpg" alt="Description"/>
+      <video-player url="<%= @theme.sample_video.url %>" poster="<%= @theme.poster_image.url(:large) %>"></video-player>
     </div>
 
     <div class="row theme-info-row">

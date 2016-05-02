@@ -5,9 +5,7 @@
   <% if f.object.send("#{name}?") %>
     <br>
     <%= link_to "Download #{local_assigns[:label_name] || name}", f.object.send(name).url, target: '_blank' %>
-  <% end %>
 
-  <% if f.object.send("#{name}?") %>
     <div class="checkbox">
       <label>
         <%= f.check_box "remove_#{name}" %>

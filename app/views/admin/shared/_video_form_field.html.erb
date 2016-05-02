@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= f.label name, local_assigns[:label_name] || name %>
+  <%= f.file_field name %>
+
+  <% if f.object.send("#{name}?") %>
+      <br>
+      <%= link_to "Preview #{local_assigns[:label_name] || name}", f.object.send(name).url, class: 'btn btn-info', 'video-overlay-link' => f.object.send(name).url, autoplay: true %>
+
+      <div class="checkbox">
+        <label>
+          <%= f.check_box "remove_#{name}" %>
+          Remove <%= local_assigns[:label_name] || name %>
+        </label>
+      </div>
+  <% end %>
+</div>
