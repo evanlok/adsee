@@ -44,6 +44,6 @@ class SceneCollection < ActiveRecord::Base
   end
 
   def current_facebook_ad
-    @current_facebook_ad ||= facebook_ads.unpublished.order(:id).last || facebook_ads.create
+    @current_facebook_ad ||= facebook_ads.first_or_create
   end
 end

@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function AdConfigController($state, facebookAdService, userService) {
+function AdConfigController($state, $timeout, facebookAdService, userService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -33,6 +33,8 @@ function AdConfigController($state, facebookAdService, userService) {
   vm.showDatepicker = showDatepicker;
   vm.openStart = openStart;
   vm.openEnd = openEnd;
+  vm.adAccountName = adAccountName;
+  vm.updateImageUrl = updateImageUrl;
 
   function fetchFacebookAd() {
     facebookAdService.get({id: vm.facebookAdId}).then(function (data) {
@@ -82,6 +84,18 @@ function AdConfigController($state, facebookAdService, userService) {
 
   function openEnd() {
     vm.end.opened = true;
+  }
+
+  function adAccountName(adAccount) {
+    return _.filter([adAccount.business_name, adAccount.name], function (name) {
+      return name;
+    }).join(' - ');
+  }
+
+  function updateImageUrl(url) {
+    $timeout(function () {
+      vm.facebookAd.image_url = url;
+    });
   }
 
   function submitAd() {

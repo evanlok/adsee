@@ -80,6 +80,34 @@ RSpec.describe FacebookAd do
         expect(subject[:targeting]).to eq(targeting_spec.data.to_json)
       end
     end
+
+    context 'with zip codes' do
+      it 'sets geolocation data in targeting param' do
+        facebook_ad.scene_collection.zip_codes = %w(94102 94107)
+        expected = { geo_locations: { zips: [{ key: 'US:94102' }, { key: 'US:94107' }] } }.to_json
+        expect(subject[:targeting]).to eq(expected)
+      end
+
+      context 'and a preselected bundle' do
+        let(:targeting_spec) { create(:facebook_targeting_spec, data: { geo_locations: { countries: ['US'] } }) }
+
+        it 'merges targeting data' do
+          facebook_ad.scene_collection.facebook_targeting_specs = [targeting_spec]
+          facebook_ad.scene_collection.zip_codes = %w(94102 94107)
+          expected = { geo_locations: { countries: ['US'], zips: [{ key: 'US:94102' }, { key: 'US:94107' }] } }.to_json
+          expect(subject[:targeting]).to eq(expected)
+        end
+      end
+    end
+
+    context 'with no geolocation targeting data' do
+      let(:targeting_spec) { create(:facebook_targeting_spec, data: { age_min: 18 }) }
+
+      it 'defaults to US' do
+        facebook_ad.scene_collection.facebook_targeting_specs = [targeting_spec]
+        expect(subject[:targeting]).to eq({ age_min: 18, geo_locations: { countries: ['US'] } }.to_json)
+      end
+    end
   end
 
   describe '#ad_creative_params' do

@@ -7,6 +7,7 @@ angular.module('adsee', [
   'ngResource',
   'ui.router',
   'ui.bootstrap',
+  'ui.select',
   'color.picker',
   'ng-sortable',
   'bcherny/formatAsCurrency',

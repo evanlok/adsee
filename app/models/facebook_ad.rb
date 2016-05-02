@@ -46,14 +46,14 @@ class FacebookAd < ActiveRecord::Base
         page_id: page_id,
         video_data: {
           video_id: video_id,
-          title: 'Video Title',
-          description: 'Video description goes here',
-          image_url: 'https://s3.amazonaws.com/adsee-development/media_library/rZblyFgcQiGibwypA265_house.jpg',
+          title: title,
+          description: description,
+          image_url: image_url,
           call_to_action: {
-            type: 'LEARN_MORE',
+            type: call_to_action_type,
             value: {
-              link: 'https://www.adsee.com',
-              link_caption: 'AdSee'
+              link: call_to_action_link,
+              link_caption: call_to_action_link_caption
             }
           }
         }
@@ -70,7 +70,7 @@ class FacebookAd < ActiveRecord::Base
       billing_event: billing_event,
       start_time: start_time,
       end_time: end_time,
-      targeting: facebook_targeting_specs.first&.data&.to_json
+      targeting: build_targeting_spec.to_json
     }
 
     if pacing_type == 'no_pacing' && bid_amount
@@ -78,6 +78,23 @@ class FacebookAd < ActiveRecord::Base
     end
 
     params
+  end
+
+  def build_targeting_spec
+    targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
+
+    if scene_collection.zip_codes
+      geo_locations = targeting_spec[:geo_locations] || {}
+      zip_json = scene_collection.zip_codes.map { |zip_code| { key: "US:#{zip_code}" } }
+      geo_locations[:zips] = zip_json
+      targeting_spec[:geo_locations] = geo_locations
+    end
+
+    if targeting_spec[:geo_locations].blank?
+      targeting_spec[:geo_locations] = { countries: ['US'] }
+    end
+
+    targeting_spec
   end
 
   def set_defaults
