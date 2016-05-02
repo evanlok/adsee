@@ -1,9 +1,0 @@
-<nav class="main-nav">
-  <div class="logo"></div>
-  <ul>
-    <li><a href="#">Login</a></li>
-    <li><a href="#">Sign up</a></li>
-    <li><a href="#">Templates</a></li>
-    <li><a href="#">Create</a></li>
-  </ul>
-</nav>

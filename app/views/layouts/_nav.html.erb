@@ -1,0 +1,14 @@
+<nav class="main-nav">
+  <div class="logo"></div>
+  <ul>
+    <% if user_signed_in? %>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, target: '_self' %></li>
+    <% else %>
+        <li><%= link_to 'Login', new_user_session_path, target: '_self' %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path, target: '_self' %></li>
+    <% end %>
+
+    <li><a href="#">Templates</a></li>
+    <li><%= link_to 'Create', new_scene_collection_path, target: '_self' %></li>
+  </ul>
+</nav>
