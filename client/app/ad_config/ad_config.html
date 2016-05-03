@@ -1,5 +1,14 @@
-<div class="row ad-config">
-  <div class="col-md-8 col-md-offset-2">
+<div class="ad-config">
+  <div class="video-nav">
+    <ul>
+      <li><a href="">Templates</a></li>
+      <li><a href="">Targeting</a></li>
+      <li><a href="">Scene Editor</a></li>
+      <li><a href="">Preview</a></li>
+      <li><a href="">Ad Spend</a></li>
+    </ul>
+  </div>
+  <div class="ad-config-column">
     <form>
       <h2>Ad Account and Facebook Page</h2>
 
@@ -21,7 +30,7 @@
         </select>
       </div>
 
-      <h2>Ad Configuration</h2>
+      <h2><i class="fa fa-cogs" aria-hidden="true"></i> Ad Configuration</h2>
 
       <div class="form-group">
         <label for="ad_set_name">AD SET NAME</label>
@@ -43,13 +52,13 @@
       </div>
 
       <div class="form-group">
-        <label for="description">TEXT</label>
-        <textarea id="description" class="form-control" rows="3" ng-model="$ctrl.facebookAd.description"></textarea>
+        <label for="title">VIDEO TITLE</label>
+        <input type="text" id="title" class="form-control" ng-model="$ctrl.facebookAd.title">
       </div>
 
       <div class="form-group">
-        <label for="title">VIDEO TITLE</label>
-        <input type="text" id="title" class="form-control" ng-model="$ctrl.facebookAd.title">
+        <label for="description">VIDEO DESCRIPTION</label>
+        <textarea id="description" class="form-control" rows="4" ng-model="$ctrl.facebookAd.description"></textarea>
       </div>
 
       <div class="form-group">
@@ -69,13 +78,13 @@
         </select>
       </div>
 
-      <h2>How much do you want to spend?</h2>
+      <h2><i class="fa fa-money" aria-hidden="true"></i> Ad Spend</h2>
 
       <div class="form-group">
         <label>BUDGET</label>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 budget-type">
             <select name="budget_type" class="form-control"
                     ng-model="$ctrl.facebookAd.budget_type"
                     ng-change="$ctrl.setSchedule()"
@@ -91,7 +100,7 @@
       </div>
 
       <div class="form-group">
-        <strong>SCHEDULE</strong>
+        <label>SCHEDULE</label>
 
         <div ng-show="$ctrl.facebookAd.budget_type === 'daily'">
           <div class="radio">
@@ -109,13 +118,13 @@
           </div>
         </div>
 
-        <div ng-show="$ctrl.showDatepicker()">
-          <div class="row form-group">
-            <div class="col-md-1">
+        <div ng-show="$ctrl.showDatepicker()" class="schedule-module">
+          <div class="form-group">
+            <div class="schedule-label">
               START
             </div>
 
-            <div class="col-md-3">
+            <div class="date-form">
               <div class="input-group">
                 <input type="text" class="form-control"
                        ng-model="$ctrl.facebookAd.start_time"
@@ -130,18 +139,18 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.start_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>
           </div>
 
-          <div class="row form-group">
-            <div class="col-md-1">
+          <div class="form-group">
+            <div class="schedule-label">
               END
             </div>
 
-            <div class="col-md-3">
+            <div class="date-form">
               <div class="input-group">
                 <input type="text" class="form-control"
                        ng-model="$ctrl.facebookAd.end_time"
@@ -156,7 +165,7 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.end_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>
@@ -166,14 +175,14 @@
 
       <hr>
 
-      <a href="" ng-click="$ctrl.toggleAdvanced()">
+      <a href="" ng-click="$ctrl.toggleAdvanced()" class="adop-link">
         <i class="fa fa-caret-down" ng-show="!$ctrl.showAdvanced"></i>
         <i class="fa fa-caret-up" ng-show="$ctrl.showAdvanced"></i>
         ADVANCED OPTIONS
       </a>
 
       <div ng-show="$ctrl.showAdvanced">
-        <h3>Optimization and Bidding</h3>
+        <h2><i class="fa fa-wrench" aria-hidden="true"></i> Optimization and Bidding</h2>
 
         <div class="form-group">
           <label for="optimization_goal">OPTIMIZATION FOR AD DELIVERY</label>
@@ -247,7 +256,7 @@
       </div>
     </form>
 
-    <a href="" class="btn btn-primary btn-lg btn-block" ng-click="$ctrl.submitAd()" ng-disabled="$ctrl.savingAd">
+    <a href="" class="next button" ng-click="$ctrl.submitAd()" ng-disabled="$ctrl.savingAd">
       NEXT
     </a>
   </div>
