@@ -1,5 +1,14 @@
 <div class="row ad-config">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="video-nav">
+    <ul>
+      <li><a href="">Templates</a></li>
+      <li><a href="">Targeting</a></li>
+      <li><a href="">Scene Editor</a></li>
+      <li><a href="">Preview</a></li>
+      <li><a href="">Ad Spend</a></li>
+    </ul>
+  </div>
+  <div class="col-md-5 col-md-offset-3">
     <form>
       <h2>Ad Account and Facebook Page</h2>
 
@@ -43,7 +52,7 @@
       </div>
 
       <div class="form-group">
-        <label for="description">TEXT</label>
+        <label for="description">VIDEO DESCRIPTION</label>
         <textarea id="description" class="form-control" rows="3" ng-model="$ctrl.facebookAd.description"></textarea>
       </div>
 
@@ -116,7 +125,7 @@
           </div>
         </div>
 
-        <div ng-show="$ctrl.showDatepicker()">
+        <div ng-show="$ctrl.showDatepicker()" class="schedule-module">
           <div class="row form-group">
             <div class="col-md-1">
               START
@@ -173,14 +182,14 @@
 
       <hr>
 
-      <a href="" ng-click="$ctrl.toggleAdvanced()">
+      <a href="" ng-click="$ctrl.toggleAdvanced()" class="adop-link">
         <i class="fa fa-caret-down" ng-show="!$ctrl.showAdvanced"></i>
         <i class="fa fa-caret-up" ng-show="$ctrl.showAdvanced"></i>
         ADVANCED OPTIONS
       </a>
 
       <div ng-show="$ctrl.showAdvanced">
-        <h3>Optimization and Bidding</h3>
+        <h2>Optimization and Bidding</h2>
 
         <div class="form-group">
           <label for="optimization_goal">OPTIMIZATION FOR AD DELIVERY</label>
@@ -261,7 +270,7 @@
       </div>
     </form>
 
-    <a href="" class="btn btn-primary btn-lg btn-block" ng-click="$ctrl.submitAd()" ng-disabled="$ctrl.savingAd">
+    <a href="" class="next button" ng-click="$ctrl.submitAd()" ng-disabled="$ctrl.savingAd">
       NEXT
     </a>
   </div>
