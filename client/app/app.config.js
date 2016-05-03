@@ -18,10 +18,6 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
         return $interpolate('<scene-editor scene-collection-id="{{ sceneCollectionId }}"></scene-editor>')($stateParams);
       }
     })
-    .state('sceneEditor.addScene', {
-      url: '/add_scene',
-      template: '<add-scene on-add-scene="$ctrl.addScene(scene)"></add-scene>'
-    })
     .state('preview', {
       url: '/previews/:videoJobId',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {

@@ -10,7 +10,7 @@ var component = {
 
 /*@ngInject*/
 function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
-                               transitionsService, mediaSelectorService, videoJobService) {
+                               transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -147,6 +147,11 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
 
     videoJobService.preview({sceneCollectionId: vm.sceneCollection.id}).then(function (videoJob) {
       $state.go('preview', {videoJobId: videoJob.id});
+    }, function onError() {
+      // Skip preview if there is an error
+      facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
+        $state.go('adConfig', {facebookAdId: data.id});
+      });
     }).finally(function () {
       vm.previewLoading = false;
     });

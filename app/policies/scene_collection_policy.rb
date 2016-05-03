@@ -12,4 +12,5 @@ class SceneCollectionPolicy < ApplicationPolicy
   alias update? create?
   alias destroy? create?
   alias show? create?
+  alias summary_info? create?
 end

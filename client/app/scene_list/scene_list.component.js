@@ -7,7 +7,8 @@ var component = {
     sceneContents: '<',
     selectedSceneContent: '<',
     onSelect: '&',
-    onSort: '&'
+    onSort: '&',
+    onAddScene: '&'
   }
 };
 

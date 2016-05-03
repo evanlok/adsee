@@ -73,14 +73,8 @@
 
       <div class="form-group">
         <label for="call_to_action_type">CALL TO ACTION</label>
-        <select id="call_to_action_type" class="form-control" ng-model="$ctrl.facebookAd.call_to_action_type">
-          <option value="">Select a call to action</option>
-          <option value="BOOK_TRAVEL">Book Now</option>
-          <option value="DOWNLOAD">Download</option>
-          <option value="LEARN_MORE">Learn More</option>
-          <option value="SHOP_NOW">Shop Now</option>
-          <option value="SIGN_UP">Sign Up</option>
-          <option value="WATCH_MORE">Watch More</option>
+        <select id="call_to_action_type" class="form-control" ng-model="$ctrl.facebookAd.call_to_action_type"
+                ng-options="key as value for (key, value) in $ctrl.facebookAdConfigOptions.call_to_action">
         </select>
       </div>
 
@@ -93,9 +87,8 @@
           <div class="col-md-6 budget-type">
             <select name="budget_type" class="form-control"
                     ng-model="$ctrl.facebookAd.budget_type"
-                    ng-change="$ctrl.setSchedule()">
-              <option value="daily">Daily Budget</option>
-              <option value="lifetime">Lifetime Budget</option>
+                    ng-change="$ctrl.setSchedule()"
+                    ng-options="key as value for (key, value) in $ctrl.facebookAdConfigOptions.budget_type">
             </select>
           </div>
 
@@ -196,9 +189,9 @@
 
           <div class="row">
             <div class="col-md-6">
-              <select id="optimization_goal" name="optimization_goal" class="form-control" ng-model="$ctrl.facebookAd.optimization_goal">
-                <option value="VIDEO_VIEWS">Video Views</option>
-                <option value="REACH">Daily Unique Reach</option>
+              <select id="optimization_goal" name="optimization_goal" class="form-control"
+                      ng-model="$ctrl.facebookAd.optimization_goal"
+                      ng-options="key as value for (key, value) in $ctrl.facebookAdConfigOptions.optimization_goal">
               </select>
             </div>
           </div>
@@ -233,17 +226,10 @@
         <div class="form-group">
           <strong>WHEN YOU GET CHARGED</strong>
 
-          <div class="radio">
+          <div class="radio" ng-repeat="(key, value) in $ctrl.facebookAdConfigOptions.billing_event">
             <label>
-              <input type="radio" name="billing_event" value="IMPRESSIONS" ng-model="$ctrl.facebookAd.billing_event">
-              Impression - CPM
-            </label>
-          </div>
-
-          <div class="radio">
-            <label>
-              <input type="radio" name="billing_event" value="VIDEO_VIEWS" ng-model="$ctrl.facebookAd.billing_event">
-              10 Second Video View
+              <input type="radio" name="billing_event" value="{{ key }}" ng-model="$ctrl.facebookAd.billing_event">
+                {{ value }}
             </label>
           </div>
         </div>

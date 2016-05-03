@@ -1,7 +1,151 @@
 <h1>Video Ad Summary</h1>
 
+<div class="text-center" ng-if="$ctrl.loading">
+  <i class="fa fa-spin fa-spinner"></i>
+</div>
+
+<div class="row" ng-if="!$ctrl.loading">
+  <div class="col-md-4">
+    <h3>Video Details</h3>
+
+    <div>
+      <span>Vertical:</span>
+      {{ $ctrl.sceneCollection.industry }}
+    </div>
+
+    <div>
+      <span>Type:</span>
+      {{ $ctrl.sceneCollection.ad_type }}
+    </div>
+
+    <div>
+      <span>Theme:</span>
+      {{ $ctrl.sceneCollection.theme }}
+    </div>
+
+    <div>
+      <span>Font:</span>
+      {{ $ctrl.sceneCollection.font }}
+    </div>
+
+    <div>
+      <span>Music:</span>
+      {{ $ctrl.sceneCollection.song }}
+    </div>
+
+    <div>
+      <span>Color:</span>
+      {{ $ctrl.sceneCollection.color }}
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Targeting</h3>
+
+    <div>
+      <span>Segment:</span>
+      {{ $ctrl.facebookAd.targeting_spec_name }}
+    </div>
+
+    <div>
+      <span>Zip Codes:</span>
+      {{ $ctrl.sceneCollection.zip_codes.join(', ') }}
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Ad Spend</h3>
+
+    <div>
+      <span>Ad Account:</span>
+      {{ $ctrl.adAccountName() }}
+    </div>
+
+    <div>
+      <span>Page:</span>
+      {{ $ctrl.pageName() }}
+    </div>
+
+    <div>
+      <span>Ad Set Name:</span>
+      {{ $ctrl.facebookAd.ad_set_name }}
+    </div>
+
+    <div>
+      <span>Thumbnail:</span>
+      <img ng-src="{{ $ctrl.facebookAd.image_url }}" class="img-responsive">
+    </div>
+
+    <div>
+      <span>Text:</span>
+      {{ $ctrl.facebookAd.description }}
+    </div>
+
+    <div>
+      <span>Video Title:</span>
+      {{ $ctrl.facebookAd.title }}
+    </div>
+
+    <div>
+      <span>Website URL:</span>
+      <a ng-href="{{ $ctrl.facebookAd.call_to_action_link }}" target="_blank">
+        {{ $ctrl.facebookAd.call_to_action_link }}
+      </a>
+    </div>
+
+    <div>
+      <span>Display Link:</span>
+      {{ $ctrl.facebookAd.call_to_action_link_caption }}
+    </div>
+
+    <div>
+      <span>Call To Action:</span>
+      {{ $ctrl.facebookAdConfigOptions.call_to_action[$ctrl.facebookAd.call_to_action_type] }}
+    </div>
+
+    <div>
+      <span>{{ $ctrl.facebookAdConfigOptions.budget_type[$ctrl.facebookAd.budget_type] }}</span>
+      {{ $ctrl.facebookAd.budget | currency }}
+    </div>
+
+    <div>
+      <span>Start:</span>
+      {{ ($ctrl.facebookAd.start_time | date: 'short') || 'N/A' }}
+    </div>
+
+    <div>
+      <span>End:</span>
+      {{ ($ctrl.facebookAd.end_time | date: 'short') || 'N/A' }}
+    </div>
+
+    <div>
+      <span>Optimization for Ad Delivery:</span>
+      {{ $ctrl.facebookAdConfigOptions.optimization_goal[$ctrl.facebookAd.optimization_goal] }}
+    </div>
+
+    <div>
+      <span>Bid Amount:</span>
+      {{ ($ctrl.facebookAd.bid_amount | currency) || 'Automatic' }}
+    </div>
+
+    <div>
+      <span>When you get charged:</span>
+      {{ $ctrl.facebookAdConfigOptions.billing_event[$ctrl.facebookAd.billing_event] }}
+    </div>
+
+    <div>
+      <span>Delivery Type:</span>
+      {{ $ctrl.facebookAdConfigOptions.pacing_type[$ctrl.facebookAd.pacing_type] }}
+    </div>
+  </div>
+</div>
+
 <p>
   <a href="" class="btn btn-primary btn-block" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
     PUBLISH VIDEO
   </a>
+</p>
+
+<p class="text-center">
+  <a ui-sref="adConfig({facebookAdId: $ctrl.facebookAd.id})">Back</a>
 </p>

@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function AdConfigController($state, $timeout, facebookAdService, userService) {
+function AdConfigController($state, $timeout, facebookAdService, userService, facebookAdConfigOptions) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -21,6 +21,7 @@ function AdConfigController($state, $timeout, facebookAdService, userService) {
     vm.start = {opened: false};
     vm.end = {opened: false};
     vm.savingAd = false;
+    vm.facebookAdConfigOptions = facebookAdConfigOptions;
 
     fetchFacebookAd();
     fetchUserFacebookData();

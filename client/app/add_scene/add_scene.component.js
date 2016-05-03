@@ -4,7 +4,8 @@ var component = {
   templateUrl: templateUrl,
   controller: AddSceneController,
   bindings: {
-    onAddScene: '&'
+    onAddScene: '&',
+    onClose: '&'
   }
 };
 

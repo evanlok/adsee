@@ -27,3 +27,5 @@ angular.module('adsee', [
   require('./summary/summary.module'),
   require('./media/media.module')
 ]).config(config);
+
+require('./constants');
