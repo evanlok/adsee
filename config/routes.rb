@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :scene_collections, only: [:show, :new, :create, :update], shallow: true do
+    get :summary_info, on: :member
+
     resources :scene_contents, except: [:new, :edit] do
       resources :scene_attributes, only: [:create, :update]
     end

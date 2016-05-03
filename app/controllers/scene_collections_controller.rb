@@ -1,6 +1,6 @@
 class SceneCollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_scene_collection, only: [:show, :update]
+  before_action :load_scene_collection, only: [:show, :update, :summary_info]
   after_action :verify_authorized, except: :new
 
   wrap_parameters include: [*SceneCollection.attribute_names, :facebook_targeting_spec_ids]
@@ -37,6 +37,12 @@ class SceneCollectionsController < ApplicationController
       respond_to do |format|
         format.json { render_json_model_errors(@scene_collection) }
       end
+    end
+  end
+
+  def summary_info
+    respond_to do |format|
+      format.json
     end
   end
 

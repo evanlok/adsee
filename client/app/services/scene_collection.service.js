@@ -4,7 +4,8 @@
       format: 'json'
     },
     {
-      update: {method: 'PUT'}
+      update: {method: 'PUT'},
+      summaryInfo: {method: 'GET', url: '/scene_collections/:id/summary_info'}
     }
   );
 
@@ -15,6 +16,10 @@
   this.update = function (params, data) {
     return resource.update(params, data).$promise;
   };
+
+  this.summaryInfo = function (params) {
+    return resource.summaryInfo(params).$promise;
+  }
 }
 
 module.exports = sceneCollectionService;
