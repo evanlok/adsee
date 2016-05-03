@@ -72,6 +72,7 @@ RSpec.describe VideoGenerator do
         .to receive(:generate_scene_collection)
               .with(scene_collection.hal_id, hash_including(:callback_url, :stream_callback_url))
       expect(subject.generate).to be_a(VideoJob)
+      expect(scene_collection.status).to eq('generating')
     end
   end
 end

@@ -11,6 +11,8 @@ class HalCallbacksController < ApplicationController
         import_video(video_params)
       end
 
+      @video_job.scene_collection.generated!
+
       # TODO: Move this to a background job
       facebook_ad = @video_job.scene_collection.current_facebook_ad
       Facebook::VideoAdManager.new(facebook_ad).run

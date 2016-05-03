@@ -24,6 +24,7 @@ RSpec.describe HalCallbacksController do
       post :create, params
       expect(response).to be_success
       expect(Video.where(scene_collection_id: scene_collection).count).to eq(2)
+
       expect(Video.find_by(resolution: 360)).to have_attributes(duration: params[:duration],
                                                                 thumbnail_url: params[:thumbnail_url],
                                                                 url: params[:videos][0][:url])
@@ -31,6 +32,7 @@ RSpec.describe HalCallbacksController do
       expect(Video.find_by(resolution: 720)).to have_attributes(duration: params[:duration],
                                                                 thumbnail_url: params[:thumbnail_url],
                                                                 url: params[:videos][1][:url])
+      expect(scene_collection.reload.status).to eq('generated')
     end
 
     context 'when more recent video job exists' do
