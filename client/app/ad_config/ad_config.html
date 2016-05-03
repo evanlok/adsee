@@ -1,4 +1,4 @@
-<div class="row ad-config">
+<div class="ad-config">
   <div class="video-nav">
     <ul>
       <li><a href="">Templates</a></li>
@@ -8,7 +8,7 @@
       <li><a href="">Ad Spend</a></li>
     </ul>
   </div>
-  <div class="col-md-5 col-md-offset-3">
+  <div class="ad-config-column">
     <form>
       <h2>Ad Account and Facebook Page</h2>
 
@@ -90,7 +90,7 @@
         <label>BUDGET</label>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 budget-type">
             <select name="budget_type" class="form-control"
                     ng-model="$ctrl.facebookAd.budget_type"
                     ng-change="$ctrl.setSchedule()">
@@ -126,12 +126,12 @@
         </div>
 
         <div ng-show="$ctrl.showDatepicker()" class="schedule-module">
-          <div class="row form-group">
-            <div class="col-md-1">
+          <div class="form-group">
+            <div class="schedule-label">
               START
             </div>
 
-            <div class="col-md-3 ">
+            <div class="date-form">
               <div class="input-group">
                 <input type="text" class="form-control"
                        ng-model="$ctrl.facebookAd.start_time"
@@ -146,18 +146,18 @@
               </div>
             </div>
 
-            <div class="col-md-3 time-selectors">
+            <div class="time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.start_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>
           </div>
 
-          <div class="row form-group">
-            <div class="col-md-1">
+          <div class="form-group">
+            <div class="schedule-label">
               END
             </div>
 
-            <div class="col-md-3">
+            <div class="date-form">
               <div class="input-group">
                 <input type="text" class="form-control"
                        ng-model="$ctrl.facebookAd.end_time"
@@ -172,7 +172,7 @@
               </div>
             </div>
 
-            <div class="col-md-3 time-selectors">
+            <div class="time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.end_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>

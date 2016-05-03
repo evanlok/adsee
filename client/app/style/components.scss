@@ -1004,6 +1004,10 @@
 //Ad Config 
 .ad-config {
   padding-bottom: 50px;
+  .ad-config-column {
+    max-width: 500px;
+    margin: 0 auto;
+  }
   .video-nav {
     margin-bottom: 50px;
   }
@@ -1021,6 +1025,7 @@
       padding-left: 20px;
       font-size: 18px;
       margin-bottom: 0px;
+      height: 34px;
     }
     input[type="text"][required]:focus + label[placeholder]:before,
     input[type="text"][required]:valid + label[placeholder]:before {
@@ -1072,6 +1077,9 @@
       }
     }
   }
+  .budget-type select {
+    margin-bottom: 10px;
+  }
   .schedule-module {
     input[type="text"] {
       height: 33px;
@@ -1089,7 +1097,14 @@
     padding: 0px 10px;
     height: 33px;
   }
+  .date-form {
+    width: 120px;
+    display: inline-block;
+    margin-right: 10px;
+  }
   .time-selectors {
+    width: 120px;
+    display: inline-block;
     input[type="text"] {
       padding: 0px 0px 0px 0px;
     }
@@ -1112,12 +1127,18 @@
       }
     }
   }
+  .schedule-label {
+    margin-bottom: 5px;
+  }
   .uib-daypicker {
     outline: none; 
     box-shadow: none; 
   }
   .uib-datepicker-popup {
     padding: 10px;
+  }
+  .uib-separator {
+    padding: 0px 2px;
   }
   .budget input[type="text"] {
     margin: 4px 0px;
