@@ -30,7 +30,7 @@
         </select>
       </div>
 
-      <h2>Ad Configuration</h2>
+      <h2><i class="fa fa-cogs" aria-hidden="true"></i> Ad Configuration</h2>
 
       <div class="form-group">
         <label for="ad_set_name">AD SET NAME</label>
@@ -52,13 +52,13 @@
       </div>
 
       <div class="form-group">
-        <label for="description">VIDEO DESCRIPTION</label>
-        <textarea id="description" class="form-control" rows="3" ng-model="$ctrl.facebookAd.description"></textarea>
+        <label for="title">VIDEO TITLE</label>
+        <input type="text" id="title" class="form-control" ng-model="$ctrl.facebookAd.title">
       </div>
 
       <div class="form-group">
-        <label for="title">VIDEO TITLE</label>
-        <input type="text" id="title" class="form-control" ng-model="$ctrl.facebookAd.title">
+        <label for="description">VIDEO DESCRIPTION</label>
+        <textarea id="description" class="form-control" rows="4" ng-model="$ctrl.facebookAd.description"></textarea>
       </div>
 
       <div class="form-group">
@@ -84,7 +84,7 @@
         </select>
       </div>
 
-      <h2>How much do you want to spend?</h2>
+      <h2><i class="fa fa-money" aria-hidden="true"></i> Ad Spend</h2>
 
       <div class="form-group">
         <label>BUDGET</label>
@@ -107,7 +107,7 @@
       </div>
 
       <div class="form-group">
-        <strong>SCHEDULE</strong>
+        <label>SCHEDULE</label>
 
         <div ng-show="$ctrl.facebookAd.budget_type === 'daily'">
           <div class="radio">
@@ -131,7 +131,7 @@
               START
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 ">
               <div class="input-group">
                 <input type="text" class="form-control"
                        ng-model="$ctrl.facebookAd.start_time"
@@ -146,7 +146,7 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.start_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>
@@ -172,7 +172,7 @@
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 time-selectors">
               <uib-timepicker ng-model="$ctrl.facebookAd.end_time" hour-step="1" minute-step="5"
                               show-spinners="false"></uib-timepicker>
             </div>
@@ -189,7 +189,7 @@
       </a>
 
       <div ng-show="$ctrl.showAdvanced">
-        <h2>Optimization and Bidding</h2>
+        <h2><i class="fa fa-wrench" aria-hidden="true"></i> Optimization and Bidding</h2>
 
         <div class="form-group">
           <label for="optimization_goal">OPTIMIZATION FOR AD DELIVERY</label>
