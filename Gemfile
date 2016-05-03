@@ -59,6 +59,7 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'concurrent-ruby', require: 'concurrent'
 gem 'concurrent-ruby-ext'
+gem 'high_voltage'
 
 group :development do
   gem 'quiet_assets'

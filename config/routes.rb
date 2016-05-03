@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root 'scene_collections#index'
+  authenticated :user do
+    root 'scene_collections#index', as: :authenticated_root
+  end
+
+  root 'high_voltage/pages#show', id: 'home'
 
   resources :industries, only: [:index] do
     resources :ad_types, only: [:index]
