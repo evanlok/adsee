@@ -105,7 +105,7 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
     sceneContentService.save({sceneCollectionId: vm.sceneCollection.id}, {scene_id: scene.id}).then(function (data) {
       vm.sceneContents.push(data);
       selectSceneContent(_.last(vm.sceneContents));
-      $state.go('sceneEditor');
+      vm.displayAddScene = false;
     });
   }
 
