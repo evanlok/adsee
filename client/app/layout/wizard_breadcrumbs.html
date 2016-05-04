@@ -1,0 +1,23 @@
+<div class="video-nav">
+  <ul>
+    <li ng-class="{active: $ctrl.stateName() === 'targeting'}">
+      <a ui-sref="targeting">Targeting</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.stateName() === 'sceneEditor'}">
+      <a ui-sref="sceneEditor">Scene Editor</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.stateName() === 'preview'}">
+      <a href="" ng-click="$ctrl.goToPreview()">Preview</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.stateName() === 'adConfig'}">
+      <a href="" ng-click="$ctrl.goToAdConfig()">Ad Spend</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.stateName() === 'summary'}">
+      <a ui-sref="summary">Summary</a>
+    </li>
+  </ul>
+</div>

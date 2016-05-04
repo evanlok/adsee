@@ -1,9 +1,17 @@
 class SceneCollectionsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_scene_collection, only: [:show, :update, :summary_info]
-  after_action :verify_authorized, except: :new
+  after_action :verify_authorized, except: [:new, :index]
+  after_action :verify_policy_scoped, only: :index
 
   wrap_parameters include: [*SceneCollection.attribute_names, :facebook_targeting_spec_ids]
+
+  def index
+    @scene_collections = policy_scope(SceneCollection)
+                           .includes(:theme, :videos, :facebook_ads, ad_type: :industry)
+                           .order(id: :desc)
+                           .page(params[:page])
+  end
 
   def new
     @industries = Industry.includes(ad_types: :themes)

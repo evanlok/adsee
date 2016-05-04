@@ -16,6 +16,8 @@ class SceneCollection < ActiveRecord::Base
   # Validations
   validates :user, presence: true
 
+  enum status: { draft: 0, generating: 1, generated: 2, failed: 3 }
+
   def valid_scene_contents?
     scene_contents.includes(:scene_attributes, :scene).all? do |scene_content|
       scene_content.valid? && scene_content.valid_attributes?
@@ -44,6 +46,12 @@ class SceneCollection < ActiveRecord::Base
   end
 
   def current_facebook_ad
-    @current_facebook_ad ||= facebook_ads.first_or_create
+    @current_facebook_ad ||= begin
+      if facebook_ads.loaded?
+        facebook_ads.first || facebook_ads.create
+      else
+        facebook_ads.first_or_create
+      end
+    end
   end
 end

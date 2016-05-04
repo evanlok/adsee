@@ -39,6 +39,7 @@ class VideoGenerator
     }
 
     client.generate_scene_collection(scene_collection.hal_id, params)
+    scene_collection.generating!
     video_job
   end
 

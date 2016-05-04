@@ -170,4 +170,12 @@ FactoryGirl.define do
     end_time { 30.days.from_now }
     pacing_type 'standard'
   end
+
+  factory :video do
+    scene_collection
+    url { Faker::Internet.url }
+    duration 30
+    resolution 720
+    thumbnail_url { Faker::Internet.url }
+  end
 end
