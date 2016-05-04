@@ -13,7 +13,7 @@ module.exports = {
     vendor: [
       'jquery', 
       'jquery-ujs', 
-      'bootstrap-sass/assets/javascripts/bootstrap', 
+      'bootstrap-sass',
       'lodash',
       'angular',
       'angular-resource',
@@ -26,7 +26,7 @@ module.exports = {
       'sortablejs/ng-sortable',
       'filepicker-js',
       'video.js',
-      'videojs-contrib-hls/dist/videojs.hls',
+      'videojs-contrib-hls/dist/videojs-contrib-hls',
       'howler',
       'format-as-currency',
       'moment',
@@ -93,7 +93,6 @@ module.exports = {
       {test: require.resolve("tinycolor2"), loader: "expose?tinycolor"},
       // videojs-contrib-hls requires this
       {test: require.resolve("video.js"), loader: "expose?videojs"},
-      {test: require.resolve("videojs-contrib-hls/dist/videojs.hls"), loader: "imports?this=>window"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
   },

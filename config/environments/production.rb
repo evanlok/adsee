@@ -79,4 +79,11 @@ Rails.application.configure do
 
   # Read webpack manifest from memory
   config.cache_webpack_assets_manifest = true
+
+  config.lograge.enabled = true
+
+  config.lograge.custom_options = lambda do |event|
+    params = event.payload[:params].except('controller', 'action', 'format')
+    { time: event.time, params: params, user_id: event.payload[:user_id] }
+  end
 end

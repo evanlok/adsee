@@ -43,7 +43,6 @@ gem 'oj'
 gem 'oj_mimic_json'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
-gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'paloma', '~> 4.2'
@@ -60,6 +59,8 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'concurrent-ruby', require: 'concurrent'
 gem 'concurrent-ruby-ext'
+gem 'high_voltage'
+gem 'lograge'
 
 group :development do
   gem 'quiet_assets'
@@ -77,7 +78,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

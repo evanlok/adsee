@@ -1,0 +1,27 @@
+<h1>My Videos</h1>
+
+<% @scene_collections.each do |scene_collection| %>
+    <div>
+      <%= link_to "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self' %>
+
+      <% if scene_collection.generated? %>
+          <div>
+            <%= link_to 'Watch', '', 'video-overlay-link' => scene_collection.video.url %>
+          </div>
+      <% end %>
+
+      <div>
+        Video Status: <%= scene_collection.status.capitalize %>
+      </div>
+
+      <div>
+        Ad Status: <%= scene_collection.facebook_ads.first&.status&.capitalize || 'Unpublished' %>
+      </div>
+
+      <div>
+        Created: <%= scene_collection.created_at.to_s(:full) %>
+      </div>
+    </div>
+<% end %>
+
+<%= paginate @scene_collections %>

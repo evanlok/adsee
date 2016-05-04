@@ -44,4 +44,33 @@ RSpec.describe SceneCollection do
       end
     end
   end
+
+  describe '#video' do
+    let(:scene_collection) { create(:scene_collection) }
+    let!(:video_low) { create(:video, scene_collection: scene_collection, resolution: 360) }
+    let!(:video) { create(:video, scene_collection: scene_collection, resolution: 720) }
+
+    it 'returns the highest resolution video' do
+      expect(scene_collection.video).to eq(video)
+    end
+  end
+
+  describe '#current_facebook_ad' do
+    let(:scene_collection) { create(:scene_collection) }
+
+    context 'when facebook ad exists' do
+      let!(:facebook_ad) { create(:facebook_ad, scene_collection: scene_collection) }
+
+      it 'returns facebook ad' do
+        expect(scene_collection.current_facebook_ad).to eq(facebook_ad)
+      end
+    end
+
+    context 'when facebook ad does not exist' do
+      it 'creates new facebook ad' do
+        expect(scene_collection.facebook_ads).to be_empty
+        expect(scene_collection.current_facebook_ad).to be_a(FacebookAd)
+      end
+    end
+  end
 end
