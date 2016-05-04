@@ -12,10 +12,6 @@ var component = {
 function WizardBreadcrumbsController($state, videoJobService, facebookAdService) {
   var vm = this;
 
-  vm.$onInit = function () {
-    console.log($state)
-  };
-
   vm.stateName = stateName;
   vm.goToPreview = goToPreview;
   vm.goToAdConfig = goToAdConfig;
