@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root 'scene_collections#new', as: :authenticated_root
   end
 
-  root 'high_voltage/pages#show', id: 'home'
+  root to: redirect(ENV['HOME_URL']), id: :home
 
   resources :industries, only: [:index] do
     resources :ad_types, only: [:index]
