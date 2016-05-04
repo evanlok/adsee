@@ -1307,3 +1307,30 @@
     margin-top: 20px;
   }
 }
+
+.ad-summary {
+  max-width: 1000px;
+  margin: 0 auto;
+  i {
+    color: $color-2;
+  }
+  h3 {
+    font-weight: 700;
+  }
+  .video-wrap {
+    margin-top: 20px;
+  }
+  .data-lbl {
+    font-weight: 700;
+    color: $color-2;
+  }
+  .button {
+    width: 100%;
+    color: white;
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+  }
+}
