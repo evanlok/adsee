@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :scene_attributes, only: [:create, :update]
     end
 
-    resources :video_jobs, only: [:show] do
+    resources :video_jobs, only: [:index, :show] do
       collection do
         post :preview
         post :generate
@@ -74,6 +74,6 @@ Rails.application.routes.draw do
   get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
   get '/scene_collections/:id/edit/*angular_path', to: 'home#scene_editor'
   get '/scene_collections/:id/summary', to: 'home#scene_editor'
-  get '/previews/:video_job_id', to: 'home#scene_editor'
-  get '/ad_config/:facebook_ad_id', to: 'home#scene_editor'
+  get '/scene_collections/:id/previews/:video_job_id', to: 'home#scene_editor'
+  get '/scene_collections/:id/ad_config/:facebook_ad_id', to: 'home#scene_editor'
 end

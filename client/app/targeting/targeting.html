@@ -1,16 +1,5 @@
 <div class="targeting">
   <div class="row targeting-header">
-
-    <div class="video-nav">
-      <ul>
-        <li><a href="">Templates</a></li>
-        <li><a href="">Targeting</a></li>
-        <li><a href="">Scene Editor</a></li>
-        <li><a href="">Preview</a></li>
-        <li><a href="">Ad Spend</a></li>
-      </ul>
-    </div>
-
     <div class="col-md-12">
 
       <h1>TARGET SEGMENTS</h1>
@@ -24,14 +13,15 @@
     <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
       <div class="col-md-3 col-xs-6">
         <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
-           ng-class="{selected: $ctrl.selected(targetingSpec)}" style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
-           <div class="overlay-bg">
+           ng-class="{selected: $ctrl.selected(targetingSpec)}"
+           style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
+          <div class="overlay-bg">
             <h4 class="target-name">{{ targetingSpec.name }}</h4>
 
             <p class="target-description">
               {{ targetingSpec.description }}
             </p>
-           </div>
+          </div>
         </a>
       </div>
     </div>

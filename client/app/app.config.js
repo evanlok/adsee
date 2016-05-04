@@ -6,35 +6,47 @@ var filepicker = require('filepicker-js');
 
 var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY) {
   $stateProvider
-    .state('targeting', {
-      url: '/scene_collections/:sceneCollectionId/targeting',
+    .state('sceneCollectionWizard', {
+      abstract: true,
+      url: '/scene_collections/:sceneCollectionId',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<targeting scene-collection-id="{{ sceneCollectionId }}"></targeting>')($stateParams);
+        return $interpolate('<scene-collection-wizard scene-collection-id="{{ sceneCollectionId }}"></scene-collection-wizard>')($stateParams);
       }
     })
+    .state('targeting', {
+      url: '/targeting',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<targeting scene-collection-id="{{ sceneCollectionId }}"></targeting>')($stateParams);
+      },
+      parent: 'sceneCollectionWizard'
+    })
     .state('sceneEditor', {
-      url: '/scene_collections/:sceneCollectionId/edit',
+      url: '/edit',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<scene-editor scene-collection-id="{{ sceneCollectionId }}"></scene-editor>')($stateParams);
-      }
+      },
+      parent: 'sceneCollectionWizard'
     })
     .state('preview', {
       url: '/previews/:videoJobId',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<preview video-job-id="{{ videoJobId }}"></preview>')($stateParams);
-      }
+      },
+      parent: 'sceneCollectionWizard'
     })
     .state('adConfig', {
       url: '/ad_config/:facebookAdId',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<ad-config facebook-ad-id="{{ facebookAdId }}"></ad-config>')($stateParams);
-      }
+      },
+      parent: 'sceneCollectionWizard'
     })
     .state('summary', {
-      url: '/scene_collections/:sceneCollectionId/summary',
+      url: '/summary',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<summary scene-collection-id="{{ sceneCollectionId }}"></summary>')($stateParams);
-      }
+      },
+      parent: 'sceneCollectionWizard'
     });
 
   $locationProvider.html5Mode(true);

@@ -13,6 +13,7 @@ angular.module('adsee', [
   'bcherny/formatAsCurrency',
   require('./admin/admin.module'),
   require('./shared/shared.module'),
+  require('./layout/layout.module'),
   require('./targeting/targeting.module'),
   require('./scene_editor/scene_editor.module'),
   require('./theme_settings/theme_settings.module'),

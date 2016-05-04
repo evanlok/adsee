@@ -5,10 +5,15 @@ function VideoJobService($resource) {
       format: 'json'
     },
     {
+      query: {method: 'GET', url: '/scene_collections/:sceneCollectionId/video_jobs', isArray: true},
       preview: {method: 'POST', url: '/scene_collections/:sceneCollectionId/video_jobs/preview'},
       generate: {method: 'POST', url: '/scene_collections/:sceneCollectionId/video_jobs/generate'}
     }
   );
+
+  this.query = function (params) {
+    return resource.query(params).$promise;
+  };
 
   this.get = function (params) {
     return resource.get(params).$promise;
