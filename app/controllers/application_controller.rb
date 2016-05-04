@@ -27,4 +27,9 @@ class ApplicationController < ActionController::Base
   def render_json_model_errors(record)
     render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
   end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:user_id] = current_user&.id
+  end
 end
