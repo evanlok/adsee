@@ -134,6 +134,10 @@ GEM
       addressable
       faraday
       multi_json
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -318,6 +322,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   koala
+  lograge
   mini_magick
   newrelic_rpm
   oj
