@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   authenticated :user do
-    root 'scene_collections#index', as: :authenticated_root
+    root 'scene_collections#new', as: :authenticated_root
   end
 
   root 'high_voltage/pages#show', id: 'home'
