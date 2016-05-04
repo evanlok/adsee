@@ -1026,6 +1026,9 @@
       font-size: 18px;
       margin-bottom: 0px;
       height: 34px;
+      &:focus {
+        border: 2px solid $color-6;
+      }
     }
     input[type="text"][required]:focus + label[placeholder]:before,
     input[type="text"][required]:valid + label[placeholder]:before {
@@ -1054,6 +1057,9 @@
       border: 2px solid #ccc;
       border-radius: 10px;
       &:hover {
+        border: 2px solid $color-6;
+      }
+      &:focus {
         border: 2px solid $color-6;
       }
     }
