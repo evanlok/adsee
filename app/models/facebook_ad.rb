@@ -83,14 +83,11 @@ class FacebookAd < ActiveRecord::Base
   def build_targeting_spec
     targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
 
-    if scene_collection.zip_codes
-      geo_locations = targeting_spec[:geo_locations] || {}
+    if scene_collection.zip_codes.present?
       zip_json = scene_collection.zip_codes.map { |zip_code| { key: "US:#{zip_code}" } }
-      geo_locations[:zips] = zip_json
+      geo_locations = { zips: zip_json }
       targeting_spec[:geo_locations] = geo_locations
-    end
-
-    if targeting_spec[:geo_locations].blank?
+    else
       targeting_spec[:geo_locations] = { countries: ['US'] }
     end
 
