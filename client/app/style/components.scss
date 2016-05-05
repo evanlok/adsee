@@ -710,6 +710,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   -webkit-order: 1;
   order: 1;
 }
+.add-scene-wrapper {
+  width: 150px;
+  float: left;
+  position: fixed;
+}
+.scenesbar-thumb-wrapper {
+  width: 100%;
+  padding: 0px 130px;
+}
 .add-scene-button {
   display: inline-block;
   height: 80px;
@@ -721,7 +730,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   text-align: center;
   border: 3px solid $color-2;
   border-radius: 5px;
-  margin: 0px 6px 0px 5px;
+  margin-right: 10px;
   i {
     font-size: 36px;
     display: block;
@@ -763,7 +772,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   order: 2;
   max-width: 164px;
   right: 0px;
-
+  position: fixed;
 }
 .preview-button {
   height: 100%;
