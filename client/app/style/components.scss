@@ -550,6 +550,8 @@
     padding: 15px 0px 20px;
     display: block;
     color: white;
+    outline: none; 
+    box-shadow: none;
     &:hover {
       color: $color-6;
     }
@@ -666,6 +668,11 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  .selected {
+    img {
+      outline: 3px solid $color-2;
+    }
+  }
 }
 .scene-thumbs-wrapper {
   -webkit-box-flex: 4;

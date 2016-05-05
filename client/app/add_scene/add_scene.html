@@ -12,7 +12,7 @@
     <div class="row" ng-repeat="scenesChunk in scenesChunks">
       <div class="scene-button col-md-3" ng-repeat="scene in scenesChunk">
         <div class="scene-thumb-padding">
-          <a href="" class="play-sample">SAMPLE <i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
+          <a video-overlay-link="{{ scene.preview_video_url }}" class="play-sample">SAMPLE <i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
           <a href="" ng-click="$ctrl.onAddScene({scene: scene})" class="scene-thumb-box">
             <div>
               <img ng-src="{{ scene.thumbnail_small_url }}">
