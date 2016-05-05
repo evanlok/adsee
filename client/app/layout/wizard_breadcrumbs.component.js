@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function WizardBreadcrumbsController($state, videoJobService, facebookAdService) {
+function WizardBreadcrumbsController($state, $window, videoJobService, facebookAdService) {
   var vm = this;
 
   vm.stateName = stateName;
@@ -22,7 +22,10 @@ function WizardBreadcrumbsController($state, videoJobService, facebookAdService)
 
   function goToPreview() {
     videoJobService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
-      $state.go('preview', {videoJobId: data[0].id});
+      // Need to redirect to non-ssl host for preview streaming
+      //$state.go('preview', {videoJobId: data[0].id});
+      var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
+      $window.location = 'http://' + hostWithPort + '/scene_collections/' + vm.sceneCollectionId + '/previews/' + data[0].id;
     });
   }
 

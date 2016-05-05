@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
+function SceneEditorController($state, $window, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
   var vm = this;
 
@@ -146,7 +146,10 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
     vm.previewLoading = true;
 
     videoJobService.preview({sceneCollectionId: vm.sceneCollection.id}).then(function (videoJob) {
-      $state.go('preview', {videoJobId: videoJob.id});
+      // Need to redirect to non-ssl host for preview streaming
+      // $state.go('preview', {videoJobId: videoJob.id});
+      var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
+      $window.location = 'http://' + hostWithPort + '/scene_collections/' + vm.sceneCollectionId + '/previews/' + videoJob.id
     }, function onError() {
       // Skip preview if there is an error
       facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
