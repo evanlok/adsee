@@ -27,6 +27,21 @@ angular.module('adsee', [
   require('./ad_config/ad_config.module'),
   require('./summary/summary.module'),
   require('./media/media.module')
-]).config(config);
+]).config(config)
+  .run(function /*@ngInject*/($rootScope, $window, $state, sslEnabled) {
+    // Redirect preview to non-ssl url so that streaming works correctly
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+      if (sslEnabled) {
+        var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
+        var path = $state.href(toState.name, toParams);
+
+        if (toState.name === 'preview' && $window.location.protocol !== 'http:') {
+          $window.location = 'http://' + hostWithPort + path;
+        } else if ($window.location.protocol !== 'https:') {
+          $window.location = 'https://' + hostWithPort + path;
+        }
+      }
+    });
+});
 
 require('./constants');

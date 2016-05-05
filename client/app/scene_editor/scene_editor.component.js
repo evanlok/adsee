@@ -11,7 +11,7 @@ var component = {
 
 
 /*@ngInject*/
-function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
+function SceneEditorController($state, $window, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
   var vm = this;
 

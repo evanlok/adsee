@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function WizardBreadcrumbsController($state, videoJobService, facebookAdService) {
+function WizardBreadcrumbsController($state, $window, videoJobService, facebookAdService) {
   var vm = this;
 
   vm.stateName = stateName;
