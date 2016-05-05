@@ -2,4 +2,5 @@
   angular.module('adsee.uploader').value('fonts', <%= raw @fonts.to_json %>);
   angular.module('adsee.uploader').value('songs', <%= raw @songs.to_json %>);
   angular.module('adsee.sceneEditor').value('transitions', <%= raw @transitions.to_json %>);
+  angular.module('adsee').value('sslEnabled', <%= Rails.application.config.force_ssl %>);
 </script>

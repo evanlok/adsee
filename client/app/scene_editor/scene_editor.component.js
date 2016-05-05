@@ -146,10 +146,7 @@ function SceneEditorController($state, $window, sceneCollectionService, sceneCon
     vm.previewLoading = true;
 
     videoJobService.preview({sceneCollectionId: vm.sceneCollection.id}).then(function (videoJob) {
-      // Need to redirect to non-ssl host for preview streaming
-      // $state.go('preview', {videoJobId: videoJob.id});
-      var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
-      $window.location = 'http://' + hostWithPort + '/scene_collections/' + vm.sceneCollectionId + '/previews/' + videoJob.id
+      $state.go('preview', {videoJobId: videoJob.id});
     }, function onError() {
       // Skip preview if there is an error
       facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {

@@ -22,10 +22,7 @@ function WizardBreadcrumbsController($state, $window, videoJobService, facebookA
 
   function goToPreview() {
     videoJobService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
-      // Need to redirect to non-ssl host for preview streaming
-      //$state.go('preview', {videoJobId: data[0].id});
-      var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
-      $window.location = 'http://' + hostWithPort + '/scene_collections/' + vm.sceneCollectionId + '/previews/' + data[0].id;
+      $state.go('preview', {videoJobId: data[0].id});
     });
   }
 
