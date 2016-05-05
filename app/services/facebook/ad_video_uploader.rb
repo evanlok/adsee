@@ -3,7 +3,6 @@ module Facebook
     FailedUploadException = Class.new(StandardError)
 
     GRAPH_VIDEO_API_BASE = 'https://graph-video.facebook.com'.freeze
-    FACEBOOK_API_VERSION = 'v2.6'.freeze
 
     attr_reader :ad_account_id
 
@@ -71,7 +70,7 @@ module Facebook
     private
 
     def advideos_path
-      "/#{FACEBOOK_API_VERSION}/#{ad_account_id}/advideos"
+      "/#{ENV['FACEBOOK_API_VERSION']}/#{ad_account_id}/advideos"
     end
 
     def graph_video_client

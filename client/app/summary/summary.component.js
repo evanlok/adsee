@@ -1,4 +1,5 @@
 var templateUrl = require('./summary.html');
+var modalTemplateUrl = require('./published_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -9,7 +10,7 @@ var component = {
 };
 
 /*@ngInject*/
-function SummaryController($q, sceneCollectionService, userService, videoJobService, facebookAdConfigOptions) {
+function SummaryController($q, $window, $uibModal, sceneCollectionService, userService, videoJobService, facebookAdConfigOptions) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -76,7 +77,13 @@ function SummaryController($q, sceneCollectionService, userService, videoJobServ
     vm.publishing = true;
 
     videoJobService.generate({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
-      alert('Video has been published!');
+      var modal = $uibModal.open({
+        templateUrl: modalTemplateUrl
+      });
+
+      modal.result.finally(function () {
+        $window.location = '/scene_collections';
+      });
     }).finally(function () {
       vm.publishing = false;
     });

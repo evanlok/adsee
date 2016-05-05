@@ -13,7 +13,7 @@ RSpec.describe Facebook::VideoStatusPoller do
 
     it 'fetches video status' do
       with = [
-        "/#{Facebook::AdVideoUploader::FACEBOOK_API_VERSION}/1234",
+        "/#{ENV['FACEBOOK_API_VERSION']}/1234",
         { fields: kind_of(String), access_token: 'token' }
       ]
 

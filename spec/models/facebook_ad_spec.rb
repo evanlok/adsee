@@ -91,10 +91,10 @@ RSpec.describe FacebookAd do
       context 'and a preselected bundle' do
         let(:targeting_spec) { create(:facebook_targeting_spec, data: { geo_locations: { countries: ['US'] } }) }
 
-        it 'merges targeting data' do
+        it 'overrides targeting spec data' do
           facebook_ad.scene_collection.facebook_targeting_specs = [targeting_spec]
           facebook_ad.scene_collection.zip_codes = %w(94102 94107)
-          expected = { geo_locations: { countries: ['US'], zips: [{ key: 'US:94102' }, { key: 'US:94107' }] } }.to_json
+          expected = { geo_locations: { zips: [{ key: 'US:94102' }, { key: 'US:94107' }] } }.to_json
           expect(subject[:targeting]).to eq(expected)
         end
       end

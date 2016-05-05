@@ -16,7 +16,7 @@ module Facebook
     def wait_for_video
       ready = false
       response = {}
-      path = "/#{Facebook::AdVideoUploader::FACEBOOK_API_VERSION}/#{video_id}"
+      path = "/#{ENV['FACEBOOK_API_VERSION']}/#{video_id}"
       retries = 0
 
       until ready

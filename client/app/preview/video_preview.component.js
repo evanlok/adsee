@@ -1,6 +1,6 @@
 var templateUrl = require('./video_preview.html');
 var videojs = require('video.js');
-require('videojs-contrib-hls/dist/videojs.hls');
+require('videojs-contrib-hls/dist/videojs-contrib-hls');
 
 var component = {
   templateUrl: templateUrl,
