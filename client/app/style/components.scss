@@ -526,6 +526,21 @@
       }
     }
   }
+  .image-thumb-column {
+    padding: 0px 7px;
+  }
+  .delete-box {
+    position: absolute;
+    background-color: hsla(0, 0%, 0.0000%, 0.7000);
+    padding: 1px 5px;
+    a {
+      color: white;
+      font-size: 14px;
+      &:hover {
+        color: $color-6;
+      }
+    }
+  }
   .media-upload-button {
     display: block;
     color: white;
@@ -547,6 +562,9 @@
     img {
       border: 1px solid hsl(207, 11.3139%, 20.7635%);
     }
+  }
+  .image-thumb-box {
+    margin-bottom: 15px;
   }
 }
 .media-input-group {
