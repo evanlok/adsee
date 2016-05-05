@@ -1,4 +1,5 @@
 <script type="text/javascript">
   angular.module('adsee').constant('S3_BUCKET_NAME', '<%= ENV['S3_BUCKET_NAME'] %>');
   angular.module('adsee').constant('FILESTACK_API_KEY', '<%= ENV['FILESTACK_API_KEY'] %>');
+  angular.module('adsee').value('SSL_ENABLED', <%= ENV['SSL_ENABLED'].present? %>);
 </script>
