@@ -1,23 +1,23 @@
 <div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos">
   <div class="col-md-6 image-thumb-column" ng-repeat="video in videoGroup">
     <div class="video-thumb-box">
+      <a video-overlay-link="{{ video.url }}" autoplay="true" class="play-sample">SAMPLE <i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
       <div ng-if="$ctrl.showDelete" class="delete-box">
         <a href="" ng-click="$ctrl.onDelete({video: video})">
           <i class="fa fa-trash"></i>
         </a>
       </div>
-      <a href="" video-overlay-link="{{ video.url }}" autoplay="true" class="video-thumb-link">
+      <div href="" ng-click="$ctrl.onSelect({video: video})" class="video-thumb-link">
         <div class="text-center">
 
-          <i class="fa fa-file-video-o video-icon"
-             ng-click="$ctrl.onSelect({video: video})">
+          <i class="fa fa-file-video-o video-icon">
           </i>
 
           <div>
               {{ video.filename }}
           </div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
