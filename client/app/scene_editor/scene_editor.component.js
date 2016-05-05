@@ -8,6 +8,8 @@ var component = {
   }
 };
 
+
+
 /*@ngInject*/
 function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
@@ -45,6 +47,8 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
   vm.sceneContentPosition = sceneContentPosition;
   vm.updateSceneContentPosition = updateSceneContentPosition;
   vm.preview = preview;
+
+
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {

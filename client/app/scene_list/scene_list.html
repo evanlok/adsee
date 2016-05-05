@@ -1,10 +1,10 @@
-<div class="scenesbar-thumb-wrapper">
-  <ul class="list-inline pull-left" ng-sortable="$ctrl.sceneListConfig">
-    <div class="pull-left">
-      <a class="add-scene-button" ng-click="$ctrl.onAddScene()">
-        <i class="fa fa-plus-circle"></i>Add a scene
-      </a>
-    </div>
+<div class="add-scene-wrapper">
+  <a class="add-scene-button" ng-click="$ctrl.onAddScene()">
+    <i class="fa fa-plus-circle"></i>Add a scene
+  </a>
+</div>
+
+  <ul class="list-inline pull-left scenesbar-thumb-wrapper" ng-sortable="$ctrl.sceneListConfig">
     <li ng-repeat="sceneContent in $ctrl.sceneContents"
         ng-class="{selected: $ctrl.isSelected(sceneContent)}" class="scene-timeline-thumb">
       <div class="text-center scene-number">{{ $index + 1 }}</div>
@@ -14,4 +14,4 @@
       </a>
     </li>
   </ul>
-</div>
+
