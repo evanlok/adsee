@@ -666,6 +666,11 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  .selected {
+    img {
+      outline: 3px solid $color-2;
+    }
+  }
 }
 .scene-thumbs-wrapper {
   -webkit-box-flex: 4;
