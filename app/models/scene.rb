@@ -2,6 +2,7 @@ class Scene < ActiveRecord::Base
   acts_as_taggable
   mount_uploader :thumbnail, ThumbnailUploader
   mount_uploader :preview_video, FileUploader
+  mount_uploader :guide_video, FileUploader
 
   # Associations
   belongs_to :scene_category

@@ -18,4 +18,8 @@ class HomeController < ApplicationController
   def disable_ssl?
     request.path =~ /\/previews/
   end
+
+  def ssl_configured?
+    super && request.path !~ /\/previews/
+  end
 end

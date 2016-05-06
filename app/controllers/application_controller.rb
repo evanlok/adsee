@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  force_ssl if: :ssl_configured?
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -31,5 +33,9 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
     payload[:user_id] = current_user&.id
+  end
+
+  def ssl_configured?
+    ENV['SSL_ENABLED'].present?
   end
 end
