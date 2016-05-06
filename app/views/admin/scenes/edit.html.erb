@@ -6,6 +6,7 @@
   <%= f.input :tags, collection: @scene.tag_list, label: 'Tags', input_html: { multiple: 'multiple', style: 'width: 100%' } %>
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :large %>
   <%= render 'admin/shared/video_form_field', f: f, name: :preview_video, label_name: 'Preview video' %>
+  <%= render 'admin/shared/video_form_field', f: f, name: :guide_video, label_name: 'Guide video' %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', admin_scenes_path, class: 'btn btn-default' %>
