@@ -1424,3 +1424,38 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-top: 40px;
   }
 }
+
+.my-videos {
+  max-width: 1200px;
+  margin: 40px auto;
+  .video-title {
+    font-size: 22px;
+  }
+  .video-item {
+    background-color: hsl(210, 10.3448%, 15.3725%);
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-info {
+    padding: 10px 20px;
+  }
+  .watch-button {
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+    background-color: $color-2;
+    float: right;
+    text-align: center;
+    a {
+      height: 100%;
+      padding-top: 30px;
+      display: block;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+}

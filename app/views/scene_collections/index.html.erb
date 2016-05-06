@@ -1,27 +1,36 @@
-<h1>My Videos</h1>
+<div class="row my-videos">
+  <div class="col-md-12">
+    <h1>My Videos</h1>
 
-<% @scene_collections.each do |scene_collection| %>
-    <div>
-      <%= link_to "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self' %>
 
-      <% if scene_collection.generated? %>
-          <div>
-            <%= link_to 'Watch', '', 'video-overlay-link' => scene_collection.video.url %>
-          </div>
-      <% end %>
+    <% @scene_collections.each do |scene_collection| %>
+        <div class="video-item">
+          <% if scene_collection.generated? %>
+              <div class="watch-button">
+                <%= link_to 'Watch', '', 'video-overlay-link' => scene_collection.video.url %>
+              </div>
+          <% end %>
 
-      <div>
-        Video Status: <%= scene_collection.status.capitalize %>
-      </div>
+          <div class="video-info">
+            <%= link_to "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self', class: "video-title" %>
+            <div>
+              <span>
+                Video Status: <%= scene_collection.status.capitalize %>
+              </span>
+              <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+              <span>
+                Ad Status: <%= scene_collection.facebook_ads.first&.status&.capitalize || 'Unpublished' %>
+              </span>
+              <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+              <span>
+                Created: <%= scene_collection.created_at.to_s(:full) %>
+              </span>
+            </div>
+          </div>        
+        </div>
+    <% end %>
 
-      <div>
-        Ad Status: <%= scene_collection.facebook_ads.first&.status&.capitalize || 'Unpublished' %>
-      </div>
+    <%= paginate @scene_collections %>
 
-      <div>
-        Created: <%= scene_collection.created_at.to_s(:full) %>
-      </div>
-    </div>
-<% end %>
-
-<%= paginate @scene_collections %>
+  </div>
+</div>
