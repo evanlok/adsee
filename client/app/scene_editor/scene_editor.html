@@ -6,7 +6,11 @@
   <div class="action-bar">
     <div class="industry-type-header">
 
-      {{ $ctrl.sceneCollection.industry }} | {{ $ctrl.sceneCollection.ad_type }}
+      {{ $ctrl.sceneCollection.industry }} 
+
+      <span ng-if="$ctrl.sceneCollection.ad_type">
+        | {{ $ctrl.sceneCollection.ad_type }}
+      </span>
 
       <span ng-if="$ctrl.sceneCollection.theme">
         | {{ $ctrl.sceneCollection.theme }}
@@ -66,10 +70,10 @@
         <div class="scene-actionbar">
 
             <a href="" class="delete-scene pull-left" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent)">
-              <i class="fa fa-trash"></i>
+              <i class="fa fa-trash"></i> delete scene
             </a>
 
-            <div class="pull-left">
+            <div class="pull-right">
               <select ng-model="$ctrl.selectedSceneContent.transition_id"
                       ng-options="transition.id as transition.name for transition in $ctrl.transitions"
                       ng-change="$ctrl.updateSceneContentTransition()">
