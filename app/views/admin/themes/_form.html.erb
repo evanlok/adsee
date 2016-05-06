@@ -9,5 +9,5 @@
   <%= render 'admin/shared/video_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', admin_themes_path, class: 'btn btn-default' %>
+  <%= link_to 'Cancel', admin_themes_path, class: 'btn btn-default', target: '_self' %>
 <% end %>

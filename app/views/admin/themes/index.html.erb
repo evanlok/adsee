@@ -1,7 +1,7 @@
 <h1 class="page-header">Themes</h1>
 
 <p>
-  <%= link_to 'New Theme', new_admin_theme_path %>
+  <%= link_to 'New Theme', new_admin_theme_path, target: '_self' %>
 </p>
 
 <table class="table">
@@ -18,17 +18,17 @@
   <tbody>
   <% @themes.each do |theme| %>
     <tr>
-      <td><%= link_to theme.name, [:edit, :admin, theme] %></td>
+      <td><%= link_to theme.name, [:edit, :admin, theme], target: '_self' %></td>
       <td><%= truncate(theme.description) %></td>
-      <td><%= link_to theme.ad_type.name, [:edit, :admin, theme.ad_type] %></td>
+      <td><%= link_to theme.ad_type.name, [:edit, :admin, theme.ad_type], target: '_self' %></td>
       <td><%= theme.theme_variants.map { |tv| tv.video_type.name }.join(', ') %></td>
 
       <td class="actions">
-        <%= link_to [:edit, :admin, theme], title: 'Edit' do %>
+        <%= link_to [:edit, :admin, theme], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
 
-        <%= link_to [:admin, theme], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'} do %>
+        <%= link_to [:admin, theme], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'}, target: '_self' do %>
           <i class="fa fa-trash-o"></i>
         <% end %>
       </td>

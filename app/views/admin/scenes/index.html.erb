@@ -1,7 +1,7 @@
 <h1 class="page-header">Scenes</h1>
 
 <p>
-  <%= link_to 'Import Scenes', import_admin_scenes_path, method: :post, class: 'btn btn-primary' %>
+  <%= link_to 'Import Scenes', import_admin_scenes_path, method: :post, class: 'btn btn-primary', target: '_self' %>
 </p>
 
 <table class="table">
@@ -22,7 +22,7 @@
       <td><%= scene.tags.map(&:name).join(', ') %></td>
       <td><%= scene.hal_id %></td>
       <td class="actions">
-        <%= link_to [:edit, :admin, scene], title: 'Edit' do %>
+        <%= link_to [:edit, :admin, scene], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
       </td>

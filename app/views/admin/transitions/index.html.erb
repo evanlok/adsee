@@ -1,7 +1,7 @@
 <h1 class="page-header">Transitions</h1>
 
 <p>
-  <%= link_to 'New Transition', new_admin_transition_path %>
+  <%= link_to 'New Transition', new_admin_transition_path, target: '_self' %>
 </p>
 
 <table class="table">
@@ -20,11 +20,11 @@
       <td><%= transition.value %></td>
       <td><%= truncate(transition.description) %></td>
       <td class="actions">
-        <%= link_to [:edit, :admin, transition], title: 'Edit' do %>
+        <%= link_to [:edit, :admin, transition], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
 
-        <%= link_to [:admin, transition], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+        <%= link_to [:admin, transition], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
           <i class="fa fa-trash-o"></i>
         <% end %>
       </td>
