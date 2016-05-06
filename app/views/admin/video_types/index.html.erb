@@ -1,7 +1,7 @@
 <h1 class="page-header">Video Types</h1>
 
 <p>
-  <%= link_to 'New Video Type', new_admin_video_type_path %>
+  <%= link_to 'New Video Type', new_admin_video_type_path, target: '_self' %>
 </p>
 
 <table class="table">
@@ -15,14 +15,14 @@
   <tbody>
   <% @video_types.each do |video_type| %>
     <tr>
-      <td><%= link_to video_type.name, [:edit, :admin, video_type] %></td>
+      <td><%= link_to video_type.name, [:edit, :admin, video_type], target: '_self' %></td>
       <td><%= simple_format video_type.description %></td>
       <td class="actions">
-        <%= link_to [:edit, :admin, video_type], title: 'Edit' do %>
+        <%= link_to [:edit, :admin, video_type], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
 
-        <%= link_to [:admin, video_type], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+        <%= link_to [:admin, video_type], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
           <i class="fa fa-trash-o"></i>
         <% end %>
       </td>

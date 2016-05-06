@@ -1,7 +1,7 @@
 <h1 class="page-header">Facebook Targeting Specs</h1>
 
 <p>
-  <%= link_to 'New Facebook Targeting Spec', new_admin_facebook_targeting_spec_path %>
+  <%= link_to 'New Facebook Targeting Spec', new_admin_facebook_targeting_spec_path, target: '_self' %>
 </p>
 
 <table class="table">
@@ -15,14 +15,14 @@
   <tbody>
   <% @fb_targeting_specs.each do |fb_targeting_spec| %>
       <tr>
-        <td><%= link_to fb_targeting_spec.name, [:edit, :admin, fb_targeting_spec] %></td>
+        <td><%= link_to fb_targeting_spec.name, [:edit, :admin, fb_targeting_spec], target: '_self' %></td>
         <td><%= fb_targeting_spec.data.to_json %></td>
         <td class="actions">
-          <%= link_to [:edit, :admin, fb_targeting_spec], title: 'Edit' do %>
+          <%= link_to [:edit, :admin, fb_targeting_spec], title: 'Edit', target: '_self' do %>
               <i class="fa fa-pencil"></i>
           <% end %>
 
-          <%= link_to [:admin, fb_targeting_spec], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <%= link_to [:admin, fb_targeting_spec], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
               <i class="fa fa-trash-o"></i>
           <% end %>
         </td>

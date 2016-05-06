@@ -22,7 +22,7 @@
         <td><%= video.filename %></td>
         <td><%= video.created_at.to_s(:full) %></td>
         <td class="actions">
-          <%= link_to [:admin, video], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %>
+          <%= link_to [:admin, video], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
               <i class="fa fa-trash-o"></i>
           <% end %>
         </td>

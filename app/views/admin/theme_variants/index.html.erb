@@ -1,7 +1,7 @@
 <h1 class="page-header">Theme Variants</h1>
 
 <p>
-  <%= link_to 'New Theme Variant', new_admin_theme_variant_path %>
+  <%= link_to 'New Theme Variant', new_admin_theme_variant_path, target: '_self' %>
 </p>
 
 <table class="table">
@@ -18,16 +18,16 @@
   <% @theme_variants.each do |theme_variant| %>
     <tr>
       <td><%= theme_variant.id %></td>
-      <td><%= link_to theme_variant.theme.name, [:edit, :admin, theme_variant] %></td>
+      <td><%= link_to theme_variant.theme.name, [:edit, :admin, theme_variant], target: '_self' %></td>
       <td><%= theme_variant.video_type.name %></td>
       <td><%= theme_variant.scenes.map(&:name).join(', ') %></td>
 
       <td class="actions">
-        <%= link_to [:edit, :admin, theme_variant], title: 'Edit' do %>
+        <%= link_to [:edit, :admin, theme_variant], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
 
-        <%= link_to [:admin, theme_variant], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'} do %>
+        <%= link_to [:admin, theme_variant], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?'}, target: '_self' do %>
           <i class="fa fa-trash-o"></i>
         <% end %>
       </td>

@@ -4,7 +4,7 @@
 
   <% if f.object.send("#{name}?") %>
     <br>
-    <%= link_to "Download #{local_assigns[:label_name] || name}", f.object.send(name).url, target: '_blank' %>
+    <%= link_to "Download #{local_assigns[:label_name] || name}", f.object.send(name).url, target: '_blank', target: '_self' %>
 
     <div class="checkbox">
       <label>
