@@ -100,3 +100,29 @@ select:focus {
 .text-divider-blue {
   color: $color-2;
 }
+.modal-content {
+  background: none;
+  text-align: center;
+  box-shadow: none;
+  margin-top: 20%;
+  border: none;
+  h1 {
+    font-size: 40px;
+  }
+  .button {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+}
+.modal-header {
+  border-bottom: none;
+}
+.modal-backdrop.in  {
+  opacity: 0.7;
+}
