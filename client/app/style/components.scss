@@ -26,7 +26,7 @@
 
 // Input/Field Animations
 
-.text-input-group, .login-page, .ad-config .form-group {
+.text-input-group, .login-page, .ad-config .form-group, .signup-page {
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -1400,7 +1400,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 
-.ad-summary {
+.ad-summary, .signup-page {
   max-width: 1000px;
   margin: 0 auto;
   i {
@@ -1426,7 +1426,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-top: 40px;
   }
 }
-
+.signup-page {
+  padding-top: 40px;
+  .button {
+    margin: 0px 0px 20px;
+  }
+}
 .my-videos {
   max-width: 1200px;
   margin: 40px auto;
@@ -1464,3 +1469,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .publish-modal-padding {
   margin-top: 200px;
 }
+
