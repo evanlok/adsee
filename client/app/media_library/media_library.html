@@ -1,27 +1,31 @@
 <div class="media-library">
 
-  <div>
-    <ul class="nav nav-pills">
-      <li>
-        <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}">images</a>
-      </li>
-      <li>
-        <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}">videos</a>
-      </li>
-      <li class="stock-media pull-right">
-        stock:
-        <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}"><i class="fa fa-picture-o"></i></a>
-        <a href="" ng-click="$ctrl.showTab('stockVideos')" ng-class="{active: $ctrl.display.stockVideos}"><i class="fa fa-file-video-o"></i></a>
-      </li>
-    </ul>
-    <a href="" class="btn btn-primary media-upload-button" upload-media-link
-       on-upload="$ctrl.onUpload()"
-       on-convert-start="$ctrl.onConvert()"
-       ng-disabled="$ctrl.uploading">
-      <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
-      <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
-      Upload
-    </a>
+  <div class="media-tabs">
+      <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images || $ctrl.display.videos}">My Media</a>
+
+      <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}">Stock Media</a>
+  </div>
+  <div class="row" ng-if="$ctrl.display.images || $ctrl.display.videos">
+    <div class="col-md-6">
+      <ul class="nav nav-pills">
+        <li>
+          <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}" class="images-tab"><i class="fa fa-picture-o"></i> images</a>
+        </li>
+        <li>
+          <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}" class="videos-tab"><i class="fa fa-file-video-o"></i> videos</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <a href="" class="btn btn-primary media-upload-button" upload-media-link
+         on-upload="$ctrl.onUpload()"
+         on-convert-start="$ctrl.onConvert()"
+         ng-disabled="$ctrl.uploading">
+        <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
+        <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
+        Upload
+      </a>
+    </div>
   </div>
 
   <div>

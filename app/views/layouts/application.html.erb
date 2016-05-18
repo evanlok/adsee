@@ -11,8 +11,8 @@
   <%= webpack_bundle_for('vendor', :js) %>
   <%= webpack_bundle_for('app', :js) %>
   <%= csrf_meta_tags %>
-  <script src="https://use.typekit.net/rth8pka.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <script type="text/javascript" src="https://use.typekit.net/rth8pka.js"></script>
+  <script type="text/javascript">try{Typekit.load({ async: true });}catch(e){}</script>
   <%= render 'layouts/angular_config' %>
 </head>
 <%= render "layouts/nav" %>
