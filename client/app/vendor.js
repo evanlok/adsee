@@ -1,1 +1,1 @@
-require('./style/vendor.scss');
+require('./../style/vendor.scss');
