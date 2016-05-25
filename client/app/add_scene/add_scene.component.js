@@ -4,6 +4,7 @@ var component = {
   templateUrl: templateUrl,
   controller: AddSceneController,
   bindings: {
+    aspectRatio: '@',
     onAddScene: '&',
     onClose: '&'
   }
@@ -21,7 +22,7 @@ function AddSceneController(sceneService) {
   };
 
   function fetchScenes() {
-    sceneService.query().then(function (data) {
+    sceneService.query({aspect_ratio: vm.aspectRatio}).then(function (data) {
       vm.scenes = data;
 
       vm.groupedScenes = _.groupBy(data, 'category');

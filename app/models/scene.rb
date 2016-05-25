@@ -1,4 +1,9 @@
 class Scene < ActiveRecord::Base
+  ASPECT_RATIOS = {
+    '1:1' => 600,
+    '16:9' => 720
+  }.freeze
+
   acts_as_taggable
   mount_uploader :thumbnail, ThumbnailUploader
   mount_uploader :preview_video, FileUploader
@@ -13,6 +18,9 @@ class Scene < ActiveRecord::Base
 
   # Validations
   validates :name, presence: true
+
+  # Scopes
+  scope :with_aspect_ratio, -> (aspect_ratio) { where(height: ASPECT_RATIOS.fetch(aspect_ratio)) }
 
   def attribute_names
     data_attributes.map { |attr| attr['name'] }
