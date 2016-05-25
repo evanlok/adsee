@@ -11,7 +11,7 @@
 require 'active_support/concern'
 
 module Concerns
-  class ForceNonSSL
+  module ForceNonSSL
     extend ActiveSupport::Concern
 
     ACTION_OPTIONS = [:only, :except, :if, :unless].freeze
