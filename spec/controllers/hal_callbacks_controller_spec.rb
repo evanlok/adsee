@@ -25,13 +25,17 @@ RSpec.describe HalCallbacksController do
       expect(response).to be_success
       expect(Video.where(scene_collection_id: scene_collection).count).to eq(2)
 
-      expect(Video.find_by(resolution: 360)).to have_attributes(duration: params[:duration],
-                                                                thumbnail_url: params[:thumbnail_url],
-                                                                url: params[:videos][0][:url])
+      expect(Video.find_by(height: 360)).to have_attributes(duration: params[:duration],
+                                                            thumbnail_url: params[:thumbnail_url],
+                                                            url: params[:videos][0][:url],
+                                                            width: 640,
+                                                            height: 360)
 
-      expect(Video.find_by(resolution: 720)).to have_attributes(duration: params[:duration],
-                                                                thumbnail_url: params[:thumbnail_url],
-                                                                url: params[:videos][1][:url])
+      expect(Video.find_by(height: 720)).to have_attributes(duration: params[:duration],
+                                                            thumbnail_url: params[:thumbnail_url],
+                                                            url: params[:videos][1][:url],
+                                                            width: 1280,
+                                                            height: 720)
       expect(scene_collection.reload.status).to eq('generated')
     end
 

@@ -39,9 +39,9 @@ class SceneCollection < ActiveRecord::Base
 
   def video
     if videos.loaded?
-      videos.sort_by(&:resolution).last
+      videos.sort_by(&:height).last
     else
-      videos.order(:resolution).last
+      videos.order(:height).last
     end
   end
 

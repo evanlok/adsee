@@ -175,7 +175,8 @@ FactoryGirl.define do
     scene_collection
     url { Faker::Internet.url }
     duration 30
-    resolution 720
+    width 1280
+    height 720
     thumbnail_url { Faker::Internet.url }
   end
 end
