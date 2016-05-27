@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505234427) do
+ActiveRecord::Schema.define(version: 20160527000702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,11 +128,12 @@ ActiveRecord::Schema.define(version: 20160505234427) do
     t.string   "color"
     t.integer  "font_id"
     t.integer  "song_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "hal_id"
-    t.text     "zip_codes",                           array: true
-    t.integer  "status",     default: 0
+    t.text     "zip_codes",                                  array: true
+    t.integer  "status",       default: 0
+    t.string   "aspect_ratio", default: "16:9"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree
@@ -162,9 +163,12 @@ ActiveRecord::Schema.define(version: 20160505234427) do
     t.text     "preview_video"
     t.integer  "scene_category_id"
     t.text     "guide_video"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   add_index "scenes", ["hal_id"], name: "index_scenes_on_hal_id", using: :btree
+  add_index "scenes", ["height"], name: "index_scenes_on_height", using: :btree
 
   create_table "songs", force: :cascade do |t|
     t.string   "name"
@@ -274,6 +278,8 @@ ActiveRecord::Schema.define(version: 20160505234427) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "path"
+    t.integer  "duration"
   end
 
   add_index "video_clips", ["user_id"], name: "index_video_clips_on_user_id", using: :btree
@@ -298,11 +304,12 @@ ActiveRecord::Schema.define(version: 20160505234427) do
   create_table "videos", force: :cascade do |t|
     t.integer  "scene_collection_id"
     t.text     "url"
-    t.string   "resolution"
     t.integer  "duration"
     t.text     "thumbnail_url"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "width"
+    t.integer  "height"
   end
 
   add_index "videos", ["scene_collection_id"], name: "index_videos_on_scene_collection_id", using: :btree

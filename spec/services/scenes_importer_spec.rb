@@ -10,7 +10,9 @@ RSpec.describe ScenesImporter do
           name: 'Scene 1',
           attributes: [
             { name: 'city' }
-          ]
+          ],
+          width: 1280,
+          height: 720
         }
       ].map(&:deep_stringify_keys)
     end

@@ -43,4 +43,8 @@ class VideoJobsController < ApplicationController
     @scene_collection = SceneCollection.find(params[:scene_collection_id])
     authorize @scene_collection, :show?
   end
+
+  def ssl_configured?
+    false
+  end
 end

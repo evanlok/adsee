@@ -15,6 +15,8 @@ class VideoClipsController < ApplicationController
     authorize @video_clip
 
     if @video_clip.save
+      VideoClipEncoder.new(@video_clip).encode
+
       respond_to do |format|
         format.json
       end

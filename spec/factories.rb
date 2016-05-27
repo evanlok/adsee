@@ -143,6 +143,7 @@ FactoryGirl.define do
   factory :video_clip do
     filename { "#{Faker::Lorem.word}.mp4" }
     original_path 'original_path/to/file'
+    path 'path/to/file'
     thumbnail_url { Faker::Internet.url }
     file_size 50_000
     filestack_url 'https://www.filestack/image'
@@ -175,7 +176,8 @@ FactoryGirl.define do
     scene_collection
     url { Faker::Internet.url }
     duration 30
-    resolution 720
+    width 1280
+    height 720
     thumbnail_url { Faker::Internet.url }
   end
 end

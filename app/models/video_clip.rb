@@ -5,11 +5,15 @@ class VideoClip < ActiveRecord::Base
   # Validations
   validates :original_path, presence: true
 
-  def path
-    original_path
+  def base_dir
+    "video_clips/#{id}"
+  end
+
+  def original_url
+    "#{ENV['CDN_URL']}/#{original_path}" if original_path
   end
 
   def url
-    "#{ENV['CDN_URL']}/#{path}"
+    "#{ENV['CDN_URL']}/#{path}" if path
   end
 end

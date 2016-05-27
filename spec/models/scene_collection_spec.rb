@@ -47,8 +47,8 @@ RSpec.describe SceneCollection do
 
   describe '#video' do
     let(:scene_collection) { create(:scene_collection) }
-    let!(:video_low) { create(:video, scene_collection: scene_collection, resolution: 360) }
-    let!(:video) { create(:video, scene_collection: scene_collection, resolution: 720) }
+    let!(:video_low) { create(:video, scene_collection: scene_collection, height: 360) }
+    let!(:video) { create(:video, scene_collection: scene_collection, height: 720) }
 
     it 'returns the highest resolution video' do
       expect(scene_collection.video).to eq(video)

@@ -1,5 +1,5 @@
 // CSS
-require('./style/app.scss');
+require('./../style/app.scss');
 
 var config = require('./app.config');
 

@@ -7,9 +7,9 @@ var component = {
 };
 
 /*@ngInject*/
-function MediaLibraryController(imageService, videoClipService, mediaSelectorService) {
+function MediaLibraryController($interval, imageService, videoClipService, mediaSelectorService) {
   var vm = this;
-  var loadedContent;
+  var loadedContent, videoPoller;
 
   vm.$onInit = function () {
     vm.images = [];
@@ -37,8 +37,22 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
   }
 
   function fetchVideoClips() {
-    videoClipService.query().then(function (data) {
+    return videoClipService.query().then(function (data) {
       vm.videos = data;
+    });
+  }
+
+  function pollVideoClips() {
+    fetchVideoClips().then(function () {
+      if (_.some(vm.videos, {url: null})) {
+        videoPoller = $interval(function () {
+          fetchVideoClips().then(function () {
+            if (_.every(vm.videos, 'url') && videoPoller) {
+              $interval.cancel(videoPoller);
+            }
+          });
+        }, 3000);
+      }
     });
   }
 
@@ -93,7 +107,7 @@ function MediaLibraryController(imageService, videoClipService, mediaSelectorSer
         fetchImages();
         break;
       case 'videos':
-        fetchVideoClips();
+        pollVideoClips();
         break;
       case 'stockImages':
         fetchStockImages();

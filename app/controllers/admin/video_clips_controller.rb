@@ -7,6 +7,8 @@ class Admin::VideoClipsController < Admin::BaseController
     @video_clip = VideoClip.new(video_clip_params)
 
     if @video_clip.save
+      VideoClipEncoder.new(@video_clip).encode
+
       respond_to do |format|
         format.json { render json: @video_clip, status: :created }
       end

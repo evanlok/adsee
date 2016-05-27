@@ -54,4 +54,8 @@ class FacebookAdsController < ApplicationController
     @facebook_ad = FacebookAd.find(params[:id])
     authorize @facebook_ad
   end
+
+  def ssl_configured?
+    false
+  end
 end

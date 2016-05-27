@@ -37,7 +37,9 @@ class HalCallbacksController < ApplicationController
 
   def import_video(video_params)
     video = Video
-              .where(scene_collection_id: @video_job.scene_collection_id, resolution: video_params[:height])
+              .where(scene_collection_id: @video_job.scene_collection_id,
+                     width: video_params[:width],
+                     height: video_params[:height])
               .first_or_initialize
 
     video.attributes = {
