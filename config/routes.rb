@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
   post '/hal_callbacks/:video_job_id/preview', to: 'hal_callbacks#preview', as: :preview_callback
+  post '/encoder_callbacks/video_clips/:id', to: 'encoder_callbacks#video_clip', as: :video_clip_encoding_callback
 
   namespace :admin do
     root 'scenes#index'
