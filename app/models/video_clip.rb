@@ -10,10 +10,10 @@ class VideoClip < ActiveRecord::Base
   end
 
   def original_url
-    "#{ENV['CDN_URL']}/#{original_path}"
+    "#{ENV['CDN_URL']}/#{original_path}" if original_path
   end
 
   def url
-    "#{ENV['CDN_URL']}/#{path}"
+    "#{ENV['CDN_URL']}/#{path}" if path
   end
 end

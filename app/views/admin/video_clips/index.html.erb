@@ -17,7 +17,11 @@
   <% @video_clips.each do |video| %>
       <tr>
         <td>
-          <%= link_to 'Play', '', 'video-overlay-link' => video.url, autoplay: true %>
+          <% if video.url %>
+              <%= link_to 'Play', '', 'video-overlay-link' => video.url, autoplay: true %>
+          <% else %>
+            Encoding
+          <% end %>
         </td>
         <td><%= video.filename %></td>
         <td><%= video.created_at.to_s(:full) %></td>
