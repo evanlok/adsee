@@ -259,10 +259,10 @@ ActiveRecord::Schema.define(version: 20160527000702) do
     t.boolean  "admin",                     default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.string   "facebook_oauth_token"
-    t.datetime "facebook_oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "facebook_oauth_token"
+    t.datetime "facebook_oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
