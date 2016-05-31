@@ -2,7 +2,7 @@
   <div class="row targeting-header">
     <div class="col-md-12">
 
-      <h1><i class="fa fa-crosshairs" aria-hidden="true"></i> TARGET SEGMENTS</h1>
+      <h1><i class="fa fa-crosshairs" aria-hidden="true"></i> TARGET SEGMENT</h1>
 
     </div>
   </div>
@@ -17,7 +17,7 @@
     </label>
 
     <ui-select ng-model="$ctrl.zipCodes" multiple tagging tagging-label="">
-      <ui-select-match placeholder="Select zip codes...">{{ $item }}</ui-select-match>
+      <ui-select-match placeholder="Enter target zip codes...">{{ $item }}</ui-select-match>
 
       <ui-select-choices repeat="zipCode in [] | filter:$select.search">
         {{ zipCode }}

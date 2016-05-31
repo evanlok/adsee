@@ -15,6 +15,12 @@
     padding: 15px;
     font-size: 14px;
   }
+  a {
+    color: $color-3;
+    &:hover {
+      color: $color-2;
+    }
+  }
 }
 .main-content {
   padding-left: 125px;
@@ -126,7 +132,7 @@
     resize: none;
     border: none;
     background: none;
-    color: white;
+    color: $color-5;
     outline: none; 
     box-shadow: none;
     height: 40px;
@@ -326,6 +332,15 @@
   li:hover:after {
     border-left-color: $color-2;
   }
+  .active {
+    background-color: $color-2;
+    a {
+      color: $color-3;
+    }
+  }
+  li.active:not(:last-child):after {
+    border-left: 15px solid $color-2;
+  }
 
   @media screen and (max-width:720px) {
     display: none;
@@ -345,8 +360,12 @@
 .action-bar {
   padding: 0px 25px 10px;
 }
-.industry-type-header, .top-action-bar {
-  width: 50%;
+.industry-type-header {
+  width: 35%;
+  display: inline-block;
+}
+.top-action-bar {
+  width: 65%;
   display: inline-block;
 }
 .industry-type-header {
@@ -357,8 +376,8 @@
 }
 .theme-settings {
   .theme-settings-column {
-    width: 26%;
-    float: left;
+    width: 24%;
+    float: right;
     margin-left: 2%;
   }
   .aspect-ratio {
@@ -366,6 +385,12 @@
   }
   select, .color-picker-wrapper {
     width: 100%;
+  }
+  .color-picker-wrapper .form-control, .color-picker-wrapper .input-group .input-group-addon {
+    border: 1px solid $color-5;
+  }
+  .color-picker-wrapper .input-group .input-group-addon {
+    border-left: none;
   }
   .form-control {
     border-radius: 5px;
@@ -483,7 +508,6 @@
 }
 .media-library {
   padding: 0px 20px 20px;
-  color: white;
   .media-tabs {
     width: 100%;
     position: relative;
@@ -575,7 +599,6 @@
   #search {
     input {
       width: 100%;
-      color: white;
       border: 2px solid $color-5;
       border-radius: 50px;
       background: none;
@@ -619,14 +642,12 @@
   }
   .video-thumb-box {
     background-color: $color-5;
-    border-radius: 10px;
     overflow: hidden;
     position: relative;
     margin-bottom: 15px;
   }
   .video-thumb-link {
     padding: 25px 0px 0px;
-    height: 160px;
     display: block;
     color: white;
     outline: none; 
@@ -822,7 +843,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   &:hover {
     img {
-      outline: 3px solid $color-6;
+      outline: 3px solid $color-1;
     }
   }
 }
@@ -853,8 +874,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   position: fixed;
 }
 .preview-button {
-  height: 100%;
-  background-color: $color-2;
+  height: 100px;
+  background-color: $color-1;
   color: white;
   vertical-align: middle;
   text-align: center;
@@ -863,7 +884,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   text-transform: uppercase;
   font-weight: bold;
   font-size: 22px;
-  border: 5px solid hsl(203, 79.3427%, 35.7647%);
+  border: none;
   z-index: 100;
   cursor: pointer;
   i {
@@ -873,8 +894,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   &:hover {
     color: white;
-    background-color: $color-6;
-    border: 5px solid $color-2;
+    background-color: $color-2;
   }
 }
 .content-edit-wrapper {
