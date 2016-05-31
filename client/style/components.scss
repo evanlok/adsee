@@ -38,16 +38,16 @@
     box-sizing: border-box;
     width: 100%;
     margin: 0 0 1.65em 0px;
-    border: 2px solid #ccc;
-    border-radius: 1.5em;
+    border: 1px solid $color-5;
+    border-radius: 0px;
     resize: none;
     background: none;
     outline: none; 
     box-shadow: none;
     height: 40px;
-    padding-left: 35px;
+    padding-left: 40px;
     &:hover {
-      border: 2px solid $color-2;
+      border: 1px solid $color-2;
     }
   }
   input[type="text"][required]:focus,
@@ -97,7 +97,7 @@
     opacity: 1;
     content: attr(placeholder);
     display: inline-block;
-    margin: 0 calc(2em + 4px);
+    margin: 0 calc(2em + 6px);
     padding: 0 2px;
     color: $color-2;
     white-space: nowrap;
@@ -111,14 +111,14 @@
   }
 }
 .media-input-group {
-  border: 2px solid #ccc;
-  border-radius: 1.5em;
+  border: 1px solid $color-5;
+  border-radius: 0px;
   margin: 0 0 1.65em 0px;
   -webkit-transition-duration: .2s;
   transition-duration: .2s;
   overflow: hidden;
   &:hover {
-    border: 2px solid $color-2;
+    border: 1px solid $color-2;
   }
   input[type="text"] {
     box-sizing: border-box;
@@ -130,7 +130,7 @@
     outline: none; 
     box-shadow: none;
     height: 40px;
-    padding-left: 35px;
+    padding-left: 40px;
     &:hover {
       cursor: pointer;
     }
@@ -368,11 +368,11 @@
     width: 100%;
   }
   .form-control {
-    border-radius: 30px;
+    border-radius: 5px;
   }
   .input-group-addon {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   .song-player {
     position: absolute;
@@ -425,6 +425,7 @@
   // -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   background-color: $color-7;
+  // border-top-right-radius: 25px;
   
 }
 .content-column {
@@ -438,10 +439,10 @@
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   padding: 0px 0px 0px 15px;
   height: 100%;
-  background-color: $color-7;
   z-index: 1;
   min-width: 280px;
   max-width: 450px;
+  background-color: $color-7;
 }
 .media-panel {
   height: 100%;
@@ -602,16 +603,17 @@
   }
   .delete-box {
     position: absolute;
-    right: 0px;
+    top: 5px;
+    right: 5px;
     background-color: hsla(0, 0%, 0.0000%, 0.5000);
-    border-bottom-left-radius: 10px;
+    border-radius: 5px;
     &:hover {
       background-color: $color-6;
     }
     a {
       color: white;
       font-size: 14px;
-      padding: 3px 8px;
+      padding: 2px 6px;
       display: block;
     }
   }
@@ -704,6 +706,16 @@
   .time {
     color: $color-5;
   }
+  .delete-scene {
+    border: 1px solid $color-5;
+    font-size: 16px;
+    padding: 6px 9px;
+    margin-right: 7px;
+    text-align: center;
+    border-radius: 5px;
+    color: $color-5;
+    font-size: 14px;
+  }
 }
 .new-scene, .new-scene:visited {
   border-radius: 25px;
@@ -719,21 +731,13 @@
   }
 }
 
-.delete-scene {
-  border: 2px solid $color-2;
-  font-size: 16px;
-  padding: 4px 9px;
-  margin-right: 7px;
-  text-align: center;
-  border-radius: 25px;
-}
 .navigation-arrows {
   display: inline;
   font-size: 30px;
   margin-right: 5px;
   display: inline-block;
   i {
-    color: $color-1;
+    color: $color-8;
   }
   a > i {
     color: $color-2;
@@ -971,7 +975,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       display: inline-block;
       background-color: $color-2;
       color: white;
-      border-radius: 20px;
+      border-radius: 4px;
       text-align: center;
       width: 21px;
       height: 21px;
@@ -991,7 +995,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     display: inline-block;
     background-color: $color-2;
     color: white;
-    border-radius: 20px;
+    border-radius: 4px;
     text-align: center;
     width: 21px;
     height: 21px;

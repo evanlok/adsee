@@ -100,12 +100,16 @@
     <div class="content-column">
       <div class="media-panel">
         <div class="media-wrapper">
-          <uib-tabset justified="true" active="$ctrl.activeTab">
+     <uib-tabset justified="true" active="$ctrl.activeTab">
             <uib-tab index="0" heading="Content Editor">
-              <content-editor scene-content="$ctrl.selectedSceneContent"
-                              on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
-              </content-editor>
-            </uib-tab>
+<!--             <div class="content-editor-header">
+              Content Editor
+              <a href="">Media Library</a>
+            </div> -->
+            <content-editor scene-content="$ctrl.selectedSceneContent"
+                            on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
+            </content-editor>
+       </uib-tab>
 
             <uib-tab index="1" heading="Media Library">
               <media-library></media-library>
