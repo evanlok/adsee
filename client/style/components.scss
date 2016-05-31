@@ -5,10 +5,7 @@
   height: 100vh;
   width: 110px;
   margin-top: -50px;
-  -webkit-box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
-  -moz-box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
-  box-shadow: inset -100px 2px 152px -60px rgba(0,0,0,0.75);
-  background-color: $color-1; 
+  background-color: $color-6; 
   .logo {
     height: 50px;
     background-color: $color-2;
@@ -45,7 +42,6 @@
     border-radius: 1.5em;
     resize: none;
     background: none;
-    color: white;
     outline: none; 
     box-shadow: none;
     height: 40px;
@@ -57,14 +53,14 @@
   input[type="text"][required]:focus,
   input[type="email"][required]:focus,
   input[type="password"][required]:focus {
-    border-color: #00bafa;
+    border-color: $color-2;
     outline: none; 
     box-shadow: none
   }
   input[type="text"][required]:focus + label[placeholder]:before,
   input[type="email"][required]:focus + label[placeholder]:before,
   input[type="password"][required]:focus + label[placeholder]:before {
-    color: #00bafa;
+    color: $color-2;
     opacity: 1;
   }
   input[type="text"][required]:focus + label[placeholder]:before,
@@ -103,12 +99,12 @@
     display: inline-block;
     margin: 0 calc(2em + 4px);
     padding: 0 2px;
-    color: white;
+    color: $color-2;
     white-space: nowrap;
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
-    background-image: -webkit-linear-gradient(top, #3e454c, #3e454c);
-    background-image: linear-gradient(to bottom, #3e454c, #3e454c);
+    background-image: -webkit-linear-gradient(top, white, white);
+    background-image: linear-gradient(to bottom, white, white);
     background-size: 100% 5px;
     background-repeat: no-repeat;
     background-position: center;
@@ -280,9 +276,8 @@
     line-height: 30px;
     padding: 0 29px;
     background-color: $color-8;
-    color: white;
     a {
-      color: white;
+      color: $color-5;
       display: block;
       width: 100%;
       height: 100%;
@@ -324,6 +319,9 @@
   }
   li:hover {
     background-color: $color-2;
+    a {
+      color: white;
+    }  
   }
   li:hover:after {
     border-left-color: $color-2;
@@ -353,7 +351,7 @@
 }
 .industry-type-header {
   margin-top: 5px;
-  color: white;
+  color: $color-5;
   font-size: 12px;
   float: left;
 }
@@ -506,7 +504,7 @@
     }
   }
   .nav {
-    background-color: $color-1;
+    background-color: $color-3;
     font-size: 14px;
     padding-top: 0px;
     ul {
@@ -677,10 +675,11 @@
     margin-top: -12px;
     margin-left: 35px;
     position: absolute;
-    background-color: #3e454c;
+    background-color: white;
     padding-left: 3px;
     padding-right: 3px;
     font-size: 15px;
+    color: $color-2;
   }
   ::-webkit-input-placeholder {
      color: $color-5;
@@ -826,12 +825,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .scene-number {
   position: absolute;
-  height: 20px;
+  height: 16px;
   width: 24px;
   color: white;
   font-weight: bold;
   background-color: hsla(0, 0%, 0.0000%, 0.7000);
-  font-size: 14px;
+  font-size: 11px;
   border-bottom-right-radius: 5px;
 }
 .preview-button-wrapper {
@@ -875,7 +874,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .content-edit-wrapper {
-  color: white;
+  color: $color-5;
   max-width: 350px;
   margin: 0 auto ;
   padding: 20px 30px 100px;
@@ -884,11 +883,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .add-scene-index {
-  background-color: $color-5;
-  -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,1);
-  -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,1);
-  box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,1);
-  color: white;
+  background-color: $color-3;
+  -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
+  -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
+  box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   height: 100%;
   padding: 50px 50px 150px;
   position: relative;
@@ -1047,29 +1045,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .industry-group {
-  padding: 20px 50px 20px;
+  padding: 20px 50px 40px;
+  background: rgb(244,244,244); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
   h2 {
     font-size: 26px;
     font-weight: 700;
-    padding: 20px 0px;
+    padding: 20px 0px 0px;
     margin-bottom: 0px;
     margin-top: 0px;
     text-transform: uppercase;
     color: $color-2;
-    border-bottom: 4px solid $color-7;
   }
   h3 {
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     margin-top: 10px;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px dotted $color-2;
+    border-bottom: 1px solid $color-2;
   }
   .thumb-circle {
+    color: $color-5;
+    img {
+      margin-bottom: 10px;
+    }
     &:hover {
-      box-shadow: 0 0 0 5pt $color-2;
+      color: $color-2;
+      img {
+        outline: 5px solid $color-2;
+      }
     }
   }
   .theme-name {
@@ -1109,9 +1118,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .theme-select {
   width: 100%;
-  font-size: 24px;
-  text-transform: uppercase;
+  font-size: 18px;
   font-weight: 700;
+  font-size: 26px;
+  border-radius: 10px;
+  height: 80px;
 }
 .build-button-bottom {
   background-color: $color-2;
@@ -1119,7 +1130,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   text-transform: uppercase;
   padding: 20px 20px;
   font-weight: 700;
-  font-size: 30px;
   &:hover {
     background-color: #1d97ff;
   }
@@ -1181,9 +1191,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       font-size: 18px;
       margin-bottom: 0px;
       height: 34px;
-      border-color: #115a97;
+      border: 1px solid $color-5;
+      border-radius: 5px;
       &:focus {
-        border: 2px solid $color-6;
+        border: 2px solid $color-2;
       }
     }
     input[type="text"][required]:focus + label[placeholder]:before,
@@ -1210,13 +1221,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       outline: none; 
       box-shadow: none;
       padding-left: 20px;
-      border: 2px solid #115a97;
-      border-radius: 10px;
+      border: 1px solid $color-5;
+      border-radius: 5px;
       &:hover {
-        border: 2px solid $color-6;
+        border: 2px solid $color-2;
       }
       &:focus {
-        border: 2px solid $color-6;
+        border: 2px solid $color-2;
       }
     }
     select {
@@ -1226,10 +1237,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       border: 2px solid #115a97;
       background: url("../images/chev_dn.png") no-repeat 95% 50%;
       background-size: 12px 7px;
-      border-radius: 40px;
+      border: 1px solid $color-5;
+      border-radius: 5px;
       padding: 5px 40px 5px 15px;
       font-size: 14px;
-      color: #fff;
       display: inline;
       cursor: pointer;
       outline: none;
@@ -1412,6 +1423,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .location-header {
     font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
   }
   .fa-stack  {
     // float: left;
@@ -1427,11 +1440,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .ui-select-container {
     background: none;
-    border: 2px solid #ccc;
+    border: 5px solid $color-1;
     border-radius: 100px;
-    height: 52px;
-    &:hover {
-      border: 2px solid $color-6;
+    height: 55px;
+    margin-bottom: 30px;
+    &:hover, &:focus {
+      border: 5px solid $color-2;
     }
   }
   .ui-select-multiple.ui-select-bootstrap input.ui-select-search { 
@@ -1463,12 +1477,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     display: none;
   }
   .continue-button {
-    margin: 0 auto;
+    margin: 10px auto 0px;
     font-size: 24px;
     font-weight: 700;
-    padding: 10px 30px;
-    width: 100%;
-    margin-top: 20px;
+    padding: 10px 50px;
+    max-width: 300px;
   }
 }
 
@@ -1486,7 +1499,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .data-lbl {
     font-weight: 700;
-    color: $color-2;
   }
   .button {
     width: 100%;
@@ -1511,7 +1523,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-size: 22px;
   }
   .video-item {
-    background-color: hsl(210, 10.3448%, 15.3725%);
+    background-color: $color-7;
     display: block;
     margin-bottom: 10px;
     border-radius: 10px;

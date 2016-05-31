@@ -2,28 +2,8 @@
   <div class="row targeting-header">
     <div class="col-md-12">
 
-      <h1>TARGET SEGMENTS</h1>
-      <p>
-        Select your target segment(s) and click continue
-      </p>
-    </div>
-  </div>
+      <h1><i class="fa fa-crosshairs" aria-hidden="true"></i> TARGET SEGMENTS</h1>
 
-  <div class="row targeting-spec-list">
-    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
-      <div class="col-md-3 col-xs-6">
-        <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
-           ng-class="{selected: $ctrl.selected(targetingSpec)}"
-           style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
-          <div class="overlay-bg">
-            <h4 class="target-name">{{ targetingSpec.name }}</h4>
-
-            <p class="target-description">
-              {{ targetingSpec.description }}
-            </p>
-          </div>
-        </a>
-      </div>
     </div>
   </div>
 
@@ -44,6 +24,32 @@
       </ui-select-choices>
     </ui-select>
 
+  </div>
+
+  <label class="location-header">
+    <span class="fa-stack">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+    </span>
+    Select your target demographic and click continue
+  </label>
+
+  <div class="row targeting-spec-list">
+    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
+      <div class="col-md-3 col-xs-6">
+        <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
+           ng-class="{selected: $ctrl.selected(targetingSpec)}"
+           style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
+          <div class="overlay-bg">
+            <h4 class="target-name">{{ targetingSpec.name }}</h4>
+
+            <p class="target-description">
+              {{ targetingSpec.description }}
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
   <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.saveTargeting()"
