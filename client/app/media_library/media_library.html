@@ -4,19 +4,42 @@
   </div>
 
   <div>
-    <ul class="nav nav-pills">
-      <li>
-        <a href="" ng-click="$ctrl.showTab('images')" ng-class="{active: $ctrl.display.images}">images</a>
-      </li>
-      <li>
-        <a href="" ng-click="$ctrl.showTab('videos')" ng-class="{active: $ctrl.display.videos}">videos</a>
-      </li>
-      <li class="stock-media pull-right">
-        stock:
-        <a href="" ng-click="$ctrl.showTab('stockImages')" ng-class="{active: $ctrl.display.stockImages}"><i class="fa fa-picture-o"></i></a>
-        <a href="" ng-click="$ctrl.showTab('stockVideos')" ng-class="{active: $ctrl.display.stockVideos}"><i class="fa fa-file-video-o"></i></a>
-      </li>
-    </ul>
+    <form>
+      <input type="text" class="form-control" placeholder="Search..."
+             ng-model="$ctrl.searchQuery"
+             ng-model-options="{updateOn: 'default blur', debounce: { default: 300, blur: 0 }}"
+             ng-change="$ctrl.filterResults()">
+    </form>
+  </div>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-default"
+            ng-click="$ctrl.showTab('images')"
+            ng-class="{active: $ctrl.display.images}">
+      My Images
+    </button>
+
+    <button type="button" class="btn btn-default"
+            ng-click="$ctrl.showTab('videos')"
+            ng-class="{active: $ctrl.display.videos}">
+      My Videos
+    </button>
+  </div>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-default"
+            ng-click="$ctrl.showTab('stockImages')"
+            ng-class="{active: $ctrl.display.stockImages}">
+      Stock Images
+    </button>
+    <button type="button" class="btn btn-default"
+            ng-click="$ctrl.showTab('stockVideos')"
+            ng-class="{active: $ctrl.display.stockVideos}">
+      Stock Videos
+    </button>
+  </div>
+
+  <div>
     <a href="" class="btn btn-primary media-upload-button" upload-media-link
        on-upload="$ctrl.onUpload()"
        on-convert-start="$ctrl.onConvert()"

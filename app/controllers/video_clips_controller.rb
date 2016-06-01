@@ -3,7 +3,8 @@ class VideoClipsController < ApplicationController
 
   def index
     @video_clips = params[:stock] ? VideoClip.where(user: nil) : policy_scope(VideoClip)
-    @video_clips = @video_clips.order(created_at: :desc).page(params[:page]).per(50)
+    @video_clips = @video_clips.search(params[:q]) if params[:q].present?
+    @video_clips = @video_clips.page(params[:page]).per(50)
 
     respond_to do |format|
       format.json
