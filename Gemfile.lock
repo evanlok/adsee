@@ -176,6 +176,10 @@ GEM
     parser (2.3.1.0)
       ast (~> 2.2)
     pg (0.18.4)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     powerpack (0.1.1)
     puma (3.4.0)
     puma-heroku (1.0.0)
@@ -330,6 +334,7 @@ DEPENDENCIES
   omniauth-facebook
   paloma (~> 4.2)
   pg (~> 0.15)
+  pg_search
   puma
   puma-heroku
   pundit

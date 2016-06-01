@@ -11,7 +11,7 @@ var component = {
 
 
 /*@ngInject*/
-function SceneEditorController($state, $window, sceneCollectionService, sceneContentService, sceneAttributeService,
+function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
   var vm = this;
 
@@ -21,15 +21,16 @@ function SceneEditorController($state, $window, sceneCollectionService, sceneCon
     vm.selectedSceneContent = {};
     vm.transitions = transitionsService.get();
     vm.displayAddScene = false;
+    vm.displayMediaLibrary = false;
     vm.activeTab = 0;
     vm.previewLoading = false;
 
     mediaSelectorService.onMediaInsert(function () {
-      vm.activeTab = 1;
+      vm.displayMediaLibrary = true;
     });
 
     mediaSelectorService.onMediaSelected(function () {
-      vm.activeTab = 0;
+      vm.displayMediaLibrary = false;
     });
 
     fetchSceneCollection();

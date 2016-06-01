@@ -1,4 +1,11 @@
 class Image < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope :search, against: [:title, :filename],
+                  using: {
+                    tsearch: { prefix: true, dictionary: 'english' }
+                  }
+
   # Associations
   belongs_to :user
 

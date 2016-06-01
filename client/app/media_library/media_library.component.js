@@ -3,7 +3,9 @@ var templateUrl = require('./media_library.html');
 var component = {
   templateUrl: templateUrl,
   controller: MediaLibraryController,
-  bindings: {}
+  bindings: {
+    onClose: '&'
+  }
 };
 
 /*@ngInject*/
@@ -19,6 +21,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     vm.uploading = false;
     vm.selecting = false;
     vm.display = {images: true, videos: false, stockImages: false, stockVideos: false};
+    vm.searchQuery = '';
     loadedContent = {images: false, videos: false, stockImages: false, stockVideos: false};
     mediaSelectorService.onMediaInsert(onMediaInsert);
     loadContent('images');
@@ -29,15 +32,16 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   vm.selectMedia = selectMedia;
   vm.showTab = showTab;
   vm.deleteMedia = deleteMedia;
+  vm.filterResults = filterResults;
 
   function fetchImages() {
-    imageService.query().then(function (data) {
+    imageService.query({q: vm.searchQuery}).then(function (data) {
       vm.images = data;
     });
   }
 
   function fetchVideoClips() {
-    return videoClipService.query().then(function (data) {
+    return videoClipService.query({q: vm.searchQuery}).then(function (data) {
       vm.videos = data;
     });
   }
@@ -57,13 +61,13 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   }
 
   function fetchStockImages() {
-    imageService.query({stock: true}).then(function (data) {
+    imageService.query({stock: true, q: vm.searchQuery}).then(function (data) {
       vm.stockImages = data;
     });
   }
 
   function fetchStockVideos() {
-    videoClipService.query({stock: true}).then(function (data) {
+    videoClipService.query({stock: true, q: vm.searchQuery}).then(function (data) {
       vm.stockVideos = data;
     });
   }
@@ -93,7 +97,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
       vm.display[key] = false;
     });
 
-    loadContent(type);
+    loadContent(type, true);
     vm.display[type] = true;
   }
 
@@ -132,6 +136,14 @@ function MediaLibraryController($interval, imageService, videoClipService, media
         });
       }
     });
+  }
+
+  function filterResults() {
+    var currentType = _.findKey(vm.display, function (v) {
+      return v;
+    });
+
+    loadContent(currentType, true);
   }
 }
 
