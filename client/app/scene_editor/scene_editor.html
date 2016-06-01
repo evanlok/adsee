@@ -43,15 +43,15 @@
 
   <div class="scenes-row-gradient-bg"></div>
 
+  <media-library ng-show="$ctrl.displayMediaLibrary"
+                 on-close="$ctrl.displayMediaLibrary = false">
+  </media-library>
+
   <add-scene aspect-ratio="{{ $ctrl.sceneCollection.aspect_ratio }}"
              on-add-scene="$ctrl.addScene(scene)"
              on-close="$ctrl.displayAddScene = false"
              ng-if="$ctrl.displayAddScene">
   </add-scene>
-
-  <media-library ng-show="$ctrl.displayMediaLibrary"
-                 on-close="$ctrl.displayMediaLibrary = false">
-  </media-library>
 
   <div class="editor-body" ng-show="!$ctrl.displayAddScene && !$ctrl.displayMediaLibrary">
     <div class="main-column">

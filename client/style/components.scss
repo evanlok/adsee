@@ -912,6 +912,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   height: 100%;
   padding: 50px 50px 150px;
   position: relative;
+  z-index: 1000;
   h2 {
     margin-top: 0px;
     font-size: 36px;
