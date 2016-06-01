@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-      <h1>Video Ad Summary</h1>
+      <h1 class="summary-header">Video Ad Summary</h1>
 
       <div class="text-center" ng-if="$ctrl.loading">
         <i class="fa fa-spin fa-spinner"></i>
@@ -57,10 +57,7 @@
         <span class="data-lbl">Zip Codes:</span>
         {{ $ctrl.sceneCollection.zip_codes.join(', ') }}
       </div>
-    </div>
 
-
-    <div class="col-md-4">
       <h3><i class="fa fa-money" aria-hidden="true"></i> Ad Spend</h3>
 
       <div>
@@ -145,10 +142,8 @@
         {{ $ctrl.facebookAdConfigOptions.pacing_type[$ctrl.facebookAd.pacing_type] }}
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-4">
       <p>
         <a href="" class="button" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
           PUBLISH VIDEO
@@ -156,7 +151,7 @@
       </p>
 
       <p class="text-center">
-        <a ui-sref="adConfig({facebookAdId: $ctrl.facebookAd.id})"><i class="fa fa-chevron-left"></i> Back</a>
+        <a ui-sref="adConfig({facebookAdId: $ctrl.facebookAd.id})" class="back-button"><i class="fa fa-chevron-left"></i> Back</a>
       </p>
     </div>
   </div>
