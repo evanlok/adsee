@@ -1126,10 +1126,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .theme-info-row {
   margin-bottom: 20px;
 }
+.theme-data-row {
+  display: block;
+}
 .theme-description {
   font-size: 16px;
-  padding-right: 25px;
-  border-right: 1px solid gray;
+  display: block;
 }
 .theme-info-list {
   font-size: 18px;
@@ -1145,6 +1147,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-size: 26px;
   border-radius: 10px;
   height: 80px;
+}
+.theme-data-point {
+  display: inline-block;
+  float: right;
+  padding-right: 6px;
+  border-right: 1px solid $color-5;
+  margin-left: 6px;
+  &:first-child {
+    border-right: none;
+  }
+}
+.theme-data {
+  margin-top: 25px;
+  i {
+    color: $color-2;
+  }
+}
+.theme-header-row {
+  margin-top: 20px;
 }
 .build-button-bottom {
   background-color: $color-2;
@@ -1468,6 +1489,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     border-radius: 100px;
     height: 55px;
     margin-bottom: 30px;
+    max-width: 650px; 
     &:hover, &:focus {
       border: 5px solid $color-2;
     }

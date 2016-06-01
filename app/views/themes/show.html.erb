@@ -4,37 +4,44 @@
     <%= link_to new_scene_collection_path, target: '_self', class: 'cancel-link pull-right' do %>
       <i class="fa fa-times"></i> CANCEL
     <% end %>
-    
-    <h1><%= @theme.name %></h1>
+
+    <div class="row theme-header-row">
+      <div class="col-md-7">
+        <h1><%= @theme.name %></h1>
+      </div>
+      <div class="col-md-5">
+        <div class="theme-data">
+          <% if @theme.song %>
+            <div class="theme-data-point"><i class="fa fa-music fa-fw" aria-hidden="true"></i> <%= @theme.song.name %></div>
+          <% end %>
+
+          <% if @theme_variant %>
+            <div class="theme-data-point"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> <%= number_to_duration @theme_variant.duration %></div>
+          <% end %>
+
+          <div class="theme-data-point"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i> <%= @theme.photo_count %></div>
+        </div>
+      </div>
+    </div>
 
     <div class="theme-video-wrapper">
       <video-player url="<%= @theme.sample_video.url %>" poster="<%= @theme.poster_image.url(:large) %>" class="vjs-big-play-centered"></video-player>
     </div>
 
     <div class="row theme-info-row">
-      <div class="col-md-6 theme-description">
-          <%= simple_format @theme.description %>
+
+      <div class="col-md-8">
+        <div class="theme-description"><%= simple_format @theme.description %></div>
       </div>
 
-      <div class="col-md-3 theme-info-list">
-        <% if @theme.song %>
-          <div><i class="fa fa-music fa-fw" aria-hidden="true"></i> <%= @theme.song.name %></div>
-        <% end %>
-
-        <% if @theme_variant %>
-          <div><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> <%= number_to_duration @theme_variant.duration %></div>
-        <% end %>
-
-        <div><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i> <%= @theme.photo_count %></div>
-      </div>
-
-      <div class="col-md-3 build-button">
+      <div class="col-md-4 build-button">
           <%= form_for SceneCollection.new do |f| %>
           <%= f.hidden_field :ad_type_id, value: @theme.ad_type.id %>
           <%= f.hidden_field :theme_id, value: @theme.id %>
-          <%= f.submit 'Build', class: 'button theme-select' %>
+          <%= f.submit 'Build Video', class: 'button theme-select' %>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
