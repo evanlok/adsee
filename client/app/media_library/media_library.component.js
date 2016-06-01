@@ -3,7 +3,9 @@ var templateUrl = require('./media_library.html');
 var component = {
   templateUrl: templateUrl,
   controller: MediaLibraryController,
-  bindings: {}
+  bindings: {
+    onClose: '&'
+  }
 };
 
 /*@ngInject*/

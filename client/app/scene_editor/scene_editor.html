@@ -49,7 +49,11 @@
              ng-if="$ctrl.displayAddScene">
   </add-scene>
 
-  <div class="editor-body" ng-if="!$ctrl.displayAddScene">
+  <media-library ng-show="$ctrl.displayMediaLibrary"
+                 on-close="$ctrl.displayMediaLibrary = false">
+  </media-library>
+
+  <div class="editor-body" ng-show="!$ctrl.displayAddScene && !$ctrl.displayMediaLibrary">
     <div class="main-column">
 
         <div class="scene-header">
@@ -100,17 +104,11 @@
     <div class="content-column">
       <div class="media-panel">
         <div class="media-wrapper">
-          <uib-tabset justified="true" active="$ctrl.activeTab">
-            <uib-tab index="0" heading="Content Editor">
-              <content-editor scene-content="$ctrl.selectedSceneContent"
-                              on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
-              </content-editor>
-            </uib-tab>
+          <a href="" ng-click="$ctrl.displayMediaLibrary = true">Media Library</a>
 
-            <uib-tab index="1" heading="Media Library">
-              <media-library></media-library>
-            </uib-tab>
-          </uib-tabset>
+          <content-editor scene-content="$ctrl.selectedSceneContent"
+                          on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
+          </content-editor>
         </div>
       </div>
     </div>
