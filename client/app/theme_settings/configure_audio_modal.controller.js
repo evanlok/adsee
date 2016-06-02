@@ -45,15 +45,16 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
 
     recorder && recorder.record();
     $scope.recording = true;
+    $scope.$broadcast('timer-reset');
     $scope.$broadcast('timer-start');
   }
 
   function stopRecording() {
+    $scope.$broadcast('timer-stop');
     recorder && recorder.stop();
     $scope.recording = false;
     exportWAV();
     recorder.clear();
-    $scope.$broadcast('timer-clear');
   }
 
   function maxDurationReached() {
@@ -94,6 +95,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
     recorder.exportWAV(function (blob) {
       currentAudioBlob = blob;
       $scope.audioUrl = $window.URL.createObjectURL(blob);
+      $scope.audioFormat = 'wav';
       $scope.$apply();
     });
   }
