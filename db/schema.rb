@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601193103) do
+ActiveRecord::Schema.define(version: 20160602171229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160601193103) do
     t.text     "zip_codes",                                  array: true
     t.integer  "status",       default: 0
     t.string   "aspect_ratio", default: "16:9"
+    t.text     "audio"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree

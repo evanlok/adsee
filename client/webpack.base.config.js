@@ -21,6 +21,7 @@ module.exports = {
       'angular-ui-bootstrap',
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
+      'angular-timer',
       'tinycolor2',
       'select2',
       'sortablejs/ng-sortable',
@@ -30,6 +31,8 @@ module.exports = {
       'howler',
       'format-as-currency',
       'moment',
+      'humanize-duration',
+      './js/recorder.js',
       './app/vendor.js'
     ]
   },
@@ -93,6 +96,7 @@ module.exports = {
       {test: require.resolve("tinycolor2"), loader: "expose?tinycolor"},
       // videojs-contrib-hls requires this
       {test: require.resolve("video.js"), loader: "expose?videojs"},
+      {test: require.resolve("angular-timer"), loader: "imports?humanizeDuration=humanize-duration,moment"},
       {test: /\.html$/, loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './app')) + '/!html'}
     ]
   },

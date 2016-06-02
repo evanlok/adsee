@@ -54,4 +54,8 @@ class SceneCollection < ActiveRecord::Base
       end
     end
   end
+
+  def audio_url
+    "#{ENV['CDN_URL']}/#{audio}" if audio
+  end
 end
