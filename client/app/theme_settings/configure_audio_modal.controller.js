@@ -16,6 +16,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
   $scope.stopRecording = stopRecording;
   $scope.maxDurationReached = maxDurationReached;
   $scope.save = save;
+  $scope.uploadFile = uploadFile;
 
   try {
     $window.AudioContext = $window.AudioContext || $window.webkitAudioContext;
@@ -54,7 +55,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
     recorder.clear();
     $scope.$broadcast('timer-clear');
   }
-  
+
   function maxDurationReached() {
     $scope.stopRecording();
     $scope.$apply();
@@ -95,6 +96,27 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
       $scope.audioUrl = $window.URL.createObjectURL(blob);
       $scope.$apply();
     });
+  }
+
+  function uploadFile() {
+    var pickerOptions = {
+      maxFiles: 1,
+      mimetype: 'audio/*',
+      maxSize: (50 * 1024 * 1024)
+    };
+
+    var storageOptions = {
+      location: 'S3',
+      path: '/uploaded_audio/',
+      access: 'public',
+      storeContainer: S3_BUCKET_NAME
+    };
+
+    filepicker.pickAndStore(pickerOptions, storageOptions,
+      function onSuccess(blobs) {
+        $uibModalInstance.close(blobs[0].key);
+      }
+    );
   }
 }
 

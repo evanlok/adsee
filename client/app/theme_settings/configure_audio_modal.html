@@ -16,6 +16,11 @@
   </div>
 
   <div ng-show="!uploading">
+    <button class="btn btn-primary" ng-click="uploadFile()">
+      <i class="fa fa-arrow-circle-up"></i>
+      Upload a file
+    </button>
+
     <h4>Record New Audio Track</h4>
     <a href="" ng-show="!recording" ng-click="startRecording()">
       <i class="fa fa-play-circle"></i>
