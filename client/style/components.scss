@@ -505,119 +505,18 @@
   }
 }
 .media-library {
-  padding: 0px 20px 20px;
-  .media-tabs {
-    width: 100%;
-    position: relative;
-    margin: 20px 0px 15px;
-    border-radius: 50px;
-    border: 2px solid $color-5;
-    overflow: hidden;
-    a {
-      width: 50%;
-      display: inline-block;
-      float: left;
-      text-align: center;
-      padding: 8px 10px;
-      background-color: $color-5;
-    }
-    .active {
-      background-color: #4b545d;
-      color: white;
-    }
-  }
-  .nav {
-    background-color: $color-3;
-    font-size: 14px;
-    padding-top: 0px;
-    ul {
-      width: 100%;
-    }
-    li {
-      margin: 0px;
-      width: 50%;
-    }
-    li > a {
-      border-radius: 0px;
-      border: 2px solid $color-5;
-      background-color: $color-5;
-      text-transform: uppercase;
-      font-size: 11px;
-      text-align: center;
-      padding: 7px 0px;
-    }
-    li > a:hover {
-      color: $color-6;
-    } 
-    .active {
-      background-color: #4b545d;
-      color: white; 
-    } 
-    .active:hover {
-      background-color: #4b545d;
-      color: white; 
-    } 
-    li.active > a:focus {
-      border: 1px solid $color-1;
-      background-color: $color-5;
-    } 
-    li.active > a:hover {
-      border: 1px solid $color-1;
-      background-color: $color-5;
-    } 
-    .images-tab {
-      border-top-left-radius: 30px;
-      border-bottom-left-radius: 30px;
-      border: 2px solid $color-5;
-    }
-    .videos-tab {
-      border-top-right-radius: 30px;
-      border-bottom-right-radius: 30px;
-    }
-    .btn {
-      border-radius: 30px;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 12px;
-      background-color: $color-2;
-      border: 1px solid $color-2;
-      color: white;
-      padding: 7px 8px;
-    }
-    .stock-media {
-      a {
-        display: inline-block;
-        border-radius: 30px;
-        background-color: #3e454c;
-        padding: 7px 9px;
-        margin: 0px 0px 0px 3px;
-      }
-    }
-  }
-  #search {
-    input {
-      width: 100%;
-      border: 2px solid $color-5;
-      border-radius: 50px;
-      background: none;
-      font-size: 12px;
-      padding: 6px 30px 6px 10px;
-      &:hover {
-        border: 2px solid $color-2;
-      }
-    }
-    button {
-      position: absolute;
-      right: 22px;
-      background: none;
-      border: none;
-      font-size: 12px;
-      padding: 7px;
-      color: $color-5;
-      &:hover {
-        color: $color-2;
-      }
-    }
+  padding: 30px 40px 40px;
+  position: relative;
+  background-color: white;
+  height: 100vh;
+  z-index: 1000;
+  background-color: $color-3;
+  -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
+  -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
+  box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
+  h3 {
+    font-weight: 700;
+    margin-bottom: 15px;
   }
   .image-thumb-column {
     padding: 0px 7px;
@@ -657,27 +556,39 @@
     margin: 10px 0px;
   }
   .video-name {
-    padding: 0px 20px;
-    word-wrap:break-word;
+    padding: 3px 20px;
+    background-color: hsla(0, 0%, 0.0000%, 0.8000);
     font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
   }
   .media-upload-button {
     display: inline-block;
     color: white;
-    width: 100%;
-    font-size: 11px;
-    background-color: $color-2;;
+    width: 160px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: $color-2;
     text-align: center;
     padding: 8px;
     border-radius: 35px;
     text-transform: uppercase;
     float: right;
+    border: none;
     &:hover {
-      background-color: $color-6;
+      background-color: $color-1;
     }
+  }
+  .search-container {
+    display: inline-block;
+  }
+  .media-search {
+    max-width: 200px;
   }
   .thumb-container {
     padding: 15px;
+    margin-top: 10px;
   }
   .image-thumbs {
     padding: 0px 6px 12px;
@@ -689,6 +600,9 @@
     margin-bottom: 15px;
     position: relative;
     border: 1px solid hsl(207, 11.1111%, 15.8824%);
+    img {
+      width: 100%;
+    }
   }
 }
 .media-input-group {
