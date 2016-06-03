@@ -18,6 +18,8 @@ FactoryGirl.define do
   factory :scene do
     name { Faker::Lorem.sentence }
     sequence(:hal_id) { |n| n }
+    width 1280
+    height 720
 
     data_attributes do
       [
@@ -88,6 +90,11 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
     photo_count { Faker::Number.number(1) }
     ad_type
+
+    trait :with_song_and_font do
+      song
+      font
+    end
   end
 
   factory :theme_variant do

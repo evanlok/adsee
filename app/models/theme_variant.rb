@@ -15,4 +15,8 @@ class ThemeVariant < ActiveRecord::Base
   def display_name
     "#{theme.name} - #{video_type.name}"
   end
+
+  def aspect_ratio
+    scenes.first&.aspect_ratio
+  end
 end
