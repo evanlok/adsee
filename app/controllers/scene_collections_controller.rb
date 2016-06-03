@@ -64,7 +64,7 @@ class SceneCollectionsController < ApplicationController
   def scene_collection_params
     if params[:scene_collection]
       params.require(:scene_collection).permit(
-        :theme_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio,
+        :theme_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio, :audio,
         facebook_targeting_spec_ids: [], zip_codes: []
       )
     else

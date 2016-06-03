@@ -1,4 +1,6 @@
 var templateUrl = require('./scene_editor.html');
+var aspectRatioModalCtrl = require('./aspect_ratio_modal.controller');
+var aspectRatioModalTemplateUrl = require('./aspect_ratio_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -11,7 +13,7 @@ var component = {
 
 
 /*@ngInject*/
-function SceneEditorController($state, sceneCollectionService, sceneContentService, sceneAttributeService,
+function SceneEditorController($state, $uibModal, sceneCollectionService, sceneContentService, sceneAttributeService,
                                transitionsService, mediaSelectorService, videoJobService, facebookAdService) {
   var vm = this;
 
@@ -41,6 +43,7 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
   vm.updateSceneContentTransition = updateSceneContentTransition;
   vm.updateSceneAttribute = updateSceneAttribute;
   vm.selectSceneContent = selectSceneContent;
+  vm.showAddScenePage = showAddScenePage;
   vm.addScene = addScene;
   vm.removeScene = removeScene;
   vm.previousSceneContent = previousSceneContent;
@@ -48,8 +51,6 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
   vm.sceneContentPosition = sceneContentPosition;
   vm.updateSceneContentPosition = updateSceneContentPosition;
   vm.preview = preview;
-
-
 
   function fetchSceneCollection() {
     sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
@@ -67,7 +68,7 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
   function updateSceneCollection(prop, value) {
     vm.sceneCollection[prop] = value;
 
-    sceneCollectionService.update({id: vm.sceneCollection.id}, vm.sceneCollection).then(function onSuccess(data) {
+    return sceneCollectionService.update({id: vm.sceneCollection.id}, vm.sceneCollection).then(function onSuccess(data) {
       vm.sceneCollection = data;
     });
   }
@@ -79,7 +80,7 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
   }
 
   function updateSceneAttribute(sceneAttribute, value) {
-    sceneAttribute.value = value;
+    sceneAttribute.value = value || null;
     var promise;
 
     if (sceneAttribute.id) {
@@ -104,6 +105,28 @@ function SceneEditorController($state, sceneCollectionService, sceneContentServi
     vm.selectedSceneContent = sceneContent;
     vm.activeTab = 0;
     mediaSelectorService.reset();
+  }
+
+  function showAddScenePage() {
+    if (_.isEmpty(vm.sceneContents) && !vm.sceneCollection.aspect_ratio) {
+      var modal = $uibModal.open({
+        controller: aspectRatioModalCtrl,
+        templateUrl: aspectRatioModalTemplateUrl,
+        resolve: {
+          aspectRatio: function () {
+            return vm.sceneCollection.aspect_ratio;
+          }
+        }
+      });
+
+      modal.result.then(function (aspectRatio) {
+        updateSceneCollection('aspect_ratio', aspectRatio).then(function () {
+          vm.displayAddScene = true;
+        });
+      });
+    } else {
+      vm.displayAddScene = true;
+    }
   }
 
   function addScene(scene) {

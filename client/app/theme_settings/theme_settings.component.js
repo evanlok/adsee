@@ -1,4 +1,6 @@
 var templateUrl = require('./theme_settings.html');
+var modalCtrl = require('./configure_audio_modal.controller');
+var modalTemplateUrl = require('./configure_audio_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -10,7 +12,7 @@ var component = {
 };
 
 /*@ngInject*/
-function ThemeSettingsController(songsService, fontsService) {
+function ThemeSettingsController($uibModal, songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -20,6 +22,7 @@ function ThemeSettingsController(songsService, fontsService) {
 
   vm.update = update;
   vm.currentSongUrl = currentSongUrl;
+  vm.configureAudio = configureAudio;
 
   function update(prop) {
     vm.onUpdate({prop: prop, value: vm.sceneCollection[prop]});
@@ -31,6 +34,25 @@ function ThemeSettingsController(songsService, fontsService) {
     if (song) {
       return song.url;
     }
+  }
+
+  function configureAudio() {
+    var modal = $uibModal.open({
+      controller: modalCtrl,
+      templateUrl: modalTemplateUrl,
+      resolve: {
+        audioUrl: function () {
+          return vm.sceneCollection.audio_url
+        }
+      }
+    });
+
+    modal.result.then(function (audioPath) {
+      vm.sceneCollection.audio = audioPath;
+      update('audio');
+    });
+
+    return modal;
   }
 }
 

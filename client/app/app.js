@@ -10,6 +10,7 @@ angular.module('adsee', [
   'ui.select',
   'color.picker',
   'ng-sortable',
+  'timer',
   'bcherny/formatAsCurrency',
   require('./admin/admin.module'),
   require('./shared/shared.module'),

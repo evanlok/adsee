@@ -29,6 +29,7 @@ class SceneCollection < ActiveRecord::Base
 
     self.font = theme.font
     self.song = theme.song
+    self.aspect_ratio = theme.theme_variants.default.aspect_ratio
 
     theme.theme_variants.default.scenes.map do |scene|
       scene_contents.create(scene: scene)
@@ -53,5 +54,9 @@ class SceneCollection < ActiveRecord::Base
         facebook_ads.first_or_create
       end
     end
+  end
+
+  def audio_url
+    "#{ENV['CDN_URL']}/#{audio}" if audio
   end
 end

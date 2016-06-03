@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601193103) do
+ActiveRecord::Schema.define(version: 20160602235616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,12 +129,13 @@ ActiveRecord::Schema.define(version: 20160601193103) do
     t.string   "color"
     t.integer  "font_id"
     t.integer  "song_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "hal_id"
-    t.text     "zip_codes",                                  array: true
+    t.text     "zip_codes",                             array: true
     t.integer  "status",       default: 0
-    t.string   "aspect_ratio", default: "16:9"
+    t.string   "aspect_ratio"
+    t.text     "audio"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree

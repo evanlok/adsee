@@ -28,13 +28,12 @@
         <option value="">Select a song</option>
       </select>
     </div>
-    
-    <div class="theme-settings-column aspect-ratio">
-      <select ng-model="$ctrl.sceneCollection.aspect_ratio" ng-change="$ctrl.update('aspect_ratio')">
-        <option value="16:9">16 : 9</option>
-        <option value="1:1">1 : 1</option>
-      </select>
-    </div>
 
+    <div>
+      <a href="" ng-click="$ctrl.configureAudio()">
+        <i class="fa fa-microphone"></i>
+      </a>
+    </div>
+    
   </div>
 </div>

@@ -1,7 +1,7 @@
 class Scene < ActiveRecord::Base
   ASPECT_RATIOS = {
-    '1:1' => 600,
-    '16:9' => 720
+    '1:1' => [720, 720],
+    '16:9' => [1280, 720]
   }.freeze
 
   acts_as_taggable
@@ -20,9 +20,15 @@ class Scene < ActiveRecord::Base
   validates :name, presence: true
 
   # Scopes
-  scope :with_aspect_ratio, -> (aspect_ratio) { where(height: ASPECT_RATIOS.fetch(aspect_ratio)) }
+  scope :with_aspect_ratio, lambda { |aspect_ratio|
+    where(width: ASPECT_RATIOS.fetch(aspect_ratio)[0], height: ASPECT_RATIOS.fetch(aspect_ratio)[1])
+  }
 
   def attribute_names
     data_attributes.map { |attr| attr['name'] }
+  end
+
+  def aspect_ratio
+    ASPECT_RATIOS.invert.fetch([width, height])
   end
 end

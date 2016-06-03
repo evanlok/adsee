@@ -5,12 +5,13 @@ var component = {
   templateUrl: templateUrl,
   controller: SongPlayerController,
   bindings: {
-    url: '@'
+    url: '@',
+    format: '@'
   }
 };
 
 /*@ngInject*/
-function SongPlayerController() {
+function SongPlayerController($scope) {
   var vm = this;
   var sound;
 
@@ -42,8 +43,10 @@ function SongPlayerController() {
 
     sound = new Howl({
       urls: [vm.url],
-      onEnd: function () {
+      format: vm.format,
+      onend: function () {
         vm.playing = false;
+        $scope.$apply();
       }
     });
   }
