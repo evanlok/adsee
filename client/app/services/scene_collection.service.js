@@ -12,6 +12,10 @@
   this.get = function (params) {
     return resource.get(params).$promise;
   };
+
+  this.save = function (params, data) {
+    return resource.save(params, data).$promise;
+  };
   
   this.update = function (params, data) {
     return resource.update(params, data).$promise;
