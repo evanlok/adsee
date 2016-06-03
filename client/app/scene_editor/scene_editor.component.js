@@ -80,7 +80,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   }
 
   function updateSceneAttribute(sceneAttribute, value) {
-    sceneAttribute.value = value;
+    sceneAttribute.value = value || null;
     var promise;
 
     if (sceneAttribute.id) {

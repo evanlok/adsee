@@ -1,7 +1,6 @@
 module SceneAttributes
   class Number < SceneAttribute
     # Validations
-    validates :value, presence: true
     validates :value, numericality: true
 
     def value
