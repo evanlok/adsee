@@ -240,7 +240,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
-                  scope: 'public_profile,email,ads_management,pages_show_list',
+                  scope: 'public_profile,email,ads_management,pages_show_list,publish_actions,publish_pages',
                   client_options: {
                     site: "https://graph.facebook.com/#{ENV['FACEBOOK_API_VERSION']}",
                     authorize_url: "https://www.facebook.com/#{ENV['FACEBOOK_API_VERSION']}/dialog/oauth"
