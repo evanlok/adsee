@@ -5,6 +5,16 @@ function ImageService($resource) {
       format: 'json'
     },
     {
+      query: {
+        method: 'GET',
+        isArray: true,
+        interceptor: {
+          response: function (response) {
+            response.resource.$httpHeaders = response.headers;
+            return response.resource;
+          }
+        }
+      },
       saveStock: {method: 'POST', url: '/admin/images'}
     }
   );
@@ -16,7 +26,7 @@ function ImageService($resource) {
   this.save = function (params, data) {
     return resource.save(params, data).$promise;
   };
-  
+
   this.saveStock = function (params, data) {
     return resource.saveStock(params, data).$promise;
   };

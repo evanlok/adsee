@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   def index
     @images = params[:stock] ? Image.where(user: nil) : policy_scope(Image)
     @images = @images.search(params[:q]) if params[:q].present?
-    @images = @images.page(params[:page]).per(50)
+    @images = paginate(@images, per_page: 24)
 
     respond_to do |format|
       format.json

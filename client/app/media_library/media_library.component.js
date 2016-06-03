@@ -22,6 +22,9 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     vm.selecting = false;
     vm.display = {images: true, videos: false, stockImages: false, stockVideos: false};
     vm.searchQuery = '';
+    vm.currentPage = 1;
+    vm.totalItems = 0;
+    vm.itemsPerPage = 0;
     loadedContent = {images: false, videos: false, stockImages: false, stockVideos: false};
     mediaSelectorService.onMediaInsert(onMediaInsert);
     loadContent('images');
@@ -33,15 +36,18 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   vm.showTab = showTab;
   vm.deleteMedia = deleteMedia;
   vm.filterResults = filterResults;
+  vm.pageChanged = pageChanged;
 
   function fetchImages() {
-    imageService.query({q: vm.searchQuery}).then(function (data) {
+    imageService.query({q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
       vm.images = data;
     });
   }
 
   function fetchVideoClips() {
-    return videoClipService.query({q: vm.searchQuery}).then(function (data) {
+    return videoClipService.query({q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
       vm.videos = data;
     });
   }
@@ -61,13 +67,15 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   }
 
   function fetchStockImages() {
-    imageService.query({stock: true, q: vm.searchQuery}).then(function (data) {
+    imageService.query({stock: true, q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
       vm.stockImages = data;
     });
   }
 
   function fetchStockVideos() {
-    videoClipService.query({stock: true, q: vm.searchQuery}).then(function (data) {
+    videoClipService.query({stock: true, q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
       vm.stockVideos = data;
     });
   }
@@ -97,6 +105,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
       vm.display[key] = false;
     });
 
+    vm.currentPage = 1;
     loadContent(type, true);
     vm.display[type] = true;
   }
@@ -138,12 +147,24 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     });
   }
 
-  function filterResults() {
-    var currentType = _.findKey(vm.display, function (v) {
+  function currentMediaType() {
+    return _.findKey(vm.display, function (v) {
       return v;
     });
+  }
 
-    loadContent(currentType, true);
+  function filterResults() {
+    vm.currentPage = 1;
+    loadContent(currentMediaType(), true);
+  }
+
+  function pageChanged() {
+    loadContent(currentMediaType(), true);
+  }
+
+  function setPaginationData(resource) {
+    vm.totalItems = resource.$httpHeaders('Total');
+    vm.itemsPerPage = resource.$httpHeaders('Per-Page');
   }
 }
 

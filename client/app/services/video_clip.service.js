@@ -1,9 +1,20 @@
-/*@ngInject*/ function VideoClipService($resource) {
+/*@ngInject*/
+function VideoClipService($resource) {
   var resource = $resource('/video_clips/:id', {
       id: '@id',
       format: 'json'
     },
     {
+      query: {
+        method: 'GET',
+        isArray: true,
+        interceptor: {
+          response: function (response) {
+            response.resource.$httpHeaders = response.headers;
+            return response.resource;
+          }
+        }
+      },
       saveStock: {method: 'POST', url: '/admin/video_clips'}
     }
   );

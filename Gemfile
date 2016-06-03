@@ -62,6 +62,7 @@ gem 'concurrent-ruby-ext'
 gem 'high_voltage'
 gem 'lograge'
 gem 'pg_search'
+gem 'api-pagination'
 
 group :development do
   gem 'quiet_assets'
