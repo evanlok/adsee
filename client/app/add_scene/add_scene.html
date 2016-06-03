@@ -3,7 +3,6 @@
   <a href="" ng-click="$ctrl.onClose()" class="back-link pull-right"><i class="fa fa-chevron-left"></i> Back</a>
 
   <h2>
-    <i class="fa fa-plus-circle"></i>
     Add a scene
   </h2>
   <div ng-repeat="(category, scenesChunks) in $ctrl.groupedScenes">
@@ -11,8 +10,8 @@
 
     <div class="row" ng-repeat="scenesChunk in scenesChunks">
       <div class="scene-button col-md-3" ng-repeat="scene in scenesChunk">
-        <div class="scene-thumb-padding">
-          <a video-overlay-link="{{ scene.preview_video_url }}" class="play-sample">PLAY <i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
+        <div class="video-thumb-box">
+          <a video-overlay-link="{{ scene.preview_video_url }}" class="play-sample"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
           <a href="" ng-click="$ctrl.onAddScene({scene: scene})" class="scene-thumb-box">
             <div>
               <img ng-src="{{ scene.thumbnail_small_url }}">

@@ -9,7 +9,7 @@
       </div>
       <div ng-click="$ctrl.onSelect({video: video})" class="video-thumb-link">
         <div class="text-center">
-          <i class="fa fa-file-video-o video-icon" ng-if="!video.thumbnail_url">
+          <i class="fa fa-file video-icon" ng-if="!video.thumbnail_url">
           </i>
 
           <img ng-src="{{ video.thumbnail_url }}" class="img-responsive" ng-if="video.thumbnail_url">

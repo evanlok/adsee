@@ -61,11 +61,14 @@
             Scene
               {{ $ctrl.sceneContentPosition($ctrl.selectedSceneContent) }}. {{ $ctrl.selectedSceneContent.scene.name }}
           </h4>
-          <scene-navigator scene-contents="$ctrl.sceneContents"
-                           selected-scene-content="$ctrl.selectedSceneContent"
-                           on-next="$ctrl.nextSceneContent()"
-                           on-previous="$ctrl.previousSceneContent()">
-          </scene-navigator>
+          <div class="scene-toggle-right">
+            <a href="" ng-click="$ctrl.displayMediaLibrary = true" class="media-library-button"><i class="fa fa-file-o"></i> &nbsp;Media Library</a>
+            <scene-navigator scene-contents="$ctrl.sceneContents"
+                             selected-scene-content="$ctrl.selectedSceneContent"
+                             on-next="$ctrl.nextSceneContent()"
+                             on-previous="$ctrl.previousSceneContent()">
+            </scene-navigator>
+          </div>
         </div>
 
         <div class="main-image">
@@ -102,9 +105,8 @@
 
     </div>
     <div class="content-column">
-      <div class="media-panel">
-        <div class="media-wrapper">
-          <a href="" ng-click="$ctrl.displayMediaLibrary = true">Media Library</a>
+      <div class="content-panel">
+        <div class="content-wrapper">
 
           <content-editor scene-content="$ctrl.selectedSceneContent"
                           on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">

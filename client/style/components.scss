@@ -43,7 +43,7 @@
     box-sizing: border-box;
     width: 100%;
     margin: 0 0 1.65em 0px;
-    border: 1px solid $color-5;
+    border: 1px solid $color-9;
     border-radius: 0px;
     resize: none;
     background: none;
@@ -116,7 +116,7 @@
   }
 }
 .media-input-group {
-  border: 1px solid $color-5;
+  border: 1px solid $color-9;
   border-radius: 0px;
   margin: 0 0 1.65em 0px;
   -webkit-transition-duration: .2s;
@@ -131,7 +131,7 @@
     resize: none;
     border: none;
     background: none;
-    color: $color-5;
+    color: $color-9;
     outline: none; 
     box-shadow: none;
     height: 40px;
@@ -179,6 +179,9 @@
     background-size: 100% 5px;
     background-repeat: no-repeat;
     background-position: center;
+  }
+  .image-padding img {
+    width: 100%
   }
 }
 
@@ -264,7 +267,7 @@
 .video-nav {
 
   padding: 20px 0px 0px 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
 
   ul {
@@ -385,7 +388,7 @@
     width: 100%;
   }
   .color-picker-wrapper .form-control, .color-picker-wrapper .input-group .input-group-addon {
-    border: 1px solid $color-5;
+    border: 1px solid $color-9;
   }
   .color-picker-wrapper .input-group .input-group-addon {
     border-left: none;
@@ -448,8 +451,6 @@
   // -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   background-color: $color-7;
-  // border-top-right-radius: 25px;
-  
 }
 .content-column {
   -webkit-box-flex: 2;
@@ -467,41 +468,26 @@
   max-width: 450px;
   background-color: $color-7;
 }
-.media-panel {
+.content-panel {
   height: 100%;
   background-color: $color-3;
   overflow: auto;
+  margin-top: 20px;
+  border-top-left-radius: 15px;
 }
-.media-wrapper {
-  ul {
-    padding-top: 15px;
-  }
-  .nav {
-    background: $color-7;
-  }
-  .nav-tabs {
+.scene-toggle-right {
+  float: right;
+  .media-library-button {
+    background-color: $color-2;
+    color: white;
+    padding: 4px 15px;
+    border-radius: 50px;
+    display: inline-block;
+    margin: 6px 8px 0px 0px;
     font-size: 14px;
-    li > a {
-      border-bottom: none;
-      margin-bottom: -1px;
-      margin-right: 6px;
-      background-color: $color-8;
-      &:hover {
-        border: 1px solid $color-8;
-        border-bottom: none;
-      }
+    &:hover {
+      background-color: $color-1;
     }
-    li.active > a {
-      background-color: $color-3;
-      border: 1px solid $color-3;
-      color: black; 
-    } 
-    li.active > a:focus {
-      border: 1px solid $color-3;
-    } 
-    li.active > a:hover {
-      border: 1px solid $color-3;
-    } 
   }
 }
 .media-library {
@@ -552,8 +538,9 @@
     cursor: pointer;
   }
   .video-icon {
-    font-size: 60px;
-    margin: 10px 0px;
+    font-size: 80px;
+    margin: 0px 0px 40px;
+    color: hsla(205, 8.8555%, 8.7387%, 1.0000);
   }
   .video-name {
     padding: 3px 20px;
@@ -631,16 +618,16 @@
 }
 .scene-header {
   height: 60px;
-  padding: 15px 0px 10px 25px;
+  padding: 20px 10px 10px 25px;
   color: $color-5;
 }
 .scene-actionbar {
-  padding: 15px 10px 150px 25px;
+  padding: 15px 15px 150px 25px;
   .time {
     color: $color-5;
   }
   .delete-scene {
-    border: 1px solid $color-5;
+    border: 1px solid $color-9;
     font-size: 16px;
     padding: 6px 9px;
     margin-right: 7px;
@@ -674,6 +661,9 @@
   }
   a > i {
     color: $color-2;
+    &:hover {
+      color: $color-1;
+    }
   }
 }
 .scenes-row {
@@ -747,6 +737,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     display: block;
     margin-bottom: 3px;
   }
+  &:hover {
+    color: $color-1;
+  }
 }
 .scene-timeline-thumb {
   margin-top: 10px;
@@ -787,7 +780,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .preview-button {
   height: 100px;
-  background-color: $color-1;
+  background-color: $color-2;
   color: white;
   vertical-align: middle;
   text-align: center;
@@ -806,14 +799,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   &:hover {
     color: white;
-    background-color: $color-2;
+    background-color: $color-1;
   }
+}
+.content-wrapper {
+  padding: 0px 40px;
 }
 .content-edit-wrapper {
   color: $color-5;
   max-width: 350px;
   margin: 0 auto ;
-  padding: 20px 30px 100px;
+  padding: 20px 0px 100px;
   h4 {
     margin-bottom: 20px;
   }
@@ -843,7 +839,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     float: left;
   }
 }
-.scene-thumb-padding {
+.video-thumb-box {
   margin: 10px;
   overflow: hidden;
   position: relative;
@@ -851,29 +847,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     width: 100%;
   }
   .play-sample {
-    width: auto;
-  }
-}
-.play-sample {
-  position: absolute;
-  background-color: hsla(0, 0%, 0.0000%, 0.5000);
-  padding: 4px 7px 2px;
-  color: white;
-  width: auto;
-  text-align: center;
-  transition: margin 0.5s ease;
-  font-size: 14px;
-  vertical-align: middle;
-  border-bottom-right-radius: 10px;
-  i {
-    margin-left: 4px;
-    font-size: 16px;
-  }
-  &:hover {
-    background-color: $color-6;
+    position: absolute;
+    margin-top: 12%;
     color: white;
+    text-align: center;
+    transition: margin 0.5s ease;
+    font-size: 50px;
+    vertical-align: middle;
+    width: 100%;
   }
 }
+
 .scene-thumb-box {
   display: inline-block;
   margin: 0px;
@@ -881,12 +865,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     width: 100%;
     border: 1px solid hsla(213, 11.1111%, 15.8824%, 1.0000);
   }
+  .scene-thumb-name {
+    padding: 3px 20px;
+    background-color: hsla(0, 0%, 0.0000%, 0.7000);
+    font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    color: white;
+  }
   &:hover {
     img {
       border: 1px solid $color-6;
-    }
-    .scene-thumb-name {
-      color: $color-6;
     }
   }
 }
@@ -953,6 +943,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .template-page-wrapper {
 
+  .carousel {
+    background-color: $color-2;
+    margin: 0 auto;
+    width: 50%;
+    overflow: visible;
+    position: static;
+  }
+  .carousel-row {
+    position: relative;
+    overflow: hidden;
+  }
+  .carousel-inner {
+    overflow: visible;
+  }
+  .promo-slot {
+    padding: 0px;
+    background-color: $color-2;
+  }
+  .content-item {
+    padding: 0px;
+    background-color: $color-2;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  
   h1 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -983,11 +1000,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .industry-group {
   padding: 20px 50px 40px;
-  background: rgb(244,244,244); /* Old browsers */
-  background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  // background: rgb(244,244,244); /* Old browsers */
+  // background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  // background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); Chrome10-25,Safari5.1-6
+  // background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
   h2 {
     font-size: 26px;
     font-weight: 700;
