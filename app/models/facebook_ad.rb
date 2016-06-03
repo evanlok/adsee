@@ -48,7 +48,7 @@ class FacebookAd < ActiveRecord::Base
           video_id: video_id,
           title: title,
           description: description,
-          image_url: image_url,
+          image_url: image_url || scene_collection.video&.thumbnail_url,
           call_to_action: {
             type: call_to_action_type,
             value: {
