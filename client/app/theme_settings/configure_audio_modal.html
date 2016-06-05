@@ -1,50 +1,114 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-<div class="modal-body">
-  <div class="clearfix" ng-if="audioUrl">
-    <div class="pull-left">
-      Current Audio:
-    </div>
-
-    <div class="pull-left">
-      <song-player url="{{ audioUrl }}" format="{{ audioFormat }}"></song-player>
-    </div>
-  </div>
-
-  <div ng-show="!uploading">
-    <button class="btn btn-primary" ng-click="uploadFile()">
-      <i class="fa fa-arrow-circle-up"></i>
-      Upload a file
+<div class="audio-record-modal">
+  <div class="modal-header">
+    <h4 class="audio-header"><i class="fa fa-volume-up" aria-hidden="true"></i> Add Audio Track</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close()">
+      <span aria-hidden="true">&times; cancel</span>
     </button>
-
-    <h4>Record New Audio Track</h4>
-    <a href="" ng-show="!recording" ng-click="startRecording()">
-      <i class="fa fa-play-circle"></i>
-    </a>
-
-    <a href="" ng-show="recording" ng-click="stopRecording()">
-      <i class="fa fa-stop-circle"></i>
-    </a>
-
-    recording: {{ recording }}
-
-    <timer countdown="maxDuration" interval="1000" autostart="false" finish-callback="maxDurationReached()">
-      {{mminutes}}:{{sseconds}}
-    </timer>
   </div>
 
-  <div ng-show="uploading">
-    <h4>Uploading file...</h4>
+  <div class="modal-body">
+    <div class="audio-elements">
+      <div class="clearfix current-audio" ng-if="audioUrl" ng-show="!recording">
+        <div class="">
+          Current Audio:
+        </div>
 
-    <uib-progressbar value="uploadPercent" class="progress-striped active"></uib-progressbar>
+        <div class="current-recording">
+          <song-player url="{{ audioUrl }}" format="{{ audioFormat }}"></song-player>
+        </div>
+      </div>
+
+      <div ng-show="uploading">
+        <h4>Uploading file...</h4>
+
+        <uib-progressbar value="uploadPercent" class="progress-striped active"></uib-progressbar>
+      </div>
+
+      <div class="recording-info" ng-show="recording">
+        <div class="recording-indicator blink_record"><i class="fa fa-microphone"></i> recording</div>
+        <div>Timer:</div>
+        <div class="time">
+          <timer countdown="maxDuration" interval="1000" autostart="false" finish-callback="maxDurationReached()">
+             {{mminutes}}:{{sseconds}}
+          </timer>
+        </div>
+        <a href="" ng-click="stopRecording()" class="button recording-button">
+          <i class="fa fa-stop-circle"></i> Stop
+        </a>
+      </div>
+
+      <div class="recording-wrapper">
+        <a href="" ng-show="!recording" ng-click="startRecording()" class="button record-button">
+          <i class="fa fa-microphone"></i> 
+          Record Audio
+        </a>
+      </div>
+
+      <div ng-show="!uploading">
+        <button class="button upload-button" ng-click="uploadFile()">
+          <i class="fa fa-arrow-circle-up"></i>
+          Upload a file
+        </button>
+      </div>
+      
+    </div>
+    <div ng-show="recording" class="sound-bars">
+      <div class="bar wave-1"></div>
+      <div class="bar wave-2"></div>
+      <div class="bar wave-3"></div>
+      <div class="bar wave-4"></div>
+      <div class="bar wave-5"></div>
+      <div class="bar wave-6"></div>
+      <div class="bar wave-7"></div>
+      <div class="bar wave-8"></div>
+      <div class="bar wave-9"></div>
+      <div class="bar wave-10"></div>
+      <div class="bar wave-1"></div>
+      <div class="bar wave-2"></div>
+      <div class="bar wave-3"></div>
+      <div class="bar wave-4"></div>
+      <div class="bar wave-5"></div>
+      <div class="bar wave-6"></div>
+      <div class="bar wave-7"></div>
+      <div class="bar wave-8"></div>
+      <div class="bar wave-9"></div>
+      <div class="bar wave-10"></div>
+      <div class="bar wave-1"></div>
+      <div class="bar wave-2"></div>
+      <div class="bar wave-3"></div>
+      <div class="bar wave-4"></div>
+      <div class="bar wave-5"></div>
+      <div class="bar wave-6"></div>
+      <div class="bar wave-7"></div>
+      <div class="bar wave-8"></div>
+      <div class="bar wave-9"></div>
+      <div class="bar wave-10"></div>
+      <div class="bar wave-1"></div>
+      <div class="bar wave-2"></div>
+      <div class="bar wave-3"></div>
+      <div class="bar wave-4"></div>
+      <div class="bar wave-5"></div>
+      <div class="bar wave-6"></div>
+      <div class="bar wave-7"></div>
+      <div class="bar wave-8"></div>
+      <div class="bar wave-9"></div>
+      <div class="bar wave-10"></div>
+      <div class="bar wave-1"></div>
+      <div class="bar wave-2"></div>
+      <div class="bar wave-3"></div>
+      <div class="bar wave-4"></div>
+      <div class="bar wave-5"></div>
+      <div class="bar wave-6"></div>
+      <div class="bar wave-7"></div>
+      <div class="bar wave-8"></div>
+      <div class="bar wave-9"></div>
+      <div class="bar wave-10"></div>
+    </div>
   </div>
-</div>
 
-<div class="modal-footer">
-  <button class="btn btn-default" ng-click="$dismiss()" ng-disabled="uploading">Cancel</button>
-  <button class="btn btn-primary" ng-click="save()" ng-disabled="uploading">Save</button>
+
+  <div class="modal-footer">
+    <button class="cancel-button" ng-click="$dismiss()" ng-disabled="uploading">&times; Cancel</button>
+    <button class="button save" ng-click="save()" ng-disabled="uploading">Save</button>
+  </div>
 </div>

@@ -27,7 +27,7 @@ a, a:visited  {
   cursor: pointer;
 }
 a:hover {
-  color: $color-6;
+  color: $color-1;
   text-decoration: none;
 }
 a:focus {
@@ -81,7 +81,7 @@ select:focus {
   border: none;
   border-radius: 100px;
   &:hover {
-    background-color: #1d97ff;
+    background-color: $color-1;
     color: white;
   }
 }
