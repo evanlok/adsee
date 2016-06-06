@@ -4,6 +4,7 @@
       format: 'json'
     },
     {
+      get: {method: 'GET', cache: true},
       update: {method: 'PUT'},
       summaryInfo: {method: 'GET', url: '/scene_collections/:id/summary_info'}
     }

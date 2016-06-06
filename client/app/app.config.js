@@ -41,6 +41,13 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       },
       parent: 'sceneCollectionWizard'
     })
+    .state('facebookPostConfig', {
+      url: '/facebook_post',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<facebook-post-config scene-collection-id="{{ sceneCollectionId }}"></facebook-post-config>')($stateParams);
+      },
+      parent: 'sceneCollectionWizard'
+    })
     .state('summary', {
       url: '/summary',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {

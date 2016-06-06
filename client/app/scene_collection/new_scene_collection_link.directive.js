@@ -22,7 +22,6 @@ function NewSceneCollectionLinkDirective($uibModal) {
       return $uibModal.open({
         controller: modalCtrl,
         templateUrl: modalTemplateUrl,
-        //scope: scope,
         resolve: {
           adTypeId: function () {
             return scope.adTypeId;

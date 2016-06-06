@@ -48,6 +48,24 @@ RSpec.describe HalCallbacksController do
         expect(Video.count).to eq(0)
       end
     end
+
+    context 'when integration is a facebook_post' do
+      let!(:scene_collection) { create(:scene_collection, hal_id: '1234', integration: 'facebook_post') }
+
+      it 'posts video to user feed' do
+        expect_any_instance_of(Facebook::FeedPoster).to receive(:post_to_wall)
+        post :create, params, format: :json
+      end
+    end
+
+    context 'when integration is a facebook_page_post' do
+      let!(:scene_collection) { create(:scene_collection, hal_id: '1234', integration: 'facebook_page_post') }
+
+      it 'posts video to facebook page' do
+        expect_any_instance_of(Facebook::FeedPoster).to receive(:post_to_page)
+        post :create, params, format: :json
+      end
+    end
   end
 
   describe 'POST stream' do

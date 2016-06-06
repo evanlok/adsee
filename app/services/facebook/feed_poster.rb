@@ -7,21 +7,28 @@ module Facebook
       @access_token = @scene_collection.user.facebook_oauth_token
     end
 
-    def post_to_wall(message = '')
-      client.put_object(
-        'me', 'videos',
+    def post_to_wall
+      params = {
         file_url: video_url,
-        description: message,
-        privacy: { value: 'SELF' }.to_json
-      )
+        description: scene_collection.integration_data['description']
+      }
+
+      client.put_object('me', 'videos', params)
     end
 
-    def post_to_page(page_id, message = '')
-      page_client(page_id).put_object(
-        page_id, 'videos',
+    def post_to_page
+      page_id = scene_collection.integration_data['page_id']
+
+      params = {
         file_url: video_url,
-        description: message
-      )
+        description: scene_collection.integration_data['description']
+      }
+
+      if scene_collection.integration_data['call_to_action']
+        params[:call_to_action] = scene_collection.integration_data['call_to_action'].to_json
+      end
+
+      page_client(page_id).put_object(page_id, 'videos', params)
     end
 
     private

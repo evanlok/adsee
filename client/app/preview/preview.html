@@ -7,9 +7,10 @@
 
     <video-preview stream-url="{{ $ctrl.videoJob.stream_url }}" class="vjs-big-play-centered"></video-preview>
 
-    <a href="" class="button" ng-click="$ctrl.configureAd()" ng-disabled="$ctrl.creatingAd">
+    <a href="" class="button" ng-click="$ctrl.nextStep()" ng-disabled="$ctrl.saving">
       NEXT:
-      <span>Select Ad Spend</span>
+      <span ng-if="$ctrl.sceneCollection.integration === 'facebook_ad'">Select Ad Spend</span>
+      <span ng-if="$ctrl.sceneCollection.integration === 'facebook_post' || $ctrl.sceneCollection.integration === 'facebook_page_post'">Configure Facebook Post</span>
     </a>
 
     <a ui-sref="sceneEditor({sceneCollectionId: $ctrl.videoJob.scene_collection_id})" class="back-link">

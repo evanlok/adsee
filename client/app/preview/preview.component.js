@@ -9,14 +9,16 @@ var component = {
 };
 
 /*@ngInject*/
-function PreviewController($interval, $state, videoJobService, facebookAdService) {
+function PreviewController($interval, $state, videoJobService, facebookAdService, sceneCollectionService) {
   var vm = this;
   var intervalPromise;
 
   vm.$onInit = function () {
     vm.videoJob = {};
-    vm.creatingAd = false;
+    vm.sceneCollection = {};
+    vm.saving = false;
 
+    fetchSceneCollection();
     pollStreamurl();
   };
 
@@ -24,7 +26,15 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
     $interval.cancel(intervalPromise);
   };
 
+  vm.nextStep = nextStep;
   vm.configureAd = configureAd;
+
+  function fetchSceneCollection() {
+    return sceneCollectionService.get({id: $state.params.sceneCollectionId}).then(function (data) {
+      vm.sceneCollection = data;
+      return data;
+    });
+  }
 
   function pollStreamurl() {
     intervalPromise = $interval(fetchVideoJob, 1500);
@@ -40,13 +50,23 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
     });
   }
 
+  function nextStep() {
+    fetchSceneCollection().then(function(sceneCollection) {
+      if (sceneCollection.integration === 'facebook_ad') {
+        configureAd();
+      } else {
+        $state.go('facebookPostConfig');
+      }
+    });
+  }
+
   function configureAd() {
-    vm.creatingAd = true;
+    vm.saving = true;
 
     facebookAdService.save({sceneCollectionId: vm.videoJob.scene_collection_id}).then(function (data) {
       $state.go('adConfig', {facebookAdId: data.id});
     }).finally(function () {
-      vm.creatingAd = false;
+      vm.saving = false;
     });
   }
 }
