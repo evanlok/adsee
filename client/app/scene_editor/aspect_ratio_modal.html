@@ -1,18 +1,26 @@
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close(aspectRatio)">
-    <span aria-hidden="true">&times;</span>
+  <button type="button" class="close aspect-close" data-dismiss="modal" aria-label="Close" ng-click="$close(aspectRatio)">
+    <span aria-hidden="true">&times; close</span>
   </button>
 </div>
 
-<div class="modal-body">
-  <p>Choose an aspect ratio for your video:</p>
+<div class="modal-body aspect-ratio">
+  <h2>Select the aspect ratio of your video:</h2>
 
-  <select ng-model="aspectRatio">
-    <option value="1:1">1 : 1</option>
-    <option value="16:9">16 : 9</option>
-  </select>
+	<!--   <select ng-model="aspectRatio">
+	    <option value="1:1">1 : 1</option>
+	    <option value="16:9">16 : 9</option>
+	  </select>
+	 -->
+	<a href="#" class="square">
+		<div class="aspect-number">1:1</div>
+		Square
+	</a>
+	<a href="#" class="widescreen">
+		<div class="aspect-number">16:9</div>
+		Widescreen
+	</a>
+
 </div>
 
-<div class="modal-footer">
-  <button class="btn btn-primary" ng-click="$close(aspectRatio)" ng-disabled="uploading">Save</button>
-</div>
+

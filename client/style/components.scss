@@ -836,6 +836,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 20px;
   }
 }
+.aspect-close {
+  color: $color-2;
+  opacity: 1;
+  text-shadow: none;
+  &:hover {
+    color: $color-1;
+    opacity: 1;
+  }
+}
+.aspect-ratio {
+  h2 {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  a {
+    outline: 5px solid $color-2;
+    display: inline-block;
+    text-transform: uppercase;
+    &:hover {
+      outline: 10px solid $color-2;
+    }
+  }
+  .square {
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;
+  }
+  .widescreen {
+    width: 250px;
+    height: 150px;
+  }
+  .aspect-number {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+}
 .add-scene-index {
   background-color: $color-3;
   -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
@@ -993,20 +1032,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     color: $color-2;
   }
   .record-button {
-    width: 180px;
+    width: 220px;
     display: inline-block;
+    padding: 5px 10px 3px 0px;
     i {
       color: white;
+    }
+    .fa-circle {
+      color: $color-1;
+    }
+    &:hover {
+      .fa-circle {
+        color: $color-2;
+      }
     }
   }
   .recording-button {
     background-color: #ba0008;
-    width: 180px;
+    width: 220px;
     display: inline-block;
     margin-top: 0px;
   }
   .upload-button {
-    width: 180px;
+    width: 220px;
     display: inline-block;
   }
   .song-player i {
@@ -1382,9 +1430,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .thumb-circle {
     color: $color-5;
-    img {
-      margin-bottom: 10px;
-    }
     &:hover {
       color: $color-2;
       img {
@@ -1393,10 +1438,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     }
   }
   .theme-name {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0px;
+    background-color: hsla(0, 0%, 0.0000%, 0.6000);
+    color: white;
+    padding: 5px 10px;
+    font-weight: 700;
   }
 }
+
 .theme-preview {
   margin-top: 7%;
   h1 {
