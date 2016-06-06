@@ -1,5 +1,7 @@
 <nav class="main-nav">
-  <div class="logo"></div>
+  <%= link_to "#", class: "logo" do %>
+    <%= image_tag('adsee_script.svg') %>
+  <% end %>
   <ul>
     <% if user_signed_in? %>
         <li><%= link_to 'My Videos', scene_collections_path, target: '_self' %></li>
