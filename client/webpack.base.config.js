@@ -3,7 +3,6 @@ var webpack = require('webpack');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-var Promise = require('es6-promise').Promise;
 
 module.exports = {
   // the base path which will be used to resolve entry points
