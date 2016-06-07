@@ -27,12 +27,12 @@ module.exports = {
       'sortablejs/ng-sortable',
       'filepicker-js',
       'video.js',
-      'videojs-contrib-hls/dist/videojs-contrib-hls',
       'howler',
       'format-as-currency',
       'moment',
       'humanize-duration',
       'getusermedia',
+      'scriptjs',
       './js/recorder.js',
       './app/vendor.js'
     ]

@@ -1,6 +1,6 @@
 <div class="media-library">
 
-  <a href="" ng-click="$ctrl.onClose()" class="back-link pull-right"><i class="fa fa-chevron-left"></i> Back</a>
+  <a href="" ng-click="$ctrl.back()" class="back-link pull-right"><i class="fa fa-chevron-left"></i> Back</a>
 
   <h3>Media Library</h3>
 
@@ -9,13 +9,15 @@
     <div class="btn-group">
       <button type="button" class="btn btn-default"
               ng-click="$ctrl.showTab('images')"
-              ng-class="{active: $ctrl.display.images}">
+              ng-class="{active: $ctrl.display.images}"
+              ng-disabled="$ctrl.tabDisabled('image')">
         My Images
       </button>
 
       <button type="button" class="btn btn-default"
               ng-click="$ctrl.showTab('videos')"
-              ng-class="{active: $ctrl.display.videos}">
+              ng-class="{active: $ctrl.display.videos}"
+              ng-disabled="$ctrl.tabDisabled('video')">
         My Videos
       </button>
     </div>
@@ -23,12 +25,14 @@
     <div class="btn-group">
       <button type="button" class="btn btn-default"
               ng-click="$ctrl.showTab('stockImages')"
-              ng-class="{active: $ctrl.display.stockImages}">
+              ng-class="{active: $ctrl.display.stockImages}"
+              ng-disabled="$ctrl.tabDisabled('image')">
         Stock Images
       </button>
       <button type="button" class="btn btn-default"
               ng-click="$ctrl.showTab('stockVideos')"
-              ng-class="{active: $ctrl.display.stockVideos}">
+              ng-class="{active: $ctrl.display.stockVideos}"
+              ng-disabled="$ctrl.tabDisabled('video')">
         Stock Videos
       </button>
     </div>
@@ -88,6 +92,7 @@
 
 
     <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)"
+                selecting="$ctrl.selecting"
                 ng-show="$ctrl.display.stockVideos"></video-list>
 
     <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"

@@ -1,4 +1,5 @@
-/*@ngInject*/ function MediaSelector() {
+/*@ngInject*/
+function MediaSelector() {
   var mediaInsertCallbacks = [];
   var mediaSelectedCallbacks = {};
   var currentSceneAttributeName;
@@ -42,7 +43,11 @@
   this.reset = function () {
     mediaSelectedCallbacks = _.pick(mediaSelectedCallbacks, [globalCallbackName]);
     currentSceneAttributeName = null;
-  }
+  };
+
+  this.resetCurrentAttribute = function () {
+    currentSceneAttributeName = null;
+  };
 }
 
 module.exports = MediaSelector;

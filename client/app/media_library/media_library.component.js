@@ -34,9 +34,11 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   vm.onUpload = onUpload;
   vm.selectMedia = selectMedia;
   vm.showTab = showTab;
+  vm.tabDisabled = tabDisabled;
   vm.deleteMedia = deleteMedia;
   vm.filterResults = filterResults;
   vm.pageChanged = pageChanged;
+  vm.back = back;
 
   function fetchImages() {
     imageService.query({q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
@@ -97,6 +99,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
 
   function onMediaInsert(type) {
     type == 'image' ? showTab('images') : showTab('videos');
+    vm.selectingType = type;
     vm.selecting = true;
   }
 
@@ -108,6 +111,10 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     vm.currentPage = 1;
     loadContent(type, true);
     vm.display[type] = true;
+  }
+
+  function tabDisabled(type) {
+    return vm.selectingType && vm.selectingType !== type;
   }
 
   function loadContent(type, force) {
@@ -165,6 +172,13 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   function setPaginationData(resource) {
     vm.totalItems = resource.$httpHeaders('Total');
     vm.itemsPerPage = resource.$httpHeaders('Per-Page');
+  }
+
+  function back() {
+    mediaSelectorService.resetCurrentAttribute();
+    vm.selecting = false;
+    vm.selectingType = null;
+    vm.onClose();
   }
 }
 
