@@ -1,4 +1,6 @@
 var templateUrl = require('./video_list.html');
+var modalCtrl = require('./video_modal.controller');
+var modalTemplateUrl = require('./video_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -6,13 +8,14 @@ var component = {
   bindings: {
     videos: '<',
     allowDelete: '@',
+    selecting: '<',
     onSelect: '&',
     onDelete: '&'
   }
 };
 
 /*@ngInject*/
-function VideoListController() {
+function VideoListController($uibModal) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -23,6 +26,28 @@ function VideoListController() {
   vm.$onChanges = function () {
     vm.groupedVideos = _.chunk(vm.videos, 4);
   };
+
+  vm.openVideoModal = openVideoModal;
+
+  function openVideoModal(video) {
+    var modal = $uibModal.open({
+      controller: modalCtrl,
+      size: 'lg',
+      templateUrl: modalTemplateUrl,
+      resolve: {
+        video: function () {
+          return video;
+        },
+        selecting: function () {
+          return vm.selecting;
+        }
+      }
+    });
+
+    modal.result.then(function (video) {
+      vm.onSelect({video: video})
+    });
+  }
 }
 
 module.exports = component;
