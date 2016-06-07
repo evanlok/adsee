@@ -1,6 +1,7 @@
 var Recorder = require('./../../js/recorder');
 var filepicker = require('filepicker-js');
 var moment = require('moment');
+var getUserMedia = require('getusermedia');
 
 /*@ngInject*/
 function ConfigureAudioModalController($scope, $uibModalInstance, $window, audioUrl, S3_BUCKET_NAME) {
@@ -17,18 +18,23 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
   $scope.maxDurationReached = maxDurationReached;
   $scope.save = save;
   $scope.uploadFile = uploadFile;
+  $scope.micSupported = true;
 
   try {
     $window.AudioContext = $window.AudioContext || $window.webkitAudioContext;
-    $window.navigator.getUserMedia = $window.navigator.getUserMedia || $window.navigator.webkitGetUserMedia;
     $window.URL = $window.URL || $window.webkitURL;
     audioContext = new AudioContext;
   } catch (e) {
     alert('No web audio support in this browser!');
   }
 
-  $window.navigator.getUserMedia({audio: true}, startUserMedia, function (e) {
-    console.log('No live audio input: ' + e);
+  getUserMedia({video: false, audio: true}, function (err, stream) {
+    if (err) {
+      $scope.micSupported = false;
+      console.log('No live audio input: ', err);
+    } else {
+      startUserMedia(stream);
+    }
   });
 
   function startUserMedia(stream) {

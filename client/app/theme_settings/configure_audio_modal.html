@@ -21,20 +21,26 @@
       Upload a file
     </button>
 
-    <h4>Record New Audio Track</h4>
-    <a href="" ng-show="!recording" ng-click="startRecording()">
-      <i class="fa fa-play-circle"></i>
-    </a>
+    <div ng-if="micSupported">
+      <h4>Record New Audio Track</h4>
+      <a href="" ng-show="!recording" ng-click="startRecording()">
+        <i class="fa fa-play-circle"></i>
+      </a>
 
-    <a href="" ng-show="recording" ng-click="stopRecording()">
-      <i class="fa fa-stop-circle"></i>
-    </a>
+      <a href="" ng-show="recording" ng-click="stopRecording()">
+        <i class="fa fa-stop-circle"></i>
+      </a>
 
-    recording: {{ recording }}
+      recording: {{ recording }}
 
-    <timer countdown="maxDuration" interval="1000" autostart="false" finish-callback="maxDurationReached()">
-      {{mminutes}}:{{sseconds}}
-    </timer>
+      <timer countdown="maxDuration" interval="1000" autostart="false" finish-callback="maxDurationReached()">
+        {{mminutes}}:{{sseconds}}
+      </timer>
+    </div>
+
+    <div ng-if="!micSupported">
+      <h4>Audio recording is not supported on this browser.</h4>
+    </div>
   </div>
 
   <div ng-show="uploading">
