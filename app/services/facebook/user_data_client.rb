@@ -18,6 +18,10 @@ module Facebook
       client.get_connections('me', 'accounts').select { |page| page['perms'].include?('CREATE_ADS') }
     end
 
+    def postable_pages
+      client.get_connections('me', 'accounts').select { |page| page['perms'].include?('CREATE_CONTENT') }
+    end
+
     private
 
     def client

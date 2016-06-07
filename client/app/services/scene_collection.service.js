@@ -4,6 +4,7 @@
       format: 'json'
     },
     {
+      get: {method: 'GET', cache: true},
       update: {method: 'PUT'},
       summaryInfo: {method: 'GET', url: '/scene_collections/:id/summary_info'}
     }
@@ -11,6 +12,10 @@
 
   this.get = function (params) {
     return resource.get(params).$promise;
+  };
+
+  this.save = function (params, data) {
+    return resource.save(params, data).$promise;
   };
   
   this.update = function (params, data) {

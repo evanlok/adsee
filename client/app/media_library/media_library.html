@@ -79,6 +79,7 @@
 
     <video-list videos="$ctrl.videos" on-select="$ctrl.selectMedia(video)"
                 allow-delete on-delete="$ctrl.deleteMedia(video, 'video')"
+                selecting="$ctrl.selecting"
                 ng-show="$ctrl.display.videos">
     </video-list>
 

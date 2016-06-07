@@ -40,6 +40,7 @@ FactoryGirl.define do
   factory :scene_collection do
     user
     color '#000000'
+    integration 'facebook_ad'
   end
 
   factory :scene_content do

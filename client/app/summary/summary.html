@@ -46,100 +46,131 @@
         <span class="data-lbl">Color:</span>
         {{ $ctrl.sceneCollection.color }}
       </div>
-      <h3><i class="fa fa-bullseye" aria-hidden="true"></i> Targeting</h3>
 
-      <div>
-        <span class="data-lbl">Segment:</span>
-        {{ $ctrl.facebookAd.targeting_spec_name }}
+      <div ng-if="$ctrl.sceneCollection.integration === 'facebook_ad'">
+        <h3><i class="fa fa-bullseye" aria-hidden="true"></i> Targeting</h3>
+
+        <div>
+          <span class="data-lbl">Segment:</span>
+          {{ $ctrl.facebookAd.targeting_spec_name }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Zip Codes:</span>
+          {{ $ctrl.sceneCollection.zip_codes.join(', ') }}
+        </div>
+
+        <h3><i class="fa fa-money" aria-hidden="true"></i> Ad Spend</h3>
+
+        <div>
+          <span class="data-lbl">Ad Account:</span>
+          {{ $ctrl.adAccountName() }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Page:</span>
+          {{ $ctrl.pageName() }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Ad Set Name:</span>
+          {{ $ctrl.facebookAd.ad_set_name }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Thumbnail:</span>
+          <img ng-src="{{ $ctrl.facebookAd.image_url }}" class="img-responsive">
+        </div>
+
+        <div>
+          <span class="data-lbl">Text:</span>
+          {{ $ctrl.facebookAd.description }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Video Title:</span>
+          {{ $ctrl.facebookAd.title }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Website URL:</span>
+          <a ng-href="{{ $ctrl.facebookAd.call_to_action_link }}" target="_blank">
+            {{ $ctrl.facebookAd.call_to_action_link }}
+          </a>
+        </div>
+
+        <div>
+          <span class="data-lbl">Display Link:</span>
+          {{ $ctrl.facebookAd.call_to_action_link_caption }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Call To Action:</span>
+          {{ $ctrl.facebookAdConfigOptions.call_to_action[$ctrl.facebookAd.call_to_action_type] }}
+        </div>
+
+        <div>
+          <span class="data-lbl">{{ $ctrl.facebookAdConfigOptions.budget_type[$ctrl.facebookAd.budget_type] }}</span>
+          {{ $ctrl.facebookAd.budget | currency }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Start:</span>
+          {{ ($ctrl.facebookAd.start_time | date: 'short') || 'N/A' }}
+        </div>
+
+        <div>
+          <span class="data-lbl">End:</span>
+          {{ ($ctrl.facebookAd.end_time | date: 'short') || 'N/A' }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Optimization for Ad Delivery:</span>
+          {{ $ctrl.facebookAdConfigOptions.optimization_goal[$ctrl.facebookAd.optimization_goal] }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Bid Amount:</span>
+          {{ ($ctrl.facebookAd.bid_amount | currency) || 'Automatic' }}
+        </div>
+
+        <div>
+          <span class="data-lbl">When you get charged:</span>
+          {{ $ctrl.facebookAdConfigOptions.billing_event[$ctrl.facebookAd.billing_event] }}
+        </div>
+
+        <div>
+          <span class="data-lbl">Delivery Type:</span>
+          {{ $ctrl.facebookAdConfigOptions.pacing_type[$ctrl.facebookAd.pacing_type] }}
+        </div>
       </div>
 
-      <div>
-        <span class="data-lbl">Zip Codes:</span>
-        {{ $ctrl.sceneCollection.zip_codes.join(', ') }}
+      <div ng-if="$ctrl.sceneCollection.integration === 'facebook_post' || $ctrl.sceneCollection.integration === 'facebook_page_post'">
+        <h3>Facebook Post Details</h3>
+
+        <div>
+          <span class="data-lbl">Message:</span>
+          {{ $ctrl.sceneCollection.integration_data.description }}
+        </div>
+
+        <div ng-if="$ctrl.sceneCollection.integration_data.call_to_action.type">
+          <span class="data-lbl">Call to Action Type:</span>
+          {{ $ctrl.sceneCollection.integration_data.call_to_action.type }}
+        </div>
+
+        <div ng-if="$ctrl.sceneCollection.integration_data.call_to_action.value.link">
+          <span class="data-lbl">Call to Action URL:</span>
+          {{ $ctrl.sceneCollection.integration_data.call_to_action.value.link }}
+        </div>
+
+        <div ng-if="$ctrl.sceneCollection.integration_data.call_to_action.value.link_caption">
+          <span class="data-lbl">Call to Action Link Description:</span>
+          {{ $ctrl.sceneCollection.integration_data.call_to_action.value.link_caption }}
+        </div>
       </div>
 
-      <h3><i class="fa fa-money" aria-hidden="true"></i> Ad Spend</h3>
+      <div ng-if="$ctrl.sceneCollection.integration === 'facebook_post'">
 
-      <div>
-        <span class="data-lbl">Ad Account:</span>
-        {{ $ctrl.adAccountName() }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Page:</span>
-        {{ $ctrl.pageName() }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Ad Set Name:</span>
-        {{ $ctrl.facebookAd.ad_set_name }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Thumbnail:</span>
-        <img ng-src="{{ $ctrl.facebookAd.image_url }}" class="img-responsive">
-      </div>
-
-      <div>
-        <span class="data-lbl">Text:</span>
-        {{ $ctrl.facebookAd.description }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Video Title:</span>
-        {{ $ctrl.facebookAd.title }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Website URL:</span>
-        <a ng-href="{{ $ctrl.facebookAd.call_to_action_link }}" target="_blank">
-          {{ $ctrl.facebookAd.call_to_action_link }}
-        </a>
-      </div>
-
-      <div>
-        <span class="data-lbl">Display Link:</span>
-        {{ $ctrl.facebookAd.call_to_action_link_caption }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Call To Action:</span>
-        {{ $ctrl.facebookAdConfigOptions.call_to_action[$ctrl.facebookAd.call_to_action_type] }}
-      </div>
-
-      <div>
-        <span class="data-lbl">{{ $ctrl.facebookAdConfigOptions.budget_type[$ctrl.facebookAd.budget_type] }}</span>
-        {{ $ctrl.facebookAd.budget | currency }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Start:</span>
-        {{ ($ctrl.facebookAd.start_time | date: 'short') || 'N/A' }}
-      </div>
-
-      <div>
-        <span class="data-lbl">End:</span>
-        {{ ($ctrl.facebookAd.end_time | date: 'short') || 'N/A' }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Optimization for Ad Delivery:</span>
-        {{ $ctrl.facebookAdConfigOptions.optimization_goal[$ctrl.facebookAd.optimization_goal] }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Bid Amount:</span>
-        {{ ($ctrl.facebookAd.bid_amount | currency) || 'Automatic' }}
-      </div>
-
-      <div>
-        <span class="data-lbl">When you get charged:</span>
-        {{ $ctrl.facebookAdConfigOptions.billing_event[$ctrl.facebookAd.billing_event] }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Delivery Type:</span>
-        {{ $ctrl.facebookAdConfigOptions.pacing_type[$ctrl.facebookAd.pacing_type] }}
       </div>
     </div>
 
@@ -151,9 +182,9 @@
       </p>
 
       <p class="text-center">
-        <a ui-sref="adConfig({facebookAdId: $ctrl.facebookAd.id})" class="back-button"><i class="fa fa-chevron-left"></i> Back</a>
+        <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
       </p>
     </div>
   </div>
-    
+
 </div>

@@ -1,4 +1,6 @@
 class SceneCollection < ActiveRecord::Base
+  INTEGRATIONS = %w(facebook_ad facebook_post page_post).freeze
+
   # Associations
   belongs_to :user
   belongs_to :song

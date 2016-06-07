@@ -27,7 +27,9 @@ angular.module('adsee', [
   require('./preview/preview.module'),
   require('./ad_config/ad_config.module'),
   require('./summary/summary.module'),
-  require('./media/media.module')
+  require('./media/media.module'),
+  require('./scene_collection/scene_collection.module'),
+  require('./facebook_post_config/facebook_post_config.module')
 ]).config(config)
   .run(function /*@ngInject*/($rootScope, $window, $state, SSL_ENABLED) {
     // Redirect preview to non-ssl url so that streaming works correctly

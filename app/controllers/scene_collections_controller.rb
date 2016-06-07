@@ -29,9 +29,16 @@ class SceneCollectionsController < ApplicationController
 
     if @scene_collection.save
       @scene_collection.create_scene_contents_from_theme
-      redirect_to targeting_scene_collection_url(@scene_collection)
+
+      respond_to do |format|
+        format.html { redirect_to targeting_scene_collection_url(@scene_collection) }
+        format.json { render :show }
+      end
     else
-      redirect_to root_path, error: 'Scene collection could not be created.'
+      respond_to do |format|
+        format.html { redirect_to root_path, error: 'Scene collection could not be created.' }
+        format.json { render :show }
+      end
     end
   end
 
@@ -64,9 +71,11 @@ class SceneCollectionsController < ApplicationController
   def scene_collection_params
     if params[:scene_collection]
       params.require(:scene_collection).permit(
-        :theme_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio, :audio,
+        :theme_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio, :audio, :integration,
         facebook_targeting_spec_ids: [], zip_codes: []
-      )
+      ).tap do |whitelisted|
+        whitelisted[:integration_data] = params[:scene_collection][:integration_data]
+      end
     else
       {}
     end

@@ -35,11 +35,10 @@
       </div>
 
       <div class="col-md-4 build-button">
-          <%= form_for SceneCollection.new do |f| %>
-          <%= f.hidden_field :ad_type_id, value: @theme.ad_type.id %>
-          <%= f.hidden_field :theme_id, value: @theme.id %>
-          <%= f.submit 'Build Video', class: 'button theme-select' %>
-        <% end %>
+        <button class="button theme-select"
+                new-scene-collection-link ad-type-id="<%= @theme.ad_type.id %>" theme-id="<%= @theme.id %>">
+          Build Video
+        </button>
       </div>
 
     </div>

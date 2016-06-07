@@ -32,6 +32,7 @@ module.exports = {
       'format-as-currency',
       'moment',
       'humanize-duration',
+      'getusermedia',
       './js/recorder.js',
       './app/vendor.js'
     ]

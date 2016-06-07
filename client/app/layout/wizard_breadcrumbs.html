@@ -1,6 +1,6 @@
 <div class="video-nav">
   <ul>
-    <li ng-class="{active: $ctrl.stateName() === 'targeting'}">
+    <li ng-class="{active: $ctrl.stateName() === 'targeting'}" ng-if="$ctrl.showFacebookAdLinks()">
       <a ui-sref="targeting">Targeting</a>
     </li>
 
@@ -12,8 +12,12 @@
       <a href="" ng-click="$ctrl.goToPreview()">Preview</a>
     </li>
 
-    <li ng-class="{active: $ctrl.stateName() === 'adConfig'}">
+    <li ng-class="{active: $ctrl.stateName() === 'adConfig'}" ng-if="$ctrl.showFacebookAdLinks()">
       <a href="" ng-click="$ctrl.goToAdConfig()">Ad Spend</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.stateName() === 'facebookPostConfig'}" ng-if="$ctrl.showFacebookPostConfigLink()">
+      <a ui-sref="facebookPostConfig">Facebook Post</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'summary'}">

@@ -10,7 +10,8 @@ var component = {
 };
 
 /*@ngInject*/
-function SummaryController($q, $window, $uibModal, sceneCollectionService, userService, videoJobService, facebookAdConfigOptions) {
+function SummaryController($q, $window, $uibModal, $state, sceneCollectionService, userService, videoJobService,
+                           facebookAdConfigOptions) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -32,6 +33,7 @@ function SummaryController($q, $window, $uibModal, sceneCollectionService, userS
   vm.pageName = pageName;
   vm.adAccountName = adAccountName;
   vm.publish = publish;
+  vm.previousStep = previousStep;
 
   function fetchData() {
     $q.all([fetchSceneCollection(), fetchUserFacebookData()]).then(function () {
@@ -43,6 +45,7 @@ function SummaryController($q, $window, $uibModal, sceneCollectionService, userS
     return sceneCollectionService.summaryInfo({id: vm.sceneCollectionId}).then(function (data) {
       vm.sceneCollection = data;
       vm.facebookAd = data.facebook_ad;
+      return data;
     });
   }
 
@@ -86,6 +89,16 @@ function SummaryController($q, $window, $uibModal, sceneCollectionService, userS
       });
     }).finally(function () {
       vm.publishing = false;
+    });
+  }
+
+  function previousStep() {
+    fetchSceneCollection().then(function (sceneCollection) {
+      if (sceneCollection.integration === 'facebook_ad') {
+        $state.go('adConfig', {facebookAdId: vm.facebookAd.id});
+      } else {
+        $state.go('facebookPostConfig');
+      }
     });
   }
 }

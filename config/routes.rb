@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     collection do
       get :facebook_data
+      get :facebook_pages
     end
   end
 
@@ -77,4 +78,5 @@ Rails.application.routes.draw do
   get '/scene_collections/:id/summary', to: 'home#scene_editor'
   get '/scene_collections/:id/previews/:video_job_id', to: 'home#scene_editor'
   get '/scene_collections/:id/ad_config/:facebook_ad_id', to: 'home#scene_editor'
+  get '/scene_collections/:id/facebook_post', to: 'home#scene_editor'
 end

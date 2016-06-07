@@ -9,9 +9,9 @@ module SceneAttributes
 
     def value
       case self[:value]
-      when 'true'
+      when 'true', '1'
         true
-      when 'false'
+      when 'false', '0'
         false
       else
         raise ParseError, "Cannot parse boolean from value: #{self[:value]}"
