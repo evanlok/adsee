@@ -1,10 +1,13 @@
 /*@ngInject*/
-function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
+function NewSceneCollectionModalController($scope, $sce, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
                                            themeId) {
   $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
   $scope.saving = false;
   $scope.integration = '';
+  $scope.fbad = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbad_graphic.jpg';
+  $scope.fbpage = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbpage_graphic.jpg';
+  $scope.fbprofile = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbprofile_graphic.jpg';
 
   $scope.save = function () {
     $scope.saving = true;

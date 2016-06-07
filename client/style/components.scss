@@ -12,8 +12,8 @@
     text-align: center;
     display: block;
     img {
-      width: 80%;
-      margin: 7px auto 0px;
+      width: 75%;
+      margin: 13px auto 0px;
     }
   }
   ul {
@@ -1956,5 +1956,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .publish-modal-padding {
   margin-top: 200px;
+}
+.posttype-modal {
+  h2 {
+    color: white;
+  }
+}
+.posttype-title {
+  font-size: 22px;
+  margin-bottom: 7px;
+  color: white;
+  font-weight: 700;
 }
 
