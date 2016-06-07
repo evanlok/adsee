@@ -1,6 +1,5 @@
 var templateUrl = require('./video_preview.html');
-var videojs = require('video.js');
-require('videojs-contrib-hls/dist/videojs-contrib-hls');
+var $script = require('scriptjs');
 
 var component = {
   templateUrl: templateUrl,
@@ -17,7 +16,7 @@ function VideoPreviewController($interval, $http) {
   var streamUrlIntervalPromise;
 
   vm.$postLink = function () {
-    setupVideoJs();
+    setupPlayer();
   };
 
   vm.$onChanges = function () {
@@ -28,24 +27,33 @@ function VideoPreviewController($interval, $http) {
 
   vm.$onDestroy = function () {
     if (player) {
-      player.dispose();
+      player.remove();
     }
 
     $interval.cancel(streamUrlIntervalPromise);
   };
 
-  function setupVideoJs() {
-    player = videojs('preview-video', {fluid: true}, function () {
-      // Player (this) is initialized and ready.
-      if (vm.streamUrl) {
-        waitForStream();
-      }
+  function setupPlayer() {
+    $script('https://content.jwplatform.com/libraries/irXDvUdv.js', function () {
+      player = jwplayer('preview-video');
+      player.setup({
+        image: 'https://vejeo.s3.amazonaws.com/videos/video-preroll-image.jpg',
+        hlshtml: true,
+        file: 'https://video-snippets.s3.amazonaws.com/encoded/7755/7eec523e-7fc4-4bd7-918f-25c29a5e490e_720.mp4',
+        autostart: true,
+        aspectratio: '16:9'
+      });
+
+      player.on('ready', function () {
+        if (vm.streamUrl) {
+          waitForStream();
+        }
+      });
     });
   }
 
   function playVideo() {
-    player.src({src: vm.streamUrl, type: 'application/x-mpegURL'});
-    player.play();
+    player.load([{file: vm.streamUrl}]);
   }
 
   function waitForStream() {
