@@ -92,6 +92,7 @@
 
 
     <video-list videos="$ctrl.stockVideos" on-select="$ctrl.selectMedia(video)"
+                selecting="$ctrl.selecting"
                 ng-show="$ctrl.display.stockVideos"></video-list>
 
     <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"
