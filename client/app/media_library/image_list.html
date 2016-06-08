@@ -1,6 +1,6 @@
 <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages">
   <div class="col-md-3 image-thumb-column sixteen-nine" ng-repeat="image in imageGroup">
-    <div class="image-thumb-box">
+    <div class="image-thumb-box content">
       <div ng-if="$ctrl.showDelete" class="delete-box">
         <a href="" ng-click="$ctrl.onDelete({image: image})">
           <i class="fa fa-trash"></i>
