@@ -638,6 +638,27 @@
      color: $color-5;  
   }
 }
+.video-modal {
+
+  .close {
+    color: $color-1;
+    text-shadow: none;
+    opacity: 1;
+  }
+
+  .modal-footer {
+    border-top: none;
+  }
+  .video-modal-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .button {
+    margin-top: 0px;
+  }
+
+}
 .scene-header {
   height: 60px;
   padding: 20px 10px 10px 25px;
