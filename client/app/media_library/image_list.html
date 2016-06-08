@@ -1,15 +1,13 @@
 <div class="row" ng-repeat="imageGroup in $ctrl.groupedImages">
-  <div class="col-md-3 image-thumb-column" ng-repeat="image in imageGroup">
-    <div class="image-thumb-box">
-      <div ng-if="$ctrl.showDelete" class="delete-box">
-        <a href="" ng-click="$ctrl.onDelete({image: image})">
-          <i class="fa fa-trash"></i>
-        </a>
-      </div>
-
-      <img class="img-responsive"
-           ng-src="{{ image.thumbnail_url }}"
-           ng-click="$ctrl.onSelect({image: image})">
+  <div class="col-md-3 image-thumb-box" ng-repeat="image in imageGroup">
+    <div ng-if="$ctrl.showDelete" class="delete-box">
+      <a href="" ng-click="$ctrl.onDelete({image: image})">
+        <i class="fa fa-trash"></i>
+      </a>
     </div>
+
+    <img class="img-responsive"
+         ng-src="{{ image.thumbnail_url }}"
+         ng-click="$ctrl.onSelect({image: image})">
   </div>
 </div>

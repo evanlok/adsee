@@ -1,27 +1,26 @@
-<div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos">
-  <div class="col-md-3 image-thumb-column" ng-repeat="video in videoGroup">
-    <div class="video-thumb-box">
-      <a ng-click="$ctrl.openVideoModal(video)" class="play-sample">
-        <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+<div class="row" ng-repeat="videoGroup in $ctrl.groupedVideos">
+  <div class="col-md-3 video-thumb-box" ng-repeat="video in videoGroup">
+
+    <a video-overlay-link="{{ video.url || video.original_url }}" autoplay="true" class="play-sample"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
+
+    <div ng-if="$ctrl.showDelete" class="delete-box">
+      <a href="" ng-click="$ctrl.onDelete({video: video})">
+        <i class="fa fa-trash"></i>
       </a>
+    </div>
 
-      <div ng-if="$ctrl.showDelete" class="delete-box">
-        <a href="" ng-click="$ctrl.onDelete({video: video})">
-          <i class="fa fa-trash"></i>
-        </a>
-      </div>
-      <div class="video-thumb-link" ng-click="$ctrl.openVideoModal(video)">
-        <div class="text-center">
-          <i class="fa fa-file video-icon" ng-if="!video.thumbnail_url">
-          </i>
+    <div ng-click="$ctrl.onSelect({video: video})" class="video-thumb-link">
+      <div class="text-center">
+        <i class="fa fa-file-video-o video-icon" ng-if="!video.thumbnail_url">
+        </i>
 
-          <img ng-src="{{ video.thumbnail_url }}" class="img-responsive" ng-if="video.thumbnail_url">
+        <img ng-src="{{ video.thumbnail_url }}" class="img-responsive" ng-if="video.thumbnail_url">
 
-          <div class="video-name">
-              {{ video.filename }}
-          </div>
+        <div class="video-name">
+            {{ video.filename }}
         </div>
       </div>
     </div>
+
   </div>
 </div>
