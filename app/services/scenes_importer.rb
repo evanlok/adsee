@@ -11,6 +11,7 @@ class ScenesImporter
       scene.data_attributes = data['attributes']
       scene.width = data['width']
       scene.height = data['height']
+      scene.duration = data['duration']
       scene.save
       imported += 1
     end

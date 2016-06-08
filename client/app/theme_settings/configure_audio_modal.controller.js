@@ -4,12 +4,12 @@ var moment = require('moment');
 var getUserMedia = require('getusermedia');
 
 /*@ngInject*/
-function ConfigureAudioModalController($scope, $uibModalInstance, $window, audioUrl, S3_BUCKET_NAME) {
+function ConfigureAudioModalController($scope, $uibModalInstance, $window, audioUrl, duration, S3_BUCKET_NAME) {
   var audioContext, micPermission, recorder, currentAudioBlob;
 
   $scope.audioUrl = audioUrl;
   $scope.recording = false;
-  $scope.maxDuration = 90;
+  $scope.maxDuration = duration > 0 ? duration : 90;
   $scope.uploading = false;
   $scope.uploadPercent = 0;
 

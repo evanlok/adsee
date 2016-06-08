@@ -20,6 +20,7 @@ FactoryGirl.define do
     sequence(:hal_id) { |n| n }
     width 1280
     height 720
+    duration 10
 
     data_attributes do
       [

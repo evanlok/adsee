@@ -7,6 +7,7 @@ var component = {
   controller: ThemeSettingsController,
   bindings: {
     sceneCollection: '<',
+    duration: '<',
     onUpdate: '&'
   }
 };
@@ -43,6 +44,9 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
       resolve: {
         audioUrl: function () {
           return vm.sceneCollection.audio_url
+        },
+        duration: function () {
+          return vm.duration;
         }
       }
     });
