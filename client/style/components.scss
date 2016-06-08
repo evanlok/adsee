@@ -52,7 +52,7 @@
     border: 1px solid $color-9;
     border-radius: 0px;
     resize: none;
-    background: none;
+    background-color: none;
     outline: none; 
     box-shadow: none;
     height: 40px;
@@ -547,45 +547,24 @@
   .media-search {
     max-width: 200px;
   }
-
-  .row {
-   -moz-column-width: 20em;
-   -webkit-column-width: 20em;
-   -moz-column-gap: 4px;
-   -webkit-column-gap:4px; 
-    margin-left: 0px;
-    margin-right: 0px;
-    width: 100%;
+  .image-thumb-column {
+    padding: 3px;
+    a {
+      color: white;
+      font-size: 14px;
+      padding: 2px 6px;
+      display: block;
+    }
   }
-
-  .row > .col-md-3 {
-   display: inline-block;
-   padding: 0;
-   margin: 0;
-   width:  100%; 
-   float:none;
+  .media-library-videos {
+    padding: 15px;
   }
-
-  .img-responsive {
-    width: 100%;
-    border:0px solid #999;
+  .video-thumb-box {
+    background-color: $color-3;
+    overflow: hidden;
+    position: relative;
+    padding: 2px;
   }
-  // .image-thumb-column {
-  //   padding: 0px 7px;
-  // }
-  //   a {
-  //     color: white;
-  //     font-size: 14px;
-  //     padding: 2px 6px;
-  //     display: block;
-  //   }
-  // }
-  // .video-thumb-box {
-  //   background-color: $color-5;
-  //   overflow: hidden;
-  //   position: relative;
-  //   margin-bottom: 15px;
-  // }
   .video-thumb-link {
     display: block;
     color: white;
@@ -594,11 +573,11 @@
     cursor: pointer;
     position: relative;
   }
-  // .video-icon {
-  //   font-size: 80px;
-  //   margin: 0px 0px 40px;
-  //   color: hsla(205, 8.8555%, 8.7387%, 1.0000);
-  // }
+  .video-icon {
+    font-size: 80px;
+    margin: 0px 0px 40px;
+    color: hsla(205, 8.8555%, 8.7387%, 1.0000);
+  }
   .video-name {
     padding: 4px 10px;
     background-color: hsla(0, 0%, 0.0000%, 0.6500);
@@ -613,7 +592,7 @@
     }
     .play-sample {
       position: absolute;
-      margin-top: 12%;
+      margin-top: 20%;
       color: white;
       text-align: center;
       transition: margin 0.5s ease;
@@ -636,20 +615,23 @@
   .thumb-container {
     margin-top: 20px;
   }
-  // .image-thumbs {
-  //   padding: 0px 6px 12px;
-  //   img {
-  //     border: 1px solid hsl(207, 11.3139%, 20.7635%);
-  //   }
-  // }
-  // .image-thumb-box {
-  //   margin-bottom: 15px;
-  //   position: relative;
-  //   border: 1px solid hsl(207, 11.1111%, 15.8824%);
-  //   img {
-  //     width: 100%;
-  //   }
-  // }
+  .image-thumbs {
+    padding: 0px 6px 12px;
+    img {
+      border: 1px solid hsl(207, 11.3139%, 20.7635%);
+    }
+  }
+  .image-thumb-box {
+    margin-bottom: 15px;
+    position: relative;
+    border: 1px solid hsl(207, 11.1111%, 15.8824%);
+    img {
+      width: 100%;
+    }
+  }
+  .sixteen-nine {
+    @include aspect-ratio(16, 9);
+  }
 }
 .media-library::-webkit-scrollbar {
  display: none;
@@ -1035,10 +1017,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 20px;
   }
   .image-padding {
-    padding: 0px 10px 10px 10px;
-    img {
-      max-width: 160px;
-    }
+    margin: 0px 10px 10px 10px;
+    max-width: 160px;
   }
 }
 // AUDIO RECORD MODAL
@@ -1569,11 +1549,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .button {
     text-align: center;
-    padding: 10px 20px;
+    padding: 10px 30px;
     font-size: 22px;
     font-weight: 700;
-    width: 100%;
-    display: block;
+    display: inline-block;
+    float: right;
     margin-top: 20px;
     color: white;
     span {
@@ -1584,9 +1564,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     }
   }
   .back-link {
-    display: block;
-    margin-top: 20px;
+    display: inline-block;
+    float: left;
+    margin-top: 30px;
     text-align: center;
+    font-size: 16px;
   }
 }
 

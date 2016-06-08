@@ -1,18 +1,18 @@
 <div class="form-group">
 
   <div class="media-input-group">
-      <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}</span>
-      <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="Select a file">
-        <!-- <i class="fa fa-picture-o" ng-if="$ctrl.isImage()"></i> -->
-        <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
-      </label>
-      <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
-               ng-model="$ctrl.filename"
-               ng-click="$ctrl.insertMedia()"
-               placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
-      <div class="image-padding">
-        <img ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
-      </div>
+    <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}</span>
+    <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="Select a file">
+      <!-- <i class="fa fa-picture-o" ng-if="$ctrl.isImage()"></i> -->
+      <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
+    </label>
+    <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
+             ng-model="$ctrl.filename"
+             ng-click="$ctrl.insertMedia()"
+             placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
+    <div>
+      <img ng-class="{ 'image-padding' : $ctrl.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
+    </div>
   </div>
 
   <input type="hidden" ng-model="$ctrl.attachment_id">
