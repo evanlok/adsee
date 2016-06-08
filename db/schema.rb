@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603221836) do
+ActiveRecord::Schema.define(version: 20160608184302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160603221836) do
     t.text     "guide_video"
     t.integer  "width"
     t.integer  "height"
+    t.integer  "duration"
   end
 
   add_index "scenes", ["hal_id"], name: "index_scenes_on_hal_id", using: :btree

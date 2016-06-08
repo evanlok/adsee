@@ -50,6 +50,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   vm.nextSceneContent = nextSceneContent;
   vm.sceneContentPosition = sceneContentPosition;
   vm.updateSceneContentPosition = updateSceneContentPosition;
+  vm.duration = duration;
   vm.preview = preview;
 
   function fetchSceneCollection() {
@@ -168,6 +169,12 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
 
   function updateSceneContentPosition(sceneContent, position) {
     sceneContentService.update({id: sceneContent.id}, {position: position});
+  }
+
+  function duration() {
+    return _.sumBy(vm.sceneContents, function (sceneContent) {
+      return sceneContent.scene.duration || 0;
+    });
   }
 
   function preview() {
