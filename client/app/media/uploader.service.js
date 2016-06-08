@@ -7,8 +7,7 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
     multiple: true,
     maxSize: (50 * 1024 * 1024), // 50MB
     imageQuality: 90,
-    imageDim: [1920, 1080],
-    cropRatio: 16 / 9
+    imageDim: [1920, 1080]
   };
 
   var storageOptions = {
@@ -28,14 +27,14 @@ function UploaderService($q, imageService, videoClipService, S3_BUCKET_NAME) {
   var mainConversionOptions = {
     width: 1920,
     height: 1080,
-    fit: 'crop',
+    fit: 'clip',
     quality: 90
   };
 
   var thumbnailConversionOptions = {
     width: 320,
     height: 180,
-    fit: 'crop',
+    fit: 'clip',
     quality: 90
   };
 
