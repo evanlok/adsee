@@ -567,6 +567,7 @@
   }
 
   .img-responsive {
+    width: 100%;
     border:0px solid #999;
   }
   // .image-thumb-column {
@@ -1034,7 +1035,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 20px;
   }
   .image-padding {
-    margin: 0px 0px 10px 10px;
+    padding: 0px 10px 10px 10px;
+    img {
+      max-width: 160px;
+    }
   }
 }
 // AUDIO RECORD MODAL
