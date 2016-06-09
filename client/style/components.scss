@@ -557,11 +557,11 @@
     }
   }
   .video-thumb-box {
-    background-color: $color-7;
     overflow: hidden;
     position: relative;
   }
   .video-thumb-link {
+    padding: 2px;
     display: block;
     color: white;
     outline: none; 
@@ -583,12 +583,13 @@
     margin-bottom: 10px;
   }
   .video-thumb-box {
+    padding: 1px;
     a {
       width: 100%;
     }
     .play-sample {
       position: absolute;
-      margin-top: 17%;
+      margin-top: 14%;
       color: white;
       text-align: center;
       transition: margin 0.5s ease;
@@ -601,7 +602,7 @@
   .delete-box {
     position: absolute;
     top: 8px;
-    right: 12px;
+    right: 10px;
     border-radius: 5px;
     z-index: 10000;
     background-color: hsla(0, 0%, 0.0000%, 0.2000);;
