@@ -16,12 +16,12 @@ function ImageListController() {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.groupedImages = _.chunk(vm.images, 20);
+    vm.groupedImages = _.chunk(vm.images, 24);
     vm.showDelete = vm.allowDelete === '';
   };
 
   vm.$onChanges = function () {
-    vm.groupedImages = _.chunk(vm.images, 20);
+    vm.groupedImages = _.chunk(vm.images, 24);
   };
 }
 

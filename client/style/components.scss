@@ -548,7 +548,7 @@
     max-width: 200px;
   }
   .image-thumb-column {
-    padding: 3px;
+    margin: 2px;
     a {
       color: white;
       font-size: 14px;
@@ -556,14 +556,10 @@
       display: block;
     }
   }
-  .media-library-videos {
-    padding: 15px;
-  }
   .video-thumb-box {
     background-color: $color-7;
     overflow: hidden;
     position: relative;
-    padding: 2px;
   }
   .video-thumb-link {
     display: block;
@@ -581,7 +577,7 @@
   .video-name {
     padding: 4px 10px;
     background-color: hsla(0, 0%, 0.0000%, 0.6500);
-    font-size: 16px;
+    font-size: 14px;
     position: absolute;
     bottom: 0px;
     margin-bottom: 10px;
@@ -592,7 +588,7 @@
     }
     .play-sample {
       position: absolute;
-      margin-top: 20%;
+      margin-top: 17%;
       color: white;
       text-align: center;
       transition: margin 0.5s ease;
@@ -604,16 +600,18 @@
   }
   .delete-box {
     position: absolute;
-    top: 5px;
+    top: 8px;
     right: 8px;
     border-radius: 5px;
     z-index: 10000;
+    background-color: hsla(0, 0%, 0.0000%, 0.2000);;
     &:hover {
       background-color: $color-6;
     }
   }
   .thumb-container {
     margin-top: 20px;
+    padding: 15px;
   }
   .image-thumbs {
     padding: 0px 6px 12px;
@@ -622,11 +620,12 @@
     }
   }
   .image-thumb-box {
-    margin-bottom: 15px;
     position: relative;
-    border: 1px solid hsl(207, 11.1111%, 15.8824%);
+    padding: 2px;
+    background: $color-7;
     img {
-      width: 100%;
+      height: 100%;
+      margin: 0 auto;
     }
   }
   .sixteen-nine {
