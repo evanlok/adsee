@@ -548,7 +548,7 @@
     max-width: 200px;
   }
   .image-thumb-column {
-    margin: 2px;
+    padding: 2px;
     a {
       color: white;
       font-size: 14px;
@@ -601,7 +601,7 @@
   .delete-box {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 12px;
     border-radius: 5px;
     z-index: 10000;
     background-color: hsla(0, 0%, 0.0000%, 0.2000);;
@@ -621,8 +621,7 @@
   }
   .image-thumb-box {
     position: relative;
-    padding: 2px;
-    background: $color-7;
+    padding: 1px;
     img {
       height: 100%;
       margin: 0 auto;
