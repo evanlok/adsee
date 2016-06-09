@@ -893,28 +893,63 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-weight: 700;
     margin-bottom: 30px;
   }
-  a {
-    outline: 5px solid $color-2;
+  .square-panel {
+    border-right: 1px solid white;
+  }
+  .aspect-selector {
     display: inline-block;
-    text-transform: uppercase;
-    &:hover {
-      outline: 10px solid $color-2;
+    padding: 25px;
+    a {
+      outline: 5px solid $color-2;
+      text-transform: uppercase;
+      &:hover {
+        outline: 10px solid $color-2;
+      }
     }
   }
+  .rec-label {
+    -ms-transform: rotate(-45deg); 
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+    position: absolute;
+    margin: 67px -22px;
+  }
+  .recommended {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    font-size: 12px;
+    margin: 2px 0px 0px 17px;
+  }
+  .trapazoid {
+    position: absolute;
+    width: 124px;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;  
+    border-bottom: 20px solid hsla(251, 100.0000%, 64.4674%, 1.0000);
+  }
   .square {
-    width: 150px;
-    height: 150px;
-    margin-right: 30px;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    outline: 5px solid $color-2;
   }
   .widescreen {
-    width: 250px;
-    height: 150px;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+    outline: 5px solid $color-2;
   }
   .aspect-number {
     color: white;
     font-size: 36px;
     font-weight: 700;
-    margin-top: 30px;
+    padding-top: 34px;
+  }
+  .widescreen .aspect-number {
+    margin-top: 0px;
   }
 }
 .add-scene-index {
