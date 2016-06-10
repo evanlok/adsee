@@ -12,6 +12,8 @@
              placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
     <div>
       <img ng-class="{ 'image-padding' : $ctrl.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
+
+      <img ng-src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!sceneAttribute.thumbnail_url" >
     </div>
   </div>
 
