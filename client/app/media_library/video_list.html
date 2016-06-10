@@ -13,7 +13,7 @@
       <div class="video-thumb-link" ng-click="$ctrl.openVideoModal(video)">
         <div class="text-center">
 
-          <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!video.thumbnail_url">
+          <img ng-src=="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!video.thumbnail_url">
           
           <img ng-src="{{ video.thumbnail_url }}" class="img-responsive" ng-if="video.thumbnail_url">
 
