@@ -85,6 +85,8 @@
             </a>
 
             <div class="pull-right">
+              {{ $ctrl.duration() | secondsToTime }}
+
               <select ng-model="$ctrl.selectedSceneContent.transition_id"
                       ng-options="transition.id as transition.name for transition in $ctrl.transitions"
                       ng-change="$ctrl.updateSceneContentTransition()">
