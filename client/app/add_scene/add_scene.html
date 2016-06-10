@@ -15,7 +15,7 @@
           <a href="" ng-click="$ctrl.onAddScene({scene: scene})" class="video-thumb-link">
             <div class="text-center">
               <img ng-src="{{ scene.thumbnail_url }}" class="img-responsive" >
-              <img ng-src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!scene.thumbnail_url" >
+              <img ng-src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!scene.thumbnail_url" class="img-responsive">
               <div class="video-name">
                 {{ scene.name }}
               </div>
