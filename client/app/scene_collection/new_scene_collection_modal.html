@@ -6,42 +6,78 @@
   </div>
 
   <div class="modal-body">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Select a facebook post type:</h2>
+    <div ng-if="step === 'integration'">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Select a facebook post type:</h2>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <a href="#" class="square">
-          <div class="posttype-title">Advertisement</div>
-          <img ng-src="{{fbad}}" class="img-responsive">
-          <div class=""></div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a href="#" class="square">
-          <div class="posttype-title">Profile Post</div>
-          <img ng-src="{{fbprofile}}" class="img-responsive">
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a href="#" class="square">
-          <div class="posttype-title">Page Post</div>
-          <img ng-src="{{fbpage}}" class="img-responsive">
-        </a>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="" class="square" ng-click="selectIntegration('facebook_ad')">
+            <div class="posttype-title">Advertisement</div>
+            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbad_graphic.jpg"
+                 class="img-responsive">
+            <div class=""></div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="" class="square" ng-click="selectIntegration('facebook_post')">
+            <div class="posttype-title">Profile Post</div>
+            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbprofile_graphic.jpg"
+                 class="img-responsive">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="" class="square" ng-click="selectIntegration('facebook_page_post')">
+            <div class="posttype-title">Page Post</div>
+            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbpage_graphic.jpg"
+                 class="img-responsive">
+          </a>
+        </div>
       </div>
     </div>
 
-    <select ng-model="integration">
-      <option value="">None</option>
-      <option value="facebook_ad">Facebook Ad</option>
-      <option value="facebook_page_post">Facebook Page Post</option>
-      <option value="facebook_post">Facebook Post</option>
-    </select>
+    <div class="row" ng-if="step === 'aspect_ratio'">
+      <h2>Select the aspect ratio of your video:</h2>
+
+      <div class="col-md-6 square-panel">
+        <a href="" class="aspect-selector" ng-click="selectAspectRatio('1:1')">
+          <div href="#" class="square">
+            <div class="rec-label">
+              <div class="recommended">RECCOMENDED</div>
+              <div class="trapazoid"></div>
+            </div>
+            <div class="aspect-number">1:1</div>
+          </div>
+          <h3>
+            SQUARE
+          </h3>
+          <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6">
+        <a href="" class="aspect-selector" ng-click="selectAspectRatio('1:1')">
+          <div>
+            <div href="#" class="widescreen">
+              <div class="aspect-number">16:9</div>
+            </div>
+            <h3>
+              WIDESCREEN
+            </h3>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="save()" ng-disabled="saving">Save</button>
+    <button class="btn btn-default" ng-click="back()" ng-disabled="saving" ng-if="step !== 'integration'">Back</button>
   </div>
 </div>
