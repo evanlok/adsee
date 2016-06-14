@@ -33,6 +33,7 @@ module.exports = {
       'humanize-duration',
       'getusermedia',
       'scriptjs',
+      'slick-carousel',
       './js/recorder.js',
       './app/vendor.js'
     ]

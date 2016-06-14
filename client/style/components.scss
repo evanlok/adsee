@@ -1405,32 +1405,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width: 100%;
 }
 .template-page-wrapper {
-
-  .carousel {
-    background-color: $color-2;
-    margin: 0 auto;
-    width: 50%;
-    overflow: visible;
-    position: static;
-  }
-  .carousel-row {
-    position: relative;
-    overflow: hidden;
-  }
-  .carousel-inner {
-    overflow: visible;
-  }
-  .promo-slot {
-    padding: 0px;
-    background-color: $color-2;
-  }
-  .content-item {
-    padding: 0px;
-    background-color: $color-2;
-    width: 100%;
+  .slick-carousel {
     img {
       width: 100%;
     }
+  }
+
+  .promo-slot {
+    padding: 0px;
+    background-color: $color-2;
   }
   
   h1 {

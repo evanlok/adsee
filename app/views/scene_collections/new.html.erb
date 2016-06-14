@@ -1,42 +1,15 @@
 <div class="template-page-wrapper">
-
-  <div class="row carousel-row">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active content-item">
-          <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/deck.jpg" alt="...">
-          <div class="carousel-caption">
-          </div>
-        </div>
-        <div class="item content-item">
-          <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/bedroom.jpg" alt="...">
-          <div class="carousel-caption">
-          </div>
-        </div>
-        <div class="item content-item">
-          <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/pool.jpg" alt="...">
-          <div class="carousel-caption">
-          </div>
-        </div>
+  <div class="row">
+    <div class="slick-carousel">
+      <div>
+        <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/deck.jpg">
       </div>
-
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div>
+        <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/bedroom.jpg">
+      </div>
+      <div>
+        <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/pool.jpg">
+      </div>
     </div>
   </div>
 
@@ -55,37 +28,37 @@
     <div class="col-md-12 industry-wrap">
 
       <% @industries.each do |industry| %>
-        <div class="industry-group">
-          <h2><%= industry.name %></h2>
+          <div class="industry-group">
+            <h2><%= industry.name %></h2>
 
-          <% industry.ad_types.in_groups_of(3, false).each do |ad_type_group| %>
-              <div class="row">
+            <% industry.ad_types.in_groups_of(3, false).each do |ad_type_group| %>
+                <div class="row">
 
-                <% ad_type_group.each do |ad_type| %>
-                    <div class="col-sm-4">
-                      <% ad_type.themes.in_groups_of(2, false).each do |theme_group| %>
-                          <h3><%= ad_type.name %></h3>
-                          <div class="row">
-                            <% theme_group.each do |theme| %>
-                                <div class="col-sm-12">
+                  <% ad_type_group.each do |ad_type| %>
+                      <div class="col-sm-4">
+                        <% ad_type.themes.in_groups_of(2, false).each do |theme_group| %>
+                            <h3><%= ad_type.name %></h3>
+                            <div class="row">
+                              <% theme_group.each do |theme| %>
+                                  <div class="col-sm-12">
                                     <%= link_to theme, target: '_self', class: 'thumb-circle' do %>
                                         <%= image_tag theme.thumbnail.url(:large), class: 'img-responsive' %>
                                         <div class="theme-name">
                                           <%= theme.name %>
                                         </div>
                                     <% end %>
-                                </div>
-                            <% end %>
-                          </div>
-                      <% end %>
-                    </div>
-                <% end %>
-              </div>
-          <% end %>
-        </div>
+                                  </div>
+                              <% end %>
+                            </div>
+                        <% end %>
+                      </div>
+                  <% end %>
+                </div>
+            <% end %>
+          </div>
       <% end %>
 
-<!--       <div class="text-center">
+      <!--       <div class="text-center">
         <%#= form_for SceneCollection.new do |f| %>
             <%#= f.submit 'Build my own', class: 'build-button-bottom' %>
         <%# end %>
@@ -95,23 +68,19 @@
 </div>
 
 <script>
-  // $(document).ready(function () {
-  //     $('#myCarousel').carousel({
-  //         interval: 10000
-  //     })
-  //     $('.carousel .item').each(function () {
-  //         var next = $(this).next();
-  //         if (!next.length) {
-  //             next = $(this).siblings(':first');
-  //         }
-  //         next.children(':first-child').clone().appendTo($(this));
-  //         if (next.next().length > 0) {
-  //             next.next().children(':first-child').clone().appendTo($(this));
-  //         } else {
-  //             $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-  //         }
-  //     });
-  // });
+  $(document).ready(function () {
+    $('.slick-carousel').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '25%',
+      autoplay: true,
+      autoplaySpeed: 5000,
+      arrows: false,
+      dots: true
+    });
+  });
 </script>
 
 
