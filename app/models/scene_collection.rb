@@ -18,6 +18,9 @@ class SceneCollection < ActiveRecord::Base
   # Validations
   validates :user, presence: true
 
+  # Callbacks
+  after_destroy :delete_hal_record
+
   enum status: { draft: 0, generating: 1, generated: 2, failed: 3 }
 
   def valid_scene_contents?
@@ -60,5 +63,13 @@ class SceneCollection < ActiveRecord::Base
 
   def audio_url
     "#{ENV['CDN_URL']}/#{audio}" if audio
+  end
+
+  private
+
+  def delete_hal_record
+    HAL::Client.new.delete_scene_collection(hal_id) if hal_id
+  rescue => e
+    Honeybadger.notify(e, context: { id: id, hal_id: hal_id })
   end
 end

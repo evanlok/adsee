@@ -23,7 +23,7 @@ class Admin::FontsController < Admin::BaseController
   end
 
   def update
-    if @font.save
+    if @font.update(font_params)
       redirect_to edit_admin_font_url(@font), notice: "Updated font: #{@font.name}"
     else
       render :edit

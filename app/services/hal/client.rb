@@ -20,6 +20,10 @@ module HAL
       http_client.post("scene_collections/#{id}/preview", params)
     end
 
+    def delete_scene_collection(id)
+      http_client.delete("scene_collections/#{id}")
+    end
+
     private
 
     def http_client
