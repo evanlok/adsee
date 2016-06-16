@@ -10,7 +10,8 @@ class SceneAttribute < ActiveRecord::Base
     boolean: 'SceneAttributes::Boolean',
     url: 'SceneAttributes::Text',
     image: 'SceneAttributes::Image',
-    video: 'SceneAttributes::Video'
+    video: 'SceneAttributes::Video',
+    icon: 'SceneAttributes::Icon'
   }.freeze
 
   # Associations

@@ -20,7 +20,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     vm.stockVideos = [];
     vm.uploading = false;
     vm.selecting = false;
-    vm.display = {images: true, videos: false, stockImages: false, stockVideos: false};
+    vm.display = {images: true, videos: false, stockImages: false, stockVideos: false, icons: false};
     vm.searchQuery = '';
     vm.currentPage = 1;
     vm.totalItems = 0;
@@ -98,7 +98,18 @@ function MediaLibraryController($interval, imageService, videoClipService, media
   }
 
   function onMediaInsert(type) {
-    type == 'image' ? showTab('images') : showTab('videos');
+    switch(type) {
+      case 'image':
+        showTab('images');
+        break;
+      case 'video':
+        showTab('videos');
+        break;
+      case 'icon':
+        showTab('icons');
+        break;
+    }
+
     vm.selectingType = type;
     vm.selecting = true;
   }

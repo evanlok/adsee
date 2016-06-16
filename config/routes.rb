@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]
+  resources :icons, only: :index
   resources :facebook_targeting_specs, only: [:index]
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
