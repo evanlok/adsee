@@ -4,7 +4,8 @@ $.fn.select2.defaults.set('theme', 'bootstrap');
 // Filestack / Filepicker
 var filepicker = require('filepicker-js');
 
-var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY) {
+var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY,
+                                     ezfbProvider, FACEBOOK_APP_ID) {
   $stateProvider
     .state('sceneCollectionWizard', {
       abstract: true,
@@ -17,6 +18,13 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       url: '/targeting',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<targeting scene-collection-id="{{ sceneCollectionId }}"></targeting>')($stateParams);
+      },
+      parent: 'sceneCollectionWizard'
+    })
+    .state('targetingLocations', {
+      url: '/targeting/locations',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<targeting-locations scene-collection-id="{{ sceneCollectionId }}"></targeting-locations>')($stateParams);
       },
       parent: 'sceneCollectionWizard'
     })
@@ -61,6 +69,10 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
   uiSelectConfig.theme = 'bootstrap';
 
   filepicker.setKey(FILESTACK_API_KEY);
+
+  ezfbProvider.setInitParams({
+    appId: FACEBOOK_APP_ID
+  });
 };
 
 module.exports = config;

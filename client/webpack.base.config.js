@@ -19,6 +19,7 @@ module.exports = {
       'angular-resource',
       'angular-ui-router',
       'angular-ui-bootstrap',
+      'angular-easyfb',
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',

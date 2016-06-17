@@ -12,6 +12,7 @@ angular.module('adsee', [
   'ng-sortable',
   'timer',
   'bcherny/formatAsCurrency',
+  'ezfb',
   require('./admin/admin.module'),
   require('./shared/shared.module'),
   require('./layout/layout.module'),

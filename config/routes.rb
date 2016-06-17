@@ -29,7 +29,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :facebook_ads, only: [:show, :create, :update]
+    resources :facebook_ads, only: [:show, :create, :update] do
+      put :update_targeting_spec, on: :member
+    end
   end
 
   resources :users, only: [] do
@@ -74,6 +76,7 @@ Rails.application.routes.draw do
 
   # Angular route globbing
   get '/scene_collections/:id/targeting', to: 'home#scene_editor', as: :targeting_scene_collection
+  get '/scene_collections/:id/targeting/*angular_path', to: 'home#scene_editor'
   get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
   get '/scene_collections/:id/edit/*angular_path', to: 'home#scene_editor'
   get '/scene_collections/:id/summary', to: 'home#scene_editor'

@@ -1,8 +1,10 @@
 class FacebookAdsController < ApplicationController
-  before_action :load_facebook_ad, only: [:show, :update]
+  before_action :load_facebook_ad, only: [:show, :update, :update_targeting_spec]
   after_action :verify_authorized, except: :index
 
   def show
+    authorize @facebook_ad
+
     respond_to do |format|
       format.json
     end
@@ -26,7 +28,25 @@ class FacebookAdsController < ApplicationController
   end
 
   def update
+    authorize @facebook_ad
+
     if @facebook_ad.update(facebook_ad_params)
+      respond_to do |format|
+        format.json { render :show }
+      end
+    else
+      respond_to do |format|
+        format.json { render_json_model_errors(@facebook_ad) }
+      end
+    end
+  end
+
+  def update_targeting_spec
+    authorize @facebook_ad, :update?
+    @facebook_ad.targeting ||= {}
+    @facebook_ad.targeting.merge!(params[:targeting])
+
+    if @facebook_ad.save
       respond_to do |format|
         format.json { render :show }
       end
@@ -52,6 +72,5 @@ class FacebookAdsController < ApplicationController
 
   def load_facebook_ad
     @facebook_ad = FacebookAd.find(params[:id])
-    authorize @facebook_ad
   end
 end
