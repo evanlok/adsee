@@ -1,0 +1,15 @@
+.icon-list {
+  .icon-list-icon {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    padding: 0 10px 20px 10px;
+
+    .icon-list-label {
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

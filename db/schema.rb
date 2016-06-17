@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603221836) do
+ActiveRecord::Schema.define(version: 20160616174520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,20 @@ ActiveRecord::Schema.define(version: 20160603221836) do
     t.text     "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "image"
   end
+
+  create_table "icons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unicode"
+    t.string   "category"
+    t.string   "vendor"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "icons", ["name"], name: "index_icons_on_name", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "filename"
@@ -169,6 +182,7 @@ ActiveRecord::Schema.define(version: 20160603221836) do
     t.text     "guide_video"
     t.integer  "width"
     t.integer  "height"
+    t.integer  "duration"
   end
 
   add_index "scenes", ["hal_id"], name: "index_scenes_on_hal_id", using: :btree

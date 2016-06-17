@@ -20,6 +20,7 @@ FactoryGirl.define do
     sequence(:hal_id) { |n| n }
     width 1280
     height 720
+    duration 10
 
     data_attributes do
       [
@@ -72,6 +73,10 @@ FactoryGirl.define do
 
     factory :video_attribute, class: SceneAttributes::Video do
       association :attachment, factory: :video_clip
+    end
+
+    factory :icon_attribute, class: SceneAttributes::Icon do
+      association :attachment, factory: :icon
     end
   end
 
@@ -187,5 +192,13 @@ FactoryGirl.define do
     width 1280
     height 720
     thumbnail_url { Faker::Internet.url }
+  end
+
+  factory :icon do
+    name { Faker::Lorem.word }
+    vendor 'google'
+    unicode 'abcd'
+    position 1
+    category { Faker::Lorem.word }
   end
 end

@@ -25,6 +25,10 @@
               <span>
                 Created: <%= scene_collection.created_at.to_s(:full) %>
               </span>
+              <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+              <span>
+                <%= link_to 'Delete', scene_collection_path(scene_collection), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </span>
             </div>
           </div>        
         </div>

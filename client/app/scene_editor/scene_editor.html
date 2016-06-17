@@ -19,6 +19,7 @@
     </div>
     <div class="top-action-bar">
       <theme-settings scene-collection="$ctrl.sceneCollection"
+                      duration="$ctrl.duration()"
                       on-update="$ctrl.updateSceneCollection(prop, value)"></theme-settings>
     </div>
   </div>
@@ -84,6 +85,8 @@
             </a>
 
             <div class="pull-right">
+              {{ $ctrl.duration() | secondsToTime }}
+
               <select ng-model="$ctrl.selectedSceneContent.transition_id"
                       ng-options="transition.id as transition.name for transition in $ctrl.transitions"
                       ng-change="$ctrl.updateSceneContentTransition()">

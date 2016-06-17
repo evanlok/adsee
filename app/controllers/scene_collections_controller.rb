@@ -1,6 +1,6 @@
 class SceneCollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_scene_collection, only: [:show, :update, :summary_info]
+  before_action :load_scene_collection, only: [:show, :update, :destroy, :summary_info]
   after_action :verify_authorized, except: [:new, :index]
   after_action :verify_policy_scoped, only: :index
 
@@ -52,6 +52,15 @@ class SceneCollectionsController < ApplicationController
       respond_to do |format|
         format.json { render_json_model_errors(@scene_collection) }
       end
+    end
+  end
+
+  def destroy
+    @scene_collection.destroy
+
+    respond_to do |format|
+      format.html { redirect_to scene_collections_url, notice: 'Video deleted.' }
+      format.json { render json: { id: @scene_collection.id } }
     end
   end
 

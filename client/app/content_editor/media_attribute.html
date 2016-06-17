@@ -4,7 +4,7 @@
       <span class="input-group-addon">{{ $ctrl.sceneAttribute.position }}</span>
       <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="Select a file">
         <!-- <i class="fa fa-picture-o" ng-if="$ctrl.isImage()"></i> -->
-        <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
+        <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.display_name }}
       </label>
       <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
                ng-model="$ctrl.filename"

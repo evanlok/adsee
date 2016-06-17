@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function MediaLibraryController($interval, imageService, videoClipService, mediaSelectorService) {
+function MediaLibraryController($interval, imageService, videoClipService, iconService, mediaSelectorService) {
   var vm = this;
   var loadedContent, videoPoller;
 
@@ -20,7 +20,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     vm.stockVideos = [];
     vm.uploading = false;
     vm.selecting = false;
-    vm.display = {images: true, videos: false, stockImages: false, stockVideos: false};
+    vm.display = {images: true, videos: false, stockImages: false, stockVideos: false, icons: false};
     vm.searchQuery = '';
     vm.currentPage = 1;
     vm.totalItems = 0;
@@ -82,6 +82,13 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     });
   }
 
+  function fetchIcons() {
+    iconService.query({q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
+      vm.icons = data;
+    });
+  }
+
   function onConvert() {
     vm.uploading = true;
   }
@@ -94,11 +101,23 @@ function MediaLibraryController($interval, imageService, videoClipService, media
 
   function selectMedia(media) {
     vm.selecting = false;
+    vm.selectingType = null;
     mediaSelectorService.selectMedia(media);
   }
 
   function onMediaInsert(type) {
-    type == 'image' ? showTab('images') : showTab('videos');
+    switch(type) {
+      case 'image':
+        showTab('images');
+        break;
+      case 'video':
+        showTab('videos');
+        break;
+      case 'icon':
+        showTab('icons');
+        break;
+    }
+
     vm.selectingType = type;
     vm.selecting = true;
   }
@@ -135,6 +154,8 @@ function MediaLibraryController($interval, imageService, videoClipService, media
       case 'stockVideos':
         fetchStockVideos();
         break;
+      case 'icons':
+        fetchIcons();
     }
 
     loadedContent[type] = true;

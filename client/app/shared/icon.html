@@ -1,0 +1,4 @@
+<span class="adsee-icon" ng-switch on="$ctrl.icon.vendor" title="{{ $ctrl.icon.name | underscoreless }}">
+  <i class="material-icons md-48" ng-bind="$ctrl.icon.name" ng-switch-when="google"></i>
+  <span ng-switch-when="emojione" ng-bind-html="$ctrl.emoji($ctrl.icon.name)"></span>
+</span>

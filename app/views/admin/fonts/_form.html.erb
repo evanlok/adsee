@@ -1,6 +1,7 @@
 <%= simple_form_for [:admin, @font] do |f| %>
   <%= f.input :name %>
   <%= f.input :url, as: :string %>
+  <%= render 'admin/shared/image_form_field', f: f, name: :image %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', admin_fonts_path, class: 'btn btn-default', target: '_self' %>

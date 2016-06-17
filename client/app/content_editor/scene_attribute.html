@@ -27,4 +27,8 @@
   <div ng-if="$ctrl.mediaInput()">
     <media-attribute scene-attribute="$ctrl.sceneAttribute"></media-attribute>
   </div>
+
+  <div ng-if="$ctrl.sceneAttribute.type == 'icon'">
+    <icon-attribute scene-attribute="$ctrl.sceneAttribute"></icon-attribute>
+  </div>
 </div>
