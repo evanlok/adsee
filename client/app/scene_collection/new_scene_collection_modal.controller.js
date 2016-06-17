@@ -1,13 +1,30 @@
 /*@ngInject*/
-function NewSceneCollectionModalController($scope, $sce, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
+function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
                                            themeId) {
+  var steps = ['integration', 'aspect_ratio'];
   $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
   $scope.saving = false;
   $scope.integration = '';
-  $scope.fbad = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbad_graphic.jpg';
-  $scope.fbpage = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbpage_graphic.jpg';
-  $scope.fbprofile = 'https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/fbprofile_graphic.jpg';
+  $scope.step = 'integration';
+
+  $scope.selectIntegration = function (integration) {
+    $scope.integration = integration;
+    $scope.step = 'aspect_ratio';
+  };
+
+  $scope.selectAspectRatio = function (aspectRatio) {
+    $scope.aspectRatio = aspectRatio;
+    $scope.save();
+  };
+
+  $scope.back = function () {
+    var previousIndex = _.indexOf(steps, $scope.step) - 1;
+
+    if (previousIndex >= 0) {
+      $scope.step = steps[previousIndex];
+    }
+  };
 
   $scope.save = function () {
     $scope.saving = true;
@@ -15,10 +32,9 @@ function NewSceneCollectionModalController($scope, $sce, $uibModalInstance, $sta
     sceneCollectionService.save({}, {
       ad_type_id: $scope.adTypeId,
       theme_id: $scope.themeId,
-      integration: $scope.integration
+      integration: $scope.integration,
+      aspect_ratio: $scope.aspectRatio
     }).then(function onSuccess(data) {
-      console.log(data)
-
       $uibModalInstance.close();
 
       if ($scope.integration === 'facebook_ad') {

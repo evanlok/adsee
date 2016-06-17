@@ -52,7 +52,7 @@
     border: 1px solid $color-9;
     border-radius: 0px;
     resize: none;
-    background: none;
+    background-color: none;
     outline: none; 
     box-shadow: none;
     height: 40px;
@@ -524,51 +524,6 @@
     font-weight: 700;
     margin-bottom: 15px;
   }
-  .image-thumb-column {
-    padding: 0px 7px;
-  }
-  .delete-box {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: hsla(0, 0%, 0.0000%, 0.5000);
-    border-radius: 5px;
-    &:hover {
-      background-color: $color-6;
-    }
-    a {
-      color: white;
-      font-size: 14px;
-      padding: 2px 6px;
-      display: block;
-    }
-  }
-  .video-thumb-box {
-    background-color: $color-5;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 15px;
-  }
-  .video-thumb-link {
-    display: block;
-    color: white;
-    outline: none; 
-    box-shadow: none;
-    cursor: pointer;
-  }
-  .video-icon {
-    font-size: 80px;
-    margin: 0px 0px 40px;
-    color: hsla(205, 8.8555%, 8.7387%, 1.0000);
-  }
-  .video-name {
-    padding: 3px 20px;
-    background-color: hsla(0, 0%, 0.0000%, 0.6500);
-    font-size: 14px;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-  }
   .media-upload-button {
     display: inline-block;
     color: white;
@@ -592,24 +547,91 @@
   .media-search {
     max-width: 200px;
   }
-  .thumb-container {
-    padding: 15px;
-    margin-top: 10px;
+
+}
+.image-thumb-column {
+  padding: 2px;
+  a {
+    color: white;
+    font-size: 14px;
+    padding: 2px 6px;
+    display: block;
   }
-  .image-thumbs {
-    padding: 0px 6px 12px;
-    img {
-      border: 1px solid hsl(207, 11.3139%, 20.7635%);
-    }
+}
+.video-thumb-box {
+  overflow: hidden;
+  position: relative;
+}
+.video-thumb-link {
+  padding: 2px;
+  display: block;
+  color: white;
+  outline: none; 
+  box-shadow: none;
+  cursor: pointer;
+  position: relative;
+}
+.video-icon {
+  font-size: 80px;
+  margin: 0px 0px 40px;
+  color: hsla(205, 8.8555%, 8.7387%, 1.0000);
+}
+.video-name {
+  padding: 4px 10px;
+  background-color: hsla(0, 0%, 0.0000%, 0.6500);
+  font-size: 14px;
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 10px;
+}
+.video-thumb-box {
+  padding: 1px;
+  a {
+    width: 100%;
   }
-  .image-thumb-box {
-    margin-bottom: 15px;
-    position: relative;
-    border: 1px solid hsl(207, 11.1111%, 15.8824%);
-    img {
-      width: 100%;
-    }
+  .play-sample {
+    position: absolute;
+    margin-top: 14%;
+    color: white;
+    text-align: center;
+    transition: margin 0.5s ease;
+    font-size: 50px;
+    vertical-align: middle;
+    width: 100%;
+    z-index: 10000;
   }
+}
+.delete-box {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border-radius: 5px;
+  z-index: 10000;
+  background-color: hsla(0, 0%, 0.0000%, 0.2000);;
+  &:hover {
+    background-color: $color-6;
+  }
+}
+.thumb-container {
+  margin-top: 20px;
+  padding: 15px;
+}
+.image-thumbs {
+  padding: 0px 6px 12px;
+  img {
+    border: 1px solid hsl(207, 11.3139%, 20.7635%);
+  }
+}
+.image-thumb-box {
+  position: relative;
+  padding: 1px;
+  img {
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+.sixteen-nine {
+  @include aspect-ratio(16, 9);
 }
 .media-library::-webkit-scrollbar {
  display: none;
@@ -872,28 +894,63 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     font-weight: 700;
     margin-bottom: 30px;
   }
-  a {
-    outline: 5px solid $color-2;
+  .square-panel {
+    border-right: 1px solid white;
+  }
+  .aspect-selector {
     display: inline-block;
-    text-transform: uppercase;
-    &:hover {
-      outline: 10px solid $color-2;
+    padding: 25px;
+    a {
+      outline: 5px solid $color-2;
+      text-transform: uppercase;
+      &:hover {
+        outline: 10px solid $color-2;
+      }
     }
   }
+  .rec-label {
+    -ms-transform: rotate(-45deg); 
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+    position: absolute;
+    margin: 67px -22px;
+  }
+  .recommended {
+    color: white;
+    position: absolute;
+    z-index: 2;
+    font-size: 12px;
+    margin: 2px 0px 0px 17px;
+  }
+  .trapazoid {
+    position: absolute;
+    width: 124px;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;  
+    border-bottom: 20px solid hsla(251, 100.0000%, 64.4674%, 1.0000);
+  }
   .square {
-    width: 150px;
-    height: 150px;
-    margin-right: 30px;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    outline: 5px solid $color-2;
   }
   .widescreen {
-    width: 250px;
-    height: 150px;
+    width: 200px;
+    height: 120px;
+    margin: 0 auto;
+    outline: 5px solid $color-2;
   }
   .aspect-number {
     color: white;
     font-size: 36px;
     font-weight: 700;
-    margin-top: 30px;
+    padding-top: 34px;
+  }
+  .widescreen .aspect-number {
+    margin-top: 0px;
   }
 }
 .add-scene-index {
@@ -919,24 +976,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .scene-button {
     display: inline-block;
     float: left;
-  }
-}
-.video-thumb-box {
-  margin: 10px;
-  overflow: hidden;
-  position: relative;
-  a {
-    width: 100%;
-  }
-  .play-sample {
-    position: absolute;
-    margin-top: 12%;
-    color: white;
-    text-align: center;
-    transition: margin 0.5s ease;
-    font-size: 50px;
-    vertical-align: middle;
-    width: 100%;
   }
 }
 
@@ -1013,10 +1052,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 20px;
   }
   .image-padding {
-    margin-bottom: -20px
-    img {
-      margin-bottom: 20px;
-    }
+    margin: 0px 10px 10px 10px;
+    max-width: 160px;
   }
 }
 // AUDIO RECORD MODAL
@@ -1368,32 +1405,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width: 100%;
 }
 .template-page-wrapper {
-
-  .carousel {
-    background-color: $color-2;
-    margin: 0 auto;
-    width: 50%;
-    overflow: visible;
-    position: static;
-  }
-  .carousel-row {
-    position: relative;
-    overflow: hidden;
-  }
-  .carousel-inner {
-    overflow: visible;
-  }
-  .promo-slot {
-    padding: 0px;
-    background-color: $color-2;
-  }
-  .content-item {
-    padding: 0px;
-    background-color: $color-2;
-    width: 100%;
+  .slick-carousel {
     img {
       width: 100%;
     }
+  }
+
+  .promo-slot {
+    padding: 0px;
+    background-color: $color-2;
   }
   
   h1 {
@@ -1547,11 +1567,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .button {
     text-align: center;
-    padding: 10px 20px;
+    padding: 10px 30px;
     font-size: 22px;
     font-weight: 700;
-    width: 100%;
-    display: block;
+    display: inline-block;
+    float: right;
     margin-top: 20px;
     color: white;
     span {
@@ -1562,9 +1582,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     }
   }
   .back-link {
-    display: block;
-    margin-top: 20px;
+    display: inline-block;
+    float: left;
+    margin-top: 30px;
     text-align: center;
+    font-size: 16px;
   }
 }
 
