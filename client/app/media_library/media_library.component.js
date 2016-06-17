@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function MediaLibraryController($interval, imageService, videoClipService, mediaSelectorService) {
+function MediaLibraryController($interval, imageService, videoClipService, iconService, mediaSelectorService) {
   var vm = this;
   var loadedContent, videoPoller;
 
@@ -82,6 +82,13 @@ function MediaLibraryController($interval, imageService, videoClipService, media
     });
   }
 
+  function fetchIcons() {
+    iconService.query({q: vm.searchQuery, page: vm.currentPage}).then(function (data) {
+      setPaginationData(data);
+      vm.icons = data;
+    });
+  }
+
   function onConvert() {
     vm.uploading = true;
   }
@@ -94,6 +101,7 @@ function MediaLibraryController($interval, imageService, videoClipService, media
 
   function selectMedia(media) {
     vm.selecting = false;
+    vm.selectingType = null;
     mediaSelectorService.selectMedia(media);
   }
 
@@ -146,6 +154,8 @@ function MediaLibraryController($interval, imageService, videoClipService, media
       case 'stockVideos':
         fetchStockVideos();
         break;
+      case 'icons':
+        fetchIcons();
     }
 
     loadedContent[type] = true;

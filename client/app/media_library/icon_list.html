@@ -1,7 +1,7 @@
 <div class="row icon-list">
   <div class="col-md-12">
     <div class="icon-list-icon" ng-repeat="icon in $ctrl.icons">
-      <i class="material-icons md-48" ng-bind="icon.name" ng-click="$ctrl.onSelect({icon: icon})"></i>
+      <adsee-icon icon="icon" ng-click="$ctrl.onSelect({icon: icon})"></adsee-icon>
       <div class="icon-list-label">{{ icon.name | underscoreless }}</div>
     </div>
   </div>

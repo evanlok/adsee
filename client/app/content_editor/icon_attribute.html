@@ -6,12 +6,12 @@
     </label>
 
     <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
-           ng-model="$ctrl.value"
+           ng-model="$ctrl.name"
            ng-click="$ctrl.insertMedia()"
            placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
 
     <div class="image-padding">
-      <i class="material-icons md-48" ng-bind="$ctrl.value" ng-click="$ctrl.insertMedia()"></i>
+      <img ng-src="{{ $ctrl.sceneAttribute.icon_url }}" ng-click="$ctrl.insertMedia()">
     </div>
   </div>
 </div>

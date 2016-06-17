@@ -16,7 +16,8 @@ function IconAttributeController(mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.value = vm.sceneAttribute.value;
+    vm.value = vm.sceneAttribute.attachment_id;
+    vm.name = vm.sceneAttribute.icon_name;
     mediaSelectorService.onMediaSelected(vm.sceneAttribute.name, onMediaSelected);
   };
 
@@ -30,8 +31,9 @@ function IconAttributeController(mediaSelectorService) {
     mediaSelectorService.insertMedia(vm.sceneAttribute.name, vm.sceneAttribute.type);
   }
 
-  function onMediaSelected(media) {
-    vm.value = media.name;
+  function onMediaSelected(icon) {
+    vm.value = icon.id;
+    vm.name = icon.name;
     vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
   }
 }

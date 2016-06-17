@@ -4,31 +4,17 @@ var component = {
   templateUrl: templateUrl,
   controller: IconListController,
   bindings: {
-    selecting: '<',
-    onSelect: '&',
-    searchQuery: '@'
+    icons: '<',
+    onSelect: '&'
   }
 };
 
 /*@ngInject*/
-function IconListController(iconService) {
+function IconListController() {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.icons = [];
   };
-
-  vm.$onChanges = function (changes) {
-    if (changes.searchQuery) {
-      fetchIcons();
-    }
-  };
-
-  function fetchIcons() {
-    iconService.query({q: vm.searchQuery}).then(function (data) {
-      vm.icons = data;
-    });
-  }
 }
 
 module.exports = component;

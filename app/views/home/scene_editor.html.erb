@@ -1,5 +1,11 @@
-<script>
-  angular.module('adsee.uploader').value('fonts', <%= raw @fonts.to_json %>);
-  angular.module('adsee.uploader').value('songs', <%= raw @songs.to_json %>);
-  angular.module('adsee.sceneEditor').value('transitions', <%= raw @transitions.to_json %>);
-</script>
+<% content_for :head do %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/emojione/2.2.2/lib/js/emojione.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.2.2/assets/css/emojione.min.css"/>
+
+    <script>
+      angular.module('adsee.uploader').value('fonts', <%= raw @fonts.to_json %>);
+      angular.module('adsee.uploader').value('songs', <%= raw @songs.to_json %>);
+      angular.module('adsee.sceneEditor').value('transitions', <%= raw @transitions.to_json %>);
+    </script>
+<% end %>

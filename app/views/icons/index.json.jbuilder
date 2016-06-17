@@ -1,1 +1,1 @@
-json.array! @icons, :name
+json.array! @icons, :id, :name, :vendor

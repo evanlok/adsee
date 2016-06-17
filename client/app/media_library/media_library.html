@@ -95,10 +95,9 @@
                 selecting="$ctrl.selecting"
                 ng-show="$ctrl.display.stockVideos"></video-list>
 
-    <icon-list search-query="{{ $ctrl.searchQuery }}"
+    <icon-list icons="$ctrl.icons"
                on-select="$ctrl.selectMedia(icon)"
-               selecting="$ctrl.selecting"
-               ng-if="$ctrl.display.icons"></icon-list>
+               ng-show="$ctrl.display.icons"></icon-list>
 
     <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"
                     ng-change="$ctrl.pageChanged()"></uib-pagination>
