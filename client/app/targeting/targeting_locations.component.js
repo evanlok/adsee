@@ -21,6 +21,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     vm.searchQuery = '';
     vm.searchResults = [];
     vm.selectedLocations = [];
+    vm.radiusOptions = _.range(10, 51);
 
     $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function (results) {
       return initializeSelectedLocations();
@@ -242,8 +243,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     var requestData = buildTargetingSpec();
 
     facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: requestData}).then(function (data) {
-      // Go to next step
-
+      $state.go('targetingDemographics');
     }).finally(function () {
       vm.saving = false;
     });

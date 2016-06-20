@@ -25,7 +25,16 @@
         <span ng-if="location.include"><i class="fa fa-map-marker"></i></span>
         <span ng-if="!location.include"><i class="fa fa-times-circle"></i></span>
         {{ $ctrl.formatLocation(location) }}
-        <span ng-if="location.type === 'city'">+ {{location.radius}}mi</span>
+
+        <span ng-if="location.type === 'city'">
+          +
+          <select ng-options="radius for radius in $ctrl.radiusOptions"
+                  ng-model="location.radius">
+            <option value="">Current city only</option>
+          </select>
+
+          <span ng-if="location.radius > 0">mi</span>
+        </span>
 
         <a href="" ng-click="$ctrl.removeLocation(location)">
           <i class="fa fa-times-circle-o"></i>
