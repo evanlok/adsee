@@ -28,6 +28,13 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       },
       parent: 'sceneCollectionWizard'
     })
+    .state('targetingDemographics', {
+      url: '/targeting/demographics',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<targeting-demographics scene-collection-id="{{ sceneCollectionId }}"></targeting-demographics>')($stateParams);
+      },
+      parent: 'sceneCollectionWizard'
+    })
     .state('sceneEditor', {
       url: '/edit',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
