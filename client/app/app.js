@@ -8,6 +8,7 @@ angular.module('adsee', [
   'ui.router',
   'ui.bootstrap',
   'ui.select',
+  'treeControl',
   'color.picker',
   'ng-sortable',
   'timer',

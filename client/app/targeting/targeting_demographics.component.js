@@ -52,7 +52,10 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
     vm.audienceTypes = audienceTypes;
     vm.baseCategories = ['Demographics', 'Interests', 'Behaviors', 'More Categories'];
     vm.browseItems = [];
-    vm.browsePath = [];
+    vm.browseTree = [];
+    vm.treeOptions = {
+      dirSelectable: false
+    };
 
     $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function (results) {
       fetchLocales();
@@ -72,6 +75,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   vm.titleize = titleize;
   vm.selectAudience = selectAudience;
   vm.removeAudience = removeAudience;
+  vm.chooseNode = chooseNode;
   vm.save = save;
 
   function fetchFacebookAd() {
@@ -99,7 +103,34 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   function fetchTargetingBrowse() {
     return ezfb.api('/act_' + vm.adAccounts[0].account_id + '/targetingbrowse').then(function (data) {
       vm.browseItems = data.data;
+      buildBrowseTree();
     });
+  }
+
+  function buildBrowseTree() {
+    var tree = _.map(vm.baseCategories, function (item) {
+      return {name: item, children: []};
+    });
+
+    var current = tree;
+
+    _.each(vm.browseItems, function (item) {
+      _.each(item.path, function (pathName) {
+        var match = _.find(current, {name: pathName});
+
+        if (!match) {
+          match = {name: pathName, children: []};
+          current.push(match);
+        }
+
+        current = match.children;
+      });
+
+      current.push(item);
+      current = tree;
+    });
+
+    vm.browseTree = tree;
   }
 
   function fetchAdAccounts() {
@@ -172,12 +203,12 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
     _.remove(vm.targetingSpec[type], {id: id});
   }
 
-  function browse(category) {
-
+  function chooseNode(node) {
+    vm.browsing = false;
+    selectAudience(node);
   }
 
   function save() {
-    console.log(vm.targetingSpec);
     vm.saving = true;
 
     facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec}).then(function (data) {

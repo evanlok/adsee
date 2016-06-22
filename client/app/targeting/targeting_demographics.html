@@ -65,7 +65,7 @@
     </div>
 
     <div class="form-group">
-      Detailed Targeting
+      <h3>Detailed Targeting</h3>
 
       <div>
         <div ng-repeat="(type, name) in $ctrl.audienceTypes">
@@ -99,7 +99,7 @@
         </div>
       </div>
 
-      <div class="detailed-targeting-search-results">
+      <div class="detailed-targeting-search-results" ng-if="!$ctrl.browsing">
         <div ng-repeat="item in $ctrl.detailedTargetingResults">
           <div class="clearfix">
             <div class="pull-left">
@@ -124,18 +124,17 @@
       </div>
 
       <div class="detailed-targeting-browse" ng-if="$ctrl.browsing">
-        <ul>
-          <li ng-repeat="category in $ctrl.baseCategories">
-            <a href="">{{ category }}</a>
-
-            <ul ng-show="$ctrl.browsePath[0] === category">
-
-            </ul>
-          </li>
-        </ul>
+        <treecontrol class="tree-light"
+                     tree-model="$ctrl.browseTree"
+                     options="$ctrl.treeOptions"
+                     on-selection="$ctrl.chooseNode(node)">
+          {{node.name}}
+        </treecontrol>
       </div>
     </div>
   </form>
+
+
 
   <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.save()"
           ng-disabled="$ctrl.saving">
