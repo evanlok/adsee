@@ -8,10 +8,13 @@
 
   <div class="modal-body">
     <div class="audio-elements">
-      
       <div class="clearfix current-audio" ng-if="audioUrl" ng-show="!recording">
         <div class="">
           Current Audio:
+        </div>
+
+        <div ng-if="!micSupported">
+          <h4>Audio recording is not supported on this browser.</h4>
         </div>
 
         <div class="current-recording">
@@ -25,7 +28,7 @@
         <uib-progressbar value="uploadPercent" class="progress-striped active"></uib-progressbar>
       </div>
 
-      <div class="recording-info" ng-show="recording" ng-if="micSupported">
+      <div class="recording-info" ng-show="recording">
         <div class="recording-indicator blink_record"><i class="fa fa-microphone"></i> recording</div>
         <div>Timer:</div>
         <div class="time">
@@ -38,16 +41,9 @@
         </a>
       </div>
 
-      <div ng-if="!micSupported">
-        <h4>Audio recording is not supported on this browser.</h4>
-      </div>
-
       <div class="recording-wrapper">
         <a href="" ng-show="!recording" ng-click="startRecording()" class="button record-button">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-microphone fa-stack-1x fa-inverse"></i>
-          </span>
+          <i class="fa fa-microphone"></i> 
           Record Audio
         </a>
       </div>
