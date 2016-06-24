@@ -76,13 +76,13 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   vm.selectAudience = selectAudience;
   vm.removeAudience = removeAudience;
   vm.chooseNode = chooseNode;
+  vm.updateTargetingConnections = updateTargetingConnections;
   vm.save = save;
 
   function fetchFacebookAd() {
     return facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
       vm.facebookAd = data;
-      var keys = ['age_min', 'age_max', 'genders', 'locales'].concat(_.keys(audienceTypes));
-      vm.targetingSpec = _.pick(vm.facebookAd.targeting, keys);
+      vm.targetingSpec = vm.facebookAd.targeting;
 
       if (!vm.targetingSpec.age_min) {
         vm.targetingSpec.age_min = 13;
@@ -206,6 +206,14 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   function chooseNode(node) {
     vm.browsing = false;
     selectAudience(node);
+  }
+
+  function updateTargetingConnections(targetingConnections) {
+    _.each(['app_install_state', 'connections', 'excluded_connections', 'friends_of_connections'], function (key) {
+      delete vm.targetingSpec[key];
+    });
+
+    _.assign(vm.targetingSpec, targetingConnections);
   }
 
   function save() {

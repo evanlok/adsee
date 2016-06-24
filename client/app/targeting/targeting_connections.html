@@ -1,0 +1,29 @@
+<div class="targeting-connections">
+  <h3>Connections</h3>
+
+  <select ng-model="$ctrl.connection"
+          ng-options="connection as connection.name for connection in $ctrl.connectionOptions"
+          ng-change="$ctrl.searchConnections()"
+          class="form-control">
+    <option value="">Select a page, app, or event</option>
+  </select>
+
+  <select ng-model="$ctrl.connectionType" ng-if="$ctrl.connection"
+          ng-options="type as type.name for type in $ctrl.connection.options"
+          ng-change="$ctrl.resetSelectedItems()"
+          class="form-control">
+    <option value="">Select an audience</option>
+  </select>
+
+  <ui-select multiple ng-model="$ctrl.selectedConnectionItems"
+             on-select="$ctrl.outputConnections()"
+             on-remove="$ctrl.outputConnections()"
+             ng-if="$ctrl.connectionType">
+    <ui-select-match placeholder="Add an item">{{ $item.name }}</ui-select-match>
+
+    <ui-select-choices
+        repeat="connection in $ctrl.connectionItems | filter: {name: $select.search} track by connection.id">
+      {{ connection.name }}
+    </ui-select-choices>
+  </ui-select>
+</div>

@@ -132,9 +132,12 @@
         </treecontrol>
       </div>
     </div>
+
+    <targeting-connections facebook-ad="$ctrl.facebookAd"
+                           ad-account-id="{{ $ctrl.adAccounts[0].account_id }}"
+                           on-update="$ctrl.updateTargetingConnections(targetingConnections)">
+    </targeting-connections>
   </form>
-
-
 
   <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.save()"
           ng-disabled="$ctrl.saving">

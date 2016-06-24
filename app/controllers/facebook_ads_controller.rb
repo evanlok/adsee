@@ -44,7 +44,7 @@ class FacebookAdsController < ApplicationController
   def update_targeting_spec
     authorize @facebook_ad, :update?
     @facebook_ad.targeting ||= {}
-    @facebook_ad.targeting.merge!(params[:targeting])
+    @facebook_ad.targeting = params[:targeting]
 
     if @facebook_ad.save
       respond_to do |format|

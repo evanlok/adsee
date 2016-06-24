@@ -74,6 +74,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
       populateLocationData(vm.facebookAd.targeting.excluded_geo_locations, false);
 
       function populateLocationData(geoLocation, include) {
+        if (!geoLocation) {
+          return;
+        }
+
         _.each(locationTypes, function (type) {
           if (geoLocation[type]) {
             _.each(geoLocation[type], function (savedLocation) {
@@ -183,10 +187,14 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   }
 
   function buildTargetingSpec() {
-    return {
+    var attrs = {
       geo_locations: buildGeolocationSpec(true),
       excluded_geo_locations: buildGeolocationSpec(false)
-    }
+    };
+
+    _.assign(vm.facebookAd.targeting, attrs);
+
+    return vm.facebookAd.targeting;
   }
 
   function buildGeolocationSpec(include) {
@@ -240,9 +248,9 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
 
   function save() {
     vm.saving = true;
-    var requestData = buildTargetingSpec();
+    var targetingSpec = buildTargetingSpec();
 
-    facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: requestData}).then(function (data) {
+    facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: targetingSpec}).then(function (data) {
       $state.go('targetingDemographics');
     }).finally(function () {
       vm.saving = false;
