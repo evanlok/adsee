@@ -1,8 +1,4 @@
 class HomeController < ApplicationController
-  include Concerns::ForceNonSSL
-
-  force_non_ssl if: :disable_ssl?
-
   def index
   end
 
@@ -11,15 +7,5 @@ class HomeController < ApplicationController
     @songs = Song.order(:name)
     @fonts = Font.order(:name)
     @transitions = Transition.order(:name)
-  end
-
-  private
-
-  def disable_ssl?
-    request.path =~ %r{\/previews}
-  end
-
-  def ssl_configured?
-    super && request.path !~ %r{\/previews}
   end
 end

@@ -30,23 +30,6 @@ angular.module('adsee', [
   require('./media/media.module'),
   require('./scene_collection/scene_collection.module'),
   require('./facebook_post_config/facebook_post_config.module')
-]).config(config)
-  .run(function /*@ngInject*/($rootScope, $window, $state, SSL_ENABLED) {
-    // Redirect preview to non-ssl url so that streaming works correctly
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-      if (SSL_ENABLED) {
-        var hostWithPort = $window.location.hostname + ($window.location.port ? ':' + $window.location.port : '');
-        var path = $state.href(toState.name, toParams);
-
-        if (toState.name === 'preview') {
-          if ($window.location.protocol !== 'http:') {
-            $window.location = 'http://' + hostWithPort + path;
-          }
-        } else if ($window.location.protocol !== 'https:') {
-          $window.location = 'https://' + hostWithPort + path;
-        }
-      }
-    });
-});
+]).config(config);
 
 require('./constants');
