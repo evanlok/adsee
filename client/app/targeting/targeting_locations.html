@@ -73,7 +73,11 @@
     </div>
   </form>
 
-  <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.save()"
+  <button type="button" class="btn btn-default" ui-sref="targeting">
+    BACK
+  </button>
+
+  <button type="button" class="btn btn-primary" ng-click="$ctrl.save()"
           ng-disabled="$ctrl.saving">
     CONTINUE
   </button>

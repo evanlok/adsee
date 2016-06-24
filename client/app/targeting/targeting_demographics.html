@@ -139,7 +139,11 @@
     </targeting-connections>
   </form>
 
-  <button type="button" class="btn btn-primary continue-button" ng-click="$ctrl.save()"
+  <button type="button" class="btn btn-default" ui-sref="targetingLocations">
+    BACK
+  </button>
+
+  <button type="button" class="btn btn-primary" ng-click="$ctrl.save()"
           ng-disabled="$ctrl.saving">
     NEXT
   </button>

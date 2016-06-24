@@ -1,6 +1,6 @@
 <div class="video-nav">
   <ul>
-    <li ng-class="{active: $ctrl.stateName() === 'targeting'}" ng-if="$ctrl.showFacebookAdLinks()">
+    <li ng-class="{active: $ctrl.stateName().match('targeting')}" ng-if="$ctrl.showFacebookAdLinks()">
       <a ui-sref="targeting">Targeting</a>
     </li>
 

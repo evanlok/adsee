@@ -220,8 +220,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
     vm.saving = true;
 
     facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec}).then(function (data) {
-      // Go to next step
-
+      $state.go('sceneEditor');
     }).finally(function () {
       vm.saving = false;
     });
