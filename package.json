@@ -71,7 +71,8 @@
     "ui-select": "^0.16.1",
     "url-loader": "^0.5.7",
     "video.js": "^5.9 .2",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "worker-loader": "^0.7.0"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
