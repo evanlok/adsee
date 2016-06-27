@@ -483,8 +483,8 @@
   padding: 0px 0px 0px 15px;
   height: 100%;
   z-index: 1;
-  min-width: 280px;
-  max-width: 450px;
+  min-width: 320px;
+  max-width: 400px;
   background-color: $color-7;
 }
 .content-panel {
@@ -1417,45 +1417,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   
   h1 {
-    margin-top: 0px;
+    margin-top: 30px;
     margin-bottom: 0px;
+    font-size: 44px;
+    font-weight: 300;
+    text-transform: uppercase;
   }
   .build-my-own-button {
-    padding: 9px 25px 7px;
+    padding: 7px 15px 5px;
     font-size: 22px;
     text-transform: uppercase;
-    background-color: $color-2;
-    border: none;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 30px;
     font-weight: 700;
-    float: right;
-    color: white;
     margin-top: 8px;
+    color: white;
+    background-color: $color-2;
+    border: 3px solid $color-2;
     &:hover {
-      background-color: $color-1;
+      color: $color-2;
+      border: 3px solid $color-2;
+      background: none;
     }
   }
+  // .themes-row {
+  //   max-width: 1000px;
+  //   margin: 0 auto;
+  // }
   .industry-wrap {
     padding-left: 0px;
     padding-right: 0px;
   }
   .headline-row {
-    padding: 20px 20px 20px;
+    padding: 0px 20px 30px;
+    text-align: center;
   }
 }
 .industry-group {
-  padding: 20px 50px 40px;
-  // background: rgb(244,244,244); /* Old browsers */
-  // background: -moz-linear-gradient(top, rgba(249,249,249,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-  // background: -webkit-linear-gradient(top, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); Chrome10-25,Safari5.1-6
-  // background: linear-gradient(to bottom, rgba(249,249,249,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  padding: 20px 40px 40px;
+  border-top: 1px solid $color-8;
   h2 {
     font-size: 26px;
     font-weight: 700;
     padding: 20px 0px 0px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     margin-top: 0px;
     text-transform: uppercase;
     color: $color-2;
@@ -1471,6 +1476,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .thumb-circle {
     color: $color-5;
+    img {
+      width: 100%;
+    }
     &:hover {
       color: $color-2;
       img {
@@ -1478,13 +1486,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       }
     }
   }
+  .thumb-box {
+    position: relative;
+    .type-label {
+      position: absolute;
+      color: $color-3;
+      font-size: 12px;
+      font-weight: 700;
+      background-color: $color-2;
+      text-transform: uppercase;
+      padding: 3px 10px 2px;
+      margin: 10px 0px 0px 10px;
+      border-radius: 50px;
+    }
+  }
   .theme-name {
     position: absolute;
     bottom: 0px;
-    background-color: hsla(0, 0%, 0.0000%, 0.6000);
     color: white;
+    width: 100%;
     padding: 5px 10px;
     font-weight: 700;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#d9000000',GradientType=0 ); /* IE6-9 */
+  }
+  .theme-description-index {
+    margin-top: 10px;
+    font-size: 14px;
   }
 }
 
@@ -2002,7 +2032,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .posttype-modal {
   h2 {
+    display: inline-block;
     color: white;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase;    
+    border-bottom: 3px solid $color-2;
+  }
+  .square:hover {
+    img {
+      outline: 6px solid $color-2;
+    }
+  }
+  .modal-footer {
+    border-top: none;
   }
 }
 .posttype-title {
