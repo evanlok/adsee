@@ -29,6 +29,7 @@ class SceneCollectionsController < ApplicationController
 
     if @scene_collection.save
       @scene_collection.create_scene_contents_from_theme
+      @scene_collection.facebook_ads.create
 
       respond_to do |format|
         format.html { redirect_to targeting_scene_collection_url(@scene_collection) }

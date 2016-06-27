@@ -9,9 +9,9 @@ var component = {
 };
 
 /*@ngInject*/
-function PreviewController($interval, $state, videoJobService, facebookAdService, sceneCollectionService) {
+function PreviewController($timeout, $state, videoJobService, facebookAdService, sceneCollectionService) {
   var vm = this;
-  var intervalPromise;
+  var timeoutPromise;
 
   vm.$onInit = function () {
     vm.videoJob = {};
@@ -19,11 +19,11 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
     vm.saving = false;
 
     fetchSceneCollection();
-    pollStreamurl();
+    fetchVideoJob();
   };
 
   vm.$onDestroy = function () {
-    $interval.cancel(intervalPromise);
+    $timeout.cancel(timeoutPromise);
   };
 
   vm.nextStep = nextStep;
@@ -36,22 +36,18 @@ function PreviewController($interval, $state, videoJobService, facebookAdService
     });
   }
 
-  function pollStreamurl() {
-    intervalPromise = $interval(fetchVideoJob, 1500);
-  }
-
   function fetchVideoJob() {
-    videoJobService.get({id: vm.videoJobId}).then(function (data) {
+    videoJobService.get({id: vm.videoJobId}).then(function onSuccess(data) {
       vm.videoJob = data;
 
-      if (vm.videoJob.stream_url) {
-        $interval.cancel(intervalPromise);
+      if (!vm.videoJob.stream_url) {
+        timeoutPromise = $timeout(fetchVideoJob, 1500);
       }
     });
   }
 
   function nextStep() {
-    fetchSceneCollection().then(function(sceneCollection) {
+    fetchSceneCollection().then(function (sceneCollection) {
       if (sceneCollection.integration === 'facebook_ad') {
         configureAd();
       } else {

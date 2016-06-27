@@ -19,6 +19,8 @@ module.exports = {
       'angular-resource',
       'angular-ui-router',
       'angular-ui-bootstrap',
+      'angular-tree-control',
+      'angular-easyfb',
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',
@@ -33,7 +35,7 @@ module.exports = {
       'humanize-duration',
       'getusermedia',
       'scriptjs',
-      'slick-carousel',
+      'node-uuid',
       './js/recorder.js',
       './app/vendor.js'
     ]

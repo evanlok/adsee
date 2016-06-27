@@ -65,6 +65,10 @@ class SceneCollection < ActiveRecord::Base
     "#{ENV['CDN_URL']}/#{audio}" if audio
   end
 
+  def advanced_targeting
+    facebook_ads.first&.advanced.present?
+  end
+
   private
 
   def delete_hal_record

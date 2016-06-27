@@ -18,6 +18,11 @@ function FacebookAdService($resource, $http) {
       update: {
         method: 'PUT',
         transformResponse: appendTransform($http.defaults.transformResponse, parseDates)
+      },
+      updateTargetingSpec: {
+        method: 'PUT',
+        url: '/facebook_ads/:id/update_targeting_spec',
+        transformResponse: appendTransform($http.defaults.transformResponse, parseDates)
       }
     }
   );
@@ -32,6 +37,10 @@ function FacebookAdService($resource, $http) {
 
   this.update = function (params, data) {
     return resource.update(params, data).$promise;
+  };
+
+  this.updateTargetingSpec = function(params, data) {
+    return resource.updateTargetingSpec(params, data).$promise;
   };
 
   function parseDates(value) {

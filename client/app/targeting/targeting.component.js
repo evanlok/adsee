@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function TargetingController($state, sceneCollectionService, facebookTargetingSpecService) {
+function TargetingController($state, $q, sceneCollectionService, facebookTargetingSpecService, facebookAdService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -50,10 +50,16 @@ function TargetingController($state, sceneCollectionService, facebookTargetingSp
   function saveTargeting() {
     vm.saving = true;
 
-    sceneCollectionService.update({id: vm.sceneCollectionId}, {
+    var adUpdatePromise = facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}, {advanced: false});
+    var scUpdatePromise = sceneCollectionService.update({id: vm.sceneCollectionId}, {
       facebook_targeting_spec_ids: vm.selectedTargetingSpecIds,
       zip_codes: vm.zipCodes
-    }).then(function () {
+    });
+
+    // Publish event for breadcrumbs nav update
+    sceneCollectionService.targetingTypeChanged('basic');
+
+    $q.all([adUpdatePromise, scUpdatePromise]).then(function () {
       $state.go('sceneEditor', {sceneCollectionId: vm.sceneCollectionId});
     }).finally(function () {
       vm.saving = false;
