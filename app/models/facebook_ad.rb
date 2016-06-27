@@ -1,5 +1,10 @@
 class FacebookAd < ActiveRecord::Base
   CAMPAIGN_NAME = 'AdSee'.freeze
+  OBJECT_KEYS = Set.new(%w(interests behaviors life_events politics industries income net_worth home_type home_ownership
+                           ethnic_affinity generation household_composition moms family_statuses office_type
+                           education_schools education_majors work_employers work_positions connections
+                           excluded_connections excluded_connections)).freeze
+  VALUE_KEYS = Set.new(%w(relationship_statuses interested_in education_statuses college_years)).freeze
 
   # Associations
   belongs_to :scene_collection
@@ -61,6 +66,20 @@ class FacebookAd < ActiveRecord::Base
     }
   end
 
+  def normalize_targeting_spec
+    normalized = targeting.deep_dup
+
+    normalized.each do |k, v|
+      if OBJECT_KEYS.include?(k)
+        normalized[k] = v.map { |item| item.slice('id') }
+      elsif VALUE_KEYS.include?(k)
+        normalized[k] = v.map { |item| item['id'] }
+      end
+    end
+
+    normalized
+  end
+
   private
 
   def default_ad_set_params
@@ -81,17 +100,21 @@ class FacebookAd < ActiveRecord::Base
   end
 
   def build_targeting_spec
-    targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
-
-    if scene_collection.zip_codes.present?
-      zip_json = scene_collection.zip_codes.map { |zip_code| { key: "US:#{zip_code}" } }
-      geo_locations = { zips: zip_json }
-      targeting_spec[:geo_locations] = geo_locations
+    if advanced
+      normalize_targeting_spec
     else
-      targeting_spec[:geo_locations] = { countries: ['US'] }
-    end
+      targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
 
-    targeting_spec
+      if scene_collection.zip_codes.present?
+        zip_json = scene_collection.zip_codes.map { |zip_code| { key: "US:#{zip_code}" } }
+        geo_locations = { zips: zip_json }
+        targeting_spec[:geo_locations] = geo_locations
+      else
+        targeting_spec[:geo_locations] = { countries: ['US'] }
+      end
+
+      targeting_spec
+    end
   end
 
   def set_defaults
@@ -100,5 +123,6 @@ class FacebookAd < ActiveRecord::Base
     self.billing_event ||= 'IMPRESSIONS'
     self.budget_type ||= 'daily'
     self.pacing_type ||= 'standard'
+    self.targeting ||= {}
   end
 end
