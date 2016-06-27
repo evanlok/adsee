@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616174520) do
+ActiveRecord::Schema.define(version: 20160624220253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20160616174520) do
     t.string   "pacing_type"
     t.jsonb    "adset_schedule"
     t.jsonb    "targeting"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "status",                      default: 0
     t.string   "title"
     t.text     "description"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160616174520) do
     t.string   "call_to_action_type"
     t.string   "call_to_action_link"
     t.string   "call_to_action_link_caption"
+    t.boolean  "advanced",                    default: false
   end
 
   create_table "facebook_targeting_specs", force: :cascade do |t|

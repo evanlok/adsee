@@ -9,7 +9,7 @@ var component = {
 };
 
 /* @ngInject */
-function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
+function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sceneCollectionService) {
   var vm = this;
 
   var audienceTypes = {
@@ -57,7 +57,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
       dirSelectable: false
     };
 
-    $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function (results) {
+    $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function () {
       fetchLocales();
       return fetchAdAccounts();
     }).then(function () {
@@ -219,7 +219,13 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   function save() {
     vm.saving = true;
 
-    facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec}).then(function (data) {
+    var updatePromise = facebookAdService.update({id: vm.facebookAd.id}, {advanced: true});
+    var targetingUpdatePromise = facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec});
+    
+    // Publish event for breadcrumbs nav update
+    sceneCollectionService.targetingTypeChanged('advanced');
+
+    $q.all([updatePromise, targetingUpdatePromise]).then(function () {
       $state.go('sceneEditor');
     }).finally(function () {
       vm.saving = false;

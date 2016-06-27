@@ -35,6 +35,7 @@ module.exports = {
       'humanize-duration',
       'getusermedia',
       'scriptjs',
+      'node-uuid',
       './js/recorder.js',
       './app/vendor.js'
     ]
