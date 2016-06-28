@@ -1,18 +1,58 @@
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$close(aspectRatio)">
-    <span aria-hidden="true">&times;</span>
+  <button type="button" class="close aspect-close" data-dismiss="modal" aria-label="Close" ng-click="$close(aspectRatio)">
+    <span aria-hidden="true">&times; close</span>
   </button>
 </div>
 
-<div class="modal-body">
-  <p>Choose an aspect ratio for your video:</p>
+<div class="modal-body aspect-ratio">
 
-  <select ng-model="aspectRatio">
-    <option value="1:1">1 : 1</option>
-    <option value="16:9">16 : 9</option>
-  </select>
+  <div class="row">
+
+    <h2>Select the aspect ratio of your video:</h2>
+
+    <!-- <select ng-model="aspectRatio">
+        <option value="1:1">1 : 1</option>
+        <option value="16:9">16 : 9</option>
+      </select>
+    -->
+    <div class="col-md-6 square-panel">
+      <a class="aspect-selector">
+        <div href="#" class="square">
+          <div class="rec-label">
+            <div class="recommended">RECCOMENDED</div>
+            <div class="trapazoid"></div>
+          </div>
+          <div class="aspect-number">1:1</div>
+          <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/mantis-square.jpg"
+                 class="img-responsive">
+        </div>
+        <h3>
+          SQUARE
+        </h3>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a class="aspect-selector">
+        <div> 
+          <div href="#" class="widescreen">
+            <div class="aspect-number">16:9</div>
+          </div>
+          <h3>
+            WIDESCREEN
+          </h3>
+          <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="modal-footer">
-  <button class="btn btn-primary" ng-click="$close(aspectRatio)" ng-disabled="uploading">Save</button>
-</div>
+

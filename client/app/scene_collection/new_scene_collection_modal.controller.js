@@ -1,10 +1,30 @@
 /*@ngInject*/
 function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
                                            themeId) {
+  var steps = ['integration', 'aspect_ratio'];
   $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
   $scope.saving = false;
   $scope.integration = '';
+  $scope.step = 'integration';
+
+  $scope.selectIntegration = function (integration) {
+    $scope.integration = integration;
+    $scope.step = 'aspect_ratio';
+  };
+
+  $scope.selectAspectRatio = function (aspectRatio) {
+    $scope.aspectRatio = aspectRatio;
+    $scope.save();
+  };
+
+  $scope.back = function () {
+    var previousIndex = _.indexOf(steps, $scope.step) - 1;
+
+    if (previousIndex >= 0) {
+      $scope.step = steps[previousIndex];
+    }
+  };
 
   $scope.save = function () {
     $scope.saving = true;
@@ -12,10 +32,9 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
     sceneCollectionService.save({}, {
       ad_type_id: $scope.adTypeId,
       theme_id: $scope.themeId,
-      integration: $scope.integration
+      integration: $scope.integration,
+      aspect_ratio: $scope.aspectRatio
     }).then(function onSuccess(data) {
-      console.log(data)
-
       $uibModalInstance.close();
 
       if ($scope.integration === 'facebook_ad') {
