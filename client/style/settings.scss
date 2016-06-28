@@ -1,7 +1,7 @@
 // colors
 
-$color-1: #1784c7; // Blue
-$color-2: #1d97ff; // Bright Blue
+$color-1: #3de8bf; // mint
+$color-2: #3bcdb0; // bright mint
 $color-3: #ffffff; // White
 $color-4: #ff7e66; // Salmon
 $color-5: #373d41; // Dark text
@@ -44,3 +44,21 @@ $L:     1170px;
   }
 }
 
+// aspect ratio
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

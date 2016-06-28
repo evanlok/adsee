@@ -1,6 +1,6 @@
 <div class="row media-library-videos" ng-repeat="videoGroup in $ctrl.groupedVideos">
-  <div class="col-md-3 image-thumb-column" ng-repeat="video in videoGroup">
-    <div class="video-thumb-box">
+  <div class="col-md-3 image-thumb-column sixteen-nine" ng-repeat="video in videoGroup">
+    <div class="video-thumb-box content">
       <a ng-click="$ctrl.openVideoModal(video)" class="play-sample">
         <i class="fa fa-play-circle-o" aria-hidden="true"></i>
       </a>
@@ -12,9 +12,9 @@
       </div>
       <div class="video-thumb-link" ng-click="$ctrl.openVideoModal(video)">
         <div class="text-center">
-          <i class="fa fa-file video-icon" ng-if="!video.thumbnail_url">
-          </i>
 
+          <img ng-src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!video.thumbnail_url" class="img-responsive">
+          
           <img ng-src="{{ video.thumbnail_url }}" class="img-responsive" ng-if="video.thumbnail_url">
 
           <div class="video-name">

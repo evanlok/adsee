@@ -1,5 +1,8 @@
 <div class="theme-settings">
   <div class="">
+    <a href="" ng-click="$ctrl.configureAudio()" class="add-audio-button">
+       <i class="fa fa-microphone"></i> Add Audio
+    </a>
     <div class="theme-settings-column color-picker-column">
       <color-picker ng-model="$ctrl.sceneCollection.color"
                     color-picker-format="'hex'"
@@ -27,12 +30,6 @@
               class="">
         <option value="">Select a song</option>
       </select>
-    </div>
-
-    <div>
-      <a href="" ng-click="$ctrl.configureAudio()">
-        <i class="fa fa-microphone"></i>
-      </a>
     </div>
     
   </div>
