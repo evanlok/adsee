@@ -6,6 +6,14 @@
 </reach-estimate>
 
 <div class="targeting-locations" ng-if="$ctrl.loaded">
+  <h2>Ad Account</h2>
+
+  <div class="form-group">
+    <select class="form-control" ng-model="$ctrl.facebookAd.ad_account_id"
+            ng-options="adAccount.id as $ctrl.formatAdAccount(adAccount) for adAccount in $ctrl.adAccounts">
+    </select>
+  </div>
+
   <h2>
     Who do you want your ads to reach?
   </h2>
@@ -21,7 +29,6 @@
         <option value="travel_in">People traveling in this location</option>
       </select>
     </div>
-
 
     <ul class="list-unstyled">
       <li ng-repeat="location in $ctrl.selectedLocations">

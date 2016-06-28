@@ -58,8 +58,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
     };
 
     $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function () {
-      fetchLocales();
-      return fetchAdAccounts();
+      return fetchLocales();
     }).then(function () {
       fetchTargetingBrowse();
       vm.loaded = true;
@@ -101,7 +100,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
   }
 
   function fetchTargetingBrowse() {
-    return ezfb.api('/act_' + vm.adAccounts[0].account_id + '/targetingbrowse').then(function (data) {
+    return ezfb.api(vm.facebookAd.ad_account_id + '/targetingbrowse').then(function (data) {
       vm.browseItems = data.data;
       buildBrowseTree();
     });
@@ -133,15 +132,9 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
     vm.browseTree = tree;
   }
 
-  function fetchAdAccounts() {
-    return ezfb.api('/me/adaccounts').then(function (data) {
-      vm.adAccounts = data.data;
-    });
-  }
-
   function searchDetailedTargeting() {
     if (vm.detailedTargetingQuery) {
-      ezfb.api('/act_' + vm.adAccounts[0].account_id + '/targetingsearch', {q: vm.detailedTargetingQuery}).then(function (data) {
+      ezfb.api(vm.facebookAd.ad_account_id + '/targetingsearch', {q: vm.detailedTargetingQuery}).then(function (data) {
         vm.detailedTargetingResults = data.data;
       });
     } else {

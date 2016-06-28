@@ -17,6 +17,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     vm.saving = false;
     vm.facebookAd = {};
     vm.targetingSpec = {};
+    vm.adAccounts = [];
     vm.locationTypes = 'everyone';
     vm.geofilter = 'include';
     vm.searchQuery = '';
@@ -25,6 +26,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     vm.radiusOptions = _.range(10, 51);
 
     $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function (results) {
+      fetchAdAccounts();
       return initializeSelectedLocations();
     }).then(function () {
       vm.loaded = true;
@@ -37,12 +39,23 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   vm.selectLocation = selectLocation;
   vm.removeLocation = removeLocation;
   vm.updateTargetingSpec = updateTargetingSpec;
+  vm.formatAdAccount = formatAdAccount;
   vm.save = save;
 
   function fetchFacebookAd() {
     return facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
       vm.facebookAd = data;
       vm.targetingSpec = vm.facebookAd.targeting;
+    });
+  }
+
+  function fetchAdAccounts() {
+    return ezfb.api('/me/adaccounts', {fields: 'id, account_id, name, business_name'}).then(function (data) {
+      vm.adAccounts = data.data;
+
+      if (!vm.facebookAd.ad_account_id) {
+        vm.facebookAd.ad_account_id = vm.adAccounts[0];
+      }
     });
   }
 
@@ -250,11 +263,18 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
 
     return locationOptions;
   }
+  
+  function formatAdAccount(adAccount) {
+    return (adAccount.business_name || adAccount.name) + ' (' + adAccount.account_id + ')';
+  }
 
   function save() {
     vm.saving = true;
 
-    facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec}).then(function () {
+    var updateTargeting = facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec});
+    var updateFacebookAd = facebookAdService.update({id: vm.facebookAd.id}, {ad_account_id: vm.facebookAd.ad_account_id});
+
+    $q.all([updateTargeting, updateFacebookAd]).then(function () {
       $state.go('targetingDemographics');
     }).finally(function () {
       vm.saving = false;

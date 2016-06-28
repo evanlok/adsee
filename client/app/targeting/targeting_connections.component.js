@@ -44,7 +44,7 @@ function TargetingConnectionsController(ezfb) {
       },
       {
         name: 'Apps',
-        url: 'act_' + vm.adAccountId + '/advertisable_applications',
+        url: vm.adAccountId + '/advertisable_applications',
         options: [
           {
             name: 'People who used your app',
@@ -62,7 +62,7 @@ function TargetingConnectionsController(ezfb) {
       },
       {
         name: 'Events',
-        url: 'act_' + vm.adAccountId  + 'me/promotable_events',
+        url: vm.adAccountId  + 'me/promotable_events',
         options: [
           {
             name: 'People who responded to your event',
