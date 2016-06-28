@@ -121,4 +121,22 @@ RSpec.describe FacebookAd do
       expect(subject[:video_data][:video_id]).to eq('123')
     end
   end
+
+  describe '#normalized_targeting_spec' do
+    let(:targeting_spec) do
+      {
+        interests: [{ id: 123, name: 'Interest Name' }],
+        education_statuses: [{ id: 456, name: 'College Graduate' }]
+      }
+    end
+    let(:facebook_ad) { build(:facebook_ad, targeting: targeting_spec) }
+
+    it 'only includes hashes with ids for OBJECT_KEYS' do
+      expect(facebook_ad.normalized_targeting_spec).to include({ interests: [{ id: 123 }] }.deep_stringify_keys)
+    end
+
+    it 'includes array of ids for VALUE_KEYS' do
+      expect(facebook_ad.normalized_targeting_spec).to include({ education_statuses: [456] }.deep_stringify_keys)
+    end
+  end
 end

@@ -1,0 +1,7 @@
+<div ng-if="!$ctrl.loaded" class="text-center">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+
+<div class="reach-estimate" ng-if="$ctrl.loaded">
+  {{ $ctrl.reachEstimate | json }}
+</div>

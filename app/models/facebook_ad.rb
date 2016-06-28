@@ -66,7 +66,7 @@ class FacebookAd < ActiveRecord::Base
     }
   end
 
-  def normalize_targeting_spec
+  def normalized_targeting_spec
     normalized = targeting.deep_dup
 
     normalized.each do |k, v|
@@ -101,7 +101,7 @@ class FacebookAd < ActiveRecord::Base
 
   def build_targeting_spec
     if advanced
-      normalize_targeting_spec
+      normalized_targeting_spec
     else
       targeting_spec = facebook_targeting_specs.first&.data&.deep_symbolize_keys || {}
 
