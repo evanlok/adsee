@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         flash[:alert] = error
-        redirect_to(request.referrer || root_path)
+        redirect_to(request.referer || root_path)
       end
 
       format.json do
