@@ -126,7 +126,8 @@ RSpec.describe FacebookAd do
     let(:targeting_spec) do
       {
         interests: [{ id: 123, name: 'Interest Name' }],
-        education_statuses: [{ id: 456, name: 'College Graduate' }]
+        education_statuses: [{ id: 456, name: 'College Graduate' }],
+        connection_name: 'App'
       }
     end
     let(:facebook_ad) { build(:facebook_ad, targeting: targeting_spec) }
@@ -137,6 +138,10 @@ RSpec.describe FacebookAd do
 
     it 'includes array of ids for VALUE_KEYS' do
       expect(facebook_ad.normalized_targeting_spec).to include({ education_statuses: [456] }.deep_stringify_keys)
+    end
+
+    it 'removes keys for EXCLUDE_KEYS' do
+      expect(facebook_ad.normalized_targeting_spec).to_not include('connection_name')
     end
   end
 end

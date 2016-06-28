@@ -5,6 +5,7 @@ class FacebookAd < ActiveRecord::Base
                            education_schools education_majors work_employers work_positions connections
                            excluded_connections excluded_connections)).freeze
   VALUE_KEYS = Set.new(%w(relationship_statuses interested_in education_statuses college_years)).freeze
+  EXCLUDE_KEYS = Set.new(%w(connection_name))
 
   # Associations
   belongs_to :scene_collection
@@ -74,6 +75,8 @@ class FacebookAd < ActiveRecord::Base
         normalized[k] = v.map { |item| item.slice('id') }
       elsif VALUE_KEYS.include?(k)
         normalized[k] = v.map { |item| item['id'] }
+      elsif EXCLUDE_KEYS.include?(k)
+        normalized.delete(k)
       end
     end
 

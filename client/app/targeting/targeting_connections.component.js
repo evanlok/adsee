@@ -96,7 +96,7 @@ function TargetingConnectionsController(ezfb) {
   function extractTargetingSpec() {
     var keys = ['app_install_state', 'connections', 'excluded_connections', 'friends_of_connections'];
     vm.targetingSpec = vm.facebookAd.targeting;
-    vm.connection = _.find(vm.connectionOptions, {name: vm.targetingSpec.connectionName});
+    vm.connection = _.find(vm.connectionOptions, {name: vm.targetingSpec.connection_name});
 
     if (vm.connection) {
       searchConnections();
@@ -124,7 +124,7 @@ function TargetingConnectionsController(ezfb) {
       return _.pick(item, ['id', 'name']);
     });
 
-    var results = {connectionName: vm.connection.name};
+    var results = {connection_name: vm.connection.name};
     results[vm.connectionType.type] = values;
 
     vm.onUpdate({targetingConnections: results});

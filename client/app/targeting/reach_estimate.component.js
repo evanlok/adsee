@@ -17,6 +17,7 @@ function ReachEstimateController($scope, ezfb) {
     'education_schools', 'education_majors', 'work_employers', 'work_positions', 'connections', 'excluded_connections'];
 
   var valueKeys = ['relationship_statuses', 'interested_in', 'education_statuses', 'college_years'];
+  var excludeKeys = ['connection_name'];
 
   vm.$onInit = function () {
     vm.loaded = false;
@@ -57,9 +58,13 @@ function ReachEstimateController($scope, ezfb) {
 
     _.each(normalizedTargetingSpec, function (value, key) {
       if (_.includes(objectKeys, key)) {
-        normalizedTargetingSpec[key] = _.pick(value, 'id');
+        normalizedTargetingSpec[key] = _.map(value, function (item) {
+          return _.pick(item, 'id');
+        });
       } else if (_.includes(valueKeys, key)) {
         normalizedTargetingSpec[key] = _.map(value, 'id');
+      } else if (_.includes(excludeKeys, key)) {
+        delete normalizedTargetingSpec[key];
       }
     });
 
