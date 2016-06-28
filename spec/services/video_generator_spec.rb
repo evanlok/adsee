@@ -21,6 +21,7 @@ RSpec.describe VideoGenerator do
       params = {
         font: scene_collection.font.url,
         music: scene_collection.song.url,
+        user_audio: scene_collection.audio_url,
         color: scene_collection.color,
         scenes: [
           {
