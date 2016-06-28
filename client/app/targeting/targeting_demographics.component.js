@@ -75,7 +75,6 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
   vm.selectAudience = selectAudience;
   vm.removeAudience = removeAudience;
   vm.chooseNode = chooseNode;
-  vm.updateTargetingConnections = updateTargetingConnections;
   vm.save = save;
 
   function fetchFacebookAd() {
@@ -199,14 +198,6 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
   function chooseNode(node) {
     vm.browsing = false;
     selectAudience(node);
-  }
-
-  function updateTargetingConnections(targetingConnections) {
-    _.each(['app_install_state', 'connections', 'excluded_connections', 'friends_of_connections'], function (key) {
-      delete vm.targetingSpec[key];
-    });
-
-    _.assign(vm.targetingSpec, targetingConnections);
   }
 
   function save() {

@@ -5,19 +5,21 @@ var component = {
   controller: TargetingConnectionsController,
   bindings: {
     facebookAd: '<',
-    adAccountId: '@',
-    onUpdate: '&'
+    adAccountId: '@'
+  },
+  require: {
+    targetingDemographics: '^^'
   }
 };
 
 /* @ngInject */
 function TargetingConnectionsController(ezfb) {
   var vm = this;
+  var connectionSpecKeys = ['app_install_state', 'connections', 'excluded_connections', 'friends_of_connections', 'connection_name'];
 
   vm.$onInit = function () {
     vm.loaded = false;
     vm.saving = false;
-    vm.facebookAd = {};
     vm.targetingSpec = {};
     vm.connection = undefined;
     vm.connectionType = undefined;
@@ -62,7 +64,7 @@ function TargetingConnectionsController(ezfb) {
       },
       {
         name: 'Events',
-        url: vm.adAccountId  + 'me/promotable_events',
+        url: vm.adAccountId + 'me/promotable_events',
         options: [
           {
             name: 'People who responded to your event',
@@ -82,16 +84,18 @@ function TargetingConnectionsController(ezfb) {
 
     ezfb.getLoginStatus().then(function () {
       vm.loaded = true;
+      extractTargetingSpec();
     });
   };
 
-  vm.$onChanges = function() {
+  vm.$onChanges = function () {
     extractTargetingSpec();
   };
 
   vm.searchConnections = searchConnections;
   vm.resetSelectedItems = resetSelectedItems;
-  vm.outputConnections = outputConnections;
+  vm.updateConnections = updateConnections;
+  vm.remove = remove;
 
   function extractTargetingSpec() {
     var keys = ['app_install_state', 'connections', 'excluded_connections', 'friends_of_connections'];
@@ -109,7 +113,7 @@ function TargetingConnectionsController(ezfb) {
 
   function searchConnections() {
     resetSelectedItems();
-    
+
     return ezfb.api(vm.connection.url).then(function (data) {
       vm.connectionItems = data.data;
     });
@@ -119,15 +123,29 @@ function TargetingConnectionsController(ezfb) {
     vm.selectedConnectionItems = [];
   }
 
-  function outputConnections() {
+  function updateConnections() {
     var values = _.map(vm.selectedConnectionItems, function (item) {
       return _.pick(item, ['id', 'name']);
     });
 
-    var results = {connection_name: vm.connection.name};
-    results[vm.connectionType.type] = values;
+    var connectionSpec = {connection_name: vm.connection.name};
+    connectionSpec[vm.connectionType.type] = values;
 
-    vm.onUpdate({targetingConnections: results});
+    resetTargetingSpecKeys();
+    _.assign(vm.targetingDemographics.targetingSpec, connectionSpec);
+  }
+
+  function remove() {
+    resetSelectedItems();
+    resetTargetingSpecKeys();
+    vm.connection = null;
+    vm.connectionType = null;
+  }
+
+  function resetTargetingSpecKeys() {
+    _.each(connectionSpecKeys, function (key) {
+      delete vm.targetingDemographics.targetingSpec[key];
+    });
   }
 }
 

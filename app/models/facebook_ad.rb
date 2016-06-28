@@ -71,7 +71,9 @@ class FacebookAd < ActiveRecord::Base
     normalized = targeting.deep_dup
 
     normalized.each do |k, v|
-      if OBJECT_KEYS.include?(k)
+      if v.blank?
+        normalized.delete(k)
+      elsif OBJECT_KEYS.include?(k)
         normalized[k] = v.map { |item| item.slice('id') }
       elsif VALUE_KEYS.include?(k)
         normalized[k] = v.map { |item| item['id'] }

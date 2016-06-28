@@ -1,6 +1,8 @@
 <div class="targeting-connections">
   <h3>Connections</h3>
 
+  <a href="" ng-click="$ctrl.remove()">Remove</a>
+
   <select ng-model="$ctrl.connection"
           ng-options="connection as connection.name for connection in $ctrl.connectionOptions"
           ng-change="$ctrl.searchConnections()"
@@ -16,8 +18,8 @@
   </select>
 
   <ui-select multiple ng-model="$ctrl.selectedConnectionItems"
-             on-select="$ctrl.outputConnections()"
-             on-remove="$ctrl.outputConnections()"
+             on-select="$ctrl.updateConnections()"
+             on-remove="$ctrl.updateConnections()"
              ng-if="$ctrl.connectionType">
     <ui-select-match placeholder="Add an item">{{ $item.name }}</ui-select-match>
 
