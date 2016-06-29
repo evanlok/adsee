@@ -1,4 +1,6 @@
 var templateUrl = require('./add_scene.html');
+var modalCtrl = require('./select_scene_modal.controller');
+var modalTemplateUrl = require('./select_scene_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -11,7 +13,7 @@ var component = {
 };
 
 /*@ngInject*/
-function AddSceneController(sceneService) {
+function AddSceneController($uibModal, sceneService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -20,6 +22,8 @@ function AddSceneController(sceneService) {
 
     fetchScenes();
   };
+
+  vm.openSceneModal = openSceneModal;
 
   function fetchScenes() {
     sceneService.query({aspect_ratio: vm.aspectRatio}).then(function (data) {
@@ -36,6 +40,23 @@ function AddSceneController(sceneService) {
         vm.groupedScenes[category] = _.chunk(scenes, 30);
       });
 
+    });
+  }
+
+  function openSceneModal(scene) {
+    var modal = $uibModal.open({
+      controller: modalCtrl,
+      size: 'lg',
+      templateUrl: modalTemplateUrl,
+      resolve: {
+        scene: function () {
+          return scene;
+        }
+      }
+    });
+
+    modal.result.then(function (scene) {
+      vm.onAddScene({scene: scene})
     });
   }
 }

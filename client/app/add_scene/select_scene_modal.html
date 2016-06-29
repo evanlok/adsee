@@ -1,0 +1,21 @@
+<div class="video-modal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+      <span aria-hidden="true">&times; close</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <video-player url="{{ scene.preview_video_url }}" autoplay="true"></video-player>
+  </div>
+
+  <div class="modal-footer video-modal-footer">
+    <div class="clearfix">
+      <div class="video-modal-title pull-left">
+        {{ scene.name }}
+      </div>
+
+      <button class="button pull-right" ng-click="selectScene()">Select this scene</button>
+    </div>
+  </div>
+</div>
