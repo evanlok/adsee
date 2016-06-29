@@ -1645,7 +1645,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .form-group {
     input[type="text"] {
       padding-left: 20px;
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 0px;
       height: 34px;
       border: 1px solid $color-5;
@@ -1674,7 +1674,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       resize: none;
       border: none;
       background: none;
-      color: white;
+      color: $color-5;
       outline: none; 
       box-shadow: none;
       padding-left: 20px;
@@ -1910,6 +1910,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     color: $color-5;
     font-size: 18px;
     margin: 5px 0px 0px 10px;;
+    cursor: text;
   }
   .ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
     margin: 0px 3px 4px 5px;
