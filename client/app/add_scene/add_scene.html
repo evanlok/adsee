@@ -11,8 +11,11 @@
     <div class="row" ng-repeat="scenesChunk in scenesChunks">
       <div class="image-thumb-column col-md-3 sixteen-nine" ng-repeat="scene in scenesChunk">
         <div class="video-thumb-box content">
-          <a video-overlay-link="{{ scene.preview_video_url }}" class="play-sample"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
-          <a href="" ng-click="$ctrl.onAddScene({scene: scene})" class="video-thumb-link">
+          <a href="" ng-click="$ctrl.openSceneModal(scene)" class="play-sample">
+            <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+          </a>
+
+          <a href="" ng-click="$ctrl.openSceneModal(scene)" class="video-thumb-link">
             <div class="text-center">
               <img ng-src="{{ scene.thumbnail_url }}" class="img-responsive" >
               <img ng-src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/file-placeholder.jpg" ng-if="!scene.thumbnail_url" class="img-responsive">
