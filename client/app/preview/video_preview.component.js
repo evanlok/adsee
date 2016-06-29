@@ -58,6 +58,7 @@ function VideoPreviewController($timeout, $http, $q) {
 
   function playVideo() {
     if (playerReady) {
+      player.stop();
       player.load([{file: vm.streamUrl}]);
     } else {
       $timeout(playVideo, 500);
