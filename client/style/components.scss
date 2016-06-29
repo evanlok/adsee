@@ -1936,10 +1936,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .continue-button {
     margin: 10px auto 0px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
-    padding: 10px 50px;
-    max-width: 300px;
+    padding: 10px 80px;
+    max-width: 320px;
+    margin-right: 10px;
+  }
+  .advtarg-button {
+    margin: 10px auto 0px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 30px;
+    max-width: 320px;
+  }
+}
+
+.targeting-location {
+  .location-item {
+    border-bottom: 1px solid $color-7;
+    padding: 5px 0px;
+    .fa-times-circle-o {
+      float: right;
+    }
+  }
+  .location-results {
+    margin-top: 20px;
   }
 }
 
@@ -1961,16 +1982,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .summary-header {
     padding-bottom: 10px;
     border-bottom: 1px solid $color-5;
-  }
-  .button {
-    width: 100%;
-    color: white;
-    display: block;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    padding: 10px 30px;
-    margin-top: 15px;
   }
   .back-button {
     width: 100%;

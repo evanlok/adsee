@@ -1,152 +1,158 @@
-<div ng-if="!$ctrl.loaded" class="text-center">
-  <i class="fa fa-spinner fa-spin"></i>
-</div>
-
-<reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
-</reach-estimate>
-
-<div class="targeting-demographics" ng-if="$ctrl.loaded">
-  <h2>
-    Who do you want your ads to reach?
-  </h2>
-
-  <h3>Demographics</h3>
-
-  <form>
-    <div class="form-group">
-      <label>AGE</label>
-
-      <div>
-        <select ng-model="$ctrl.targetingSpec.age_min" ng-options="age for age in $ctrl.ageOptions">
-        </select>
-        to
-        <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age for age in $ctrl.ageOptions">
-        </select>
-      </div>
+<div class="row targeting-demographic">
+  <div class="col-md-6 col-md-offset-3">
+    <div ng-if="!$ctrl.loaded" class="text-center">
+      <i class="fa fa-spinner fa-spin"></i>
     </div>
 
-    <div class="form-group">
-      <label>Gender</label>
-
-      <div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(0)}"
-                  ng-click="$ctrl.setGender(0)">All
-          </button>
-          <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(2)}"
-                  ng-click="$ctrl.setGender(2)">Female
-          </button>
-          <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(1)}"
-                  ng-click="$ctrl.setGender(1)">Male
-          </button>
-        </div>
-      </div>
+    <div class="">
+      <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
+      </reach-estimate>
     </div>
 
-    <div class="form-group">
-      <label>Language</label>
+    <div class="targeting-demographics" ng-if="$ctrl.loaded">
+      <h2>
+        Who do you want your ads to reach?
+      </h2>
 
-      <ul class="list-unstyled">
-        <li ng-repeat="localeKey in $ctrl.targetingSpec.locales">
-          {{ $ctrl.findLocaleByKey(localeKey).name }}
+      <h3>Demographics</h3>
 
-          <a href="" ng-click="$ctrl.removeLocale(locale)">
-            <i class="fa fa-times-circle-o"></i>
-          </a>
-        </li>
-      </ul>
-
-      <input type="text" class="form-control"
-             ng-model="$ctrl.localeSearchQuery"
-             ng-change="$ctrl.searchLocales()">
-
-      <ul class="list-unstyled" ng-show="$ctrl.localeSearchQuery">
-        <li ng-repeat="locale in $ctrl.locales | filter:{name: $ctrl.localeSearchQuery}">
-          <a href="" ng-click="$ctrl.selectLocale(locale)">{{ locale.name }}</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="form-group">
-      <h3>Detailed Targeting</h3>
-
-      <div>
-        <div ng-repeat="(type, name) in $ctrl.audienceTypes">
-          <div ng-if="$ctrl.targetingSpec[type] && $ctrl.targetingSpec[type].length">
-            <div ng-repeat="audience in $ctrl.targetingSpec[type]">
-              {{ audience.path.slice(0, -1).join(' > ') }}
-              <br>
-              <strong>{{ audience.name }}</strong>
-
-              <a href="" ng-click="$ctrl.removeAudience(type, audience.id)">
-                <i class="fa fa-times-circle-o"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-7">
-          <input type="text" class="form-control"
-                 ng-model="$ctrl.detailedTargetingQuery"
-                 ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
-                 ng-change="$ctrl.searchDetailedTargeting()"
-                 ng-focus="$ctrl.browsing = false">
-        </div>
-
-        <div class="col-md-2">
-          <button type="button" class="btn btn-default" ng-click="$ctrl.browsing = true">
-            Browse
-          </button>
-        </div>
-      </div>
-
-      <div class="detailed-targeting-search-results" ng-if="!$ctrl.browsing">
-        <div ng-repeat="item in $ctrl.detailedTargetingResults">
-          <div class="clearfix">
-            <div class="pull-left">
-              <strong>
-                <a href="" ng-click="$ctrl.selectAudience(item)">
-                  {{ item.name }}
-                </a>
-              </strong>
-            </div>
-
-            <div class="pull-right">
-              {{ $ctrl.titleize(item.type) }}
-            </div>
-          </div>
+      <form>
+        <div class="form-group">
+          <label>AGE</label>
 
           <div>
-            {{ item.path.join(' > ') }}
-            <br>
-            {{ item.audience_size | number }} people
+            <select ng-model="$ctrl.targetingSpec.age_min" ng-options="age for age in $ctrl.ageOptions">
+            </select>
+            to
+            <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age for age in $ctrl.ageOptions">
+            </select>
           </div>
         </div>
-      </div>
 
-      <div class="detailed-targeting-browse" ng-if="$ctrl.browsing">
-        <treecontrol class="tree-light"
-                     tree-model="$ctrl.browseTree"
-                     options="$ctrl.treeOptions"
-                     on-selection="$ctrl.chooseNode(node)">
-          {{node.name}}
-        </treecontrol>
-      </div>
+        <div class="form-group">
+          <label>Gender</label>
+
+          <div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(0)}"
+                      ng-click="$ctrl.setGender(0)">All
+              </button>
+              <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(2)}"
+                      ng-click="$ctrl.setGender(2)">Female
+              </button>
+              <button type="button" class="btn btn-default" ng-class="{active: $ctrl.genderActive(1)}"
+                      ng-click="$ctrl.setGender(1)">Male
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Language</label>
+
+          <ul class="list-unstyled">
+            <li ng-repeat="localeKey in $ctrl.targetingSpec.locales">
+              {{ $ctrl.findLocaleByKey(localeKey).name }}
+
+              <a href="" ng-click="$ctrl.removeLocale(locale)">
+                <i class="fa fa-times-circle-o"></i>
+              </a>
+            </li>
+          </ul>
+
+          <input type="text" class="form-control"
+                 ng-model="$ctrl.localeSearchQuery"
+                 ng-change="$ctrl.searchLocales()">
+
+          <ul class="list-unstyled" ng-show="$ctrl.localeSearchQuery">
+            <li ng-repeat="locale in $ctrl.locales | filter:{name: $ctrl.localeSearchQuery}">
+              <a href="" ng-click="$ctrl.selectLocale(locale)">{{ locale.name }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <h3>Detailed Targeting</h3>
+
+          <div>
+            <div ng-repeat="(type, name) in $ctrl.audienceTypes">
+              <div ng-if="$ctrl.targetingSpec[type] && $ctrl.targetingSpec[type].length">
+                <div ng-repeat="audience in $ctrl.targetingSpec[type]">
+                  {{ audience.path.slice(0, -1).join(' > ') }}
+                  <br>
+                  <strong>{{ audience.name }}</strong>
+
+                  <a href="" ng-click="$ctrl.removeAudience(type, audience.id)">
+                    <i class="fa fa-times-circle-o"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-7">
+              <input type="text" class="form-control"
+                     ng-model="$ctrl.detailedTargetingQuery"
+                     ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
+                     ng-change="$ctrl.searchDetailedTargeting()"
+                     ng-focus="$ctrl.browsing = false">
+            </div>
+
+            <div class="col-md-2">
+              <button type="button" class="btn btn-default" ng-click="$ctrl.browsing = true">
+                Browse
+              </button>
+            </div>
+          </div>
+
+          <div class="detailed-targeting-search-results" ng-if="!$ctrl.browsing">
+            <div ng-repeat="item in $ctrl.detailedTargetingResults">
+              <div class="clearfix">
+                <div class="pull-left">
+                  <strong>
+                    <a href="" ng-click="$ctrl.selectAudience(item)">
+                      {{ item.name }}
+                    </a>
+                  </strong>
+                </div>
+
+                <div class="pull-right">
+                  {{ $ctrl.titleize(item.type) }}
+                </div>
+              </div>
+
+              <div>
+                {{ item.path.join(' > ') }}
+                <br>
+                {{ item.audience_size | number }} people
+              </div>
+            </div>
+          </div>
+
+          <div class="detailed-targeting-browse" ng-if="$ctrl.browsing">
+            <treecontrol class="tree-light"
+                         tree-model="$ctrl.browseTree"
+                         options="$ctrl.treeOptions"
+                         on-selection="$ctrl.chooseNode(node)">
+              {{node.name}}
+            </treecontrol>
+          </div>
+        </div>
+
+        <targeting-connections facebook-ad="$ctrl.facebookAd"
+                               ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
+        </targeting-connections>
+      </form>
+
+      <button type="button" class="btn btn-default" ui-sref="targetingLocations">
+        BACK
+      </button>
+
+      <button type="button" class="btn btn-primary" ng-click="$ctrl.save()"
+              ng-disabled="$ctrl.saving">
+        NEXT
+      </button>
     </div>
-
-    <targeting-connections facebook-ad="$ctrl.facebookAd"
-                           ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
-    </targeting-connections>
-  </form>
-
-  <button type="button" class="btn btn-default" ui-sref="targetingLocations">
-    BACK
-  </button>
-
-  <button type="button" class="btn btn-primary" ng-click="$ctrl.save()"
-          ng-disabled="$ctrl.saving">
-    NEXT
-  </button>
+  </div>
 </div>

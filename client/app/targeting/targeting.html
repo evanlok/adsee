@@ -54,11 +54,11 @@
 
   <button type="button" class="button continue-button" ng-click="$ctrl.saveTargeting()"
           ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
-    CONTINUE
+    CONTINUE <i class="fa fa-arrow-right"></i>
   </button>
 
-  <button type="button" class="btn btn-primary continue-button" ui-sref="targetingLocations">
-    ADVANCED TARGETING
+  <button type="button" class="button-ghost advtarg-button" ui-sref="targetingLocations">
+    <i class="fa fa-wrench"></i> ADVANCED TARGETING
   </button>
 </div>
 

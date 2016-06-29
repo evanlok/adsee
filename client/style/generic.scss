@@ -76,16 +76,29 @@ select:focus {
 }
 .button {
   background-color: $color-2;
+  border: 5px solid $color-2;
   padding: 5px 10px;
   color: white;
-  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-1;
+    background-color: $color-1;
+    color: white;
+    cursor: pointer;
+  }
+}
+.button-ghost {
+  background: none;
+  border: 5px solid $color-2;
+  padding: 5px 10px;
+  color: $color-2;
   border-radius: 100px;
   &:hover {
     background-color: $color-1;
     color: white;
   }
 }
-
 .cancel-link {
   font-size: 14px;
   font-weight: 700;
