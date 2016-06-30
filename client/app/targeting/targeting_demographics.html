@@ -17,10 +17,10 @@
           <label>AGE</label>
 
           <div>
-            <select ng-model="$ctrl.targetingSpec.age_min" ng-options="age for age in $ctrl.ageOptions">
+            <select ng-model="$ctrl.targetingSpec.age_min" ng-options="age.value as age.name for age in $ctrl.ageOptions">
             </select>
             to
-            <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age for age in $ctrl.ageOptions" class="max-age">
+            <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age.value as age.name for age in $ctrl.ageOptions" class="max-age">
             </select>
           </div>
         </div>
