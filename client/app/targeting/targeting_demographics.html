@@ -1,18 +1,14 @@
 <div class="row targeting-demographic">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-5 col-md-offset-2">
     <div ng-if="!$ctrl.loaded" class="text-center">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
 
-    <div class="">
-      <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
-      </reach-estimate>
-    </div>
+    <h2>
+      Who do you want your ads to reach?
+    </h2>
 
     <div class="targeting-demographics" ng-if="$ctrl.loaded">
-      <h2>
-        Who do you want your ads to reach?
-      </h2>
 
       <h3>Demographics</h3>
 
@@ -24,7 +20,7 @@
             <select ng-model="$ctrl.targetingSpec.age_min" ng-options="age for age in $ctrl.ageOptions">
             </select>
             to
-            <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age for age in $ctrl.ageOptions">
+            <select ng-model="$ctrl.targetingSpec.age_max" ng-options="age for age in $ctrl.ageOptions" class="max-age">
             </select>
           </div>
         </div>
@@ -62,7 +58,8 @@
 
           <input type="text" class="form-control"
                  ng-model="$ctrl.localeSearchQuery"
-                 ng-change="$ctrl.searchLocales()">
+                 ng-change="$ctrl.searchLocales()"
+                 placeholder="Enter language">
 
           <ul class="list-unstyled" ng-show="$ctrl.localeSearchQuery">
             <li ng-repeat="locale in $ctrl.locales | filter:{name: $ctrl.localeSearchQuery}">
@@ -91,17 +88,15 @@
           </div>
 
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
               <input type="text" class="form-control"
                      ng-model="$ctrl.detailedTargetingQuery"
                      ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
                      ng-change="$ctrl.searchDetailedTargeting()"
-                     ng-focus="$ctrl.browsing = false">
-            </div>
-
-            <div class="col-md-2">
-              <button type="button" class="btn btn-default" ng-click="$ctrl.browsing = true">
-                Browse
+                     ng-focus="$ctrl.browsing = false"
+                     placeholder="Search target details">
+              <button type="button" class="button browse" ng-click="$ctrl.browsing = true">
+                Browse target details
               </button>
             </div>
           </div>
@@ -145,14 +140,20 @@
         </targeting-connections>
       </form>
 
-      <button type="button" class="btn btn-default" ui-sref="targetingLocations">
-        BACK
+      <button type="button" class="button next" ng-click="$ctrl.save()"
+              ng-disabled="$ctrl.saving">
+        NEXT <i class="fa fa-arrow-right"></i>
       </button>
 
-      <button type="button" class="btn btn-primary" ng-click="$ctrl.save()"
-              ng-disabled="$ctrl.saving">
-        NEXT
-      </button>
+      <a class="back-link" ui-sref="targetingLocations">
+        <i class="fa fa-arrow-left"></i> BACK
+      </a>
+
     </div>
+  </div>
+  <div class="col-md-3">
+    <h3>Estimated Reach:</h3>
+    <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
+      </reach-estimate>
   </div>
 </div>

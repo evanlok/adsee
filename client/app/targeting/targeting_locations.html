@@ -1,17 +1,14 @@
 <div class="row targeting-location">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-5 col-md-offset-2">
     <div ng-if="!$ctrl.loaded" class="text-center">
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-
-    <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
-    </reach-estimate>
 
     <div class="targeting-locations" ng-if="$ctrl.loaded">
       <h2>Ad Account</h2>
 
       <div class="form-group">
-        <select class="form-control" ng-model="$ctrl.facebookAd.ad_account_id"
+        <select class="" ng-model="$ctrl.facebookAd.ad_account_id"
                 ng-options="adAccount.id as $ctrl.formatAdAccount(adAccount) for adAccount in $ctrl.adAccounts">
         </select>
       </div>
@@ -24,7 +21,7 @@
 
       <form>
         <div class="form-group">
-          <select class="form-control" ng-model="$ctrl.locationTypes">
+          <select class="" ng-model="$ctrl.locationTypes">
             <option value="everyone">Everyone in this location</option>
             <option value="home">People who live in this location</option>
             <option value="recent">People recently in this location</option>
@@ -32,7 +29,7 @@
           </select>
         </div>
 
-        <ul class="list-unstyled">
+        <ul class="list-unstyled location-list">
           <li ng-repeat="location in $ctrl.selectedLocations" class="location-item">
             <span ng-if="location.include"><i class="fa fa-map-marker"></i></span>
             <span ng-if="!location.include"><i class="fa fa-times-circle"></i></span>
@@ -59,14 +56,11 @@
 
         <div class="form-group">
           <div class="row">
-            <div class="col-md-3">
-              <select ng-model="$ctrl.geofilter" class="form-control">
+            <div class="col-md-12 include-exclude">
+              <select ng-model="$ctrl.geofilter" class="">
                 <option value="include">include</option>
                 <option value="exclude">exclude</option>
               </select>
-            </div>
-
-            <div class="col-md-6">
               <input type="text" class="form-control"
                      ng-model="$ctrl.searchQuery"
                      ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
@@ -86,14 +80,19 @@
         </div>
       </form>
 
-      <a class="" ui-sref="targeting">
-        BACK
-      </a>
-
-      <button type="button" class="button" ng-click="$ctrl.save()"
+      <button type="button" class="button next" ng-click="$ctrl.save()"
               ng-disabled="$ctrl.saving">
-        CONTINUE
+        NEXT <i class="fa fa-arrow-right"></i>
       </button>
+
+      <a class="" ui-sref="targeting" class="back-link">
+        <i class="fa fa-arrow-left"></i>  BACK
+      </a>
     </div>
+  </div>
+  <div class="col-md-3">
+    <h3>Estimated Reach:</h3>
+    <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
+    </reach-estimate>
   </div>
 </div>

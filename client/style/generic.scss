@@ -81,6 +81,8 @@ select:focus {
   color: white;
   border-radius: 100px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
   &:hover {
     background-color: $color-1;
     background-color: $color-1;
@@ -112,6 +114,16 @@ select:focus {
 }
 .text-divider-blue {
   color: $color-2;
+}
+.modal-dialog {
+  .close {
+    color: $color-2;
+    opacity: 0.65;
+    text-shadow: none;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 .modal-content {
   background: none;

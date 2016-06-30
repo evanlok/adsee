@@ -952,6 +952,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .widescreen .aspect-number {
     margin-top: 0px;
   }
+  .modal-footer {
+    text-align: center;
+  }
 }
 .add-scene-index {
   background-color: $color-3;
@@ -1451,6 +1454,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .headline-row {
     padding: 0px 20px 30px;
     text-align: center;
+    h1 {
+      margin-bottom: 15px;
+    }
   }
 }
 .industry-group {
@@ -1943,25 +1949,103 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     max-width: 320px;
     margin-right: 10px;
   }
+  .next {
+    min-width: 280px;
+    max-width: 320px;
+    padding: 10px 20px;
+    float: right;
+  }
   .advtarg-button {
     margin: 10px auto 0px;
     font-size: 18px;
     font-weight: 700;
-    padding: 10px 30px;
+    padding: 10px 20px;
+    min-width: 280px;
     max-width: 320px;
   }
 }
 
 .targeting-location {
+  input[type="text"], select {
+    max-width: 300px;
+  }
+  h3 {
+    color: $color-2;
+  }
+  .location-list {
+    margin-bottom: 20px;
+  }
   .location-item {
-    border-bottom: 1px solid $color-7;
-    padding: 5px 0px;
+    border-bottom: 1px solid $color-9;
+    padding: 10px 0px;
+    font-size: 16px;
+    i {
+      color: $color-2;
+    }
     .fa-times-circle-o {
       float: right;
     }
   }
+  .include-exclude {
+    input[type="text"], select {
+      display: inline-block;
+    } 
+  }
+  .next {
+    min-width: 280px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .back-link {
+    font-size: 16px;
+  }
   .location-results {
     margin-top: 20px;
+  }
+}
+
+.targeting-demographic {
+  input[type="text"], select {
+    max-width: 280px;
+  }
+  h3 {
+    color: $color-2;
+  }
+  .max-age {
+  }
+  .browse {
+    padding: 5px 20px;
+    border: none;
+    margin-top: 10px;
+    display: block;
+    min-width: 280px;
+  }
+  .detailed-targeting-browse {
+    margin-top: 10px;
+  }
+  .next {
+    min-width: 280px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .back-link {
+    font-size: 16px;
+  }
+  .targeting-connections {
+    margin-bottom: 20px;
+    select {
+      min-width: 280px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .ui-select-container {
+      min-width: 280px;
+      position: relative;
+    }
+    .ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+      padding-left: 10px;
+      font-size: 14px;
+    }
   }
 }
 
