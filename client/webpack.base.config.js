@@ -37,6 +37,7 @@ module.exports = {
       'scriptjs',
       'slick-carousel',
       'node-uuid',
+      'bowser',
       './js/recorder.js',
       './app/vendor.js'
     ]
