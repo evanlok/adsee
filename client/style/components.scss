@@ -1952,16 +1952,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .next {
     min-width: 280px;
     max-width: 320px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     float: right;
   }
   .advtarg-button {
+    line-height: 1;
     margin: 10px auto 0px;
     font-size: 18px;
     font-weight: 700;
     padding: 10px 20px;
     min-width: 280px;
     max-width: 320px;
+    display: inline-block;
+  }
+  .overrides-text {
+    font-size: 12px;
+    max-width: 280px;
+    text-align: center;
   }
 }
 
