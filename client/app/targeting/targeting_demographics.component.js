@@ -43,7 +43,10 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
     vm.saving = false;
     vm.facebookAd = {};
     vm.targetingSpec = {};
-    vm.ageOptions = _.range(13, 66);
+    vm.ageOptions = _.map(_.range(13, 66), function (age) {
+      var name = age === 65 ? '65+' : age;
+      return {name: name, value: age};
+    });
     vm.localeSearchQuery = '';
     vm.locales = [];
     vm.selectedLocales = [];

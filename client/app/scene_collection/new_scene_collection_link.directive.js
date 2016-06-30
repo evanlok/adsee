@@ -7,7 +7,8 @@ function NewSceneCollectionLinkDirective($uibModal) {
     restrict: 'A',
     scope: {
       adTypeId: '@',
-      themeId: '@'
+      themeId: '@',
+      skipAspectRatio: '=?'
     },
     link: link
   };
@@ -29,6 +30,9 @@ function NewSceneCollectionLinkDirective($uibModal) {
           },
           themeId: function () {
             return scope.themeId;
+          },
+          skipAspectRatio: function () {
+            return scope.skipAspectRatio;
           }
         }
       });

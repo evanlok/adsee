@@ -1,16 +1,22 @@
 /*@ngInject*/
 function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
-                                           themeId) {
+                                           themeId, skipAspectRatio) {
   var steps = ['integration', 'aspect_ratio'];
   $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
   $scope.saving = false;
   $scope.integration = '';
   $scope.step = 'integration';
+  $scope.skipAspectRatio = skipAspectRatio;
 
   $scope.selectIntegration = function (integration) {
     $scope.integration = integration;
-    $scope.step = 'aspect_ratio';
+
+    if ($scope.skipAspectRatio) {
+      $scope.save();
+    } else {
+      $scope.step = 'aspect_ratio';
+    }
   };
 
   $scope.selectAspectRatio = function (aspectRatio) {
