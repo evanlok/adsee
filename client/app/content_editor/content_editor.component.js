@@ -6,6 +6,9 @@ var component = {
   bindings: {
     sceneContent: '<',
     onUpdateSceneAttribute: '&'
+  },
+  require: {
+    sceneEditor: '^^'
   }
 };
 

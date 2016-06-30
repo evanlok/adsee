@@ -51,6 +51,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   vm.sceneContentPosition = sceneContentPosition;
   vm.updateSceneContentPosition = updateSceneContentPosition;
   vm.duration = duration;
+  vm.lastScene = lastScene;
   vm.preview = preview;
 
   function fetchSceneCollection() {
@@ -175,6 +176,10 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     return _.sumBy(vm.sceneContents, function (sceneContent) {
       return sceneContent.scene.duration || 0;
     });
+  }
+
+  function lastScene() {
+    return _.indexOf(vm.sceneContents, vm.selectedSceneContent) === (vm.sceneContents.length - 1);
   }
 
   function preview() {
