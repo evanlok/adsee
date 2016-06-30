@@ -1,6 +1,8 @@
 var templateUrl = require('./scene_editor.html');
 var aspectRatioModalCtrl = require('./aspect_ratio_modal.controller');
 var aspectRatioModalTemplateUrl = require('./aspect_ratio_modal.html');
+var removeSceneConfirmationModalCtrl = require('./remove_scene_confirmation_modal.controller');
+var removeSceneConfirmationModalTemplateUrl = require('./remove_scene_confirmation_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -140,17 +142,33 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   }
 
   function removeScene(sceneContent) {
-    sceneContentService.delete({id: sceneContent.id}).then(function (data) {
-      var index = _.indexOf(vm.sceneContents, sceneContent);
-
-      if (index == 0) {
-        index = 0;
-      } else {
-        index -= 1;
+    var modal = $uibModal.open({
+      controller: removeSceneConfirmationModalCtrl,
+      templateUrl: removeSceneConfirmationModalTemplateUrl,
+      windowClass: 'remove-scene-confirmation',
+      resolve: {
+        sceneContent: function () {
+          return sceneContent;
+        }
       }
+    });
 
-      _.pull(vm.sceneContents, sceneContent);
-      selectSceneContent(vm.sceneContents[index]);
+    modal.result.then(function () {
+      sceneContentService.delete({id: sceneContent.id}).then(function () {
+        if (sceneContent === vm.selectedSceneContent) {
+          var index = _.indexOf(vm.sceneContents, sceneContent);
+
+          if (index == 0) {
+            index = 0;
+          } else {
+            index -= 1;
+          }
+
+          selectSceneContent(vm.sceneContents[index]);
+        }
+
+        _.pull(vm.sceneContents, sceneContent);
+      });
     });
   }
 
