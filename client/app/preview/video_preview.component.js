@@ -10,10 +10,12 @@ var component = {
 };
 
 /*@ngInject*/
-function VideoPreviewController($interval, $timeout, $http) {
+function VideoPreviewController($timeout, $http, $q) {
   var vm = this;
   var player;
   var streamUrlIntervalPromise;
+  var cancelHttp;
+  var playerReady = false;
 
   vm.$postLink = function () {
     setupPlayer();
@@ -28,6 +30,10 @@ function VideoPreviewController($interval, $timeout, $http) {
   vm.$onDestroy = function () {
     if (player) {
       player.remove();
+    }
+
+    if (cancelHttp) {
+      cancelHttp.resolve();
     }
 
     $timeout.cancel(streamUrlIntervalPromise);
@@ -45,19 +51,23 @@ function VideoPreviewController($interval, $timeout, $http) {
       });
 
       player.on('ready', function () {
-        if (vm.streamUrl) {
-          fetchStreamUrl();
-        }
+        playerReady = true;
       });
     });
   }
 
   function playVideo() {
-    player.load([{file: vm.streamUrl}]);
+    if (playerReady) {
+      player.load([{file: vm.streamUrl}]);
+    } else {
+      $timeout(playVideo, 500);
+    }
   }
 
   function fetchStreamUrl() {
-    return $http.get(vm.streamUrl).then(function onSuccess() {
+    cancelHttp = $q.defer();
+
+    return $http.get(vm.streamUrl, {timeout: cancelHttp.promise}).then(function onSuccess() {
       playVideo();
     }, function onError() {
       streamUrlIntervalPromise = $timeout(fetchStreamUrl, 1500);

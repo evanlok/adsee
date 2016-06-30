@@ -56,7 +56,7 @@ class VideoGenerator
   end
 
   def generate_scenes_params
-    scene_collection.scene_contents.includes(:scene, :scene_attributes).map do |scene_content|
+    scene_collection.scene_contents.includes(:scene, scene_attributes: :attachment).map do |scene_content|
       scene_params = {
         scene_id: scene_content.scene.hal_id,
         transition: scene_content.transition&.value,

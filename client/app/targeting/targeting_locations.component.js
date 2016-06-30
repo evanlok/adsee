@@ -53,8 +53,8 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     return ezfb.api('/me/adaccounts', {fields: 'id, account_id, name, business_name'}).then(function (data) {
       vm.adAccounts = data.data;
 
-      if (!vm.facebookAd.ad_account_id) {
-        vm.facebookAd.ad_account_id = vm.adAccounts[0];
+      if (!vm.facebookAd.ad_account_id && vm.adAccounts[0]) {
+        vm.facebookAd.ad_account_id = vm.adAccounts[0].id;
       }
     });
   }
