@@ -1106,10 +1106,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     background-color: $color-2;
   }
   .audio-header {
-    float: left;
     margin: 0px;
     color: white;
     font-weight: 700;
+    font-size: 24px;
   }
   .modal-body {
     background-color: black;
@@ -1151,9 +1151,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     width: 220px;
     display: inline-block;
     margin-top: 0px;
+    border: none;
   }
   .upload-button {
     width: 220px;
+    padding: 3px 30px;
     display: inline-block;
   }
   .song-player i {
@@ -1161,9 +1163,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .cancel-button {
     color: $color-2;
+    float: left;
     background: none;
-    border: 3px solid $color-2;
-    padding: 5px 10px;
+    border: 5px solid $color-2;
+    padding: 10px 15px;
     border-radius: 30px;
     margin-right: 5px;
   }
@@ -1173,6 +1176,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .time {
     font-size: 70px;
+  }
+  .audio-supprt-msg {
+    display: block;
+    color: white;
+    font-size: 12px;
   }
 }
 .audio-elements {
