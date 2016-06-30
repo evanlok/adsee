@@ -85,17 +85,18 @@
             </a>
 
             <div class="pull-right">
-              {{ $ctrl.duration() | secondsToTime }}
+
+              <div class="pull-right time">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $ctrl.duration() | secondsToTime }}
+              </div>
 
               <select ng-model="$ctrl.selectedSceneContent.transition_id"
                       ng-options="transition.id as transition.name for transition in $ctrl.transitions"
                       ng-change="$ctrl.updateSceneContentTransition()">
                 <option value="">Select a transition</option>
               </select>
-            </div>
 
-            <!-- Time Code Placeholder -->
-            <!-- <div class="pull-right time"><i class="fa fa-clock-o" aria-hidden="true"></i> 1:06</div> -->
+            </div>
 
             <!-- Extra Add Scene Button -->
 <!--             <div class="pull-right">
