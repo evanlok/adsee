@@ -878,6 +878,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   h4 {
     margin-bottom: 20px;
   }
+  .next {
+    border: 4px solid $color-2;
+    padding: 5px 20px 7px;
+    border-radius: 40px;
+    font-size: 18px;
+    float: right;
+    text-align: center;
+    width: 100%;
+    i {
+      font-size: 14px;
+    }
+    &:hover {
+      border-color: $color-1;
+      background-color: $color-2;
+      color: white;
+    }
+  }
 }
 .aspect-close {
   color: $color-2;

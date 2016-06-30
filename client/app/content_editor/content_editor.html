@@ -1,9 +1,11 @@
 <div class="content-edit-wrapper">
 
-	<h4>{{ $ctrl.sceneContent.scene.name }}</h4>
+<!-- 	<h4>{{ $ctrl.sceneContent.scene.name }}</h4> -->
 
 	<div ng-repeat="sceneAttribute in $ctrl.sceneContent.scene_attributes">
 	  <scene-attribute scene-attribute="sceneAttribute" on-update="$ctrl.updateSceneAttribute(sceneAttribute, value)"></scene-attribute>
 	</div>
+
+    <a href="" ng-if="!$ctrl.lastScene()" class="next">next scene <i class="fa fa-chevron-right"></i></a>
 
 </div>
