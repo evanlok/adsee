@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; cancel</span>
+  </button>
+
+  <p>
+    font selected: <strong>{{ currentFont.name }}</strong>
+  </p>
+
+  Click on the font panel to select it.
+</div>
+
+<div class="modal-body">
+  <div class="row" ng-repeat="fontGroup in groupedFonts">
+    <div class="col-md-3" ng-repeat="font in fontGroup" class="text-center">
+      <a href="" ng-class="{selected: currentFont.id === font.id}"
+         ng-click="$close(font)">
+        <img ng-src="{{ font.image.url }}" alt="{{ font.name }}" title="{{ font.name }}" class="img-responsive">
+      </a>
+    </div>
+  </div>
+</div>

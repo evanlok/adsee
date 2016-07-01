@@ -12,24 +12,21 @@
     </div>
 
     <div class="theme-settings-column">
-      <select ng-model="$ctrl.sceneCollection.font_id"
-              ng-options="font.id as font.name for font in $ctrl.fonts"
-              ng-change="$ctrl.update('font_id')"
-              class="">
-        <option value="">Select a font</option>
-      </select>
+      Font:
+      <a href="" ng-click="$ctrl.configureFont()">
+        {{ $ctrl.currentFont.name }}
+      </a>
     </div>
 
     <div class="theme-settings-column song-select-col">
+      Song:
       <div class="song-player">
         <song-player url="{{ $ctrl.currentSongUrl() }}"></song-player>
       </div>
-      <select ng-model="$ctrl.sceneCollection.song_id"
-              ng-options="song.id as song.name for song in $ctrl.songs"
-              ng-change="$ctrl.update('song_id')"
-              class="">
-        <option value="">Select a song</option>
-      </select>
+
+      <a href="" ng-click="$ctrl.configureSong()">
+        {{ $ctrl.currentSong.name }}
+      </a>
     </div>
     
   </div>
