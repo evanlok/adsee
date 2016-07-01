@@ -741,6 +741,7 @@
     }
   }
 }
+
 .scenes-row {
   position: fixed;
   width: 100%;
@@ -776,6 +777,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 }
 .scene-thumbs-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: space-between;
+  align-items: flex-start;
+}
+
+.flex-item:nth-child(1) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.flex-item:nth-child(2) {
+  order: 0;
+  flex: 10 10 auto;
+  align-self: auto;
+}
+
+.flex-item:nth-child(3) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+.scene-thumbs-wrapper {
   -webkit-box-flex: 4;
   -moz-box-flex: 4; 
   -webkit-flex: 4;
@@ -789,11 +816,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .add-scene-wrapper {
   width: 150px;
-  float: left;
-  position: fixed;
 }
 .list-inline {
-  padding: 0px 130px;
+  height: 80px;
+  overflow-y: scroll;
 }
 .add-scene-button {
   display: inline-block;
@@ -817,7 +843,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .scene-timeline-thumb {
-  margin-top: 10px;
+  margin: 10px 1px 0px;
   position: relative;
   img {
     height: 60px;
@@ -836,7 +862,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: bold;
   background-color: hsla(0, 0%, 0.0000%, 0.7000);
   font-size: 11px;
-  border-bottom-right-radius: 5px;
 }
 .delete-scene-thumb {
   position: absolute;
@@ -847,22 +872,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: bold;
   background-color: hsla(0, 0%, 0.0000%, 0.7000);
   font-size: 12px;
-  border-bottom-right-radius: 5px;
+}
+.transition-dot {
+  position: absolute;
+  color: $color-2;
+  background-color: #232323;
+  right: -10px;
+  top: 22px;
+  z-index: 1000;
+  padding: 2px 4px 1px;
+  border-radius: 40px;
+  font-size: 12px;
+  &:before {
+    content: "\f10c";
+    font-family: "fontAwesome";
+  }
+  &:hover {
+    &:before {
+      content: "\f111";
+      font-family: "fontAwesome";
+    }
+  }
 }
 .preview-button-wrapper {
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0; 
-  -webkit-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-  -webkit-box-ordinal-group: 2;
-  -moz-box-ordinal-group: 2;
-  -ms-flex-order: 2;
-  -webkit-order: 2;
-  order: 2;
   max-width: 164px;
-  right: 0px;
-  position: fixed;
 }
 .preview-button {
   height: 100px;
