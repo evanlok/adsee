@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="video-name-header">
+    <h1>Video Editor</h1>
+  </div>
+
+  <div class="action-bar">
+    <div class="industry-type-header">
+
+      {{ $ctrl.sceneCollection.industry }}
+
+      <span ng-if="$ctrl.sceneCollection.ad_type">
+        | {{ $ctrl.sceneCollection.ad_type }}
+      </span>
+
+      <span ng-if="$ctrl.sceneCollection.theme">
+        | {{ $ctrl.sceneCollection.theme }}
+      </span>
+
+    </div>
+    <div class="top-action-bar">
+      <theme-settings scene-collection="$ctrl.sceneCollection"
+                      duration="$ctrl.duration()"
+                      on-update="$ctrl.updateSceneCollection(prop, value)"></theme-settings>
+    </div>
+  </div>
+
+  <div ui-view>
+  </div>
+</div>

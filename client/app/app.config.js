@@ -35,12 +35,34 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       },
       parent: 'sceneCollectionWizard'
     })
-    .state('sceneEditor', {
+    .state('sceneCollectionEditor', {
+      abstract: true,
       url: '/edit',
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<scene-editor scene-collection-id="{{ sceneCollectionId }}"></scene-editor>')($stateParams);
+        return $interpolate('<scene-collection-editor scene-collection-id="{{ sceneCollectionId }}"></scene-collection-editor>')($stateParams);
       },
       parent: 'sceneCollectionWizard'
+    })
+    .state('sceneEditor', {
+      url: '',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<scene-editor scene-collection="$ctrl.sceneCollection" scene-contents="$ctrl.sceneContents" selected-scene-content="$ctrl.selectedSceneContent"></scene-editor>')($stateParams);
+      },
+      parent: 'sceneCollectionEditor'
+    })
+    .state('addScene', {
+      url: '/add_scene',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<add-scene aspect-ratio="{{ $ctrl.sceneCollection.aspect_ratio }}" on-add-scene="$ctrl.addScene(scene)"></add-scene>')($stateParams);
+      },
+      parent: 'sceneCollectionEditor'
+    })
+    .state('mediaLibrary', {
+      url: '/media_library',
+      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
+        return $interpolate('<media-library></media-library>')($stateParams);
+      },
+      parent: 'sceneCollectionEditor'
     })
     .state('preview', {
       url: '/previews/:videoJobId',

@@ -7,13 +7,12 @@ var component = {
   controller: AddSceneController,
   bindings: {
     aspectRatio: '@',
-    onAddScene: '&',
-    onClose: '&'
+    onAddScene: '&'
   }
 };
 
 /*@ngInject*/
-function AddSceneController($uibModal, sceneService) {
+function AddSceneController($state, $uibModal, sceneService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -56,7 +55,8 @@ function AddSceneController($uibModal, sceneService) {
     });
 
     modal.result.then(function (scene) {
-      vm.onAddScene({scene: scene})
+      vm.onAddScene({scene: scene});
+      $state.go('sceneEditor');
     });
   }
 }

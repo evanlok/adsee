@@ -8,7 +8,7 @@ var component = {
     onUpdateSceneAttribute: '&'
   },
   require: {
-    sceneEditor: '^^'
+    sceneCollectionEditor: '^^'
   }
 };
 

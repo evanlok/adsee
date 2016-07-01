@@ -7,15 +7,15 @@ var component = {
     sceneContents: '<',
     selectedSceneContent: '<',
     onSelect: '&',
-    onSort: '&',
-    onAddScene: '&'
+    onSort: '&'
   },
   require: {
-    sceneEditor: '^^'
+    sceneCollectionEditor: '^^'
   }
 };
 
-/*@ngInject*/ function SceneListController() {
+/*@ngInject*/
+function SceneListController() {
   var vm = this;
 
   vm.$onInit = function () {

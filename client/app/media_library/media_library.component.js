@@ -3,13 +3,11 @@ var templateUrl = require('./media_library.html');
 var component = {
   templateUrl: templateUrl,
   controller: MediaLibraryController,
-  bindings: {
-    onClose: '&'
-  }
+  bindings: {}
 };
 
 /*@ngInject*/
-function MediaLibraryController($interval, imageService, videoClipService, iconService, mediaSelectorService) {
+function MediaLibraryController($interval, $state, imageService, videoClipService, iconService, mediaSelectorService) {
   var vm = this;
   var loadedContent, videoPoller;
 
@@ -199,7 +197,7 @@ function MediaLibraryController($interval, imageService, videoClipService, iconS
     mediaSelectorService.resetCurrentAttribute();
     vm.selecting = false;
     vm.selectingType = null;
-    vm.onClose();
+    $state.go('sceneEditor');
   }
 }
 
