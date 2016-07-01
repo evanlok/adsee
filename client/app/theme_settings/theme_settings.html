@@ -14,7 +14,7 @@
     <div class="theme-settings-column">
       Font:
       <a href="" ng-click="$ctrl.configureFont()">
-        {{ $ctrl.currentFont.name }}
+        {{ $ctrl.currentFont.name || 'Choose a font' }}
       </a>
     </div>
 
@@ -25,7 +25,7 @@
       </div>
 
       <a href="" ng-click="$ctrl.configureSong()">
-        {{ $ctrl.currentSong.name }}
+        {{ $ctrl.currentSong.name || 'Choose a song' }}
       </a>
     </div>
     
