@@ -309,6 +309,7 @@ DEPENDENCIES
   api-pagination
   autoprefixer-rails
   awesome_print
+  aws-sdk
   byebug
   carrierwave (~> 0.10.0)
   carrierwave-aws

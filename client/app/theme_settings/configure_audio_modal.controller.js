@@ -18,6 +18,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
   $scope.maxDurationReached = maxDurationReached;
   $scope.save = save;
   $scope.uploadFile = uploadFile;
+  $scope.remove = remove;
   $scope.micSupported = true;
 
   try {
@@ -125,6 +126,10 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
         $uibModalInstance.close(blobs[0].key);
       }
     );
+  }
+
+  function remove() {
+    $uibModalInstance.close(null);
   }
 }
 
