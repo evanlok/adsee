@@ -45,7 +45,9 @@ input {
 	box-sizing: border-box;
   outline: none; 
 }
-a, a:visited, textarea, input, button, .btn:focus, .btn.active:focus { outline: none; box-shadow: none }
+a, a:visited, a:focus, textarea, input, button, .btn:focus, .btn.active:focus { 
+  outline: none; box-shadow: none 
+}
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -151,6 +153,27 @@ select:focus {
 .modal-backdrop.in  {
   opacity: 0.85;
 }
+.selecter-modal {
+  margin-top: -10%;
+  h1 {
+    color: $color-3;
+    font-weight: 300;
+  }
+  .selected-name {
+    font-weight: 700;
+    color: $color-2;
+  }
+  .modal-header {
+    text-align: left;
+    border-bottom: 1px solid $color-1;
+    padding: 0px 0px 30px;
+  }
+  .modal-body {
+    padding: 40px 0px 0px;
+    text-align: left;
+    font-size: 18px;
+  }
+}
 .validation-modal {
   color: $color-3;
   font-size: 20px;
@@ -158,7 +181,12 @@ select:focus {
     padding: 5px 40px;
   }
   .cancel {
-    margin-right: 10px;
+    color: $color-2;
+    background: none;
+    border: 5px solid $color-2;
+    padding: 5px 40px;
+    border-radius: 30px;
+    margin-right: 5px;
   }
 }
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {

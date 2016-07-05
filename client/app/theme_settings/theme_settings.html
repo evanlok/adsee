@@ -11,23 +11,20 @@
       ></color-picker>
     </div>
 
-    <div class="theme-settings-column">
-      Font:
-      <a href="" ng-click="$ctrl.configureFont()">
-        {{ $ctrl.currentFont.name || 'Choose a font' }}
-      </a>
-    </div>
+    <a href="" ng-click="$ctrl.configureFont()" class="theme-settings-column selecter-button">
+      Font: {{ $ctrl.currentFont.name || 'Choose a font' }}
+    </a>
 
-    <div class="theme-settings-column song-select-col">
+    <a href="" ng-click="$ctrl.configureSong()" class="theme-settings-column selecter-button">
       Song:
-      <div class="song-player">
+<!--       <div class="song-player">
         <song-player url="{{ $ctrl.currentSongUrl() }}"></song-player>
-      </div>
+      </div> -->
 
-      <a href="" ng-click="$ctrl.configureSong()">
+      
         {{ $ctrl.currentSong.name || 'Choose a song' }}
-      </a>
-    </div>
+      
+    </a>
     
   </div>
 </div>
