@@ -151,6 +151,16 @@ select:focus {
 .modal-backdrop.in  {
   opacity: 0.85;
 }
+.validation-modal {
+  color: $color-3;
+  font-size: 20px;
+  .button {
+    padding: 5px 40px;
+  }
+  .cancel {
+    margin-right: 10px;
+  }
+}
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $color-1;
   border-color: $color-1;
