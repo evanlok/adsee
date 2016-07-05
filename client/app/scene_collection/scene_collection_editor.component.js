@@ -11,22 +11,13 @@ var component = {
 };
 
 /*@ngInject*/
-function SceneCollectionEditorController($state, $uibModal, sceneCollectionService, sceneContentService, sceneAttributeService,
-                                         mediaSelectorService) {
+function SceneCollectionEditorController($uibModal, sceneCollectionService, sceneContentService, sceneAttributeService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.sceneCollection = {};
     vm.sceneContents = [];
     vm.selectedSceneContent = {};
-
-    mediaSelectorService.onMediaInsert(function () {
-      $state.go('mediaLibrary');
-    });
-
-    mediaSelectorService.onMediaSelected(function () {
-      $state.go('sceneEditor');
-    });
 
     fetchSceneCollection();
     fetchSceneContents();
@@ -72,6 +63,7 @@ function SceneCollectionEditorController($state, $uibModal, sceneCollectionServi
   }
 
   function updateSceneAttribute(sceneAttribute, value) {
+    sceneAttribute = _.find(vm.selectedSceneContent.scene_attributes, {name: sceneAttribute.name});
     sceneAttribute.value = value || null;
     var promise;
 
@@ -96,7 +88,6 @@ function SceneCollectionEditorController($state, $uibModal, sceneCollectionServi
   function selectSceneContent(sceneContent) {
     vm.selectedSceneContent = sceneContent;
     vm.activeTab = 0;
-    mediaSelectorService.reset();
   }
 
   function addScene(scene) {

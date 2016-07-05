@@ -58,7 +58,10 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       parent: 'sceneCollectionEditor'
     })
     .state('mediaLibrary', {
-      url: '/media_library',
+      url: '/media_library?name&type&sceneAttributeId',
+      params: {
+        sceneAttribute: null
+      },
       templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
         return $interpolate('<media-library></media-library>')($stateParams);
       },

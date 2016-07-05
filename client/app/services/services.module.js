@@ -4,7 +4,6 @@ services
   .service('sceneCollectionService', require('./scene_collection.service'))
   .service('sceneContentService', require('./scene_content.service'))
   .service('sceneAttributeService', require('./scene_attribute.service'))
-  .service('mediaSelectorService', require('./media_selector.service'))
   .service('imageService', require('./image.service'))
   .service('videoClipService', require('./video_clip.service'))
   .service('videoJobService', require('./video_job.service'))

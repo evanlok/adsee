@@ -11,33 +11,18 @@ var component = {
   }
 };
 
-/*@ngInject*/ function MediaAttributeController(mediaSelectorService) {
+/*@ngInject*/
+function MediaAttributeController($state) {
   var vm = this;
-
-  vm.$onInit = function () {
-    vm.value = vm.sceneAttribute.attachment_id;
-    vm.filename = vm.sceneAttribute.filename;
-    mediaSelectorService.onMediaSelected(vm.sceneAttribute.name, onMediaSelected);
-  };
-
-  vm.$onDestroy = function () {
-    mediaSelectorService.removeMediaSelectCallback(vm.sceneAttribute.name);
-  };
 
   vm.insertMedia = insertMedia;
   vm.isVideo = isVideo;
 
   function insertMedia() {
-    mediaSelectorService.insertMedia(vm.sceneAttribute.name, vm.sceneAttribute.type);
+    $state.go('mediaLibrary', {sceneAttribute: vm.sceneAttribute});
   }
 
-  function onMediaSelected(media) {
-    vm.value = media.id;
-    vm.filename = media.filename;
-    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
-  }
-
-  function isVideo () {
+  function isVideo() {
     return vm.sceneAttribute.type === 'video';
   }
 }

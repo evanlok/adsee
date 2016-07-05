@@ -3,11 +3,14 @@ var templateUrl = require('./media_library.html');
 var component = {
   templateUrl: templateUrl,
   controller: MediaLibraryController,
-  bindings: {}
+  bindings: {},
+  require: {
+    sceneCollectionEditor: '^^'
+  }
 };
 
 /*@ngInject*/
-function MediaLibraryController($interval, $state, imageService, videoClipService, iconService, mediaSelectorService) {
+function MediaLibraryController($interval, $state, imageService, videoClipService, iconService) {
   var vm = this;
   var loadedContent, videoPoller;
 
@@ -24,7 +27,7 @@ function MediaLibraryController($interval, $state, imageService, videoClipServic
     vm.totalItems = 0;
     vm.itemsPerPage = 0;
     loadedContent = {images: false, videos: false, stockImages: false, stockVideos: false};
-    mediaSelectorService.onMediaInsert(onMediaInsert);
+    initializeTabs();
     loadContent('images');
   };
 
@@ -98,13 +101,16 @@ function MediaLibraryController($interval, $state, imageService, videoClipServic
   }
 
   function selectMedia(media) {
-    vm.selecting = false;
-    vm.selectingType = null;
-    mediaSelectorService.selectMedia(media);
+    vm.sceneCollectionEditor.updateSceneAttribute($state.params.sceneAttribute, media.id);
+    $state.go('sceneEditor');
   }
 
-  function onMediaInsert(type) {
-    switch(type) {
+  function initializeTabs() {
+    if (!$state.params.sceneAttribute) {
+      return;
+    }
+
+    switch($state.params.sceneAttribute.type) {
       case 'image':
         showTab('images');
         break;
@@ -116,7 +122,7 @@ function MediaLibraryController($interval, $state, imageService, videoClipServic
         break;
     }
 
-    vm.selectingType = type;
+    vm.selectingType = $state.params.sceneAttribute.type;
     vm.selecting = true;
   }
 
@@ -194,7 +200,6 @@ function MediaLibraryController($interval, $state, imageService, videoClipServic
   }
 
   function back() {
-    mediaSelectorService.resetCurrentAttribute();
     vm.selecting = false;
     vm.selectingType = null;
     $state.go('sceneEditor');

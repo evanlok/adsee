@@ -7,11 +7,11 @@
       <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
     </label>
     <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
-             ng-model="$ctrl.filename"
+             ng-model="$ctrl.sceneAttribute.filename"
              ng-click="$ctrl.insertMedia()"
              placeholder="Select {{ $ctrl.sceneAttribute.display_name }}">
     <div>
-      <img ng-class="{ 'image-padding' : $ctrl.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
+      <img ng-class="{ 'image-padding' : $ctrl.sceneAttribute.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
     </div>
   </div>
 

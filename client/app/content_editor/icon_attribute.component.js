@@ -12,29 +12,13 @@ var component = {
 };
 
 /*@ngInject*/
-function IconAttributeController(mediaSelectorService) {
+function IconAttributeController($state) {
   var vm = this;
-
-  vm.$onInit = function () {
-    vm.value = vm.sceneAttribute.attachment_id;
-    vm.name = vm.sceneAttribute.icon_name;
-    mediaSelectorService.onMediaSelected(vm.sceneAttribute.name, onMediaSelected);
-  };
-
-  vm.$onDestroy = function () {
-    mediaSelectorService.removeMediaSelectCallback(vm.sceneAttribute.name);
-  };
 
   vm.insertMedia = insertMedia;
 
   function insertMedia() {
-    mediaSelectorService.insertMedia(vm.sceneAttribute.name, vm.sceneAttribute.type);
-  }
-
-  function onMediaSelected(icon) {
-    vm.value = icon.id;
-    vm.name = icon.name;
-    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
+    $state.go('mediaLibrary', {sceneAttribute: vm.sceneAttribute});
   }
 }
 
