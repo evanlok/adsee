@@ -66,6 +66,10 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     sceneContentService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
       vm.sceneContents = data;
       vm.selectedSceneContent = data[0];
+
+      if (!vm.sceneContents.length) {
+        vm.displayAddScene = true;
+      }
     });
   }
 
