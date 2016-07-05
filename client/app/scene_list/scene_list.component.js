@@ -9,6 +9,9 @@ var component = {
     onSelect: '&',
     onSort: '&',
     onAddScene: '&'
+  },
+  require: {
+    sceneEditor: '^^'
   }
 };
 

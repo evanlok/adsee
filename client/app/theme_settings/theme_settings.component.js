@@ -1,6 +1,10 @@
 var templateUrl = require('./theme_settings.html');
 var modalCtrl = require('./configure_audio_modal.controller');
 var modalTemplateUrl = require('./configure_audio_modal.html');
+var fontModalCtrl = require('./font_modal.controller');
+var fontModalTempalteUrl = require('./font_modal.html');
+var songModalCtrl = require('./song_modal.controller');
+var songModalTempalteUrl = require('./song_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -21,9 +25,18 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
     vm.songs = songsService.get();
   };
 
+  vm.$onChanges = function (changes) {
+    if (changes.sceneCollection) {
+      vm.currentFont = _.find(vm.fonts, {id: vm.sceneCollection.font_id});
+      vm.currentSong = _.find(vm.songs, {id: vm.sceneCollection.song_id});
+    }
+  };
+
   vm.update = update;
   vm.currentSongUrl = currentSongUrl;
   vm.configureAudio = configureAudio;
+  vm.configureFont = configureFont;
+  vm.configureSong = configureSong;
 
   function update(prop) {
     vm.onUpdate({prop: prop, value: vm.sceneCollection[prop]});
@@ -57,6 +70,44 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
     });
 
     return modal;
+  }
+
+  function configureFont() {
+    var modal = $uibModal.open({
+      controller: fontModalCtrl,
+      templateUrl: fontModalTempalteUrl,
+      size: 'lg',
+      windowClass: 'configure-font-modal',
+      resolve: {
+        currentFont: function () {
+          return vm.currentFont;
+        }
+      }
+    });
+
+    modal.result.then(function (font) {
+      vm.sceneCollection.font_id = font.id;
+      update('font_id');
+    });
+  }
+
+  function configureSong() {
+    var modal = $uibModal.open({
+      controller: songModalCtrl,
+      templateUrl: songModalTempalteUrl,
+      size: 'lg',
+      windowClass: 'configure-song-modal',
+      resolve: {
+        currentSong: function () {
+          return vm.currentSong;
+        }
+      }
+    });
+
+    modal.result.then(function (font) {
+      vm.sceneCollection.song_id = font.id;
+      update('song_id');
+    });
   }
 }
 

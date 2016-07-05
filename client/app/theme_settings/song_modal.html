@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; cancel</span>
+  </button>
+
+  <p>
+    selected: <strong>{{ currentSong.name }}</strong>
+  </p>
+
+  Click on the song name to select it.
+</div>
+
+<div class="modal-body">
+  <div class="row" ng-repeat="songGroup in groupedSongs">
+    <div class="col-md-3" ng-repeat="song in songGroup">
+      <a href="" ng-click="play(song)" ng-show="!song.playing">
+        <i class="fa fa-play-circle-o"></i>
+      </a>
+
+      <a href="" ng-click="stop()" ng-show="song.playing">
+        <i class="fa fa-stop-circle-o"></i>
+      </a>
+
+      <a href="" ng-class="{selected: currentSong.id === song.id}" ng-click="$close(song)">
+        {{ song.name }}
+      </a>
+    </div>
+  </div>
+</div>
