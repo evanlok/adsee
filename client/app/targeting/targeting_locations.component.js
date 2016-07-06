@@ -4,7 +4,7 @@ var component = {
   templateUrl: templateUrl,
   controller: TargetingLocationsController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
   }
 };
 
@@ -43,7 +43,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   vm.save = save;
 
   function fetchFacebookAd() {
-    return facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    return facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       vm.facebookAd = data;
       vm.targetingSpec = vm.facebookAd.targeting;
     });

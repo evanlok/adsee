@@ -5,7 +5,7 @@ var component = {
   templateUrl: templateUrl,
   controller: SummaryController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
   }
 };
 
@@ -17,7 +17,6 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
   vm.$onInit = function () {
     vm.loading = true;
     vm.publishing = false;
-    vm.sceneCollection = {};
     vm.facebookAd = {};
     vm.facebookAdConfigOptions = facebookAdConfigOptions;
     vm.pages = [];
@@ -42,7 +41,7 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
   }
 
   function fetchSceneCollection() {
-    return sceneCollectionService.summaryInfo({id: vm.sceneCollectionId}).then(function (data) {
+    return sceneCollectionService.summaryInfo({id: vm.sceneCollection.id}).then(function (data) {
       vm.sceneCollection = data;
       vm.facebookAd = data.facebook_ad;
       return data;
@@ -79,7 +78,7 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
   function publish() {
     vm.publishing = true;
 
-    videoJobService.generate({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    videoJobService.generate({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       var modal = $uibModal.open({
         templateUrl: modalTemplateUrl
       });
