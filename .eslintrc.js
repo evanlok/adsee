@@ -1,17 +1,38 @@
 module.exports = {
-  "extends": "standard",
-  "plugins": [
-    "standard"
-  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      { "SwitchCase": 1 }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "off"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  },
   "globals": {
     "$": true,
     "_": true,
     "angular": true,
     "Sortable": true,
-    "Paloma": true
-  },
-  "rules": {
-    "semi": ["warn", "always"],
-    "quotes": ["off"]
+    "Paloma": true,
+    "jwplayer": true,
+    "emojione": true
   }
 };

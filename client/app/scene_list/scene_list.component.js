@@ -23,7 +23,7 @@ var component = {
       onSort: function (evt) {
         vm.onSort({sceneContent: evt.model, position: evt.newIndex + 1});
       }
-    }
+    };
   };
 
   vm.isSelected = isSelected;

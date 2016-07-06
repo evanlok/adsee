@@ -1,6 +1,7 @@
 /*@ngInject*/
 function IconService($resource) {
-  var resource = $resource('/icons/:id', {
+  var resource = $resource('/icons/:id',
+    {
       id: '@id',
       format: 'json'
     },

@@ -12,7 +12,7 @@ var component = {
 };
 
 /* @ngInject */
-function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sceneCollectionService) {
+function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   var vm = this;
 
   var audienceTypes = {
@@ -149,7 +149,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
 
   function setGender(gender) {
     if (gender !== 0) {
-      vm.targetingSpec.genders = [gender]
+      vm.targetingSpec.genders = [gender];
     } else {
       delete vm.targetingSpec.genders;
     }
@@ -159,7 +159,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
     if (gender === 0) {
       return !vm.targetingSpec.genders;
     } else {
-      return _.includes(vm.targetingSpec.genders, gender)
+      return _.includes(vm.targetingSpec.genders, gender);
     }
   }
 

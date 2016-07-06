@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624220253) do
+ActiveRecord::Schema.define(version: 20160706214823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20160624220253) do
     t.integer  "position"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "transition_id"
   end
 
   add_index "theme_variant_scenes", ["theme_variant_id", "scene_id"], name: "index_theme_variant_scenes_on_theme_variant_id_and_scene_id", using: :btree
@@ -278,10 +279,10 @@ ActiveRecord::Schema.define(version: 20160624220253) do
     t.boolean  "admin",                     default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.string   "provider"
-    t.string   "uid"
     t.string   "facebook_oauth_token"
     t.datetime "facebook_oauth_expires_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

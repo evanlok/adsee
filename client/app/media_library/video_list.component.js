@@ -45,7 +45,7 @@ function VideoListController($uibModal) {
     });
 
     modal.result.then(function (video) {
-      vm.onSelect({video: video})
+      vm.onSelect({video: video});
     });
   }
 }

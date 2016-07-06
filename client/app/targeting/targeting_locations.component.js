@@ -25,7 +25,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     vm.selectedLocations = [];
     vm.radiusOptions = _.range(10, 51);
 
-    $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function (results) {
+    $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function () {
       fetchAdAccounts();
       return initializeSelectedLocations();
     }).then(function () {
@@ -100,9 +100,9 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
               var location;
 
               if (type === 'countries') {
-                location = locationMetaData[type][savedLocation]
+                location = locationMetaData[type][savedLocation];
               } else {
-                location = locationMetaData[type][savedLocation.key]
+                location = locationMetaData[type][savedLocation.key];
               }
 
               if (type === 'cities') {
