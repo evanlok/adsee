@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     end
 
     resources :scene_categories
+    resources :song_categories
     resources :songs
     resources :fonts
     resources :themes

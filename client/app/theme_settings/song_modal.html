@@ -6,27 +6,31 @@
   <div class="modal-header">
     <div class="music-note-icon"><i class="fa fa-music"></i></div>
     <h1>
-       selected: <span class="selected-name">{{ currentSong.name }}</span>
+      selected: <span class="selected-name">{{ currentSong.name }}</span>
     </h1>
 
     Click on the song name to select it.
   </div>
 
   <div class="modal-body">
-    <div class="row" ng-repeat="songGroup in groupedSongs">
-      <div class="col-md-4" ng-repeat="song in songGroup">
+    <div class="row">
+      <div class="col-md-3" ng-repeat="songCategoryGroup in songCategoryGroups">
+        <div ng-repeat="songCategory in songCategoryGroup">
+          <h4>{{ songCategory }}</h4>
 
-          <a href="" ng-click="play(song)" ng-show="!song.playing">
-            <i class="fa fa-play-circle-o"></i>
-          </a>
+          <div ng-repeat="song in songsByCategory[songCategory]">
+            <a href="" ng-click="play(song)" ng-show="!song.playing">
+              <i class="fa fa-play-circle-o"></i>
+            </a>
 
-          <a href="" ng-click="stop()" ng-show="song.playing">
-            <i class="fa fa-stop-circle-o"></i>
-          </a>
+            <a href="" ng-click="stop()" ng-show="song.playing">
+              <i class="fa fa-stop-circle-o"></i>
+            </a>
 
-          <a href="" ng-class="{selected: currentSong.id === song.id}" ng-click="$close(song)" class="song-item">
-            {{ song.name }}
-          </a>
+            <a href="" ng-class="{selected: currentSong.id === song.id}" ng-click="$close(song)" class="song-item">
+              {{ song.name }}
+            </a>
+          </div>
         </div>
       </div>
     </div>

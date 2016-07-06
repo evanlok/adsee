@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   def scene_editor
     # This action is a catch all for angular routing and injects server side values onto the page
-    @songs = Song.order(:name)
+    @songs = Song.includes(:song_category).order(:name)
     @fonts = Font.order(:name)
     @transitions = Transition.order(:name)
   end
