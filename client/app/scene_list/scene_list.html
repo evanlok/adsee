@@ -8,7 +8,7 @@
   <ul class="list-inline" ng-sortable="$ctrl.sceneListConfig">
     <li ng-repeat="sceneContent in $ctrl.sceneContents"
         ng-class="{selected: $ctrl.isSelected(sceneContent)}" class="scene-timeline-thumb">
-      <a class="transition-dot"></a>
+      <a class="transition-dot" uib-popover="transition: SlideUp" popover-trigger="mouseenter" popover-placement="left"></a>
       <div class="text-center scene-number">{{ $index + 1 }}</div>
       <a class="text-center delete-scene-thumb" ng-click="$ctrl.sceneEditor.removeScene(sceneContent)">
         <i class="fa fa-trash"></i>

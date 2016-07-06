@@ -12,11 +12,11 @@
     </div>
 
     <a href="" ng-click="$ctrl.configureFont()" class="theme-settings-column selecter-button">
-      Font: {{ $ctrl.currentFont.name || 'Choose a font' }}
+      <i uib-popover="Select Font" popover-trigger="mouseenter" class="fa fa-font"></i> {{ $ctrl.currentFont.name || 'Choose a font' }}
     </a>
 
     <a href="" ng-click="$ctrl.configureSong()" class="theme-settings-column selecter-button">
-      Song:
+      <i uib-popover="Select Music" popover-trigger="mouseenter" class="fa fa-music"></i> 
 <!--       <div class="song-player">
         <song-player url="{{ $ctrl.currentSongUrl() }}"></song-player>
       </div> -->

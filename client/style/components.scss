@@ -386,6 +386,9 @@
     width: 20%;
     float: right;
     margin-left: 2%;
+    i {
+      color: $color-9;
+    }
   }
   .aspect-ratio {
     width: 90px;
@@ -396,7 +399,9 @@
   .selecter-button {
     border: 1px solid $color-9;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 6px 10px;
+    height: 34px;
+    font-size: 14px;
   }
   .color-picker-wrapper .form-control, .color-picker-wrapper .input-group .input-group-addon {
     border: 1px solid $color-9;
@@ -874,7 +879,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .list-inline {
   height: 80px;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  .popover {
+    // background: none;
+    font-weight: 700;
+    // font-size: 12px;
+    // border: none;
+    // outline: none;
+    // width: auto;
+  }
+  // .popover-content {
+  //   background-color: hsla(0, 0%, 0.0000%, 0.7000);
+  //   color: white;
+  //   border-radius: 5px;
+  //   outline: none;
+  //   color: $color-2;
+  // }
+  // .popover.left > .arrow {
+  //   border-left-color: hsla(0, 0%, 0.0000%, 0.0000);
+  //   right: -10px;
+  // }
+  // .popover.left > .arrow:after {
+  //   border-left-color: hsla(0, 0%, 0.0000%, 0.7000);
+  // }
 }
 .add-scene-button {
   display: inline-block;
