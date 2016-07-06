@@ -23,12 +23,12 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
   vm.$onInit = function () {
     vm.fonts = fontsService.get();
     vm.songs = songsService.get();
+    setCurrentSongAndFont();
   };
 
   vm.$onChanges = function (changes) {
     if (changes.sceneCollection) {
-      vm.currentFont = _.find(vm.fonts, {id: vm.sceneCollection.font_id});
-      vm.currentSong = _.find(vm.songs, {id: vm.sceneCollection.song_id});
+      setCurrentSongAndFont()
     }
   };
 
@@ -37,6 +37,11 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
   vm.configureAudio = configureAudio;
   vm.configureFont = configureFont;
   vm.configureSong = configureSong;
+
+  function setCurrentSongAndFont() {
+    vm.currentFont = _.find(vm.fonts, {id: vm.sceneCollection.font_id});
+    vm.currentSong = _.find(vm.songs, {id: vm.sceneCollection.song_id});
+  }
 
   function update(prop) {
     vm.onUpdate({prop: prop, value: vm.sceneCollection[prop]});

@@ -4,28 +4,13 @@ var component = {
   templateUrl: templateUrl,
   controller: WizardBreadcrumbsController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
   }
 };
 
 /*@ngInject*/
-function WizardBreadcrumbsController($state, videoJobService, facebookAdService, sceneCollectionService) {
+function WizardBreadcrumbsController($state, videoJobService, facebookAdService) {
   var vm = this;
-  var targetingTypeChangedToken;
-
-  vm.$onInit = function () {
-    vm.sceneCollection = {};
-    
-    targetingTypeChangedToken = sceneCollectionService.onTargetingTypeChanged(function (type) {
-      vm.sceneCollection.advanced_targeting = type === 'advanced';
-    });
-
-    fetchSceneCollection();
-  };
-
-  vm.$onDestroy = function () {
-    sceneCollectionService.removeTargetingTypeChangedCallback(targetingTypeChangedToken);
-  };
 
   vm.stateName = stateName;
   vm.goToTargeting = goToTargeting;
@@ -33,12 +18,6 @@ function WizardBreadcrumbsController($state, videoJobService, facebookAdService,
   vm.goToAdConfig = goToAdConfig;
   vm.showFacebookAdLinks = showFacebookAdLinks;
   vm.showFacebookPostConfigLink = showFacebookPostConfigLink;
-
-  function fetchSceneCollection() {
-    sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-      vm.sceneCollection = data;
-    });
-  }
 
   function stateName() {
     return $state.current.name;
@@ -53,13 +32,13 @@ function WizardBreadcrumbsController($state, videoJobService, facebookAdService,
   }
 
   function goToPreview() {
-    videoJobService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    videoJobService.query({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       $state.go('preview', {videoJobId: data[0].id});
     });
   }
 
   function goToAdConfig() {
-    facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       $state.go('adConfig', {facebookAdId: data.id});
     });
   }

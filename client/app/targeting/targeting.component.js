@@ -4,34 +4,34 @@ var component = {
   templateUrl: templateUrl,
   controller: TargetingController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
+  },
+  require: {
+    sceneCollectionWizard: '^^'
   }
 };
 
 /*@ngInject*/
-function TargetingController($state, $q, sceneCollectionService, facebookTargetingSpecService, facebookAdService) {
+function TargetingController($state, $q, facebookTargetingSpecService, facebookAdService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.targetingSpecs = [];
-    vm.selectedTargetingSpecIds = [];
     vm.saving = false;
-    vm.zipCodes = [];
 
-    fetchSceneCollection();
     fetchTargetingSpecs();
+  };
+
+  vm.$onChanges = function (changes) {
+    if (changes.sceneCollection) {
+      vm.selectedTargetingSpecIds = vm.sceneCollection.facebook_targeting_spec_ids;
+      vm.zipCodes = vm.sceneCollection.zip_codes;
+    }
   };
 
   vm.selectTargetingSpec = selectTargetingSpec;
   vm.selected = selected;
   vm.saveTargeting = saveTargeting;
-
-  function fetchSceneCollection() {
-    sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-      vm.selectedTargetingSpecIds = data.facebook_targeting_spec_ids;
-      vm.zipCodes = data.zip_codes;
-    });
-  }
 
   function fetchTargetingSpecs() {
     facebookTargetingSpecService.query().then(function (data) {
@@ -50,17 +50,16 @@ function TargetingController($state, $q, sceneCollectionService, facebookTargeti
   function saveTargeting() {
     vm.saving = true;
 
-    var adUpdatePromise = facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}, {advanced: false});
-    var scUpdatePromise = sceneCollectionService.update({id: vm.sceneCollectionId}, {
-      facebook_targeting_spec_ids: vm.selectedTargetingSpecIds,
-      zip_codes: vm.zipCodes
+    var adUpdatePromise = facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}, {advanced: false});
+    var scUpdatePromise = vm.sceneCollectionWizard.updateSceneCollection({id: vm.sceneCollection.id}, {
+      sceneCollection: {
+        facebook_targeting_spec_ids: vm.selectedTargetingSpecIds,
+        zip_codes: vm.zipCodes
+      }
     });
 
-    // Publish event for breadcrumbs nav update
-    sceneCollectionService.targetingTypeChanged('basic');
-
     $q.all([adUpdatePromise, scUpdatePromise]).then(function () {
-      $state.go('sceneEditor', {sceneCollectionId: vm.sceneCollectionId});
+      $state.go('sceneEditor', {sceneCollectionId: vm.sceneCollection.id});
     }).finally(function () {
       vm.saving = false;
     });

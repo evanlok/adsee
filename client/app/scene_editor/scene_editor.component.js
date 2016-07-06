@@ -8,11 +8,9 @@ var component = {
   templateUrl: templateUrl,
   controller: SceneEditorController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
   }
 };
-
-
 
 /*@ngInject*/
 function SceneEditorController($state, $uibModal, sceneCollectionService, sceneContentService, sceneAttributeService,
@@ -20,7 +18,6 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   var vm = this;
 
   vm.$onInit = function () {
-    vm.sceneCollection = {};
     vm.sceneContents = [];
     vm.selectedSceneContent = {};
     vm.transitions = transitionsService.get();
@@ -36,9 +33,12 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     mediaSelectorService.onMediaSelected(function () {
       vm.displayMediaLibrary = false;
     });
+  };
 
-    fetchSceneCollection();
-    fetchSceneContents();
+  vm.$onChanges = function (changes) {
+    if (changes.sceneCollection) {
+      fetchSceneContents();
+    }
   };
 
   vm.updateSceneCollection = updateSceneCollection;
@@ -56,14 +56,8 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   vm.lastScene = lastScene;
   vm.preview = preview;
 
-  function fetchSceneCollection() {
-    sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-      vm.sceneCollection = data;
-    });
-  }
-
   function fetchSceneContents() {
-    sceneContentService.query({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    sceneContentService.query({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       vm.sceneContents = data;
       vm.selectedSceneContent = data[0];
 
