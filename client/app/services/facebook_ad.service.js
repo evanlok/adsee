@@ -2,7 +2,8 @@ var moment = require('moment');
 
 /*@ngInject*/
 function FacebookAdService($resource, $http) {
-  var resource = $resource('/facebook_ads/:id', {
+  var resource = $resource('/facebook_ads/:id',
+    {
       id: '@id',
       format: 'json'
     },

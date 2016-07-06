@@ -1,6 +1,7 @@
 /*@ngInject*/
 function FacebookTargetingSpecService($resource) {
-  var resource = $resource('/facebook_targeting_specs/:id', {
+  var resource = $resource('/facebook_targeting_specs/:id',
+    {
       id: '@id',
       format: 'json'
     }

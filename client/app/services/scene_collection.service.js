@@ -1,8 +1,7 @@
-var uuid = require('node-uuid');
-
 /*@ngInject*/
 function sceneCollectionService($resource) {
-  var resource = $resource('/scene_collections/:id', {
+  var resource = $resource('/scene_collections/:id',
+    {
       id: '@id',
       format: 'json'
     },
@@ -12,8 +11,6 @@ function sceneCollectionService($resource) {
       summaryInfo: {method: 'GET', url: '/scene_collections/:id/summary_info'}
     }
   );
-
-  var targetingTypeChangedCallbacks = {};
 
   this.get = function (params) {
     return resource.get(params).$promise;
@@ -29,22 +26,6 @@ function sceneCollectionService($resource) {
 
   this.summaryInfo = function (params) {
     return resource.summaryInfo(params).$promise;
-  };
-
-  this.targetingTypeChanged = function (type) {
-    _.each(targetingTypeChangedCallbacks, function (callback) {
-      callback(type);
-    });
-  };
-
-  this.onTargetingTypeChanged = function (callback) {
-    var token = uuid.v4();
-    targetingTypeChangedCallbacks[token] = callback;
-    return token;
-  };
-
-  this.removeTargetingTypeChangedCallback = function(token) {
-    delete targetingTypeChangedCallbacks[token];
   };
 }
 

@@ -18,6 +18,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
   $scope.maxDurationReached = maxDurationReached;
   $scope.save = save;
   $scope.uploadFile = uploadFile;
+  $scope.remove = remove;
   $scope.micSupported = true;
 
   try {
@@ -31,6 +32,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
   getUserMedia({video: false, audio: true}, function (err, stream) {
     if (err) {
       $scope.micSupported = false;
+      // eslint-disable-next-line
       console.log('No live audio input: ', err);
     } else {
       startUserMedia(stream);
@@ -72,7 +74,8 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
     if (currentAudioBlob) {
       var file = new File([currentAudioBlob], 'audio.wav');
 
-      filepicker.store(file, {
+      filepicker.store(file,
+        {
           filename: moment().unix() + '.wav',
           container: S3_BUCKET_NAME,
           path: '/recorded_audio/',
@@ -84,6 +87,7 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
           $scope.$apply();
         },
         function onError(FPError) {
+          // eslint-disable-next-line
           console.log(FPError);
         },
         function onProgress(percent) {
@@ -125,6 +129,10 @@ function ConfigureAudioModalController($scope, $uibModalInstance, $window, audio
         $uibModalInstance.close(blobs[0].key);
       }
     );
+  }
+
+  function remove() {
+    $uibModalInstance.close(null);
   }
 }
 

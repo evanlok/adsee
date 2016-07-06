@@ -106,7 +106,7 @@ function MediaLibraryController($interval, imageService, videoClipService, iconS
   }
 
   function onMediaInsert(type) {
-    switch(type) {
+    switch (type) {
       case 'image':
         showTab('images');
         break;

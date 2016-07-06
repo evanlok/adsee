@@ -4,7 +4,7 @@ var component = {
   templateUrl: templateUrl,
   controller: FacebookPostConfigController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
   }
 };
 
@@ -13,27 +13,19 @@ function FacebookPostConfigController($state, sceneCollectionService, userServic
   var vm = this;
 
   vm.$onInit = function () {
-    vm.sceneCollection = {};
     vm.facebookPages = [];
     vm.facebookPostParams = {};
     vm.facebookAdConfigOptions = facebookAdConfigOptions;
     vm.saving = false;
     vm.callToActionChanged = callToActionChanged;
-    
-    fetchSceneCollection();
+    vm.facebookPostParams = vm.sceneCollection.integration_data;
+
     fetchFacebookPages();
   };
 
   vm.save = save;
   vm.showCallToActionField = showCallToActionField;
   vm.showCallToActionSubfields = showCallToActionSubfields;
-
-  function fetchSceneCollection() {
-    sceneCollectionService.get({id: vm.sceneCollectionId}).then(function (data) {
-      vm.sceneCollection = data;
-      vm.facebookPostParams = vm.sceneCollection.integration_data;
-    });
-  }
 
   function fetchFacebookPages() {
     userService.facebookPages().then(function (data) {

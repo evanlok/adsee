@@ -4,12 +4,15 @@ var component = {
   templateUrl: templateUrl,
   controller: TargetingDemographicsController,
   bindings: {
-    sceneCollectionId: '@'
+    sceneCollection: '<'
+  },
+  require: {
+    sceneCollectionWizard: '^^'
   }
 };
 
 /* @ngInject */
-function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sceneCollectionService) {
+function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
   var vm = this;
 
   var audienceTypes = {
@@ -81,7 +84,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
   vm.save = save;
 
   function fetchFacebookAd() {
-    return facebookAdService.save({sceneCollectionId: vm.sceneCollectionId}).then(function (data) {
+    return facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       vm.facebookAd = data;
       vm.targetingSpec = vm.facebookAd.targeting;
 
@@ -146,7 +149,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
 
   function setGender(gender) {
     if (gender !== 0) {
-      vm.targetingSpec.genders = [gender]
+      vm.targetingSpec.genders = [gender];
     } else {
       delete vm.targetingSpec.genders;
     }
@@ -156,7 +159,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
     if (gender === 0) {
       return !vm.targetingSpec.genders;
     } else {
-      return _.includes(vm.targetingSpec.genders, gender)
+      return _.includes(vm.targetingSpec.genders, gender);
     }
   }
 
@@ -208,11 +211,9 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb, sc
 
     var updatePromise = facebookAdService.update({id: vm.facebookAd.id}, {advanced: true});
     var targetingUpdatePromise = facebookAdService.updateTargetingSpec({id: vm.facebookAd.id}, {targeting: vm.targetingSpec});
-    
-    // Publish event for breadcrumbs nav update
-    sceneCollectionService.targetingTypeChanged('advanced');
+    var scPromise = vm.sceneCollectionWizard.reloadSceneCollection();
 
-    $q.all([updatePromise, targetingUpdatePromise]).then(function () {
+    $q.all([updatePromise, targetingUpdatePromise, scPromise]).then(function () {
       $state.go('sceneEditor');
     }).finally(function () {
       vm.saving = false;

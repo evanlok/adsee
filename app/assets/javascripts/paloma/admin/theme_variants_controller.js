@@ -9,14 +9,21 @@ ThemeVariantsController.prototype.edit = function () {
     allowClear: true
   };
 
+  var transitionSelectOptions = {
+    placeholder: 'Select a transition',
+    allowClear: true
+  };
+
   $('.scene-select').select2(sceneSelectOptions);
+  $('.transition-select').select2(transitionSelectOptions);
 
   $('#scenes').on('cocoon:before-insert', function (e, insertedItem) {
-    insertedItem.find('select').select2(sceneSelectOptions);
+    insertedItem.find('.scene-select').select2(sceneSelectOptions);
+    insertedItem.find('.transition-select').select2(transitionSelectOptions);
   });
 
   var scenesList = $('#scenes');
-  var sortable = Sortable.create(scenesList[0], {
+  Sortable.create(scenesList[0], {
     handle: '.handle',
     onSort: function () {
       _.each(scenesList.find('li'), function (item, index) {

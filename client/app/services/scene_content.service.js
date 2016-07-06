@@ -1,5 +1,6 @@
 /*@ngInject*/ function sceneContentService($resource) {
-  var resource = $resource('/scene_contents/:id', {
+  var resource = $resource('/scene_contents/:id',
+    {
       id: '@id',
       format: 'json'
     },
@@ -28,7 +29,7 @@
 
   this.delete = function(params, data) {
     return resource.delete(params, data).$promise;
-  }
+  };
 }
 
 module.exports = sceneContentService;

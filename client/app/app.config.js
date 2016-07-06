@@ -10,36 +10,31 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     .state('sceneCollectionWizard', {
       abstract: true,
       url: '/scene_collections/:sceneCollectionId',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<scene-collection-wizard scene-collection-id="{{ sceneCollectionId }}"></scene-collection-wizard>')($stateParams);
+      template: '<scene-collection-wizard scene-collection="$resolve.sceneCollection"></scene-collection-wizard>',
+      resolve: {
+        sceneCollection: /*@ngInject */ function ($stateParams, sceneCollectionService) {
+          return sceneCollectionService.get({id: $stateParams.sceneCollectionId});
+        }
       }
     })
     .state('targeting', {
       url: '/targeting',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<targeting scene-collection-id="{{ sceneCollectionId }}"></targeting>')($stateParams);
-      },
+      template: '<targeting scene-collection="$resolve.sceneCollection"></targeting>',
       parent: 'sceneCollectionWizard'
     })
     .state('targetingLocations', {
       url: '/targeting/locations',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<targeting-locations scene-collection-id="{{ sceneCollectionId }}"></targeting-locations>')($stateParams);
-      },
+      template: '<targeting-locations scene-collection="$resolve.sceneCollection"></targeting-locations>',
       parent: 'sceneCollectionWizard'
     })
     .state('targetingDemographics', {
       url: '/targeting/demographics',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<targeting-demographics scene-collection-id="{{ sceneCollectionId }}"></targeting-demographics>')($stateParams);
-      },
+      template: '<targeting-demographics scene-collection="$resolve.sceneCollection"></targeting-demographics>',
       parent: 'sceneCollectionWizard'
     })
     .state('sceneEditor', {
       url: '/edit',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<scene-editor scene-collection-id="{{ sceneCollectionId }}"></scene-editor>')($stateParams);
-      },
+      template: '<scene-editor scene-collection="$resolve.sceneCollection"></scene-editor>',
       parent: 'sceneCollectionWizard'
     })
     .state('preview', {
@@ -58,16 +53,12 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('facebookPostConfig', {
       url: '/facebook_post',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<facebook-post-config scene-collection-id="{{ sceneCollectionId }}"></facebook-post-config>')($stateParams);
-      },
+      template: '<facebook-post-config scene-collection="$resolve.sceneCollection"></facebook-post-config>',
       parent: 'sceneCollectionWizard'
     })
     .state('summary', {
       url: '/summary',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<summary scene-collection-id="{{ sceneCollectionId }}"></summary>')($stateParams);
-      },
+      template: '<summary scene-collection="$resolve.sceneCollection"></summary>',
       parent: 'sceneCollectionWizard'
     });
 

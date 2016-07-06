@@ -19,6 +19,7 @@ class SceneCollection < ActiveRecord::Base
   validates :user, presence: true
 
   # Callbacks
+  after_save :delete_audio_from_s3, if: :audio_changed?
   after_destroy :delete_hal_record
 
   enum status: { draft: 0, generating: 1, generated: 2, failed: 3 }
@@ -36,8 +37,8 @@ class SceneCollection < ActiveRecord::Base
     self.song = theme.song
     self.aspect_ratio = theme.theme_variants.default.aspect_ratio
 
-    theme.theme_variants.default.scenes.map do |scene|
-      scene_contents.create(scene: scene)
+    theme.theme_variants.default.theme_variant_scenes.each do |theme_variant_scene|
+      scene_contents.create(scene_id: theme_variant_scene.scene_id, transition_id: theme_variant_scene.transition_id)
     end
 
     save
@@ -75,5 +76,17 @@ class SceneCollection < ActiveRecord::Base
     HAL::Client.new.delete_scene_collection(hal_id) if hal_id
   rescue => e
     Honeybadger.notify(e, context: { id: id, hal_id: hal_id })
+  end
+
+  def delete_audio_from_s3
+    return unless audio
+
+    s3 = Aws::S3::Client.new
+    s3.delete_object(
+      bucket: ENV['S3_BUCKET_NAME'],
+      key: audio
+    )
+  rescue => e
+    Honeybadger.notify(e, context: { id: id })
   end
 end

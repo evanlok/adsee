@@ -56,7 +56,7 @@ function AddSceneController($uibModal, sceneService) {
     });
 
     modal.result.then(function (scene) {
-      vm.onAddScene({scene: scene})
+      vm.onAddScene({scene: scene});
     });
   }
 }

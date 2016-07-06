@@ -109,6 +109,12 @@ FactoryGirl.define do
     duration { Faker::Number.number(2) }
   end
 
+  factory :theme_variant_scene do
+    theme_variant
+    scene
+    transition
+  end
+
   factory :video_type do
     name { Faker::Lorem.word }
     description { Faker::Lorem.sentence }
