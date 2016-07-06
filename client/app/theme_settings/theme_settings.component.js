@@ -28,7 +28,7 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
 
   vm.$onChanges = function (changes) {
     if (changes.sceneCollection) {
-      setCurrentSongAndFont()
+      setCurrentSongAndFont();
     }
   };
 
@@ -61,7 +61,7 @@ function ThemeSettingsController($uibModal, songsService, fontsService) {
       templateUrl: modalTemplateUrl,
       resolve: {
         audioUrl: function () {
-          return vm.sceneCollection.audio_url
+          return vm.sceneCollection.audio_url;
         },
         duration: function () {
           return vm.duration;

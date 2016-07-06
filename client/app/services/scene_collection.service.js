@@ -1,8 +1,7 @@
-var uuid = require('node-uuid');
-
 /*@ngInject*/
 function sceneCollectionService($resource) {
-  var resource = $resource('/scene_collections/:id', {
+  var resource = $resource('/scene_collections/:id',
+    {
       id: '@id',
       format: 'json'
     },

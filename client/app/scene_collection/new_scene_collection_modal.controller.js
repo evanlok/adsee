@@ -49,7 +49,7 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
         $window.location = $state.href('sceneEditor', {sceneCollectionId: data.id});
       }
     });
-  }
+  };
 }
 
 module.exports = NewSceneCollectionModalController;

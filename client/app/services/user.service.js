@@ -1,6 +1,7 @@
 /*@ngInject*/
 function UserService($resource) {
-  var resource = $resource('/users/:id', {
+  var resource = $resource('/users/:id',
+    {
       id: '@id',
       format: 'json'
     },

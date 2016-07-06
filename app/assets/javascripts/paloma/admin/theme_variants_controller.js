@@ -16,7 +16,7 @@ ThemeVariantsController.prototype.edit = function () {
   });
 
   var scenesList = $('#scenes');
-  var sortable = Sortable.create(scenesList[0], {
+  Sortable.create(scenesList[0], {
     handle: '.handle',
     onSort: function () {
       _.each(scenesList.find('li'), function (item, index) {

@@ -1,6 +1,7 @@
 /*@ngInject*/
 function VideoClipService($resource) {
-  var resource = $resource('/video_clips/:id', {
+  var resource = $resource('/video_clips/:id',
+    {
       id: '@id',
       format: 'json'
     },

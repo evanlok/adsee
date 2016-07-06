@@ -78,7 +78,7 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
   function publish() {
     vm.publishing = true;
 
-    videoJobService.generate({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
+    videoJobService.generate({sceneCollectionId: vm.sceneCollection.id}).then(function () {
       var modal = $uibModal.open({
         templateUrl: modalTemplateUrl
       });

@@ -1,6 +1,7 @@
 /*@ngInject*/
 function VideoJobService($resource) {
-  var resource = $resource('/video_jobs/:id', {
+  var resource = $resource('/video_jobs/:id',
+    {
       id: '@id',
       format: 'json'
     },

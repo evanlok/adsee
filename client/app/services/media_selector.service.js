@@ -37,7 +37,7 @@ function MediaSelector() {
   };
 
   this.removeMediaSelectCallback = function (sceneAttributeName) {
-    delete mediaSelectedCallbacks[sceneAttributeName]
+    delete mediaSelectedCallbacks[sceneAttributeName];
   };
 
   this.reset = function () {
