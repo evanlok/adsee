@@ -1,15 +1,6 @@
 <div class="theme-settings">
-  <div class="">
-    <a href="" ng-click="$ctrl.configureAudio()" class="add-audio-button">
-       <i class="fa fa-microphone"></i> Add Audio
-    </a>
-    <div class="theme-settings-column color-picker-column">
-      <color-picker ng-model="$ctrl.sceneCollection.color"
-                    color-picker-format="'hex'"
-                    color-picker-swatch-pos="'right'"
-                    color-picker-on-change="$ctrl.update('color')"
-      ></color-picker>
-    </div>
+
+    <a href="" ng-click="$ctrl.displayMediaLibrary = true" class="media-library-button theme-settings-column"><i class="fa fa-file-o"></i> &nbsp;Media Library</a>
 
     <a href="" ng-click="$ctrl.configureFont()" class="theme-settings-column selecter-button">
       <i uib-popover="Select Font" popover-trigger="mouseenter" class="fa fa-font"></i> {{ $ctrl.currentFont.name || 'Choose a font' }}
@@ -20,11 +11,18 @@
 <!--       <div class="song-player">
         <song-player url="{{ $ctrl.currentSongUrl() }}"></song-player>
       </div> -->
-
-      
         {{ $ctrl.currentSong.name || 'Choose a song' }}
-      
     </a>
-    
-  </div>
+    <a href="" ng-click="$ctrl.configureAudio()" class="theme-settings-column add-audio-button">
+       <i class="fa fa-microphone"></i> Add Audio
+    </a>
+
+    <div class="theme-settings-column color-picker-column">
+      <color-picker ng-model="$ctrl.sceneCollection.color"
+                    color-picker-format="'hex'"
+                    color-picker-swatch-pos="'right'"
+                    color-picker-on-change="$ctrl.update('color')"
+      ></color-picker>
+    </div>
+
 </div>

@@ -1,16 +1,14 @@
 // Universal Elements
 
 .main-nav {
-  position: fixed;
-  height: 100vh;
-  width: 110px;
-  margin-top: -50px;
+  width: 100%;
   background-color: $color-9; 
   .logo {
     height: 50px;
+    width: 120px;
     background-color: $color-2;
     text-align: center;
-    display: block;
+    display: inline-block;
     img {
       width: 75%;
       margin: 13px auto 0px;
@@ -20,6 +18,11 @@
     list-style: none;
     padding: 15px;
     font-size: 14px;
+    float: right;
+    display: inline-block;
+    li {
+      display: inline-block;
+    }
   }
   a {
     color: $color-3;
@@ -29,7 +32,6 @@
   }
 }
 .main-content {
-  padding-left: 125px;
   margin-top: -50px;
   height: 100vh;
 }
@@ -272,9 +274,8 @@
 
 .video-nav {
 
-  padding: 20px 0px 0px 20px;
-  margin-bottom: 20px;
-  position: relative;
+  padding: 20px 0px 0px 0px;
+  position: absolute;
 
   ul {
     padding: 0px;
@@ -282,10 +283,11 @@
 
   li {
     font-size: 12px;
-    display: inline-block;
+    display: block;
     position: relative;
     vertical-align: top;
     height: 30px;
+    width: 100px;
     line-height: 30px;
     padding: 0 29px;
     background-color: $color-8;
@@ -296,57 +298,12 @@
       height: 100%;
     }
   }
-  li:before,
-  li:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
-  li + li {
-    margin-left: 1px;
-  }
-  li + li:before {
-    left: 0;
-    top: 0;
-    border-top: 15px solid transparent;
-    border-left: 15px solid $color-3;
-    border-bottom: 15px solid transparent;
-  }
-  li:first-child {
-    border-radius: 20px 0 0 20px;
-  }
-  li:last-child {
-    border-radius: 0 20px 20px 0;
-  }
-  li:not(:last-child) {
-    padding-right: 20px;
-  }
-  li:not(:last-child):after {
-    z-index: 1;
-    right: -15px;
-    bottom: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 15px solid $color-8;
-  }
-  li:hover {
-    background-color: $color-2;
-    a {
-      color: white;
-    }  
-  }
-  li:hover:after {
-    border-left-color: $color-2;
-  }
+
   .active {
     background-color: $color-2;
     a {
       color: $color-3;
     }
-  }
-  li.active:not(:last-child):after {
-    border-left: 15px solid $color-2;
   }
 
   @media screen and (max-width:720px) {
@@ -354,9 +311,19 @@
   }
 
 }
-
+.editor-container {
+  margin-top: 70px;
+  margin-left: 120px;
+  margin-right: 5px;
+}
+.scene-editor {
+  background-color: $color-7;
+  margin: 0px;
+  border-radius: 15px;
+  position: relative;
+}
 .video-name-header {
-  padding: 0px 25px;
+  padding: 15px 25px 0px;
   h1 {
     font-weight: bold;
     margin: 10px 0px 0px;
@@ -365,29 +332,34 @@
   }
 }
 .action-bar {
-  padding: 0px 25px 10px;
+  display: block;
+  padding: 0px 25px 15px;
+  border-bottom: 1px solid $color-10;
 }
 .industry-type-header {
-  width: 35%;
+  width: 55%;
   display: inline-block;
 }
 .top-action-bar {
-  width: 65%;
   display: inline-block;
+  height: 100%;
 }
 .industry-type-header {
   margin-top: 5px;
   color: $color-5;
   font-size: 12px;
-  float: left;
 }
 .theme-settings {
   .theme-settings-column {
-    width: 20%;
-    float: right;
-    margin-left: 2%;
+    height: 45px;
+    width:20%;
+    float: left;
+    border-right: 1px solid $color-10;
     i {
       color: $color-9;
+    }
+    &:last-child {
+      border-right: none;
     }
   }
   .aspect-ratio {
@@ -397,19 +369,27 @@
     width: 100%;
   }
   .selecter-button {
-    border: 1px solid $color-9;
-    border-radius: 5px;
-    padding: 6px 10px;
-    height: 34px;
-    line-height: 1.5;
+    padding: 12px;
     font-size: 14px;
-    overflow: hidden;
+    i {
+      margin-right: 5px;
+    }
   }
   .color-picker-wrapper .form-control, .color-picker-wrapper .input-group .input-group-addon {
-    border: 1px solid $color-9;
+    border: none;
+    border-radius: 0;
   }
   .color-picker-wrapper .input-group .input-group-addon {
     border-left: none;
+    border-radius: 0;
+    height: 44px;
+    border: 7px solid $color-7;
+    padding: 6px 15px;
+    margin-right: -1px;
+  }
+  .color-picker-input {
+    height: 44px;
+    background-color: $color-7;
   }
   .form-control {
     border-radius: 5px;
@@ -429,18 +409,9 @@
   .song-select-col select {
     padding-left: 30px;
   }
-  .add-audio-button {
-    float: right;
-    display: inline-block;
-    background-color: $color-2;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 30px;
+  .add-audio-button, .media-library-button {
+    padding: 12px;
     font-size: 14px; 
-    margin-left: 15px;
-    &:hover {
-      background-color: $color-1;
-    }
   }
 }
 .song-selecter, .font-selecter {
@@ -494,12 +465,8 @@
   }
 }
 .main-image {
-  padding-left: 15px;
   img {
     width: 100%;
-    -webkit-box-shadow: 0px 9px 86px 0px rgba(0,0,0,0.55);
-    -moz-box-shadow: 0px 9px 86px 0px rgba(0,0,0,0.55);
-    box-shadow: 0px 9px 86px 0px rgba(0,0,0,0.55);
   }
   .col-md-12 {
     padding: 0px;
@@ -542,35 +509,18 @@
   // -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-  padding: 0px 0px 0px 15px;
   height: 100%;
   z-index: 1;
   min-width: 320px;
-  max-width: 400px;
+  max-width: 350px;
   background-color: $color-7;
 }
 .content-panel {
   height: 100%;
-  background-color: $color-3;
   overflow: auto;
-  margin-top: 20px;
-  border-top-left-radius: 15px;
+  border-left: 1px solid $color-10;
 }
-.scene-toggle-right {
-  float: right;
-  .media-library-button {
-    background-color: $color-2;
-    color: white;
-    padding: 4px 15px;
-    border-radius: 50px;
-    display: inline-block;
-    margin: 6px 8px 0px 0px;
-    font-size: 14px;
-    &:hover {
-      background-color: $color-1;
-    }
-  }
-}
+
 .media-library {
   padding: 30px 40px 40px;
   position: relative;
@@ -743,10 +693,11 @@
   }
 
 }
+
 .scene-header {
-  height: 60px;
-  padding: 20px 10px 10px 25px;
   color: $color-5;
+  border-bottom: 1px solid $color-10;
+  height: 45px;
   h4 {
     font-weight: 700;
   }
@@ -808,10 +759,9 @@
   position: fixed;
   width: 100%;
   height: 100px;
-  background-color: hsla(0, 0%, 0.0000%, 0.7000);
   bottom: 0px;
   z-index: 20;
-  padding: 10px 110px 10px 10px;
+  padding: 0px;
   float: left;
   display: -webkit-box;
   display: -moz-box;
@@ -845,8 +795,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   justify-content: flex-start;
   align-content: space-between;
   align-items: flex-start;
+  margin-right: 155px;
 }
-
+.flex-item {
+  background-color: hsla(0, 0%, 0.0000%, 0.7000);
+}
 .flex-item:nth-child(1) {
   order: 0;
   flex: 0 1 auto;
@@ -881,6 +834,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .list-inline {
   height: 80px;
+  overflow-y: visible;
   .popover {
     // background: none;
     font-weight: 700;
@@ -955,6 +909,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: bold;
   background-color: hsla(0, 0%, 0.0000%, 0.7000);
   font-size: 12px;
+  &:hover {
+    background-color: $color-1;
+    color: white;
+  }
 }
 .transition-dot {
   position: absolute;
@@ -987,7 +945,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   vertical-align: middle;
   text-align: center;
   padding: 8px 30px;
-  margin-top: -10px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 22px;

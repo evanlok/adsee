@@ -17,13 +17,22 @@ var component = {
 };
 
 /*@ngInject*/
-function ThemeSettingsController($uibModal, songsService, fontsService) {
+function ThemeSettingsController($uibModal, songsService, fontsService, mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.fonts = fontsService.get();
     vm.songs = songsService.get();
+    vm.displayMediaLibrary = false;
     setCurrentSongAndFont();
+
+    mediaSelectorService.onMediaInsert(function () {
+      vm.displayMediaLibrary = true;
+    });
+
+    mediaSelectorService.onMediaSelected(function () {
+      vm.displayMediaLibrary = false;
+    });
   };
 
   vm.$onChanges = function (changes) {

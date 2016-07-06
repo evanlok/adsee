@@ -11,7 +11,7 @@
       <a class="transition-dot" uib-popover="transition: SlideUp" popover-trigger="mouseenter" popover-placement="left"></a>
       <div class="text-center scene-number">{{ $index + 1 }}</div>
       <a class="text-center delete-scene-thumb" ng-click="$ctrl.sceneEditor.removeScene(sceneContent)">
-        <i class="fa fa-trash"></i>
+        <i class="fa fa-close"></i>
       </a>
       <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
         <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
@@ -20,7 +20,7 @@
   </ul>
 </div>
 
-<div class="preview-button-wrapper" class="flex-item">
+<div class="preview-button-wrapper flex-item">
   <button class="preview-button" ng-click="$ctrl.sceneEditor.preview()" ng-disabled="$ctrl.sceneEditor.previewLoading">
     <i class="fa fa-play-circle-o" aria-hidden="true"></i> Preview
   </button>

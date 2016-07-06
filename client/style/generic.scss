@@ -18,7 +18,12 @@ body {
     family: $primary-font; // variables inside partials > _variables.scss
   }
   color: $color-5;
-  background-color: $color-3;
+  background:
+     url("body-bg-image.jpg")    /* image */
+     top / 900px 900px /* position / size */
+     repeat                /* repeat */
+     fixed                    /* attachment */
+     #283137;  
 }
 
 a, a:visited  {
