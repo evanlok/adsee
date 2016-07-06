@@ -9,10 +9,17 @@ ThemeVariantsController.prototype.edit = function () {
     allowClear: true
   };
 
+  var transitionSelectOptions = {
+    placeholder: 'Select a transition',
+    allowClear: true
+  };
+
   $('.scene-select').select2(sceneSelectOptions);
+  $('.transition-select').select2(transitionSelectOptions);
 
   $('#scenes').on('cocoon:before-insert', function (e, insertedItem) {
-    insertedItem.find('select').select2(sceneSelectOptions);
+    insertedItem.find('.scene-select').select2(sceneSelectOptions);
+    insertedItem.find('.transition-select').select2(transitionSelectOptions);
   });
 
   var scenesList = $('#scenes');

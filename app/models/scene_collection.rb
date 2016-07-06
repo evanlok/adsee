@@ -37,8 +37,8 @@ class SceneCollection < ActiveRecord::Base
     self.song = theme.song
     self.aspect_ratio = theme.theme_variants.default.aspect_ratio
 
-    theme.theme_variants.default.scenes.map do |scene|
-      scene_contents.create(scene: scene)
+    theme.theme_variants.default.theme_variant_scenes.each do |theme_variant_scene|
+      scene_contents.create(scene_id: theme_variant_scene.scene_id, transition_id: theme_variant_scene.transition_id)
     end
 
     save

@@ -4,4 +4,5 @@ class ThemeVariantScene < ActiveRecord::Base
   # Associations
   belongs_to :theme_variant
   belongs_to :scene
+  belongs_to :transition
 end
