@@ -45,7 +45,7 @@ end
   FadeIn: 'Fade In',
   FadeOut: 'Fade Out'
 }.each do |k, v|
-  Transition.create(name: v, value: k)
+  Transition.create(name: v, value: k, remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=#{v.gsub(' ', '+')}&w=200&h=100&txttrack=0")
 end
 
 %w(YouTube Facebook Twitter).each do |name|

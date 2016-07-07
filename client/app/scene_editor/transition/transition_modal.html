@@ -14,6 +14,7 @@
     <div class="row" ng-repeat="transitionGroup in transitionGroups">
       <div class="col-md-4" ng-repeat="transition in transitionGroup" class="text-center">
         <a href="" ng-class="{selected: selectedTransition.id === transition.id}" ng-click="$close(transition)">
+          <img ng-src="{{ transition.image.url }}" alt="{{ transition.name }}" title="{{ transition.name }}" class="img-responsive">
           {{ transition.name }}
         </a>
       </div>
