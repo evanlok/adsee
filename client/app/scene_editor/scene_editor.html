@@ -85,7 +85,8 @@
               </div>
 
               <transition-config scene-content="$ctrl.selectedSceneContent()"
-                                 on-update-transition="$ctrl.updateSceneContent($event)"></transition-config>
+                                 on-update-transition="$ctrl.updateSceneContent($event)"
+                                 ng-if="!$ctrl.lastScene()"></transition-config>
             </div>
 
             <!-- Extra Add Scene Button -->

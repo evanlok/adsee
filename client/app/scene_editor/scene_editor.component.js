@@ -199,8 +199,12 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     });
   }
 
-  function lastScene() {
-    return vm.selectedSceneContentIdx === (vm.sceneContents.length - 1);
+  function lastScene(sceneContent) {
+    if (sceneContent) {
+      return _.indexOf(vm.sceneContents, sceneContent) === vm.sceneContents.length - 1;
+    } else {
+      return vm.selectedSceneContentIdx === (vm.sceneContents.length - 1);
+    }
   }
 
   function preview() {
