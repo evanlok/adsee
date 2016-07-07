@@ -8,7 +8,8 @@ var component = {
   bindings: {
     sceneContent: '<',
     onUpdateTransition: '&'
-  }
+  },
+  transclude: true
 };
 
 /*@ngInject*/

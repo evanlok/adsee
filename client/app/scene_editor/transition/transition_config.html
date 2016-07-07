@@ -1,3 +1,5 @@
 <a href="" ng-click="$ctrl.openTransitionModal()">
-  Transition: {{ $ctrl.selectedTransition.name || 'None' }}
+  <ng-transclude>
+    Transition: {{ $ctrl.selectedTransition.name || 'None' }}
+  </ng-transclude>
 </a>
