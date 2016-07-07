@@ -1,4 +1,4 @@
-var themeSettings = angular.module('adsee.uploader', []);
+var themeSettings = angular.module('adsee.themeSettings', []);
 
 themeSettings
   .component('themeSettings', require('./theme_settings.component'))

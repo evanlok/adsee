@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.2.2/assets/css/emojione.min.css"/>
 
     <script>
-      angular.module('adsee.uploader').value('fonts', <%= raw @fonts.to_json %>);
-      angular.module('adsee.uploader').value('songs', <%= raw render(template: 'songs/index.json') %>);
-      angular.module('adsee.sceneEditor').value('transitions', <%= raw @transitions.to_json %>);
+      angular.module('adsee').value('fonts', <%= raw @fonts.to_json %>);
+      angular.module('adsee').value('songs', <%= raw render(template: 'songs/index.json') %>);
+      angular.module('adsee').value('transitions', <%= raw @transitions.to_json %>);
     </script>
 <% end %>

@@ -27,7 +27,7 @@
   <div class="scenes-row">
 
     <scene-list scene-contents="$ctrl.sceneContents"
-                selected-scene-content="$ctrl.selectedSceneContent"
+                selected-scene-content="$ctrl.selectedSceneContent()"
                 on-select="$ctrl.selectSceneContent(sceneContent)"
                 on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
                 on-add-scene="$ctrl.showAddScenePage()"
@@ -54,12 +54,12 @@
         <div class="scene-header">
           <h4 class="pull-left">
             Scene
-              {{ $ctrl.sceneContentPosition($ctrl.selectedSceneContent) }}. {{ $ctrl.selectedSceneContent.scene.name }}
+              {{ $ctrl.sceneContentPosition($ctrl.selectedSceneContent()) }}. {{ $ctrl.selectedSceneContent().scene.name }}
           </h4>
           <div class="scene-toggle-right">
             <a href="" ng-click="$ctrl.displayMediaLibrary = true" class="media-library-button"><i class="fa fa-file-o"></i> &nbsp;Media Library</a>
             <scene-navigator scene-contents="$ctrl.sceneContents"
-                             selected-scene-content="$ctrl.selectedSceneContent"
+                             selected-scene-content="$ctrl.selectedSceneContent()"
                              on-next="$ctrl.nextSceneContent()"
                              on-previous="$ctrl.previousSceneContent()">
             </scene-navigator>
@@ -67,14 +67,14 @@
         </div>
 
         <div class="main-image">
-          <div ng-if="$ctrl.selectedSceneContent.scene.guide_video_url">
-            <video-player url="{{ $ctrl.selectedSceneContent.scene.guide_video_url }}" autoplay="true"></video-player>
+          <div ng-if="$ctrl.selectedSceneContent().scene.guide_video_url">
+            <video-player url="{{ $ctrl.selectedSceneContent().scene.guide_video_url }}" autoplay="true"></video-player>
           </div>
         </div>
 
         <div class="scene-actionbar">
 
-            <a href="" class="delete-scene pull-left" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent)">
+            <a href="" class="delete-scene pull-left" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent())">
               <i class="fa fa-trash"></i> delete scene
             </a>
 
@@ -84,12 +84,9 @@
                 <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $ctrl.duration() | secondsToTime }}
               </div>
 
-              <select ng-model="$ctrl.selectedSceneContent.transition_id"
-                      ng-options="transition.id as transition.name for transition in $ctrl.transitions"
-                      ng-change="$ctrl.updateSceneContentTransition()">
-                <option value="">Select a transition</option>
-              </select>
-
+              <transition-config scene-content="$ctrl.selectedSceneContent()"
+                                 on-update-transition="$ctrl.updateSceneContent($event)">
+              </transition-config>
             </div>
 
             <!-- Extra Add Scene Button -->
@@ -106,7 +103,7 @@
       <div class="content-panel">
         <div class="content-wrapper">
 
-          <content-editor scene-content="$ctrl.selectedSceneContent"
+          <content-editor scene-content="$ctrl.selectedSceneContent()"
                           on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
           </content-editor>
 

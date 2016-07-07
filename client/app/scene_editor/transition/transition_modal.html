@@ -1,0 +1,26 @@
+<div class="transition-selector selecter-modal">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; cancel</span>
+  </button>
+  <div class="modal-header">
+    <h1>
+      transition selected: <span class="selected-name">{{ selectedTransition.name }}</span>
+    </h1>
+
+    Click on the transition panel to select it.
+  </div>
+
+  <div class="modal-body">
+    <div class="row" ng-repeat="transitionGroup in transitionGroups">
+      <div class="col-md-4" ng-repeat="transition in transitionGroup" class="text-center">
+        <a href="" ng-class="{selected: selectedTransition.id === transition.id}" ng-click="$close(transition)">
+          {{ transition.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-danger" ng-click="removeTransition()">Remove</button>
+  </div>
+</div>
