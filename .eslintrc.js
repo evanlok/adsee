@@ -2,9 +2,13 @@ module.exports = {
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
+    "es6": true,
+    "jasmine": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:jasmine/recommended"
+  ],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -26,6 +30,9 @@ module.exports = {
       "always"
     ]
   },
+  "plugins": [
+    "jasmine"
+  ],
   "globals": {
     "$": true,
     "_": true,
