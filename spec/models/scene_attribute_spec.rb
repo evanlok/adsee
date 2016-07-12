@@ -12,4 +12,12 @@ RSpec.describe SceneAttribute do
       end
     end
   end
+
+  describe '#config_attributes' do
+    let(:scene_attribute) { build(:scene_attribute, name: 'text', config: { size: 20, alignment: 'center' }) }
+
+    it 'returns hash of config attributes prefixed with scene attribute name' do
+      expect(scene_attribute.config_attributes).to eq({ text_size: 20, text_alignment: 'center' }.stringify_keys)
+    end
+  end
 end
