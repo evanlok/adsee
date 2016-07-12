@@ -39,7 +39,9 @@ class SceneAttributesController < ApplicationController
   private
 
   def scene_attribute_params
-    params.require(:scene_attribute).permit(:name, :value)
+    params.require(:scene_attribute).permit(:name, :value).tap do |whitelisted|
+      whitelisted[:config] = params[:scene_attribute][:config] if params[:scene_attribute][:config]
+    end
   end
 
   def scene_attribute_error(ex)

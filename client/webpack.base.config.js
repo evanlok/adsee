@@ -21,6 +21,7 @@ module.exports = {
       'angular-ui-bootstrap',
       'angular-tree-control',
       'angular-easyfb',
+      'angularjs-slider',
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',

@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; close</span>
+  </button>
+
+  <h2>Configure {{ sceneAttribute.name }}</h2>
+</div>
+
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>Start time and duration</label>
+
+      <rzslider rz-slider-model="config.start_time"
+                rz-slider-high="config.end_time"
+                rz-slider-options="sliderOptions">
+      </rzslider>
+    </div>
+
+    <div class="form-group">
+      <label>Speed</label>
+
+      <rzslider rz-slider-model="config.speed"
+                rz-slider-options="{floor: 0, ceil: 4, step: 0.25, precision: 2}">
+      </rzslider>
+    </div>
+
+    <div class="form-group">
+      <label>Volume</label>
+
+      <rzslider rz-slider-model="config.volume"
+                rz-slider-options="{floor: 0, ceil: 100}">
+      </rzslider>
+    </div>
+
+    <div class="form-group">
+      <label for="config-filter">Filter</label>
+
+      <select id="config-filter" class="form-control" ng-model="config.filter"
+              ng-options="filter.value as filter.name for filter in filters">
+        <option value="">None</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  <button class="btn btn-primary" ng-click="save()">Save</button>
+</div>

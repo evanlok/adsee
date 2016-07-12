@@ -14,6 +14,7 @@ angular.module('adsee', [
   'timer',
   'bcherny/formatAsCurrency',
   'ezfb',
+  'rzModule',
   require('./admin/admin.module'),
   require('./shared/shared.module'),
   require('./layout/layout.module'),

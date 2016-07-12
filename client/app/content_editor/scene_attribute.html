@@ -8,6 +8,10 @@
              ng-change="$ctrl.update()">
       <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="{{ $ctrl.sceneAttribute.display_name }}">
       </label>
+
+      <a href="" ng-click="$ctrl.configureAttribute()" ng-if="$ctrl.sceneAttribute.type == 'text'">
+        <i class="fa fa-cog"></i>
+      </a>
     </div>
   </div>
 

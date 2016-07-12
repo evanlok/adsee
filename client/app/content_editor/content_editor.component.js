@@ -12,12 +12,13 @@ var component = {
   }
 };
 
-/*@ngInject*/ function ContentEditorController() {
+/*@ngInject*/
+function ContentEditorController() {
   var vm = this;
   vm.updateSceneAttribute = updateSceneAttribute;
 
-  function updateSceneAttribute(sceneAttribute, value) {
-    vm.onUpdateSceneAttribute({sceneAttribute: sceneAttribute, value: value});
+  function updateSceneAttribute(sceneAttribute, attributes) {
+    vm.onUpdateSceneAttribute({sceneAttribute: sceneAttribute, attributes: attributes});
   }
 }
 

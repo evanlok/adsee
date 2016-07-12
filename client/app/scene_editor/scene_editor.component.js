@@ -88,22 +88,23 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     });
   }
 
-  function updateSceneAttribute(sceneAttribute, value) {
-    sceneAttribute.value = value || null;
+  function updateSceneAttribute(sceneAttribute, attributes) {
     var promise;
 
     if (sceneAttribute.id) {
-      promise = sceneAttributeService.update({id: sceneAttribute.id}, {value: sceneAttribute.value});
+      promise = sceneAttributeService.update({id: sceneAttribute.id}, attributes);
     } else {
-      promise = sceneAttributeService.save({sceneContentId: vm.selectedSceneContent().id}, {
+      var params = {
         name: sceneAttribute.name,
-        type: sceneAttribute.type,
-        value: sceneAttribute.value
-      });
+        type: sceneAttribute.type
+      };
+
+      _.assign(params, attributes);
+      promise = sceneAttributeService.save({sceneContentId: vm.selectedSceneContent().id}, params);
     }
 
     promise.then(function onSuccess(data) {
-      _.merge(sceneAttribute, data);
+      _.assign(sceneAttribute, data);
       sceneAttribute.invalid = false;
     }, function onError() {
       sceneAttribute.invalid = true;

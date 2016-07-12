@@ -1,7 +1,7 @@
 <div class="content-edit-wrapper">
   <div ng-repeat="sceneAttribute in $ctrl.sceneContent.scene_attributes">
     <scene-attribute scene-attribute="sceneAttribute"
-                     on-update="$ctrl.updateSceneAttribute(sceneAttribute, value)"></scene-attribute>
+                     on-update="$ctrl.updateSceneAttribute(sceneAttribute, attributes)"></scene-attribute>
   </div>
 
   <a href="" ng-if="!$ctrl.sceneEditor.lastScene()" ng-click="$ctrl.sceneEditor.nextSceneContent()" class="next">
