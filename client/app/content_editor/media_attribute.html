@@ -14,7 +14,7 @@
       <img ng-class="{ 'image-padding' : $ctrl.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
     </div>
 
-    <a href="" ng-click="$ctrl.sceneAttributeCtrl.configureAttribute()" ng-if="$ctrl.sceneAttribute.type === 'video'">
+    <a href="" ng-click="$ctrl.sceneAttributeCtrl.configureAttribute()">
       <i class="fa fa-cog"></i>
     </a>
   </div>

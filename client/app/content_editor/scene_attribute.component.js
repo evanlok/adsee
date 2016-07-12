@@ -3,6 +3,8 @@ var textModalCtrl = require('./scene_attribute_configuration/text_modal.controll
 var textModalTemplateUrl = require('./scene_attribute_configuration/text_modal.html');
 var videoModalCtrl = require('./scene_attribute_configuration/video_modal.controller');
 var videoModalTemplateUrl = require('./scene_attribute_configuration/video_modal.html');
+var imageModalCtrl = require('./scene_attribute_configuration/image_modal.controller');
+var imageModalTemplateUrl = require('./scene_attribute_configuration/image_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -45,6 +47,11 @@ function SceneAttributeController($uibModal) {
       case 'video':
         ctrl = videoModalCtrl;
         templateUrl = videoModalTemplateUrl;
+        break;
+      case 'icon':
+      case 'image':
+        ctrl = imageModalCtrl;
+        templateUrl = imageModalTemplateUrl;
         break;
     }
 
