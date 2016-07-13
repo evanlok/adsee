@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.2.2/assets/css/emojione.min.css"/>
 
     <script>
-      angular.module('adsee').value('fonts', <%= raw @fonts.to_json %>);
+      angular.module('adsee').value('fonts', <%= raw render(template: 'fonts/index.json') %>);
       angular.module('adsee').value('songs', <%= raw render(template: 'songs/index.json') %>);
       angular.module('adsee').value('transitions', <%= raw @transitions.to_json %>);
     </script>

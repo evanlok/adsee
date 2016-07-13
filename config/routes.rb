@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   resources :video_clips, only: [:index, :create, :destroy]
   resources :icons, only: :index
   resources :facebook_targeting_specs, only: [:index]
+  resources :fonts, only: :index
+  resources :songs, only: :index
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback

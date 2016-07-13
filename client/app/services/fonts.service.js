@@ -1,10 +1,10 @@
 /*@ngInject*/
-function songsService($q, songs) {
+function fontsService($q, fonts) {
   this.query = function () {
     var deferred = $q.defer();
-    deferred.resolve(songs);
+    deferred.resolve(fonts);
     return deferred.promise;
   };
 }
 
-module.exports = songsService;
+module.exports = fontsService;

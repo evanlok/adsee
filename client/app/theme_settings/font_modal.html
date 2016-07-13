@@ -16,7 +16,7 @@
       <div class="col-md-3" ng-repeat="font in fontGroup" class="text-center">
         <a href="" ng-class="{selected: currentFont.id === font.id}"
            ng-click="$close(font)">
-          <img ng-src="{{ font.image.url }}" alt="{{ font.name }}" title="{{ font.name }}" class="img-responsive">
+          <img ng-src="{{ font.image_url }}" alt="{{ font.name }}" title="{{ font.name }}" class="img-responsive">
         </a>
       </div>
     </div>
