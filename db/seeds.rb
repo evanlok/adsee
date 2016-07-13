@@ -20,8 +20,8 @@ end
   Font.create(name: "Font #{i+1}", url: "https://www.adsee.com/font-#{i+1}.ttf", remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=Font+#{i+1}&w=200&h=100&txttrack=0")
 end
 
-5.times do |i|
-  Filter.create(name: "Filter #{i+1}", value: "filter_#{i+1}", remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=Filter+#{i+1}&w=200&h=100&txttrack=0")
+%w(blur dilate erode gray invert opaque posterize threshold).each do |name|
+  Filter.create(name: name.titleize, value: name, remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=#{name.titleize}&w=200&h=100&txttrack=0")
 end
 
 ['Real Estate', 'Automotive', 'Restaurant'].each do |name|

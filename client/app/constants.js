@@ -26,16 +26,6 @@ constants
       standard: 'Standard - Show your ads throughout the day',
       no_pacing: 'Accelerated - Show your ads as quickly as possible'
     }
-  })
-  .constant('filters', [
-    {name: 'Blur', value: 'blur', param: 6},
-    {name: 'Dilate', value: 'dilate'},
-    {name: 'Erode', value: 'erode'},
-    {name: 'Gray', value: 'gray'},
-    {name: 'Invert', value: 'invert'},
-    {name: 'Opaque', value: 'opaque'},
-    {name: 'Posterize', value: 'posterize', param: 4},
-    {name: 'Threshold', value: 'threshold'}
-  ]);
+  });
 
 module.exports = constants.name;

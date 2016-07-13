@@ -12,6 +12,7 @@ services
   .service('facebookTargetingSpecService', require('./facebook_targeting_spec.service'))
   .service('userService', require('./user.service'))
   .service('iconService', require('./icon.service'))
-  .service('fontsService', require('./fonts.service'));
+  .service('fontsService', require('./fonts.service'))
+  .service('filterService', require('./filter.service'));
 
 module.exports = services.name;
