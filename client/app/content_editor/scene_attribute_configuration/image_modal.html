@@ -7,8 +7,16 @@
 </div>
 
 <div class="modal-body">
-  <filter-selector selected-filter="{{ config.filter }}" on-select="selectFilter(filter)" on-remove="resetFilter()">
-  </filter-selector>
+  <uib-tabset active="activeTab" justified="true">
+    <uib-tab index="0" heading="Settings">
+      <color-settings config="config" on-change="updateColorSettings(config)"></color-settings>
+    </uib-tab>
+
+    <uib-tab index="1" heading="Filter">
+      <filter-selector selected-filter="{{ config.filter }}" on-select="selectFilter(filter)" on-remove="resetFilter()">
+      </filter-selector>
+    </uib-tab>
+  </uib-tabset>
 </div>
 
 <div class="modal-footer">

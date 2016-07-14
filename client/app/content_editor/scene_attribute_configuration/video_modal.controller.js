@@ -19,6 +19,7 @@ function VideoModalController($scope, $uibModalInstance, $timeout, sceneAttribut
 
   $scope.selectFilter = selectFilter;
   $scope.resetFilter = resetFilter;
+  $scope.updateColorSettings = updateColorSettings;
   $scope.save = save;
 
   function selectFilter(filter) {
@@ -27,6 +28,10 @@ function VideoModalController($scope, $uibModalInstance, $timeout, sceneAttribut
 
   function resetFilter() {
     delete $scope.config.filter;
+  }
+
+  function updateColorSettings(config) {
+    _.assign($scope.config, config);
   }
   
   function save() {
