@@ -19,7 +19,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
 
   vm.$onInit = function () {
     vm.sceneContents = [];
-    vm.selectedSceneContent = {};
+    vm.selectedSceneContentIdx = 0;
     vm.transitions = transitionsService.get();
     vm.displayAddScene = false;
     vm.displayMediaLibrary = false;
@@ -41,8 +41,9 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     }
   };
 
+  vm.selectedSceneContent = selectedSceneContent;
   vm.updateSceneCollection = updateSceneCollection;
-  vm.updateSceneContentTransition = updateSceneContentTransition;
+  vm.updateSceneContent = updateSceneContent;
   vm.updateSceneAttribute = updateSceneAttribute;
   vm.selectSceneContent = selectSceneContent;
   vm.showAddScenePage = showAddScenePage;
@@ -59,12 +60,15 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   function fetchSceneContents() {
     sceneContentService.query({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       vm.sceneContents = data;
-      vm.selectedSceneContent = data[0];
 
       if (!vm.sceneContents.length) {
         vm.displayAddScene = true;
       }
     });
+  }
+
+  function selectedSceneContent() {
+    return vm.sceneContents[vm.selectedSceneContentIdx];
   }
 
   function updateSceneCollection(prop, value) {
@@ -75,28 +79,32 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     });
   }
 
-  function updateSceneContentTransition() {
-    sceneContentService.update({id: vm.selectedSceneContent.id}, vm.selectedSceneContent).then(function (data) {
-      _.merge(vm.selectedSceneContent, data);
+  function updateSceneContent($event) {
+    var sceneContent = $event.sceneContent;
+
+    sceneContentService.update({id: sceneContent.id}, sceneContent).then(function (data) {
+      var index = _.indexOf(vm.sceneContents, sceneContent);
+      vm.sceneContents[index] = data;
     });
   }
 
-  function updateSceneAttribute(sceneAttribute, value) {
-    sceneAttribute.value = value || null;
+  function updateSceneAttribute(sceneAttribute, attributes) {
     var promise;
 
     if (sceneAttribute.id) {
-      promise = sceneAttributeService.update({id: sceneAttribute.id}, {value: sceneAttribute.value});
+      promise = sceneAttributeService.update({id: sceneAttribute.id}, attributes);
     } else {
-      promise = sceneAttributeService.save({sceneContentId: vm.selectedSceneContent.id}, {
+      var params = {
         name: sceneAttribute.name,
-        type: sceneAttribute.type,
-        value: sceneAttribute.value
-      });
+        type: sceneAttribute.type
+      };
+
+      _.assign(params, attributes);
+      promise = sceneAttributeService.save({sceneContentId: vm.selectedSceneContent().id}, params);
     }
 
     promise.then(function onSuccess(data) {
-      _.merge(sceneAttribute, data);
+      _.assign(sceneAttribute, data);
       sceneAttribute.invalid = false;
     }, function onError() {
       sceneAttribute.invalid = true;
@@ -104,7 +112,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   }
 
   function selectSceneContent(sceneContent) {
-    vm.selectedSceneContent = sceneContent;
+    vm.selectedSceneContentIdx = _.indexOf(vm.sceneContents, sceneContent);
     vm.activeTab = 0;
     mediaSelectorService.reset();
   }
@@ -153,7 +161,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
 
     modal.result.then(function () {
       sceneContentService.delete({id: sceneContent.id}).then(function () {
-        if (sceneContent === vm.selectedSceneContent) {
+        if (sceneContent === vm.selectedSceneContent()) {
           var index = _.indexOf(vm.sceneContents, sceneContent);
 
           if (index == 0) {
@@ -171,13 +179,11 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   }
 
   function previousSceneContent() {
-    var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) - 1;
-    selectSceneContent(vm.sceneContents[index]);
+    selectSceneContent(vm.sceneContents[vm.selectedSceneContentIdx - 1]);
   }
 
   function nextSceneContent() {
-    var index = _.indexOf(vm.sceneContents, vm.selectedSceneContent) + 1;
-    selectSceneContent(vm.sceneContents[index]);
+    selectSceneContent(vm.sceneContents[vm.selectedSceneContentIdx + 1]);
   }
 
   function sceneContentPosition(sceneContent) {
@@ -194,8 +200,12 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     });
   }
 
-  function lastScene() {
-    return _.indexOf(vm.sceneContents, vm.selectedSceneContent) === (vm.sceneContents.length - 1);
+  function lastScene(sceneContent) {
+    if (sceneContent) {
+      return _.indexOf(vm.sceneContents, sceneContent) === vm.sceneContents.length - 1;
+    } else {
+      return vm.selectedSceneContentIdx === (vm.sceneContents.length - 1);
+    }
   }
 
   function preview() {

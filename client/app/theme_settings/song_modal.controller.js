@@ -1,9 +1,15 @@
 var Howl = require('howler').Howl;
+var chunkify = require('../../js/chunkify');
 
 /*@ngInject*/
 function SongModalController($scope, $uibModalInstance, currentSong, songsService) {
   $scope.currentSong = currentSong;
-  $scope.groupedSongs = _.chunk(songsService.get(), 4);
+
+  songsService.query().then(function (data) {
+    $scope.songsByCategory = _.groupBy(data, 'song_category');
+    $scope.songCategoryGroups = chunkify(_.keys($scope.songsByCategory), 4, true);
+  });
+
   $scope.songPlaying = undefined;
   var sound;
 

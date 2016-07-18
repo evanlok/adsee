@@ -23,7 +23,7 @@ class Admin::TransitionsController < Admin::BaseController
   end
 
   def update
-    if @transition.save
+    if @transition.update(transition_params)
       redirect_to edit_admin_transition_url(@transition), notice: "Updated Transition: #{@transition.name}"
     else
       render :edit

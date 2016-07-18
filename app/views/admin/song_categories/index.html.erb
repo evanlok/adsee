@@ -1,0 +1,32 @@
+<h1 class="page-header">Songs</h1>
+
+<p>
+  <%= link_to 'New Song Category', new_admin_song_category_path, target: '_self' %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th colspan="2">Name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @song_categories.each do |song_category| %>
+    <tr>
+      <td><%= song_category.name %></td>
+      <td class="actions">
+        <%= link_to [:edit, :admin, song_category], title: 'Edit', target: '_self' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+
+        <%= link_to [:admin, song_category], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @song_categories %>

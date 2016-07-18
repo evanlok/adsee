@@ -6,7 +6,8 @@ RSpec.describe VideoGenerator do
   let(:scene_collection) { create(:scene_collection, font: font, song: song) }
   let(:scene) { create(:scene, data_attributes: [{ name: 'city', type: 'text' }, { name: 'count', type: 'number' }]) }
   let!(:scene_content) { create(:scene_content, scene_collection: scene_collection, scene: scene) }
-  let!(:scene_attribute_text) { create(:text_attribute, scene_content: scene_content, name: 'city') }
+  let(:config) { { size: 20, alignment: 'center' } }
+  let!(:scene_attribute_text) { create(:text_attribute, scene_content: scene_content, name: 'city', config: config) }
   let!(:scene_attribute_number) { create(:number_attribute, scene_content: scene_content, name: 'count') }
   subject { VideoGenerator.new(scene_collection) }
 
@@ -30,6 +31,8 @@ RSpec.describe VideoGenerator do
             transition_duration: scene_content.transition_duration,
             data: {
               city: scene_attribute_text.value,
+              city_size: 20,
+              city_alignment: 'center',
               count: scene_attribute_number.value
             }.stringify_keys
           }

@@ -434,7 +434,7 @@
   // -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-  height: 100%;
+  height: 100vh;
   z-index: 1;
   min-width: 320px;
   max-width: 350px;
@@ -869,7 +869,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .content-wrapper {
-  padding: 0px 40px;
+  padding: 0px 5px 280px 40px;
+  overflow: scroll;
 }
 .content-edit-wrapper {
   color: $color-5;
@@ -880,6 +881,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     background-color: $color-3;
     border-bottom: 1px solid $color-8;
     height: 25px;
+  }
+  .settings-cog {
+    float: right;
+    margin: 3px 5px 0px 0px;
   }
   h4 {
     margin-bottom: 20px;

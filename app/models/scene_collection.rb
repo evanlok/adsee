@@ -19,8 +19,9 @@ class SceneCollection < ActiveRecord::Base
   validates :user, presence: true
 
   # Callbacks
-  after_save :delete_audio_from_s3, if: :audio_changed?
+  after_save :delete_old_audio_from_s3, if: :audio_changed?
   after_destroy :delete_hal_record
+  after_destroy :delete_audio_from_s3
 
   enum status: { draft: 0, generating: 1, generated: 2, failed: 3 }
 
@@ -79,12 +80,19 @@ class SceneCollection < ActiveRecord::Base
   end
 
   def delete_audio_from_s3
-    return unless audio
+    delete_from_s3(audio) if audio.present?
+  end
 
+  def delete_old_audio_from_s3
+    old_audio = audio_change.first
+    delete_from_s3(old_audio) if old_audio.present?
+  end
+
+  def delete_from_s3(key)
     s3 = Aws::S3::Client.new
     s3.delete_object(
       bucket: ENV['S3_BUCKET_NAME'],
-      key: audio
+      key: key
     )
   rescue => e
     Honeybadger.notify(e, context: { id: id })

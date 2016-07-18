@@ -2,7 +2,7 @@ class Admin::SongsController < Admin::BaseController
   before_action :load_song, only: [:edit, :update, :destroy]
 
   def index
-    @songs = Song.order(:name).page(params[:page])
+    @songs = Song.includes(:song_category).order(:name).page(params[:page])
   end
 
   def new
@@ -23,7 +23,7 @@ class Admin::SongsController < Admin::BaseController
   end
 
   def update
-    if @song.save
+    if @song.update(song_params)
       redirect_to edit_admin_song_url(@song), notice: "Updated Song: #{@song.name}"
     else
       render :edit

@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @filter] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :value %>
+    <%= render 'admin/shared/image_form_field', f: f, name: :image %>
+
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', admin_filters_path, class: 'btn btn-default', target: '_self' %>
+<% end %>

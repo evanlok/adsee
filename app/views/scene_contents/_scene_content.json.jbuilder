@@ -4,6 +4,8 @@ json.scene do
   json.partial! 'scenes/scene', scene: scene_content.scene
 end
 
+json.transition_name scene_content.transition&.name
+
 json.scene_attributes scene_content.scene.data_attributes do |data_attribute|
   scene_attr = scene_content.scene_attributes.find { |scene_attr| scene_attr.name == data_attribute['name'] }
 

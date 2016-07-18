@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; close</span>
+  </button>
+
+  <h2>Configure {{ sceneAttribute.name }}</h2>
+</div>
+
+<div class="modal-body">
+  <uib-tabset active="activeTab" justified="true">
+    <uib-tab index="0" heading="Settings">
+      <form>
+        <div class="form-group">
+          <label for="config-size">Size</label>
+          <input type="number" id="config-size" class="form-control" ng-model="config.size"
+                 placeholder="Leave blank to use default">
+        </div>
+
+        <div class="form-group">
+          <label for="config-alignment">Alignment</label>
+          <select id="config-alignment" class="form-control" ng-model="config.alignment">
+            <option value="">Default</option>
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Color</label>
+
+          <div ng-if="!editingColor && !config.color">
+            No color selected: <a href="" ng-click="editColor()">change</a>
+          </div>
+
+          <div class="row" ng-if="config.color || editingColor">
+            <div class="col-md-10">
+              <color-picker ng-model="config.color"
+                            color-picker-format="'hex'">
+              </color-picker>
+            </div>
+
+            <div class="col-md-2">
+              <a href="" ng-click="resetColor()">
+                <i class="fa fa-close"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Background</label>
+
+          <div ng-if="!editingBackgroundColor && !config.background_color">
+            No background color selected: <a href="" ng-click="editBackgroundColor()">change</a>
+          </div>
+
+          <div class="row" ng-if="config.background_color || editingBackgroundColor">
+            <div class="col-md-10">
+              <color-picker ng-model="config.background_color"
+                            color-picker-format="'hex'">
+              </color-picker>
+            </div>
+
+            <div class="col-md-2">
+              <a href="" ng-click="resetBackgroundColor()">
+                <i class="fa fa-close"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </uib-tab>
+
+    <uib-tab index="1" heading="Font">
+      <p>
+        <a href="" ng-click="resetFont()">Reset font</a>
+      </p>
+
+      <div class="row" ng-repeat="fontGroup in groupedFonts">
+        <div class="col-md-4" ng-repeat="font in fontGroup" class="text-center">
+          <a href="" ng-class="{selected: config.font === font.url}"
+             ng-click="selectFont(font)">
+            <img ng-src="{{ font.image_url }}" alt="{{ font.name }}" title="{{ font.name }}" class="img-responsive">
+          </a>
+        </div>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  <button class="btn btn-primary" ng-click="save()">Save</button>
+</div>

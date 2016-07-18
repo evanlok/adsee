@@ -38,4 +38,12 @@ class SceneAttribute < ActiveRecord::Base
   def validatable?
     true
   end
+
+  def config_attributes
+    return {} unless config
+
+    config.transform_keys do |key|
+      "#{name}_#{key}"
+    end
+  end
 end

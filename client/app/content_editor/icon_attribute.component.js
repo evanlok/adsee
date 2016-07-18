@@ -34,7 +34,7 @@ function IconAttributeController(mediaSelectorService) {
   function onMediaSelected(icon) {
     vm.value = icon.id;
     vm.name = icon.name;
-    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
+    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, attributes: {value: vm.value}});
   }
 }
 

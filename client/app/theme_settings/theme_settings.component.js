@@ -17,21 +17,13 @@ var component = {
 };
 
 /*@ngInject*/
-function ThemeSettingsController($uibModal, songsService, fontsService, mediaSelectorService) {
+
+function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.fonts = fontsService.get();
-    vm.songs = songsService.get();
-    vm.displayMediaLibrary = false;
-    setCurrentSongAndFont();
-
-    mediaSelectorService.onMediaInsert(function () {
-      vm.displayMediaLibrary = true;
-    });
-
-    mediaSelectorService.onMediaSelected(function () {
-      vm.displayMediaLibrary = false;
+    $q.all([fetchFonts(), fetchSongs()]).then(function () {
+      setCurrentSongAndFont();
     });
   };
 
@@ -46,6 +38,18 @@ function ThemeSettingsController($uibModal, songsService, fontsService, mediaSel
   vm.configureAudio = configureAudio;
   vm.configureFont = configureFont;
   vm.configureSong = configureSong;
+
+  function fetchFonts() {
+    return fontsService.query().then(function (data) {
+      vm.fonts = data;
+    });
+  }
+
+  function fetchSongs() {
+    return songsService.query().then(function (data) {
+      vm.songs = data;
+    });
+  }
 
   function setCurrentSongAndFont() {
     vm.currentFont = _.find(vm.fonts, {id: vm.sceneCollection.font_id});

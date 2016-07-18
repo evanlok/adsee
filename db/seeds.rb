@@ -11,9 +11,17 @@ User.create(
   admin: true
 )
 
+3.times do |i|
+  SongCategory.create(name: "Category #{i+1}")
+end
+
 5.times do |i|
-  Song.create(name: "Song #{i+1}", url: "https://s3.amazonaws.com/vejeo-stage/vidgenie/audio/music/energetic/energetic-#{i+1}.mp3")
-  Font.create(name: "Font #{i+1}", url: "https://www.adsee.com/font-#{i+1}.ttf", remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=Font+#{i}&w=200&h=100&txttrack=0")
+  Song.create(name: "Song #{i+1}", url: "https://s3.amazonaws.com/vejeo-stage/vidgenie/audio/music/energetic/energetic-#{i+1}.mp3", song_category: SongCategory.order('rand()').first)
+  Font.create(name: "Font #{i+1}", url: "https://www.adsee.com/font-#{i+1}.ttf", remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=Font+#{i+1}&w=200&h=100&txttrack=0")
+end
+
+%w(blur dilate erode gray invert opaque posterize threshold).each do |name|
+  Filter.create(name: name.titleize, value: name, remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=#{name.titleize}&w=200&h=100&txttrack=0")
 end
 
 ['Real Estate', 'Automotive', 'Restaurant'].each do |name|
@@ -41,7 +49,7 @@ end
   FadeIn: 'Fade In',
   FadeOut: 'Fade Out'
 }.each do |k, v|
-  Transition.create(name: v, value: k)
+  Transition.create(name: v, value: k, remote_image_url: "https://placeholdit.imgix.net/~text?txtsize=25&txt=#{v.gsub(' ', '+')}&w=200&h=100&txttrack=0")
 end
 
 %w(YouTube Facebook Twitter).each do |name|

@@ -65,6 +65,7 @@ class VideoGenerator
 
       scene_params[:data] = scene_content.scene_attributes.each_with_object({}) do |scene_attribute, data|
         data[scene_attribute.name] = scene_attribute.value
+        data.merge!(scene_attribute.config_attributes)
       end
 
       scene_params

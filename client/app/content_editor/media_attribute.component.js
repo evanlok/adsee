@@ -11,7 +11,8 @@ var component = {
   }
 };
 
-/*@ngInject*/ function MediaAttributeController(mediaSelectorService) {
+/*@ngInject*/
+function MediaAttributeController(mediaSelectorService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -34,10 +35,10 @@ var component = {
   function onMediaSelected(media) {
     vm.value = media.id;
     vm.filename = media.filename;
-    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, value: vm.value});
+    vm.sceneAttributeCtrl.onUpdate({sceneAttribute: vm.sceneAttribute, attributes: {value: vm.value, config: {}}});
   }
 
-  function isVideo () {
+  function isVideo() {
     return vm.sceneAttribute.type === 'video';
   }
 }

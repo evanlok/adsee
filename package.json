@@ -4,11 +4,12 @@
   "description": "== README",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start client/karma.conf.js --single-run",
     "build": "cd client && webpack -d --config webpack.dev.config.js --bail",
     "build:production": "cd client && NODE_ENV=production webpack --config webpack.production.config.js --bail",
     "start": "cd client && webpack-dev-server --inline --hot --config webpack.dev.config.js",
-    "eslint": "eslint client app/assets/javascripts"
+    "eslint": "eslint client app/assets/javascripts",
+    "test-watch": "karma start client/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -25,9 +26,10 @@
     "angular-easyfb": "^1.5.1",
     "angular-resource": "^1.5.7",
     "angular-timer": "^1.3.3",
-    "angular-tree-control": "^0.2.26",
+    "angular-tree-control": "^0.2.27",
     "angular-ui-bootstrap": "^1.3.3",
     "angularjs-color-picker": "^1.1.7",
+    "angularjs-slider": "^5.4.0",
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.3.7",
     "babel-core": "^6.10.4",
@@ -35,6 +37,7 @@
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "bootstrap-sass": "^3.3.6",
+    "bowser": "^1.4.1",
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -67,16 +70,24 @@
     "slick-carousel": "^1.6.0",
     "sortablejs": "^1.4.2",
     "style-loader": "^0.13.1",
-    "tinycolor2": "^1.3.0",
-    "ui-select": "^0.18.0",
+    "tinycolor2": "^1.4.1",
+    "ui-select": "^0.18.1",
     "url-loader": "^0.5.7",
     "video.js": "^5.10.7",
     "webpack": "^1.13.1",
-    "worker-loader": "^0.7.0"
+    "worker-loader": "^0.7.1"
   },
   "devDependencies": {
+    "angular-mocks": "^1.5.7",
     "browserify": "^13.0.1",
     "eslint": "^3.0.1",
+    "eslint-plugin-jasmine": "^1.8.1",
+    "jasmine": "^2.4.1",
+    "karma": "^1.1.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
     "webpack-dev-server": "^1.14.1"
   }
 }

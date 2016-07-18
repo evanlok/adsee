@@ -1,0 +1,40 @@
+<h1 class="page-header">Filters</h1>
+
+<p>
+  <%= link_to 'New Filter', new_admin_filter_path, target: '_self' %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th colspan="2">Image</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @filters.each do |filter| %>
+      <tr>
+        <td><%= filter.name %></td>
+        <td><%= filter.value %></td>
+        <td>
+          <% if filter.image? %>
+              <%= image_tag filter.image.url %>
+          <% end %>
+        </td>
+        <td class="actions">
+          <%= link_to [:edit, :admin, filter], title: 'Edit', target: '_self' do %>
+              <i class="fa fa-pencil"></i>
+          <% end %>
+
+          <%= link_to [:admin, filter], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @filters %>

@@ -46,6 +46,9 @@ Rails.application.routes.draw do
   resources :video_clips, only: [:index, :create, :destroy]
   resources :icons, only: :index
   resources :facebook_targeting_specs, only: [:index]
+  resources :fonts, only: :index
+  resources :songs, only: :index
+  resources :filters, only: :index
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
@@ -61,6 +64,7 @@ Rails.application.routes.draw do
     end
 
     resources :scene_categories
+    resources :song_categories
     resources :songs
     resources :fonts
     resources :themes
@@ -72,6 +76,7 @@ Rails.application.routes.draw do
     resources :facebook_targeting_specs
     resources :images
     resources :video_clips
+    resources :filters
   end
 
   # Angular route globbing

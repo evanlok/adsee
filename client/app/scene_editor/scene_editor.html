@@ -22,13 +22,13 @@
 
     <div class="scenes-row">
 
-      <scene-list scene-contents="$ctrl.sceneContents"
-                  selected-scene-content="$ctrl.selectedSceneContent"
-                  on-select="$ctrl.selectSceneContent(sceneContent)"
-                  on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
-                  on-add-scene="$ctrl.showAddScenePage()"
-                  class="scene-thumbs-wrapper">
-      </scene-list>
+    <scene-list scene-contents="$ctrl.sceneContents"
+                selected-scene-content="$ctrl.selectedSceneContent()"
+                on-select="$ctrl.selectSceneContent(sceneContent)"
+                on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
+                on-add-scene="$ctrl.showAddScenePage()"
+                class="scene-thumbs-wrapper">
+    </scene-list>
 
     </div>
 
@@ -59,7 +59,9 @@
             </div>
 <!--             <div class="scene-toggle-right">
               <a href="" ng-click="$ctrl.displayMediaLibrary = true" class="media-library-button"><i class="fa fa-file-o"></i> &nbsp;Media Library</a>
-            </div> -->
+            </div>
+             -->
+
           </div>
 
           <div class="main-image">
@@ -70,9 +72,11 @@
               <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/video-sample-placeholder.jpg"
                  class="img-responsive">
             </div>
+
           </div>
 
           <div class="scene-actionbar">
+
 
   <!--             <a href="" class="delete-scene pull-left" ng-click="$ctrl.removeScene($ctrl.selectedSceneContent)">
                 <i class="fa fa-trash"></i> delete scene
@@ -84,11 +88,9 @@
                   <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $ctrl.duration() | secondsToTime }}
                 </div>
 
-                <select ng-model="$ctrl.selectedSceneContent.transition_id"
-                        ng-options="transition.id as transition.name for transition in $ctrl.transitions"
-                        ng-change="$ctrl.updateSceneContentTransition()">
-                  <option value="">Select a transition</option>
-                </select>
+                <transition-config scene-content="$ctrl.selectedSceneContent()"
+                                 on-update-transition="$ctrl.updateSceneContent($event)"
+                                 ng-if="!$ctrl.lastScene()"></transition-config>
 
               </div>
 
@@ -111,9 +113,9 @@
           </scene-navigator>
           <div class="content-wrapper">
 
-            <content-editor scene-content="$ctrl.selectedSceneContent"
-                            on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, value)">
-            </content-editor>
+            <content-editor scene-content="$ctrl.selectedSceneContent()"
+                          on-update-scene-attribute="$ctrl.updateSceneAttribute(sceneAttribute, attributes)">
+          </content-editor>
 
           </div>
         </div>

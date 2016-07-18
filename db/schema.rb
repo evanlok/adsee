@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706214823) do
+ActiveRecord::Schema.define(version: 20160712171741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20160706214823) do
     t.text     "description"
   end
 
+  create_table "filters", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.text     "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fonts", force: :cascade do |t|
     t.string   "name"
     t.text     "url"
@@ -116,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160706214823) do
     t.datetime "updated_at",       null: false
     t.string   "attachment_type"
     t.integer  "attachment_id"
+    t.jsonb    "config"
   end
 
   add_index "scene_attributes", ["scene_content_id"], name: "index_scene_attributes_on_scene_content_id", using: :btree
@@ -189,12 +198,21 @@ ActiveRecord::Schema.define(version: 20160706214823) do
   add_index "scenes", ["hal_id"], name: "index_scenes_on_hal_id", using: :btree
   add_index "scenes", ["height"], name: "index_scenes_on_height", using: :btree
 
-  create_table "songs", force: :cascade do |t|
+  create_table "song_categories", force: :cascade do |t|
     t.string   "name"
-    t.text     "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "url"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "song_category_id"
+  end
+
+  add_index "songs", ["song_category_id"], name: "index_songs_on_song_category_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -261,6 +279,7 @@ ActiveRecord::Schema.define(version: 20160706214823) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "image"
   end
 
   create_table "users", force: :cascade do |t|

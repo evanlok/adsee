@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :value %>
   <%= f.input :description %>
+  <%= render 'admin/shared/image_form_field', f: f, name: :image %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', admin_transitions_path, class: 'btn btn-default', target: '_self' %>

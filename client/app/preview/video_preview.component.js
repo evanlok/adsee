@@ -1,5 +1,6 @@
 var templateUrl = require('./video_preview.html');
 var $script = require('scriptjs');
+var bowser = require('bowser');
 
 var component = {
   templateUrl: templateUrl,
@@ -41,14 +42,20 @@ function VideoPreviewController($timeout, $http, $q) {
 
   function setupPlayer() {
     $script('https://content.jwplatform.com/libraries/irXDvUdv.js', function () {
-      player = jwplayer('preview-video');
-      player.setup({
+      var config = {
         image: 'https://vejeo.s3.amazonaws.com/videos/video-preroll-image.jpg',
         hlshtml: true,
         file: 'https://video-snippets.s3.amazonaws.com/encoded/7755/7eec523e-7fc4-4bd7-918f-25c29a5e490e_720.mp4',
         autostart: true,
         aspectratio: '16:9'
-      });
+      };
+
+      if (bowser.safari) {
+        config.primary = 'flash';
+      }
+
+      player = jwplayer('preview-video');
+      player.setup(config);
 
       player.on('ready', function () {
         playerReady = true;
@@ -58,6 +65,7 @@ function VideoPreviewController($timeout, $http, $q) {
 
   function playVideo() {
     if (playerReady) {
+      player.stop();
       player.load([{file: vm.streamUrl}]);
     } else {
       $timeout(playVideo, 500);
