@@ -51,99 +51,51 @@
     box-sizing: border-box;
     width: 100%;
     margin: 0 0 1.65em 0px;
-    border: 1px solid $color-9;
     border-radius: 0px;
     resize: none;
-    background-color: none;
+    background-color: $color-3;
+    border: none;
     outline: none; 
     box-shadow: none;
     height: 40px;
-    padding-left: 40px;
-    &:hover {
-      border: 1px solid $color-2;
-    }
   }
   input[type="text"][required]:focus,
   input[type="email"][required]:focus,
   input[type="password"][required]:focus {
-    border-color: $color-2;
     outline: none; 
-    box-shadow: none
+    box-shadow: none;
   }
-  input[type="text"][required]:focus + label[placeholder]:before,
-  input[type="email"][required]:focus + label[placeholder]:before,
-  input[type="password"][required]:focus + label[placeholder]:before {
+  label[placeholder]:before,
+  label[placeholder]:before,
+  label[placeholder]:before {
+    font-size: 11px;
+    font-weight: 700;
     color: $color-2;
-    opacity: 1;
+    text-transform: uppercase;
   }
-  input[type="text"][required]:focus + label[placeholder]:before,
-  input[type="text"][required]:valid + label[placeholder]:before,
-  input[type="email"][required]:focus + label[placeholder]:before,
-  input[type="email"][required]:valid + label[placeholder]:before,
-  input[type="password"][required]:focus + label[placeholder]:before,
-  input[type="password"][required]:valid + label[placeholder]:before {
-    -webkit-transition-duration: .2s;
-            transition-duration: .2s;
-    -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
-            transform: translate(0, -1.25em) scale(0.9, 0.9);
-    opacity: 1;
-  }
-  input[type="text"][required]:invalid + label[placeholder][alt]:before,
-  input[type="email"][required]:invalid + label[placeholder][alt]:before,
-  input[type="password"][required]:invalid + label[placeholder][alt]:before {
-    content: attr(alt);
-    opacity: 1;
-  }
-  input[type="text"][required] + label[placeholder],
-  input[type="email"][required] + label[placeholder],
-  input[type="password"][required] + label[placeholder] {
-    display: block;
-    pointer-events: none;
-    line-height: 1em;
-    margin-top: calc(-3em - 2px);
-    margin-bottom: calc((3em - 1em) + 2px);
-    opacity: 1;
-  }
-  input[type="text"][required] + label[placeholder]:before,
-  input[type="email"][required] + label[placeholder]:before,
-  input[type="password"][required] + label[placeholder]:before {
-    opacity: 1;
+  label[placeholder]:before,
+  label[placeholder]:before,
+  label[placeholder]:before {
     content: attr(placeholder);
     display: inline-block;
-    margin: 0 calc(2em + 6px);
     padding: 0 2px;
-    color: $color-2;
-    white-space: nowrap;
-    -webkit-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-    background-image: -webkit-linear-gradient(top, white, white);
-    background-image: linear-gradient(to bottom, white, white);
-    background-size: 100% 5px;
-    background-repeat: no-repeat;
-    background-position: center;
   }
 }
 .media-input-group {
-  border: 1px solid $color-9;
   border-radius: 0px;
   margin: 0 0 1.65em 0px;
-  -webkit-transition-duration: .2s;
-  transition-duration: .2s;
   overflow: hidden;
-  &:hover {
-    border: 1px solid $color-2;
-  }
   input[type="text"] {
     box-sizing: border-box;
     width: 100%;
     resize: none;
     border: none;
-    background: none;
+    background-color: $color-3;
     color: $color-9;
+    border-radius: 0px;
     outline: none; 
     box-shadow: none;
     height: 40px;
-    padding-left: 40px;
     &:hover {
       cursor: pointer;
     }
@@ -152,41 +104,6 @@
     border-color: #00bafa;
     outline: none; 
     box-shadow: none
-  }
-  input[type="text"][required]:focus + label[placeholder]:before {
-    color: #00bafa;
-  }
-  input[type="text"][required]:focus + label[placeholder]:before,
-  input[type="text"][required]:valid + label[placeholder]:before {
-    -webkit-transition-duration: .2s;
-            transition-duration: .2s;
-    -webkit-transform: translate(0, -1.25em) scale(0.9, 0.9);
-            transform: translate(0, -1.25em) scale(0.9, 0.9);
-  }
-  input[type="text"][required]:invalid + label[placeholder][alt]:before {
-    content: attr(alt);
-  }
-  input[type="text"][required] + label[placeholder] {
-    display: block;
-    pointer-events: none;
-    line-height: 1em;
-    margin-top: calc(-1.65em - 2px);
-    margin-bottom: calc((1.65em - 1em) + 2px);
-  }
-  input[type="text"][required] + label[placeholder]:before {
-    content: attr(placeholder);
-    display: inline-block;
-    margin: 0 calc(2em + 4px);
-    padding: 0 2px;
-    color: white;
-    white-space: nowrap;
-    -webkit-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-    background-image: -webkit-linear-gradient(top, #3e454c, #3e454c);
-    background-image: linear-gradient(to bottom, #3e454c, #3e454c);
-    background-size: 100% 5px;
-    background-repeat: no-repeat;
-    background-position: center;
   }
   .image-padding img {
     width: 100%
@@ -315,12 +232,16 @@
   margin-top: 70px;
   margin-left: 120px;
   margin-right: 5px;
+  height: calc(100vh - 93px);
+  display: flex;
 }
 .scene-editor {
   background-color: $color-7;
+  width: 100%;
   margin: 0px;
   border-radius: 15px;
   position: relative;
+  overflow: hidden;
 }
 .video-name-header {
   padding: 15px 25px 0px;
@@ -390,6 +311,9 @@
   .color-picker-input {
     height: 44px;
     background-color: $color-7;
+    outline: none;
+    border: none;
+    box-shadow: none;
   }
   .form-control {
     border-radius: 5px;
@@ -478,7 +402,6 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  height: 100vh;
   width: 100%;
 
 }
@@ -495,10 +418,12 @@
   -ms-flex: 4;
   flex: 4;
   z-index: 2;
+  height: 100vh;
+  border-right: 1px solid $color-10;
   // -webkit-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // -moz-box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
   // box-shadow: inset 0px 200px 300px -200px rgba(0,0,0,1);
-  background-color: $color-7;
+
 }
 .content-column {
   -webkit-box-flex: 2;
@@ -513,12 +438,10 @@
   z-index: 1;
   min-width: 320px;
   max-width: 350px;
-  background-color: $color-7;
 }
 .content-panel {
   height: 100%;
   overflow: auto;
-  border-left: 1px solid $color-10;
 }
 
 .media-library {
@@ -650,26 +573,10 @@
 }
 .media-input-group {
   label {
-    margin-top: -12px;
-    margin-left: 35px;
-    position: absolute;
-    background-color: white;
-    padding-left: 3px;
-    padding-right: 3px;
-    font-size: 15px;
+    font-size: 11px;
+    font-weight: 700;
     color: $color-2;
-  }
-  ::-webkit-input-placeholder {
-     color: $color-5;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-     color: $color-5;  
-  }
-  ::-moz-placeholder {  /* Firefox 19+ */
-     color: $color-5;  
-  }
-  :-ms-input-placeholder {  
-     color: $color-5;  
+    text-transform: uppercase;
   }
 }
 .video-modal {
@@ -756,7 +663,7 @@
 }
 
 .scenes-row {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100px;
   bottom: 0px;
@@ -769,6 +676,7 @@
   display: -webkit-flex;
   display: flex;
   overflow: auto;
+  background-color: hsla(204, 95.0000%, 7.8431%, 0.7000);
   .selected {
     img {
       outline: 3px solid $color-2;
@@ -777,7 +685,7 @@
 }
 .scenes-row-gradient-bg {
   z-index: 19;
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 115px;
   bottom: 0px;
@@ -795,10 +703,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   justify-content: flex-start;
   align-content: space-between;
   align-items: flex-start;
-  margin-right: 155px;
 }
 .flex-item {
-  background-color: hsla(0, 0%, 0.0000%, 0.7000);
+  height: 100px;
 }
 .flex-item:nth-child(1) {
   order: 0;
@@ -969,6 +876,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   max-width: 350px;
   margin: 0 auto ;
   padding: 40px 0px 100px;
+  .label-box {
+    background-color: $color-3;
+    border-bottom: 1px solid $color-8;
+    height: 25px;
+  }
   h4 {
     margin-bottom: 20px;
   }
@@ -1138,34 +1050,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       display: inline-block;
       background-color: $color-2;
       color: white;
-      border-radius: 4px;
+      border-radius: 0px;
       text-align: center;
       width: 21px;
       height: 21px;
       line-height: 1.9;
-      padding: 0px;
+      padding: 2px 0px 0px 0px;
       font-size: 12px;
       margin: 0px 4px 0px 9px;
     }
-    label {
-      padding-left: 60px;
-    }
   }
   .input-group-addon {
-    position: absolute;
     background: none;
     border: none;
     display: inline-block;
     background-color: $color-2;
     color: white;
-    border-radius: 4px;
+    border-radius: 0px;
     text-align: center;
     width: 21px;
-    height: 21px;
+    height: 100%;
     line-height: 1.9;
-    padding: 0px;
+    padding: 2px 0px 0px 0px;
     font-size: 12px;
-    margin: 10px 0px 0px 9px;
   }
   .radio, .checkbox {
     margin-bottom: 20px;
