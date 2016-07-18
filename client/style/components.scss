@@ -1282,7 +1282,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .song-player i {
     font-size: 60px;
   }
-  .cancel-button {
+  .cancel-button, .remove-button {
     color: $color-2;
     float: left;
     background: none;
@@ -1569,6 +1569,54 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   0% { opacity: 1.0; }
   50% { opacity: 0.3; }
   100% { opacity: 1.0; }
+}
+
+// Scene Attribute modal 
+.video-attribute-modal, .text-attribute-modal, .image-attribute-modal {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 200px;
+  .close {
+    font-size: 18px;
+  }
+  .modal-header, .modal-body, .modal-footer {
+    background-color: $color-3;
+  }
+  .input-container {
+    padding: 30px;
+    position: relative;
+  }
+  .rzslider .rz-pointer {
+    background-color: $color-1;
+    &:focus {
+      &:after {
+        background-color: $color-2;
+      }
+    }
+  }
+  .cancel-button {
+    color: $color-2;
+    float: left;
+    background: none;
+    border: 5px solid $color-2;
+    padding: 10px 15px;
+    border-radius: 30px;
+    margin-right: 5px;
+    min-width: 120px;
+  }
+  .save {
+    margin-top: 0px;
+    padding: 8px 30px;
+  }
+}
+
+.text-attribute-modal {
+  .selected img {
+    outline: 4px solid $color-2;
+  }
+  .input-container .row {
+    margin-bottom: 20px;
+  }
 }
 
 .preview-container {
