@@ -7,6 +7,9 @@
         <!-- <i class="fa fa-picture-o" ng-if="$ctrl.isImage()"></i> -->
         <i class="fa fa-file-video-o" ng-if="$ctrl.isVideo()"></i> {{ $ctrl.sceneAttribute.name }}
       </label>
+      <a href="" ng-click="$ctrl.sceneAttributeCtrl.configureAttribute()" class="settings-cog">
+        <i class="fa fa-cog"></i>
+      </a>
     </div>
     <input type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control" readonly="readonly"
              ng-model="$ctrl.filename"
@@ -16,9 +19,6 @@
       <img ng-class="{ 'image-padding' : $ctrl.filename }" ng-src="{{ $ctrl.sceneAttribute.thumbnail_url }}" ng-click="$ctrl.insertMedia()" class="img-responsive">
     </div>
 
-    <a href="" ng-click="$ctrl.sceneAttributeCtrl.configureAttribute()">
-      <i class="fa fa-cog"></i>
-    </a>
   </div>
 
   <input type="hidden" ng-model="$ctrl.attachment_id">

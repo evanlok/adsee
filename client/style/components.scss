@@ -776,7 +776,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   text-align: center;
   border: 3px solid $color-2;
   border-radius: 5px;
-  margin-right: 10px;
+  margin: 10px;
   i {
     font-size: 36px;
     display: block;
@@ -787,7 +787,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .scene-timeline-thumb {
-  margin: 10px 1px 0px;
+  margin: 20px 1px 0px;
   position: relative;
   img {
     height: 60px;
@@ -1060,9 +1060,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       width: 21px;
       height: 21px;
       line-height: 1.9;
-      padding: 2px 0px 0px 0px;
       font-size: 12px;
-      margin: 0px 4px 0px 9px;
+      margin: 0px 4px 0px 0px;
+      padding: 0px;
     }
   }
   .input-group-addon {
