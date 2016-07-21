@@ -28,7 +28,7 @@
     "angular-timer": "^1.3.3",
     "angular-tree-control": "^0.2.27",
     "angular-ui-bootstrap": "^1.3.3",
-    "angularjs-color-picker": "^1.1.7",
+    "angularjs-color-picker": "^2.1.5",
     "angularjs-slider": "^5.4.0",
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.3.7",

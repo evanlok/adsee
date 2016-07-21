@@ -4,6 +4,12 @@
   <%= f.input :photo_count %>
   <%= f.association :ad_type, prompt: 'Select an ad type' %>
   <%= f.association :song, include_blank: 'N/A' %>
+  <%= f.association :font, include_blank: 'N/A' %>
+
+  <div class="form-group">
+    <form-color-picker name="theme[color]" color="<%= @theme.color %>"></form-color-picker>
+  </div>
+
   <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
   <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>
   <%= render 'admin/shared/video_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>

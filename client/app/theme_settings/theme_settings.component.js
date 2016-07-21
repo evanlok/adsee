@@ -37,6 +37,7 @@ function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
   vm.configureAudio = configureAudio;
   vm.configureFont = configureFont;
   vm.configureSong = configureSong;
+  vm.colorChanged = colorChanged;
 
   function fetchFonts() {
     return fontsService.query().then(function (data) {
@@ -125,6 +126,10 @@ function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
       vm.sceneCollection.song_id = font.id;
       update('song_id');
     });
+  }
+
+  function colorChanged() {
+    update('color');
   }
 }
 
