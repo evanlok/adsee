@@ -3,6 +3,7 @@ var aspectRatioModalCtrl = require('./aspect_ratio_modal.controller');
 var aspectRatioModalTemplateUrl = require('./aspect_ratio_modal.html');
 var removeSceneConfirmationModalCtrl = require('./remove_scene_confirmation_modal.controller');
 var removeSceneConfirmationModalTemplateUrl = require('./remove_scene_confirmation_modal.html');
+var toastr = require('toastr');
 
 var component = {
   templateUrl: templateUrl,
@@ -217,6 +218,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
       // Skip preview if there is an error
       facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
         $state.go('adConfig', {facebookAdId: data.id});
+        toastr.error('', 'There was an error generating the video preview.');
       });
     }).finally(function () {
       vm.previewLoading = false;

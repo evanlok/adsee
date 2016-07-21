@@ -71,6 +71,7 @@
     "sortablejs": "^1.4.2",
     "style-loader": "^0.13.1",
     "tinycolor2": "^1.4.1",
+    "toastr": "^2.1.2",
     "ui-select": "^0.18.1",
     "url-loader": "^0.5.7",
     "video.js": "^5.10.7",
