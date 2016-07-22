@@ -1,6 +1,6 @@
 class SceneAttributesController < ApplicationController
   after_action :verify_authorized
-  wrap_parameters include: [:name, :value, :image_id]
+  wrap_parameters SceneAttribute, include: SceneAttribute.attribute_names + %i(image_id)
   rescue_from SceneAttribute::SceneAttributeError, with: :scene_attribute_error
 
   def create

@@ -106,14 +106,14 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
 
     promise.then(function onSuccess(data) {
       var sceneContent = _.find(vm.sceneContents, {id: data.scene_content_id});
-      var sceneAttribute = _.find(sceneContent.scene_attributes, {id: data.id});
+      var sceneAttribute = _.find(sceneContent.scene_attributes, {name: data.name});
 
       if (sceneAttribute) {
         _.assign(sceneAttribute, data);
       } else {
         sceneContent.scene_attributes.push(sceneAttribute);
       }
-      
+
       sceneAttribute.invalid = false;
     }, function onError() {
       sceneAttribute.invalid = true;
