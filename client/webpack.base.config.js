@@ -22,6 +22,7 @@ module.exports = {
       'angular-tree-control',
       'angular-easyfb',
       'angularjs-slider',
+      'angular-xeditable',
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',
