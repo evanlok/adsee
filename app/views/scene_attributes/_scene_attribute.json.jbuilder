@@ -14,8 +14,8 @@ end
 if scene_attribute.class == SceneAttributes::Icon
   json.attachment_id scene_attribute.attachment_id
   json.attachment_type scene_attribute.attachment_type
-  json.icon_name scene_attribute.attachment&.name
-  json.icon_url scene_attribute.attachment&.url
+  json.icon_name scene_attribute.attachment_name
+  json.icon_url scene_attribute.value
 end
 
 json.type scene_attribute.mapped_type

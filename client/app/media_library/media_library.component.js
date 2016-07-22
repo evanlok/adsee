@@ -132,8 +132,8 @@ function MediaLibraryController($interval, imageService, videoClipService, iconS
     vm.display[type] = true;
   }
 
-  function tabDisabled(type) {
-    return vm.selectingType && vm.selectingType !== type;
+  function tabDisabled(types) {
+    return vm.selectingType && !_.includes(_.castArray(types), vm.selectingType);
   }
 
   function loadContent(type, force) {
