@@ -2,13 +2,15 @@
 
 .main-nav {
   width: 100%;
-  background-color: $color-9; 
+  background-color: $color-9;
+  position: absolute;
   .logo {
     height: 50px;
     width: 120px;
     background-color: $color-2;
     text-align: center;
     display: inline-block;
+    padding: 0px;
     img {
       width: 75%;
       margin: 13px auto 0px;
@@ -16,17 +18,22 @@
   }
   ul {
     list-style: none;
-    padding: 15px;
+    height: 50px;
     font-size: 14px;
     float: right;
     display: inline-block;
     margin-bottom: 0px;
     li {
       display: inline-block;
+      border-left: 1px solid $color-5;
+      height: 100%;
     }
   }
   a {
     color: $color-3;
+    height: 100%;
+    display: block;
+    padding: 15px 15px 15px;
     &:hover {
       color: $color-2;
     }
@@ -196,6 +203,7 @@
 
   ul {
     padding: 0px;
+    list-style-type: circle;
   }
 
   li {
@@ -206,6 +214,7 @@
     height: 30px;
     width: 100px;
     line-height: 30px;
+    padding-left: 10px;
     a {
       color: $color-3;
       display: block;
@@ -227,7 +236,7 @@
 
 }
 .editor-container {
-  margin-top: 25px;
+  margin-top: 70px;
   margin-left: 120px;
   margin-right: 5px;
   height: calc(100vh - 93px);
@@ -645,10 +654,9 @@
 }
 
 .navigation-arrows {
-  display: inline;
+  display: block;
   font-size: 30px;
-  margin-right: 5px;
-  display: inline-block;
+  text-align: right;
   i {
     color: $color-8;
   }
@@ -657,6 +665,14 @@
     &:hover {
       color: $color-1;
     }
+  }
+  .nav-left-arrow, .nav-right-arrow {
+    border: 1px solid $color-10;
+    border-right: none;
+    padding: 18px 15px 2px;
+  }
+  .nav-left-arrow {
+    padding-right: 10px;
   }
 }
 
@@ -881,14 +897,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .content-wrapper {
-  padding: 0px 5px 280px 40px;
+  padding: 0px 40px 280px 40px;
   overflow: scroll;
 }
 .content-edit-wrapper {
   color: $color-5;
   max-width: 350px;
   margin: 0 auto ;
-  padding: 40px 0px 100px;
+  padding: 0px 0px 100px;
   .label-box {
     background-color: $color-3;
     border-bottom: 1px solid $color-8;
@@ -997,14 +1013,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .add-scene-index {
-  background-color: $color-3;
+  background-color: $color-7;
   -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   height: 100%;
-  padding: 50px 50px 300px;
+  padding: 50px 50px 140px;
   position: relative;
   z-index: 1000;
+  overflow: scroll;
   h2 {
     margin-top: 0px;
     font-size: 36px;
@@ -1466,6 +1483,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .input-container {
     padding: 30px;
     position: relative;
+    input, select {
+      max-width: 280px;
+      margin: 0 auto;
+    }
   }
   .rzslider .rz-pointer {
     background-color: $color-1;
@@ -1504,6 +1525,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width: 100%;
 }
 .template-page-wrapper {
+  margin-top: 50px;
   .slick-carousel {
     img {
       width: 100%;
@@ -1624,7 +1646,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .theme-preview {
   background-color: $color-3;
-  padding-top: 10%;
+  padding-top: 7%;
   height: 100%;
   h1 {
     font-size: 30px;
@@ -1728,11 +1750,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 //Ad Config 
 .ad-config {
-  padding-bottom: 50px;
-  .ad-config-column {
-    max-width: 500px;
-    margin: 0 auto;
-  }
+  margin-left: 120px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  background-color: $color-3;
+  height: 100%;
+  border-radius: 15px;
+  padding: 50px 80px 80px;
   .video-nav {
     margin-bottom: 50px;
   }
@@ -1924,7 +1948,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 //targeting page 
 
 .targeting {
-  padding: 20px 50px 50px;
+  padding: 30px 60px 60px;
+  margin-left: 120px;
+  margin-top: 70px;
+  background-color: $color-3;
+  height: 100%;
+  border-radius: 15px;
   .targeting-header {
     margin-bottom: 15px;
   }
@@ -2052,7 +2081,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .next {
     min-width: 280px;
     max-width: 320px;
-    padding: 12px 20px;
+    padding: 15px 20px;
     float: right;
   }
   .advtarg-button {
@@ -2155,10 +2184,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     }
   }
 }
-
+.ad-summary {
+  margin-left: 120px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  background-color: $color-3;
+  height: 100%;
+  border-radius: 15px;
+  padding: 50px 80px 80px;
+}
 .ad-summary, .signup-page {
-  max-width: 1000px;
-  margin: 0 auto;
   i {
     color: $color-2;
   }

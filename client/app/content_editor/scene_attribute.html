@@ -6,7 +6,7 @@
         <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="{{ $ctrl.sceneAttribute.display_name }}">
         </label>
         <a href="" ng-click="$ctrl.configureAttribute()" ng-if="$ctrl.sceneAttribute.type == 'text'" class="settings-cog">
-          <i class="fa fa-cog"></i>
+          <i class="fa fa-sliders"></i>
         </a>
       </div>
       <input required="" type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control"
@@ -14,9 +14,6 @@
              ng-model-options="{updateOn: 'default blur', debounce: { default: 1000, blur: 0 }}"
              ng-change="$ctrl.update()"
              maxlength="{{ $ctrl.sceneAttribute.display_config.limit }}">
-      <label class="control-label" for="attr_{{ $ctrl.sceneAttribute.name }}" placeholder="{{ $ctrl.sceneAttribute.display_name }}">
-      </label>
-
     </div>
   </div>
 

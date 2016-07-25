@@ -1,9 +1,9 @@
-<div class="navigation-arrows pull-right">
+<div class="navigation-arrows">
   <i class="fa fa-angle-left"
      ng-if="$ctrl.firstScene()"></i>
 
   <a href="" ng-click="$ctrl.onPrevious()"
-     ng-if="!$ctrl.firstScene()">
+     ng-if="!$ctrl.firstScene()" class="nav-left-arrow">
     <i class="fa fa-angle-left"></i>
   </a>
 
@@ -11,7 +11,7 @@
      ng-if="$ctrl.lastScene()"></i>
 
   <a href="" ng-click="$ctrl.onNext()"
-     ng-if="!$ctrl.lastScene()">
+     ng-if="!$ctrl.lastScene()" class="nav-right-arrow">
     <i class="fa fa-angle-right "></i>
   </a>
 </div>
