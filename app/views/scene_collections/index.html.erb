@@ -12,7 +12,7 @@
           <% end %>
 
           <div class="video-info">
-            <%= link_to "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self', class: "video-title" %>
+            <%= link_to scene_collection.name.present? ? scene_collection.name : "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self', class: "video-title" %>
             <div>
               <span>
                 Video Status: <%= scene_collection.status.capitalize %>

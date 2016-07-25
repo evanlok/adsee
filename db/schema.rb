@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712171741) do
+ActiveRecord::Schema.define(version: 20160722214113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20160712171741) do
     t.text     "audio"
     t.string   "integration"
     t.jsonb    "integration_data"
+    t.string   "name"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree
@@ -267,6 +268,7 @@ ActiveRecord::Schema.define(version: 20160712171741) do
     t.datetime "updated_at",   null: false
     t.integer  "ad_type_id"
     t.integer  "font_id"
+    t.string   "color"
   end
 
   add_index "themes", ["ad_type_id"], name: "index_themes_on_ad_type_id", using: :btree

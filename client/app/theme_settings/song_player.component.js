@@ -42,8 +42,9 @@ function SongPlayerController($scope) {
     vm.playing = false;
 
     sound = new Howl({
-      urls: [vm.url],
-      format: vm.format,
+      src: [vm.url],
+      html5: true,
+      format: [vm.format],
       onend: function () {
         vm.playing = false;
         $scope.$apply();

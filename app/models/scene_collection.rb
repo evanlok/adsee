@@ -36,6 +36,7 @@ class SceneCollection < ActiveRecord::Base
 
     self.font = theme.font
     self.song = theme.song
+    self.color = theme.color
     self.aspect_ratio = theme.theme_variants.default.aspect_ratio
 
     theme.theme_variants.default.theme_variant_scenes.each do |theme_variant_scene|

@@ -24,7 +24,7 @@ RSpec.describe SceneCollection do
 
   describe '#create_scene_contents_from_theme' do
     context 'when theme is present' do
-      let(:theme) { create(:theme, :with_song_and_font) }
+      let(:theme) { create(:theme, :with_song_and_font, color: '#000000') }
       let(:transition) { create(:transition) }
       let!(:theme_variant) { create(:theme_variant, theme: theme) }
       let!(:theme_variant_scene) { create(:theme_variant_scene, theme_variant: theme_variant, transition: transition) }
@@ -40,10 +40,11 @@ RSpec.describe SceneCollection do
         expect(scene_collection.scene_contents.first.transition).to eq(transition)
       end
 
-      it 'sets font, song, and aspect_ratio from theme' do
+      it 'sets font, song, color, and aspect_ratio from theme' do
         scene_collection.create_scene_contents_from_theme
         expect(scene_collection.song).to eq(theme.song)
         expect(scene_collection.font).to eq(theme.font)
+        expect(scene_collection.color).to eq(theme.color)
         expect(scene_collection.aspect_ratio).to eq(theme_variant.aspect_ratio)
       end
     end

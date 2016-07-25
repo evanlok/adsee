@@ -2,7 +2,7 @@ class Admin::ScenesController < Admin::BaseController
   before_action :load_scene, except: [:index, :tags, :import]
 
   def index
-    @scenes = Scene.includes(:tags).page(params[:page])
+    @scenes = Scene.includes(:tags).order(:name).page(params[:page])
   end
 
   def edit

@@ -1,7 +1,10 @@
+
 <div class="editor-container">
   <div class="row scene-editor">
     <div class="video-name-header">
-      <h1>Video Editor</h1>
+      <h1><a href="" editable-text="$ctrl.sceneCollection.name" onaftersave="$ctrl.updateSceneCollection('name', $ctrl.sceneCollection.name)">
+        {{ $ctrl.sceneCollection.name || 'click here to set a title' }}
+      </a></h1>
     </div>
 
     <div class="action-bar">

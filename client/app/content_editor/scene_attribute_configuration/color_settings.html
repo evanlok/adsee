@@ -2,20 +2,20 @@
   <label>Contrast</label>
 
   <rzslider rz-slider-model="$ctrl.config.contrast"
-            rz-slider-options="{floor: 0, ceil: 150, onChange: $ctrl.sliderChanged()}">
+            rz-slider-options="{floor: 0, ceil: 150, onChange: $ctrl.sliderChanged}">
   </rzslider>
 </div>
 
 <div class="form-group">
   <label>Brightness</label>
   <rzslider rz-slider-model="$ctrl.config.brightness"
-            rz-slider-options="{floor: 0, ceil: 150}">
+            rz-slider-options="{floor: 0, ceil: 150, onChange: $ctrl.sliderChanged}">
   </rzslider>
 </div>
 
 <div class="form-group">
   <label>Saturation</label>
   <rzslider rz-slider-model="$ctrl.config.saturation"
-            rz-slider-options="{floor: 0, ceil: 150}">
+            rz-slider-options="{floor: 0, ceil: 150, onChange: $ctrl.sliderChanged}">
   </rzslider>
 </div>

@@ -20,6 +20,7 @@
     font-size: 14px;
     float: right;
     display: inline-block;
+    margin-bottom: 0px;
     li {
       display: inline-block;
     }
@@ -32,7 +33,6 @@
   }
 }
 .main-content {
-  margin-top: -50px;
   height: 100vh;
 }
 
@@ -206,10 +206,8 @@
     height: 30px;
     width: 100px;
     line-height: 30px;
-    padding: 0 29px;
-    background-color: $color-8;
     a {
-      color: $color-5;
+      color: $color-3;
       display: block;
       width: 100%;
       height: 100%;
@@ -229,7 +227,7 @@
 
 }
 .editor-container {
-  margin-top: 70px;
+  margin-top: 25px;
   margin-left: 120px;
   margin-right: 5px;
   height: calc(100vh - 93px);
@@ -742,6 +740,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .list-inline {
   height: 80px;
   overflow-y: visible;
+  li {
+    padding: 0px;
+    margin-right: 10px;
+    width: 107px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   .popover {
     // background: none;
     font-weight: 700;
@@ -801,16 +807,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 .scene-number {
   position: absolute;
-  padding: 2px 6px;
   color: white;
-  font-weight: bold;
-  background-color: hsla(0, 0%, 0.0000%, 0.7000);
-  font-size: 11px;
+  font-weight: 100;
+  background-color: hsla(0, 0%, 0.0000%, 0.4000);
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  &:hover {
+    background-color: hsla(0, 0%, 0.0000%, 0.0000);
+    color: $color-3;
+  }
 }
 .delete-scene-thumb {
   position: absolute;
-  bottom: 0px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   padding: 2px 4px 2px 4px;
   color: white;
   font-weight: bold;
@@ -824,8 +836,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .transition-dot {
   position: absolute;
   color: $color-2;
-  background-color: #232323;
-  right: -10px;
+  background-color: #1b2c36;
+  right: -14px;
   top: 22px;
   z-index: 1000;
   padding: 2px 4px 1px;
@@ -1497,6 +1509,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       width: 100%;
     }
   }
+  .slick-list {
+    width: 100%;
+  }
 
   .promo-slot {
     padding: 0px;
@@ -1527,10 +1542,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       background: none;
     }
   }
-  // .themes-row {
-  //   max-width: 1000px;
-  //   margin: 0 auto;
-  // }
+  .themes-row {
+    background-color: $color-3;
+  }
   .industry-wrap {
     padding-left: 0px;
     padding-right: 0px;
@@ -1609,7 +1623,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .theme-preview {
-  margin-top: 7%;
+  background-color: $color-3;
+  padding-top: 10%;
+  height: 100%;
   h1 {
     font-size: 30px;
   }

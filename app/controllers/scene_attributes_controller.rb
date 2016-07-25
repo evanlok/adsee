@@ -1,5 +1,6 @@
 class SceneAttributesController < ApplicationController
   after_action :verify_authorized
+  wrap_parameters SceneAttribute, include: SceneAttribute.attribute_names + %i(image_id)
   rescue_from SceneAttribute::SceneAttributeError, with: :scene_attribute_error
 
   def create
@@ -39,7 +40,7 @@ class SceneAttributesController < ApplicationController
   private
 
   def scene_attribute_params
-    params.require(:scene_attribute).permit(:name, :value).tap do |whitelisted|
+    params.require(:scene_attribute).permit(:name, :value, :image_id).tap do |whitelisted|
       whitelisted[:config] = params[:scene_attribute][:config] if params[:scene_attribute][:config]
     end
   end

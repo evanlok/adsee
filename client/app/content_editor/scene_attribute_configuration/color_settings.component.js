@@ -15,7 +15,7 @@ function ColorSettingsController() {
 
   vm.$onChanges = function (changes) {
     if (changes.config) {
-      vm.config = angular.copy(vm.config);
+      vm.config = _.pick(vm.config, ['contrast', 'brightness', 'saturation']);
       _.defaults(vm.config, {contrast: 100, brightness: 100, saturation: 100});
     }
   };

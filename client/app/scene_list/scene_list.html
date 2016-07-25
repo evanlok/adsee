@@ -18,13 +18,11 @@
               popover-placement="left"></span>
       </transition-config>
 
-      <div class="text-center scene-number">{{ $index + 1 }}</div>
+      <a class="text-center scene-number" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">{{ $index + 1 }}</a>
       <a class="text-center delete-scene-thumb" ng-click="$ctrl.sceneEditor.removeScene(sceneContent)">
         <i class="fa fa-close"></i>
       </a>
-      <a href="" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">
-        <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
-      </a>
+      <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
     </li>
   </ul>
 </div>

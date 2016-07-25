@@ -25,6 +25,10 @@
         <%= link_to [:edit, :admin, scene], title: 'Edit', target: '_self' do %>
           <i class="fa fa-pencil"></i>
         <% end %>
+
+        <%= link_to [:admin, scene], method: :delete, title: 'Edit', target: '_self', data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash-o"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>

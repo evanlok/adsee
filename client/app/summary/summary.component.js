@@ -1,5 +1,6 @@
 var templateUrl = require('./summary.html');
 var modalTemplateUrl = require('./published_modal.html');
+var toastr = require('toastr');
 
 var component = {
   templateUrl: templateUrl,
@@ -86,6 +87,8 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
       modal.result.finally(function () {
         $window.location = '/scene_collections';
       });
+    }, function onError() {
+      toastr.error('', 'There was an error generating the video.');
     }).finally(function () {
       vm.publishing = false;
     });

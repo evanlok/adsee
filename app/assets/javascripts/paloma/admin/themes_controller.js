@@ -5,4 +5,9 @@ ThemesController.prototype.edit = function () {
     placeholder: 'Select a song',
     allowClear: true
   });
+
+  $('#theme_font_id').select2({
+    placeholder: 'Select a font',
+    allowClear: true
+  });
 };

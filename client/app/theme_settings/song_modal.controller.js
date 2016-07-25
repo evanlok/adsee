@@ -40,7 +40,8 @@ function SongModalController($scope, $uibModalInstance, currentSong, songsServic
 
   function setupPlayer(url) {
     sound = new Howl({
-      urls: [url],
+      src: [url],
+      html5: true,
       onend: function () {
         $scope.songPlaying.playing = false;
       }
