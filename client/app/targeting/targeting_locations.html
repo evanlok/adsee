@@ -1,98 +1,106 @@
-<div class="row targeting-location">
-  <div class="col-md-5 col-md-offset-2">
-    <div ng-if="!$ctrl.loaded" class="text-center">
-      <i class="fa fa-spinner fa-spin"></i>
-    </div>
+<div class="targeting-location">
 
-    <div class="targeting-locations" ng-if="$ctrl.loaded">
-      <h2>Ad Account</h2>
-
-      <div class="form-group">
-        <select class="" ng-model="$ctrl.facebookAd.ad_account_id"
-                ng-options="adAccount.id as $ctrl.formatAdAccount(adAccount) for adAccount in $ctrl.adAccounts">
-        </select>
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
+      <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
+      <div ng-if="!$ctrl.loaded" class="text-center">
+        <i class="fa fa-spinner fa-spin"></i>
       </div>
 
-      <h2>
-        Who do you want your ads to reach?
-      </h2>
+      <div class="targeting-locations" ng-if="$ctrl.loaded">
+        <h2>Ad Account</h2>
 
-      <h3>Locations</h3>
-
-      <form>
         <div class="form-group">
-          <select class="" ng-model="$ctrl.locationTypes">
-            <option value="everyone">Everyone in this location</option>
-            <option value="home">People who live in this location</option>
-            <option value="recent">People recently in this location</option>
-            <option value="travel_in">People traveling in this location</option>
+          <select class="" ng-model="$ctrl.facebookAd.ad_account_id"
+                  ng-options="adAccount.id as $ctrl.formatAdAccount(adAccount) for adAccount in $ctrl.adAccounts">
           </select>
         </div>
 
-        <ul class="list-unstyled location-list">
-          <li ng-repeat="location in $ctrl.selectedLocations" class="location-item">
-            <span ng-if="location.include"><i class="fa fa-map-marker"></i></span>
-            <span ng-if="!location.include"><i class="fa fa-times-circle"></i></span>
-            {{ $ctrl.formatLocation(location) }}
+        <h2>
+          Who do you want your ads to reach?
+        </h2>
 
-            <span ng-if="location.type === 'city'">
-              +
-              <select ng-options="radius for radius in $ctrl.radiusOptions"
-                      ng-model="location.radius"
-                      ng-change="$ctrl.updateTargetingSpec()">
-                <option value="">Current city only</option>
-              </select>
+        <h3>Locations</h3>
 
-              <span ng-if="location.radius > 0">mi</span>
-            </span>
+        <form>
+          <div class="form-group">
+            <select class="" ng-model="$ctrl.locationTypes">
+              <option value="everyone">Everyone in this location</option>
+              <option value="home">People who live in this location</option>
+              <option value="recent">People recently in this location</option>
+              <option value="travel_in">People traveling in this location</option>
+            </select>
+          </div>
 
-            <a href="" ng-click="$ctrl.removeLocation(location)">
-              <i class="fa fa-times-circle-o"></i>
-            </a>
-          </li>
-        </ul>
+          <ul class="list-unstyled location-list">
+            <li ng-repeat="location in $ctrl.selectedLocations" class="location-item">
+              <span ng-if="location.include"><i class="fa-li fa fa-map-marker"></i></span>
+              <span ng-if="!location.include"><i class="fa-li fa fa-ban"></i></span>
+              {{ $ctrl.formatLocation(location) }}
 
-        <h4 ng-if="!$ctrl.selectedLocations.length">No locations selected</h4>
+              <span ng-if="location.type === 'city'">
+                +
+                <select ng-options="radius for radius in $ctrl.radiusOptions"
+                        ng-model="location.radius"
+                        ng-change="$ctrl.updateTargetingSpec()">
+                  <option value="">Current city only</option>
+                </select>
 
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-12 include-exclude">
-              <select ng-model="$ctrl.geofilter" class="">
-                <option value="include">include</option>
-                <option value="exclude">exclude</option>
-              </select>
-              <input type="text" class="form-control"
-                     ng-model="$ctrl.searchQuery"
-                     ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
-                     ng-change="$ctrl.searchGeolocations()">
+                <span ng-if="location.radius > 0">mi</span>
+              </span>
+
+              <a href="" ng-click="$ctrl.removeLocation(location)">
+                <i class="fa fa-times-circle-o"></i>
+              </a>
+            </li>
+          </ul>
+
+          <h4 ng-if="!$ctrl.selectedLocations.length">No locations selected</h4>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12 include-exclude">
+                <select ng-model="$ctrl.geofilter" class="">
+                  <option value="include">include</option>
+                  <option value="exclude">exclude</option>
+                </select>
+                <input type="text" class="form-control location-input"
+                       ng-model="$ctrl.searchQuery"
+                       ng-model-options="{updateOn: 'default blur', debounce: { default: 200, blur: 0 }}"
+                       ng-change="$ctrl.searchGeolocations()"
+                       placeholder="Enter City or Zipcode">
+              </div>
+            </div>
+
+            <div class="location-results">
+              <ul class="list-unstyled">
+                <li ng-repeat="location in $ctrl.searchResults">
+                  <a href="" ng-click="$ctrl.selectLocation(location)">
+                    {{ $ctrl.formatLocation(location) }} ({{ $ctrl.formatLocationType(location.type) }})
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
+        </form>
 
-          <div class="location-results">
-            <ul class="list-unstyled">
-              <li ng-repeat="location in $ctrl.searchResults">
-                <a href="" ng-click="$ctrl.selectLocation(location)">
-                  {{ $ctrl.formatLocation(location) }} ({{ $ctrl.formatLocationType(location.type) }})
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </form>
+        <button type="button" class="button next" ng-click="$ctrl.save()"
+                ng-disabled="$ctrl.saving">
+          NEXT <i class="fa fa-arrow-right"></i>
+        </button>
+        
+        <a class="" ui-sref="targeting" class="back-link">
+          <i class="fa fa-arrow-left"></i>  BACK
+        </a>
 
-      <button type="button" class="button next" ng-click="$ctrl.save()"
-              ng-disabled="$ctrl.saving">
-        NEXT <i class="fa fa-arrow-right"></i>
-      </button>
-
-      <a class="" ui-sref="targeting" class="back-link">
-        <i class="fa fa-arrow-left"></i>  BACK
-      </a>
+      </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <h3>Estimated Reach:</h3>
-    <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
-    </reach-estimate>
+    <div class="col-md-3">
+      <div class="reach-box">
+        <h4><i class="fa fa-users"></i> Estimated Reach:</h4>
+        <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">
+        </reach-estimate>
+      </div>
+    </div>
   </div>
 </div>

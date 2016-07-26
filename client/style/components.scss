@@ -258,6 +258,13 @@
     margin: 10px 0px 0px;
     color: $color-5;
     font-size: 30px;
+    a {
+      cursor: text;
+      border-color: $color-2;
+      &:hover {
+        color: $color-1;
+      }
+    }
   }
 }
 .action-bar {
@@ -504,6 +511,9 @@
   }
   .media-search {
     max-width: 200px;
+  }
+  .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle, .btn-default, .form-control {
+    border-color: $color-10;
   }
 
 }
@@ -1037,13 +1047,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   height: 100%;
-  padding: 50px 50px 140px;
+  padding: 40px 50px 140px;
   position: relative;
   z-index: 1000;
   overflow: scroll;
   h2 {
     margin-top: 0px;
-    font-size: 36px;
+    font-size: 30px;
   }
   h3 {
     text-transform: uppercase;
@@ -1808,7 +1818,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       font-size: 16px;
       margin-bottom: 0px;
       height: 34px;
-      border: 1px solid $color-5;
+      border: 1px solid $color-10;
       &:focus {
         border: 2px solid $color-2;
       }
@@ -1837,7 +1847,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       outline: none; 
       box-shadow: none;
       padding-left: 20px;
-      border: 1px solid $color-9;
+      border: 1px solid $color-10;
       border-radius: 0px;
       &:focus {
         border: 2px solid $color-2;
@@ -1850,7 +1860,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       border: 2px solid #115a97;
       background: url("../images/chev_dn.png") no-repeat 95% 50%;
       background-size: 12px 7px;
-      border: 1px solid $color-5;
+      border: 1px solid $color-10;
       padding: 5px 40px 5px 15px;
       font-size: 14px;
       display: inline;
@@ -2127,30 +2137,68 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .targeting-location {
+  margin-right: 0px;
+  padding: 40px 60px 60px;
+  margin-left: 120px;
+  margin-top: 70px;
+  background-color: $color-3;
+  height: 100%;
+  border-radius: 15px;
   input[type="text"], select {
-    max-width: 300px;
+    width: 280px;
+    border-color: $color-10;
+  }
+  h1 i {
+    color: $color-2;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
   }
   h3 {
     color: $color-2;
   }
   .location-list {
     margin-bottom: 20px;
+    input[type="text"], select {
+      width: 50px;
+      height: 24px;
+      padding: 2px 10px;
+    }
+  }
+  .location-input {
+    margin-top: 10px;
   }
   .location-item {
-    border-bottom: 1px solid $color-9;
-    padding: 10px 0px;
+    border-bottom: 1px dotted $color-10;
+    padding: 8px 0px;
     font-size: 16px;
+    position: relative;
     i {
       color: $color-2;
     }
     .fa-times-circle-o {
       float: right;
     }
+    .fa-li {
+      margin-top: 8px;
+    }
+    .fa-times-circle-o {
+      margin-top: 3px;
+    }
   }
   .include-exclude {
     input[type="text"], select {
       display: inline-block;
     } 
+    select {
+      max-width: 100px;
+      padding: 6px 12px 6px 15px;
+    }
+    input[type="text"] {
+      max-width: 180px;
+      border-radius: 0px;
+    }
   }
   .next {
     min-width: 280px;
@@ -2159,6 +2207,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .back-link {
     font-size: 16px;
+    margin-top: 20px;
+    display: block;
   }
   .location-results {
     margin-top: 20px;
@@ -2166,8 +2216,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .targeting-demographic {
+  margin-right: 0px;
+  padding: 30px 60px 60px;
+  margin-left: 120px;
+  margin-top: 70px;
+  background-color: $color-3;
+  height: 100%;
+  border-radius: 15px;
   input[type="text"], select {
     max-width: 280px;
+    border-color: $color-10;
+  }
+  .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle, .btn-default, .form-control {
+    border-color: $color-10;
+  }
+  input[type="text"],  {
+    border-radius: 0px;
+  }
+  h1 i {
+    color: $color-2;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
   }
   h3 {
     color: $color-2;
@@ -2191,6 +2262,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .back-link {
     font-size: 16px;
+    margin-top: 20px;
+    display: block;
   }
   .targeting-connections {
     margin-bottom: 20px;
@@ -2207,6 +2280,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       padding-left: 10px;
       font-size: 14px;
     }
+  }
+  .tree-light li.tree-expanded i.tree-branch-head {
+    background-position-y: 2px;
+  }
+}
+.reach-box {
+  margin-top: 30px;
+  padding: 5px 20px 10px;
+  border: 5px solid $color-2;
+  border-radius: 15px;
+  text-align: center;
+  h4 {
+    margin-bottom: 5px;
+  }
+  i {
+    color: $color-2;
+  }
+  .reach-estimate {
+    font-weight: 700;
+    font-size: 28px;
   }
 }
 .ad-summary {
