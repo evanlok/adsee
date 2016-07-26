@@ -2,9 +2,11 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
     <span aria-hidden="true">&times; cancel</span>
   </button>
+
   <div class="modal-header">
+    <div class="transition-icon"><i class="fa fa-exchange"></i></div>
     <h1>
-      transition selected: <span class="selected-name">{{ selectedTransition.name }}</span>
+      Select transition: <span class="selected-name">{{ selectedTransition.name }}</span>
     </h1>
 
     Click on the transition panel to select it.
@@ -22,6 +24,6 @@
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-danger" ng-click="removeTransition()">Remove</button>
+    <button class="button-ghost" ng-click="removeTransition()"><i class="fa fa-close"></i> Remove Transition</button>
   </div>
 </div>
