@@ -92,6 +92,7 @@
   border-radius: 0px;
   margin: 0 0 1.65em 0px;
   overflow: hidden;
+  background-color: $color-3;
   input[type="text"] {
     box-sizing: border-box;
     width: 100%;
@@ -2192,6 +2193,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   height: 100%;
   border-radius: 15px;
   padding: 50px 80px 80px;
+  .button {
+    display: block;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+  }
 }
 .ad-summary, .signup-page {
   i {

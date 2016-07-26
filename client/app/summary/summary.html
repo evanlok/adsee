@@ -13,39 +13,9 @@
   </div>
 
   <div class="row" ng-if="!$ctrl.loading">
+
+
     <div class="col-md-4 col-md-offset-2">
-
-      <h3><i class="fa fa-search" aria-hidden="true"></i> Video Details</h3>
-
-      <div>
-        <span class="data-lbl">Vertical:</span>
-        {{ $ctrl.sceneCollection.industry }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Type:</span>
-        {{ $ctrl.sceneCollection.ad_type }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Theme:</span>
-        {{ $ctrl.sceneCollection.theme }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Font:</span>
-        {{ $ctrl.sceneCollection.font }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Music:</span>
-        {{ $ctrl.sceneCollection.song }}
-      </div>
-
-      <div>
-        <span class="data-lbl">Color:</span>
-        {{ $ctrl.sceneCollection.color }}
-      </div>
 
       <div ng-if="$ctrl.sceneCollection.integration === 'facebook_ad'">
         <h3><i class="fa fa-bullseye" aria-hidden="true"></i> Targeting</h3>
@@ -169,21 +139,52 @@
         </div>
       </div>
 
-      <div ng-if="$ctrl.sceneCollection.integration === 'facebook_post'">
-
-      </div>
     </div>
 
     <div class="col-md-4">
-      <p>
-        <a href="" class="button" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
-          PUBLISH VIDEO
-        </a>
-      </p>
 
-      <p class="text-center">
-        <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
-      </p>
+      <h3><i class="fa fa-search" aria-hidden="true"></i> Video Details</h3>
+
+      <div>
+        <span class="data-lbl">Vertical:</span>
+        {{ $ctrl.sceneCollection.industry }}
+      </div>
+
+      <div>
+        <span class="data-lbl">Type:</span>
+        {{ $ctrl.sceneCollection.ad_type }}
+      </div>
+
+      <div>
+        <span class="data-lbl">Theme:</span>
+        {{ $ctrl.sceneCollection.theme }}
+      </div>
+
+      <div>
+        <span class="data-lbl">Font:</span>
+        {{ $ctrl.sceneCollection.font }}
+      </div>
+
+      <div>
+        <span class="data-lbl">Music:</span>
+        {{ $ctrl.sceneCollection.song }}
+      </div>
+
+      <div>
+        <span class="data-lbl">Color:</span>
+        {{ $ctrl.sceneCollection.color }}
+      </div>
+
+      <div ng-if="$ctrl.sceneCollection.integration === 'facebook_post'">
+
+      </div>
+      
+      <a href="" class="button" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
+        PUBLISH VIDEO
+      </a>
+      
+      <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
+      
     </div>
   </div>
 
