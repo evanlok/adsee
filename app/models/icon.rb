@@ -10,6 +10,9 @@ class Icon < ActiveRecord::Base
                     tsearch: { prefix: true, dictionary: 'english' }
                   }
 
+  # Associations
+  has_many :scene_attributes, as: :attachment, dependent: :delete_all
+
   # Validations
   validates :name, presence: true
 

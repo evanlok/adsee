@@ -9,6 +9,7 @@ class VideoClip < ActiveRecord::Base
 
   # Associations
   belongs_to :user
+  has_many :scene_attributes, as: :attachment, dependent: :delete_all
 
   # Validations
   validates :original_path, presence: true

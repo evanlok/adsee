@@ -18,6 +18,8 @@ class VideoJobsController < ApplicationController
     respond_to do |format|
       format.json { render :show, status: :created }
     end
+  rescue Faraday::ClientError => e
+    notify_and_render_error(e)
   end
 
   def generate
@@ -26,6 +28,8 @@ class VideoJobsController < ApplicationController
     respond_to do |format|
       format.json { render :show, status: :created }
     end
+  rescue Faraday::ClientError => e
+    notify_and_render_error(e)
   end
 
   def show
@@ -38,6 +42,14 @@ class VideoJobsController < ApplicationController
   end
 
   private
+
+  def notify_and_render_error(ex)
+    Honeybadger.notify(ex, context: { response_body: ex.response.dig(:body, 'errors') })
+
+    respond_to do |format|
+      format.json { render json: { errors: ex.response.dig(:body, 'errors') }, status: :unprocessable_entity }
+    end
+  end
 
   def load_scene_collection
     @scene_collection = SceneCollection.find(params[:scene_collection_id])

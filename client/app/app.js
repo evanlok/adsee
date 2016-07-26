@@ -15,6 +15,7 @@ angular.module('adsee', [
   'bcherny/formatAsCurrency',
   'ezfb',
   'rzModule',
+  'xeditable',
   require('./admin/admin.module'),
   require('./shared/shared.module'),
   require('./layout/layout.module'),
@@ -33,6 +34,8 @@ angular.module('adsee', [
   require('./media/media.module'),
   require('./scene_collection/scene_collection.module'),
   require('./facebook_post_config/facebook_post_config.module')
-]).config(config);
+]).config(config).run(/*@ngInject*/ function (editableOptions) {
+  editableOptions.theme = 'bs3';
+});
 
 require('./constants');
