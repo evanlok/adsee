@@ -67,6 +67,14 @@ RSpec.describe SceneCollection do
     it 'returns the highest resolution video' do
       expect(scene_collection.video).to eq(video)
     end
+
+    context 'when videos are loaded' do
+      it 'uses ruby sorting' do
+        scene_collection.videos.length
+        expect(scene_collection.videos).to_not receive(:order)
+        expect(scene_collection.video).to eq(video)
+      end
+    end
   end
 
   describe '#current_facebook_ad' do
@@ -85,6 +93,68 @@ RSpec.describe SceneCollection do
         expect(scene_collection.facebook_ads).to be_empty
         expect(scene_collection.current_facebook_ad).to be_a(FacebookAd)
       end
+    end
+
+    context 'when facebook_ads are loaded' do
+      it 'creates new ad' do
+        scene_collection.facebook_ads.length
+        expect(scene_collection.current_facebook_ad).to be_a(FacebookAd)
+      end
+
+      context 'when ad exists' do
+        let!(:facebook_ad) { create(:facebook_ad, scene_collection: scene_collection) }
+
+        it 'returns first ad' do
+          scene_collection.facebook_ads.length
+          expect(scene_collection.current_facebook_ad).to eq(facebook_ad)
+        end
+      end
+    end
+  end
+
+  describe '#audio_url' do
+    let(:host) { Faker::Internet.url }
+
+    around do |example|
+      ClimateControl.modify CDN_URL: host do
+        example.run
+      end
+    end
+
+    subject { build(:scene_collection, audio: 'audio_path').audio_url }
+    it { is_expected.to eq("#{host}/audio_path") }
+
+    context 'when audio is nil' do
+      subject { build(:scene_collection, audio: nil).audio_url }
+      it { is_expected.to be nil }
+    end
+  end
+
+  describe '#advanced_targeting' do
+    let(:scene_collection) { create(:scene_collection) }
+    let!(:facebook_ad) { create(:facebook_ad, scene_collection: scene_collection, advanced: true) }
+
+    it 'checks if facebook_ad is using advanced targeting' do
+      expect(scene_collection.advanced_targeting).to be true
+    end
+  end
+
+  describe 'when audio is updated' do
+    let(:scene_collection) { create(:scene_collection, audio: 'old_audio') }
+
+    it 'deletes old audio from S3' do
+      expect(scene_collection).to receive(:delete_from_s3).with('old_audio')
+      scene_collection.update(audio: 'new_audio')
+    end
+  end
+
+  describe 'scene collection is destroyed' do
+    let(:scene_collection) { create(:scene_collection, audio: 'audio', hal_id: '456') }
+
+    it 'deletes record from HAL and deletes audio from S3' do
+      expect_any_instance_of(HAL::Client).to receive(:delete_scene_collection).with('456')
+      expect(scene_collection).to receive(:delete_from_s3).with('audio')
+      scene_collection.destroy
     end
   end
 end
