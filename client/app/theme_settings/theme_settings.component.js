@@ -2,9 +2,9 @@ var templateUrl = require('./theme_settings.html');
 var modalCtrl = require('./configure_audio_modal.controller');
 var modalTemplateUrl = require('./configure_audio_modal.html');
 var fontModalCtrl = require('./font_modal.controller');
-var fontModalTempalteUrl = require('./font_modal.html');
+var fontModalTemplateUrl = require('./font_modal.html');
 var songModalCtrl = require('./song_modal.controller');
-var songModalTempalteUrl = require('./song_modal.html');
+var songModalTemplateUrl = require('./song_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -13,6 +13,9 @@ var component = {
     sceneCollection: '<',
     duration: '<',
     onUpdate: '&'
+  },
+  require: {
+    sceneEditor: '^^'
   }
 };
 
@@ -94,7 +97,7 @@ function ThemeSettingsController($uibModal, $scope, $q, songsService, fontsServi
   function configureFont() {
     var modal = $uibModal.open({
       controller: fontModalCtrl,
-      templateUrl: fontModalTempalteUrl,
+      templateUrl: fontModalTemplateUrl,
       size: 'lg',
       windowClass: 'configure-font-modal',
       resolve: {
@@ -113,7 +116,7 @@ function ThemeSettingsController($uibModal, $scope, $q, songsService, fontsServi
   function configureSong() {
     var modal = $uibModal.open({
       controller: songModalCtrl,
-      templateUrl: songModalTempalteUrl,
+      templateUrl: songModalTemplateUrl,
       size: 'lg',
       windowClass: 'configure-song-modal',
       resolve: {
