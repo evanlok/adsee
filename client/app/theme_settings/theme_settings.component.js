@@ -18,7 +18,7 @@ var component = {
 
 /*@ngInject*/
 
-function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
+function ThemeSettingsController($uibModal, $scope, $q, songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
