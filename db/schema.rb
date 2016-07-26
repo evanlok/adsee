@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722214113) do
+ActiveRecord::Schema.define(version: 20160726225407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -269,6 +269,7 @@ ActiveRecord::Schema.define(version: 20160722214113) do
     t.integer  "ad_type_id"
     t.integer  "font_id"
     t.string   "color"
+    t.integer  "video_count"
   end
 
   add_index "themes", ["ad_type_id"], name: "index_themes_on_ad_type_id", using: :btree
