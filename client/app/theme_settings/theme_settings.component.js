@@ -13,6 +13,9 @@ var component = {
     sceneCollection: '<',
     duration: '<',
     onUpdate: '&'
+  },
+  require: {
+    sceneEditor: '^^'
   }
 };
 
