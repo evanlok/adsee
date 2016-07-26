@@ -91,6 +91,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'webmock'
   gem 'climate_control'
+  gem 'simplecov', require: false
 end
 
 group :production do

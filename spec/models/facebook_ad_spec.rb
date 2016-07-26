@@ -3,6 +3,19 @@ require 'rails_helper'
 RSpec.describe FacebookAd do
   let(:facebook_ad) { build(:facebook_ad) }
 
+  describe 'callbacks' do
+    subject { FacebookAd.create(scene_collection_id: 1234) }
+
+    it 'sets defaults on create' do
+      expect(subject.campaign_name).to eq(FacebookAd::CAMPAIGN_NAME)
+      expect(subject.optimization_goal).to eq('VIDEO_VIEWS')
+      expect(subject.billing_event).to eq('IMPRESSIONS')
+      expect(subject.budget_type).to eq('daily')
+      expect(subject.pacing_type).to eq('standard')
+      expect(subject.targeting).to eq({})
+    end
+  end
+
   describe '#campaign_params' do
     subject { facebook_ad.campaign_params }
 
@@ -108,6 +121,16 @@ RSpec.describe FacebookAd do
         expect(subject[:targeting]).to eq({ age_min: 18, geo_locations: { countries: ['US'] } }.to_json)
       end
     end
+
+    context 'with advanced targeting' do
+      let(:facebook_ad) { build(:facebook_ad, advanced: true) }
+
+      it 'sets targeting to custom targeting spec' do
+        targeting_spec = { advanced: true }
+        expect(facebook_ad).to receive(:normalized_targeting_spec) { targeting_spec }
+        expect(subject[:targeting]).to eq(targeting_spec.to_json)
+      end
+    end
   end
 
   describe '#ad_creative_params' do
@@ -127,10 +150,18 @@ RSpec.describe FacebookAd do
       {
         interests: [{ id: 123, name: 'Interest Name' }],
         education_statuses: [{ id: 456, name: 'College Graduate' }],
-        connection_name: 'App'
+        connection_name: 'App',
+        null: nil,
+        empty: [],
+        empty_string: ''
       }
     end
+
     let(:facebook_ad) { build(:facebook_ad, targeting: targeting_spec) }
+
+    it 'deletes keys with blank values' do
+      expect(facebook_ad.normalized_targeting_spec).to_not include(*%w(null empty empty_string))
+    end
 
     it 'only includes hashes with ids for OBJECT_KEYS' do
       expect(facebook_ad.normalized_targeting_spec).to include({ interests: [{ id: 123 }] }.deep_stringify_keys)

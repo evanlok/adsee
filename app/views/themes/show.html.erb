@@ -19,6 +19,10 @@
             <div class="theme-data-point"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> <%= number_to_duration @theme_variant.duration %></div>
           <% end %>
 
+          <% if @theme.video_count %>
+              <div class="theme-data-point"><i class="fa fa-video-camera fa-fw" aria-hidden="true"></i> <%= @theme.video_count %></div>
+          <% end %>
+
           <div class="theme-data-point"><i class="fa fa-picture-o fa-fw" aria-hidden="true"></i> <%= @theme.photo_count %></div>
         </div>
       </div>
