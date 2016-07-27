@@ -12,7 +12,7 @@ class HalCallbacksController < ApplicationController
       end
 
       @video_job.scene_collection.generated!
-      run_post_generation_tasks
+      FacebookVideoWorker.perform_async(@video_job.scene_collection_id)
     end
 
     render json: { status: 'ok' }
@@ -46,19 +46,6 @@ class HalCallbacksController < ApplicationController
     }
 
     video.save
-  end
-
-  # TODO: Move this to a background job
-  def run_post_generation_tasks
-    case @video_job.scene_collection.integration
-    when 'facebook_ad'
-      facebook_ad = @video_job.scene_collection.current_facebook_ad
-      Facebook::VideoAdManager.new(facebook_ad).run
-    when 'facebook_post'
-      Facebook::FeedPoster.new(@video_job.scene_collection).post_to_wall
-    when 'facebook_page_post'
-      Facebook::FeedPoster.new(@video_job.scene_collection).post_to_page
-    end
   end
 
   def load_video_job

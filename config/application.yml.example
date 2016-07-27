@@ -16,3 +16,4 @@ FACEBOOK_API_VERSION: v2.6
 # FACEBOOK_ADS_ENABLED: '1'
 HOME_URL: http://home.adsee.io
 # SSL_ENABLED: '1'
+REDIS_URL: 'redis://localhost:6379/1'

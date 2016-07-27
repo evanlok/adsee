@@ -64,6 +64,8 @@ gem 'high_voltage'
 gem 'lograge'
 gem 'pg_search'
 gem 'api-pagination'
+gem 'sidekiq'
+gem 'sinatra', require: false
 
 group :development do
   gem 'quiet_assets'
@@ -92,6 +94,7 @@ group :test do
   gem 'webmock'
   gem 'climate_control'
   gem 'simplecov', require: false
+  gem 'rspec-sidekiq'
 end
 
 group :production do

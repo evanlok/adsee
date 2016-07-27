@@ -18,9 +18,6 @@ RSpec.describe HalCallbacksController do
 
   describe 'POST create' do
     it 'creates videos from request and posts ad to facebook' do
-      facebook_ad = double(:facebook_ad)
-      expect_any_instance_of(SceneCollection).to receive(:current_facebook_ad) { facebook_ad }
-      expect(Facebook::VideoAdManager).to receive(:new).with(facebook_ad) { double(:video_ad_manager, run: true) }
       post :create, params
       expect(response).to be_success
       expect(Video.where(scene_collection_id: scene_collection).count).to eq(2)
@@ -37,6 +34,7 @@ RSpec.describe HalCallbacksController do
                                                             width: 1280,
                                                             height: 720)
       expect(scene_collection.reload.status).to eq('generated')
+      expect(FacebookVideoWorker).to have_enqueued_sidekiq_job(scene_collection.id)
     end
 
     context 'when more recent video job exists' do
@@ -46,24 +44,6 @@ RSpec.describe HalCallbacksController do
         post :create, params, format: :json
         expect(response).to be_success
         expect(Video.count).to eq(0)
-      end
-    end
-
-    context 'when integration is a facebook_post' do
-      let!(:scene_collection) { create(:scene_collection, hal_id: '1234', integration: 'facebook_post') }
-
-      it 'posts video to user feed' do
-        expect_any_instance_of(Facebook::FeedPoster).to receive(:post_to_wall)
-        post :create, params, format: :json
-      end
-    end
-
-    context 'when integration is a facebook_page_post' do
-      let!(:scene_collection) { create(:scene_collection, hal_id: '1234', integration: 'facebook_page_post') }
-
-      it 'posts video to facebook page' do
-        expect_any_instance_of(Facebook::FeedPoster).to receive(:post_to_page)
-        post :create, params, format: :json
       end
     end
   end
