@@ -388,6 +388,8 @@
     padding: 5px 0px 5px 37px;
     border-radius: 5px;
     margin-bottom: 2px;
+    font-size: 16px;
+    line-height: 1.6;
     &:hover {
       background-color: $color-2;
       color: white;
@@ -1164,7 +1166,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .modal-body {
     background-color: black;
-    padding: 40px 0px;
+    padding: 40px 20px;
     color: white;
     background: #606060; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #606060 0%, #000000 100%); /* FF3.6-15 */

@@ -99,8 +99,10 @@
                on-select="$ctrl.selectMedia(icon)"
                ng-show="$ctrl.display.icons"></icon-list>
 
-    <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"
-                    ng-change="$ctrl.pageChanged()"></uib-pagination>
+    <div class="row">
+      <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"
+                      ng-change="$ctrl.pageChanged()"></uib-pagination>
+    </div>
   </div>
 
 </div>
