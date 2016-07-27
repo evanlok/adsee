@@ -187,8 +187,6 @@ GEM
     pkg-config (1.1.7)
     powerpack (0.1.1)
     puma (3.6.0)
-    puma-heroku (1.0.0)
-      puma (~> 3.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
@@ -368,7 +366,6 @@ DEPENDENCIES
   pg (~> 0.15)
   pg_search
   puma
-  puma-heroku
   pundit
   quiet_assets
   rack-cors

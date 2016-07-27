@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-worker: bundle exec sidekiq
+worker: DB_POOL=$SIDEKIQ_CONCURRENCY bundle exec sidekiq
