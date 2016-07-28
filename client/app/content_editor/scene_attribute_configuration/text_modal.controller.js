@@ -2,6 +2,7 @@
 function TextModalController($scope, $uibModalInstance, fontsService, sceneAttribute) {
   $scope.sceneAttribute = sceneAttribute;
   $scope.config = angular.copy($scope.sceneAttribute.config) || {};
+  $scope.colorPickerOptions = {format: 'hex'};
   fetchFonts();
 
   $scope.editColor = editColor;

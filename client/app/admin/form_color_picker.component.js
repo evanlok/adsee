@@ -11,6 +11,11 @@ var component = {
 
 /*@ngInject*/
 function FormColorPickerController() {
+  var vm = this;
+
+  vm.$onInit = function () {
+    vm.colorPickerOptions = {format: 'hex'};
+  };
 }
 
 module.exports = component;
