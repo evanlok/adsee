@@ -730,7 +730,7 @@
       text-align: center;
       width: 100%;
       font-weight: normal;
-      font-size: 14px;
+      font-size: 12px;
       z-index: 100;
       margin-top: 26px;
     }
@@ -752,24 +752,26 @@
       }
       .rz-bar {
         height: 32px;
-        background-color: $color-10;
+        background-color: hsla(0, 0.0000%, 0%, 0.6000);
+        border-radius: 0px;
       }
       .rz-bubble {
         bottom: -14px;
         z-index: 100;
-        color: $color-2;
-        background-color: hsla(0, 0.0000%, 28.6275%, 1.0000);
+        color: $color-3;
+        background-color: hsla(0, 0.0000%, 0%, 0.6000);
         width: 40px;
         height: 32px;
         text-align: center;
-        padding-top: 5px;
+        padding-top: 9px;
+        font-size: 11px;
       }
-      .rz-pointer-min {
-        border-right: 1px solid white;
-      }
-      .rz-pointer-max {
-        border-left: 1px solid white;
-      }
+      // .rz-pointer-min {
+      //   border-right: 1px solid white;
+      // }
+      // .rz-pointer-max {
+      //   border-left: 1px solid white;
+      // }
       .rz-pointer:after {
         background: none;
         background-color: none;
@@ -794,6 +796,19 @@
   .video-js {
     z-index: 0;
   }
+}
+
+.color-settings-box {
+  border: 1px solid $color-10;
+  border-radius: 15px;
+  padding: 30px 30px 15px;
+}
+
+.color-settings-text {
+  font-size: 14px;
+  font-style: italic;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .scene-header {
