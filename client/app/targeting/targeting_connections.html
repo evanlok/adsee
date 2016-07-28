@@ -1,8 +1,6 @@
 <div class="targeting-connections">
   <h3>Connections</h3>
 
-  <a href="" ng-click="$ctrl.remove()">Remove</a>
-
   <select ng-model="$ctrl.connection"
           ng-options="connection as connection.name for connection in $ctrl.connectionOptions"
           ng-change="$ctrl.searchConnections()"
@@ -28,4 +26,7 @@
       {{ connection.name }}
     </ui-select-choices>
   </ui-select>
+
+  <a href="" ng-click="$ctrl.remove()">Remove</a>
+
 </div>

@@ -1,27 +1,27 @@
 <div class="video-nav">
   <ul>
     <li ng-class="{active: $ctrl.stateName().match('targeting')}" ng-if="$ctrl.showFacebookAdLinks()">
-      <a href="" ng-click="$ctrl.goToTargeting()">Targeting</a>
+      <a href="" ng-click="$ctrl.goToTargeting()"><div class="nav-icon"><i class="fa fa-crosshairs"></i></div>Targeting</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'sceneEditor'}">
-      <a ui-sref="sceneEditor">Scene Editor</a>
+      <a ui-sref="sceneEditor"><div class="nav-icon"><i class="fa fa-pencil-square "></i></div>Scene Editor</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'preview'}">
-      <a href="" ng-click="$ctrl.goToPreview()">Preview</a>
+      <a href="" ng-click="$ctrl.goToPreview()"><div class="nav-icon"><i class="fa fa-eye"></i></div>Preview</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'adConfig'}" ng-if="$ctrl.showFacebookAdLinks()">
-      <a href="" ng-click="$ctrl.goToAdConfig()">Ad Spend</a>
+      <a href="" ng-click="$ctrl.goToAdConfig()"><div class="nav-icon"><i class="fa fa-money"></i></div>Ad Spend</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'facebookPostConfig'}" ng-if="$ctrl.showFacebookPostConfigLink()">
-      <a ui-sref="facebookPostConfig">Facebook Post</a>
+      <a ui-sref="facebookPostConfig"><div class="nav-icon"><i class="fa fa-facebook"> </i></div>Facebook Post</a>
     </li>
 
     <li ng-class="{active: $ctrl.stateName() === 'summary'}">
-      <a ui-sref="summary">Summary</a>
+      <a ui-sref="summary"><div class="nav-icon"><i class="fa fa-list-ul"></i></div>Summary</a>
     </li>
   </ul>
 </div>

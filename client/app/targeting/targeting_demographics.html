@@ -1,7 +1,7 @@
 <div class="targeting-demographic">
 
   <div class="row">
-    <div class="col-md-7 col-md-offset-1">
+    <div class="col-md-6 col-md-offset-1">
 
       <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
 
@@ -52,10 +52,10 @@
             <label>Language</label>
 
             <ul class="list-unstyled">
-              <li ng-repeat="localeKey in $ctrl.targetingSpec.locales">
+              <li ng-repeat="localeKey in $ctrl.targetingSpec.locales" class="demographic-item">
                 {{ $ctrl.findLocaleByKey(localeKey).name }}
 
-                <a href="" ng-click="$ctrl.removeLocale(locale)">
+                <a href="" ng-click="$ctrl.removeLocale(locale)" class="remove-demo">
                   <i class="fa fa-times-circle-o"></i>
                 </a>
               </li>
@@ -79,12 +79,12 @@
             <div>
               <div ng-repeat="(type, name) in $ctrl.audienceTypes">
                 <div ng-if="$ctrl.targetingSpec[type] && $ctrl.targetingSpec[type].length">
-                  <div ng-repeat="audience in $ctrl.targetingSpec[type]">
-                    {{ audience.path.slice(0, -1).join(' > ') }}
+                  <div ng-repeat="audience in $ctrl.targetingSpec[type]" class="demographic-item">
+                    <span class="target-section">{{ audience.path.slice(0, -1).join(' > ') }}</span>
                     <br>
                     <strong>{{ audience.name }}</strong>
 
-                    <a href="" ng-click="$ctrl.removeAudience(type, audience.id)">
+                    <a href="" ng-click="$ctrl.removeAudience(type, audience.id)" class="remove-demo">
                       <i class="fa fa-times-circle-o"></i>
                     </a>
                   </div>
@@ -156,7 +156,7 @@
 
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-md-offset-1">
       <div class="reach-box">
         <h4><i class="fa fa-users"></i> Estimated Reach:</h4>
         <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">

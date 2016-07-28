@@ -1,37 +1,47 @@
 <div class="video-configuration">
+
   <video width="640" height="360" class="video-js vjs-default-skin vjs-16-9" preload="auto">
-  </video>
+    </video>
 
-  <div class="form-group">
-    <label>Start time and duration</label>
+  <div class="video-overlay-box">
+    <div class="form-group speed-slider">
+      <label>Speed</label>
 
-    <a href="" ng-click="$ctrl.play()" ng-if="!$ctrl.playing">
-      <i class="fa fa-play-circle"></i>
-    </a>
+      <rzslider rz-slider-model="$ctrl.speed"
+                rz-slider-options="$ctrl.speedSliderOptions">
+      </rzslider>
+    </div>
 
-    <a href="" ng-click="$ctrl.stop()" ng-if="$ctrl.playing">
-      <i class="fa fa-stop-circle"></i>
-    </a>
+    <div class="form-group volume-slider">
+      <label>Volume</label>
+
+      <rzslider rz-slider-model="$ctrl.volume"
+                rz-slider-options="$ctrl.volumeSliderOptions">
+      </rzslider>
+    </div>
+
+    <div class="play-buttons">
+      <a href="" ng-click="$ctrl.play()" ng-if="!$ctrl.playing">
+        <i class="fa fa-play-circle"></i> PLAY
+      </a>
+
+      <a href="" ng-click="$ctrl.stop()" ng-if="$ctrl.playing">
+        <i class="fa fa-stop-circle"></i> STOP
+      </a>
+    </div>
+
+  </div>
+
+
+  <div class="form-group time-slider">
+
+    <label>Drag numbers to edit start and end time</label>
 
     <rzslider rz-slider-model="$ctrl.startTime"
               rz-slider-high="$ctrl.endTime"
               rz-slider-options="$ctrl.rangeSliderOptions">
     </rzslider>
+
   </div>
 
-  <div class="form-group">
-    <label>Speed</label>
-
-    <rzslider rz-slider-model="$ctrl.speed"
-              rz-slider-options="$ctrl.speedSliderOptions">
-    </rzslider>
-  </div>
-
-  <div class="form-group">
-    <label>Volume</label>
-
-    <rzslider rz-slider-model="$ctrl.volume"
-              rz-slider-options="$ctrl.volumeSliderOptions">
-    </rzslider>
-  </div>
 </div>
