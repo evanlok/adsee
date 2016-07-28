@@ -20,11 +20,12 @@ var component = {
 };
 
 /*@ngInject*/
-
-function ThemeSettingsController($uibModal, $scope, $q, songsService, fontsService) {
+function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
+    vm.colorPickerOptions = {format: 'hex', swatchPos: 'right'};
+
     $q.all([fetchFonts(), fetchSongs()]).then(function () {
       setCurrentSongAndFont();
     });

@@ -20,6 +20,7 @@ function SceneAttributeController($uibModal) {
   var vm = this;
   vm.value = vm.sceneAttribute.value;
   vm.update = update;
+  vm.updateText = _.debounce(update, 500);
   vm.textInput = textInput;
   vm.mediaInput = mediaInput;
   vm.configureAttribute = configureAttribute;

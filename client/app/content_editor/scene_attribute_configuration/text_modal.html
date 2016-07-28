@@ -38,7 +38,7 @@
               <div class="row" ng-if="config.color || editingColor">
                 <div class="col-md-10">
                   <color-picker ng-model="config.color"
-                                options="{format: 'hex'}">
+                                options="colorPickerOptions">
                   </color-picker>
                 </div>
 
@@ -60,7 +60,7 @@
               <div class="row" ng-if="config.background_color || editingBackgroundColor">
                 <div class="col-md-10">
                   <color-picker ng-model="config.background_color"
-                                options="{format: 'hex'}">
+                                options="colorPickerOptions">
                   </color-picker>
                 </div>
 

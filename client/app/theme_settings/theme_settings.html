@@ -19,7 +19,7 @@
 
     <div class="theme-settings-column color-picker-column">
       <color-picker ng-model="$ctrl.sceneCollection.color"
-                    options="{format: 'hex', swatchPos: 'right'}"
+                    options="$ctrl.colorPickerOptions"
                     event-api="{onChange: $ctrl.colorChanged }">
       </color-picker>
     </div>
