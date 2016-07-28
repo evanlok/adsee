@@ -1,5 +1,5 @@
 /*@ngInject*/
-function VideoModalController($scope, $uibModalInstance, $timeout, sceneAttribute) {
+function VideoModalController($scope, $uibModalInstance, $timeout, sceneAttribute, modalConfig) {
   $scope.sceneAttribute = sceneAttribute;
   $scope.config = {start_time: 0, end_time: sceneAttribute.duration, speed: 1, volume: 1};
   $scope.config = angular.extend($scope.config, $scope.sceneAttribute.config);
@@ -15,6 +15,12 @@ function VideoModalController($scope, $uibModalInstance, $timeout, sceneAttribut
   $scope.updateColorSettings = updateColorSettings;
   $scope.updateVideoConfig = updateVideoConfig;
   $scope.save = save;
+
+  $scope.$on('modal.closing', function (e) {
+    if (modalConfig.disableBackdropClose()) {
+      e.preventDefault();
+    }
+  });
 
   function selectFilter(filter) {
     $scope.config.filter = filter.value;
