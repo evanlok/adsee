@@ -11,9 +11,11 @@
       </div>
       <input required="" type="text" id="attr_{{ $ctrl.sceneAttribute.name }}" class="form-control"
              ng-model="$ctrl.value"
-             ng-model-options="{updateOn: 'default blur', debounce: { default: 1000, blur: 0 }}"
-             ng-change="$ctrl.update()"
+
+             ng-change="$ctrl.updateText()"
              maxlength="{{ $ctrl.sceneAttribute.display_config.limit }}">
+
+      <span ng-if="$ctrl.sceneAttribute.display_config.limit">{{ $ctrl.sceneAttribute.display_config.limit - $ctrl.value.length }}</span>
     </div>
   </div>
 
@@ -23,7 +25,6 @@
     <label>
       <input type="checkbox"
              ng-model="$ctrl.value"
-             ng-model-options="{updateOn: 'default blur', debounce: { default: 1000, blur: 0 }}"
              ng-change="$ctrl.update()"
              ng-false-value="'0'">
       {{ $ctrl.sceneAttribute.display_name }}
