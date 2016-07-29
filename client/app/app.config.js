@@ -46,8 +46,11 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('adConfig', {
       url: '/ad_config/:facebookAdId',
-      templateProvider: /*@ngInject */ function ($stateParams, $interpolate) {
-        return $interpolate('<ad-config facebook-ad-id="{{ facebookAdId }}"></ad-config>')($stateParams);
+      template: '<ad-config facebook-ad="$resolve.facebookAd" scene-collection="$resolve.sceneCollection"></ad-config>',
+      resolve: {
+        facebookAd: /*@ngInject */ function ($stateParams, facebookAdService) {
+          return facebookAdService.get({id: $stateParams.facebookAdId});
+        }
       },
       parent: 'sceneCollectionWizard'
     })

@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function FacebookPostConfigController($state, sceneCollectionService, userService, facebookAdConfigOptions) {
+function FacebookPostConfigController($state, sceneCollectionService, userService, facebookAdConfigOptions, stepsNavigator) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -26,6 +26,7 @@ function FacebookPostConfigController($state, sceneCollectionService, userServic
   vm.save = save;
   vm.showCallToActionField = showCallToActionField;
   vm.showCallToActionSubfields = showCallToActionSubfields;
+  vm.previousStep = previousStep;
 
   function fetchFacebookPages() {
     userService.facebookPages().then(function (data) {
@@ -55,6 +56,10 @@ function FacebookPostConfigController($state, sceneCollectionService, userServic
     if (!vm.facebookPostParams.call_to_action.type) {
       delete vm.facebookPostParams.call_to_action;
     }
+  }
+
+  function previousStep() {
+    stepsNavigator.goToPreview(vm.sceneCollection);
   }
 }
 

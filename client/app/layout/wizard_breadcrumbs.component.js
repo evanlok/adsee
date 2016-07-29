@@ -9,7 +9,7 @@ var component = {
 };
 
 /*@ngInject*/
-function WizardBreadcrumbsController($state, videoJobService, facebookAdService) {
+function WizardBreadcrumbsController($state, stepsNavigator) {
   var vm = this;
 
   vm.stateName = stateName;
@@ -24,23 +24,15 @@ function WizardBreadcrumbsController($state, videoJobService, facebookAdService)
   }
   
   function goToTargeting() {
-    if (vm.sceneCollection.advanced_targeting) {
-      $state.go('targetingLocations');
-    } else {
-      $state.go('targeting');
-    }
+    stepsNavigator.goToTargeting(vm.sceneCollection);
   }
 
   function goToPreview() {
-    videoJobService.query({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
-      $state.go('preview', {videoJobId: data[0].id});
-    });
+    stepsNavigator.goToPreview(vm.sceneCollection);
   }
 
   function goToAdConfig() {
-    facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
-      $state.go('adConfig', {facebookAdId: data.id});
-    });
+    stepsNavigator.goToAdConfig(vm.sceneCollection);
   }
 
   function showFacebookAdLinks() {
