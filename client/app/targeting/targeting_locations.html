@@ -1,8 +1,16 @@
 <div class="targeting-location">
 
   <div class="row">
-    <div class="col-md-7 col-md-offset-1">
+    <div class="col-md-9 col-md-offset-1">
+      <a class="" ui-sref="targeting" class="back-button">
+        <i class="fa fa-arrow-left"></i>  Back
+      </a>
       <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
       <div ng-if="!$ctrl.loaded" class="text-center">
         <i class="fa fa-spinner fa-spin"></i>
       </div>
@@ -88,10 +96,6 @@
                 ng-disabled="$ctrl.saving">
           NEXT <i class="fa fa-arrow-right"></i>
         </button>
-        
-        <a class="" ui-sref="targeting" class="back-link">
-          <i class="fa fa-arrow-left"></i>  BACK
-        </a>
 
       </div>
     </div>

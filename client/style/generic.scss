@@ -121,6 +121,20 @@ select:focus {
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
 }
+.back-button {
+  width: 100px;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 50px;
+  margin-top: 20px;
+  border: 2px solid $color-2;
+  &:hover {
+    color: $color-2;
+  }
+}
 .text-divider-blue {
   color: $color-2;
 }

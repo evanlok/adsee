@@ -1,46 +1,55 @@
 <div class="facebook-post-config">
-  <h2>Facebook Post Configuration</h2>
-
-  <form>
-    <div class="form-group" ng-if="$ctrl.sceneCollection.integration === 'facebook_page_post'">
-      <label for="post-page">Facebook Page</label>
-      <select id="post-page" class="form-control"
-              ng-model="$ctrl.facebookPostParams.page_id"
-              ng-options="page.id as page.name for page in $ctrl.facebookPages">
-        <option value="">Select a page</option>
-      </select>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
+      <h1><i class="fa fa-facebook-square"></i> Facebook Post Configuration</h1>
     </div>
+  </div>
 
-    <div class="form-group">
-      <label for="post-message">Message</label>
-      <textarea id="post-message" class="form-control" rows="3"
-                ng-model="$ctrl.facebookPostParams.description">
-      </textarea>
+  <div class="row">
+    <div class="col-md-7">
+      <form>
+        <div class="form-group" ng-if="$ctrl.sceneCollection.integration === 'facebook_page_post'">
+          <label for="post-page">Facebook Page</label>
+          <select id="post-page" class="form-control"
+                  ng-model="$ctrl.facebookPostParams.page_id"
+                  ng-options="page.id as page.name for page in $ctrl.facebookPages">
+            <option value="">Select a page</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="post-message">Message</label>
+          <textarea id="post-message" class="form-control" rows="3"
+                    ng-model="$ctrl.facebookPostParams.description">
+          </textarea>
+        </div>
+
+        <div class="form-group" ng-if="$ctrl.showCallToActionField()">
+          <label for="post-call-to-action-type">Call to Action</label>
+          <select id="post-call-to-action-type" class="form-control" ng-model="$ctrl.facebookPostParams.call_to_action.type"
+                  ng-options="key as value for (key, value) in $ctrl.facebookAdConfigOptions.call_to_action"
+                  ng-change="$ctrl.callToActionChanged()">
+            <option value="">No Button</option>
+          </select>
+        </div>
+
+        <div class="form-group" ng-if="$ctrl.showCallToActionSubfields()">
+          <label for="post-call-to-action-link">URL (required)</label>
+          <input type="text" id="post-call-to-action-link" class="form-control"
+                 ng-model="$ctrl.facebookPostParams.call_to_action.value.link">
+        </div>
+
+        <div class="form-group" ng-if="$ctrl.showCallToActionSubfields()">
+          <label for="post-call-to-action-link-description">Link Description</label>
+          <input type="text" id="post-call-to-action-link-description" class="form-control"
+                 ng-model="$ctrl.facebookPostParams.call_to_action.value.link_caption">
+        </div>
+      </form>
+
+      <a href="" class="next button" ng-click="$ctrl.save()" ng-disabled="$ctrl.saving">
+        NEXT
+      </a>
     </div>
-
-    <div class="form-group" ng-if="$ctrl.showCallToActionField()">
-      <label for="post-call-to-action-type">Call to Action</label>
-      <select id="post-call-to-action-type" class="form-control" ng-model="$ctrl.facebookPostParams.call_to_action.type"
-              ng-options="key as value for (key, value) in $ctrl.facebookAdConfigOptions.call_to_action"
-              ng-change="$ctrl.callToActionChanged()">
-        <option value="">No Button</option>
-      </select>
-    </div>
-
-    <div class="form-group" ng-if="$ctrl.showCallToActionSubfields()">
-      <label for="post-call-to-action-link">URL (required)</label>
-      <input type="text" id="post-call-to-action-link" class="form-control"
-             ng-model="$ctrl.facebookPostParams.call_to_action.value.link">
-    </div>
-
-    <div class="form-group" ng-if="$ctrl.showCallToActionSubfields()">
-      <label for="post-call-to-action-link-description">Link Description</label>
-      <input type="text" id="post-call-to-action-link-description" class="form-control"
-             ng-model="$ctrl.facebookPostParams.call_to_action.value.link_caption">
-    </div>
-  </form>
-
-  <a href="" class="next button" ng-click="$ctrl.save()" ng-disabled="$ctrl.saving">
-    NEXT
-  </a>
+  </div>
 </div>

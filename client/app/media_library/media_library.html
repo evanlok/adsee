@@ -1,10 +1,20 @@
 <div class="media-library">
 
-  <a href="" ng-click="$ctrl.back()" class="back-link pull-right"><i class="fa fa-chevron-left"></i> Back</a>
+  <a href="" ng-click="$ctrl.back()" class="back-button pull-right"><i class="fa fa-chevron-left"></i> Back</a>
 
   <h3>Media Library</h3>
 
   <div>
+
+    <a href="" class="btn btn-primary media-upload-button" upload-media-link
+       on-upload="$ctrl.onUpload()"
+       on-convert-start="$ctrl.onConvert()"
+       ng-disabled="$ctrl.uploading">
+      <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
+      <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
+      Upload Media
+    </a>
+
 
     <div class="btn-group">
       <button type="button" class="btn btn-default"
@@ -52,15 +62,6 @@
              ng-model-options="{updateOn: 'default blur', debounce: { default: 300, blur: 0 }}"
              ng-change="$ctrl.filterResults()">
     </form>
-
-    <a href="" class="btn btn-primary media-upload-button" upload-media-link
-       on-upload="$ctrl.onUpload()"
-       on-convert-start="$ctrl.onConvert()"
-       ng-disabled="$ctrl.uploading">
-      <i class="fa fa-arrow-circle-up" ng-if="!$ctrl.uploading"></i>
-      <i class="fa fa-spin fa-spinner" ng-if="$ctrl.uploading"></i>
-      Upload
-    </a>
 
   </div>
 

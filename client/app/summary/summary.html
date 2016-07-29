@@ -3,6 +3,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
+      <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
+
       <h1 class="summary-header">Video Ad Summary</h1>
 
       <div class="text-center" ng-if="$ctrl.loading">
@@ -182,8 +184,6 @@
       <a href="" class="button" ng-click="$ctrl.publish()" ng-disabled="$ctrl.publishing">
         PUBLISH VIDEO
       </a>
-      
-      <a href="" class="back-button" ng-click="$ctrl.previousStep()"><i class="fa fa-chevron-left"></i> Back</a>
       
     </div>
   </div>
