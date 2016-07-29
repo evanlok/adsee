@@ -5,6 +5,7 @@ shared
   .component('adseeIcon', require('./icon.component'))
   .directive('videoOverlayLink', require('./video_overlay_link.directive'))
   .filter('secondsToTime', require('./seconds_to_time.filter'))
-  .filter('underscoreless', require('./underscoreless.filter'));
+  .filter('underscoreless', require('./underscoreless.filter'))
+  .service('modalConfig', require('./modal_config.service'));
 
 module.exports = shared.name;

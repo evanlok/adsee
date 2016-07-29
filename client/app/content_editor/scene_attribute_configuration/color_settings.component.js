@@ -10,8 +10,18 @@ var component = {
 };
 
 /*@ngInject*/
-function ColorSettingsController() {
+function ColorSettingsController(modalConfig) {
   var vm = this;
+
+  vm.$onInit = function () {
+    vm.sliderOptions = {
+      floor: 0,
+      ceil: 150,
+      onChange: sliderChanged,
+      onStart: sliderStart,
+      onEnd: sliderEnd
+    };
+  };
 
   vm.$onChanges = function (changes) {
     if (changes.config) {
@@ -20,10 +30,16 @@ function ColorSettingsController() {
     }
   };
 
-  vm.sliderChanged = sliderChanged;
-
   function sliderChanged() {
     vm.onChange({config: vm.config});
+  }
+
+  function sliderStart() {
+    modalConfig.disableBackdropClose(true);
+  }
+
+  function sliderEnd() {
+    modalConfig.disableBackdropClose(false);
   }
 }
 

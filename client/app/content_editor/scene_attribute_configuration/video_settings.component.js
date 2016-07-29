@@ -16,7 +16,7 @@ var component = {
 };
 
 /*@ngInject*/
-function VideoSettingsController($element, $scope) {
+function VideoSettingsController($element, $scope, modalConfig) {
   var vm = this;
   var player;
 
@@ -27,7 +27,9 @@ function VideoSettingsController($element, $scope) {
       hideLimitLabels: true,
       step: 0.01,
       precision: 2,
-      onChange: rangeSliderChanged
+      onChange: rangeSliderChanged,
+      onStart: sliderStart,
+      onEnd: sliderEnd
     };
 
     vm.speedSliderOptions = {
@@ -35,7 +37,9 @@ function VideoSettingsController($element, $scope) {
       ceil: 4,
       step: 0.25,
       precision: 2,
-      onChange: speedSliderChanged
+      onChange: speedSliderChanged,
+      onStart: sliderStart,
+      onEnd: sliderEnd
     };
 
     vm.volumeSliderOptions = {
@@ -46,7 +50,9 @@ function VideoSettingsController($element, $scope) {
       onChange: volumeSliderChanged,
       translate: function (value) {
         return (value * 100).toFixed();
-      }
+      },
+      onStart: sliderStart,
+      onEnd: sliderEnd
     };
 
     vm.playing = false;
@@ -98,6 +104,14 @@ function VideoSettingsController($element, $scope) {
         });
       }
     }
+  }
+
+  function sliderStart() {
+    modalConfig.disableBackdropClose(true);
+  }
+
+  function sliderEnd() {
+    modalConfig.disableBackdropClose(false);
   }
 
   function rangeSliderChanged(sliderId, modelValue, highValue, pointerType) {
