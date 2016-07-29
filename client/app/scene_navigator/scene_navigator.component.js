@@ -5,7 +5,7 @@ var component = {
   controller: SceneNavigatorController,
   bindings: {
     sceneContents: '<',
-    selectedSceneContent: '<',
+    selectedSceneContentIdx: '@',
     onNext: '&',
     onPrevious: '&'
   }
@@ -18,11 +18,11 @@ var component = {
   vm.lastScene = lastScene;
 
   function firstScene() {
-    return _.indexOf(vm.sceneContents, vm.selectedSceneContent) === 0;
+    return parseInt(vm.selectedSceneContentIdx) === 0;
   }
 
   function lastScene() {
-    return _.indexOf(vm.sceneContents, vm.selectedSceneContent) === (vm.sceneContents.length - 1);
+    return parseInt(vm.selectedSceneContentIdx) === (vm.sceneContents.length - 1);
   }
 }
 
