@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726225407) do
+ActiveRecord::Schema.define(version: 20160729215901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,6 +234,16 @@ ActiveRecord::Schema.define(version: 20160726225407) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "theme_recommendations", force: :cascade do |t|
+    t.integer  "ad_type_id"
+    t.integer  "facebook_targeting_spec_id"
+    t.integer  "theme_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "theme_recommendations", ["ad_type_id", "facebook_targeting_spec_id", "theme_id"], name: "index_recommendation", unique: true, using: :btree
 
   create_table "theme_variant_scenes", force: :cascade do |t|
     t.integer  "theme_variant_id", null: false

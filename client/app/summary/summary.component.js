@@ -88,7 +88,7 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
         $window.location = '/scene_collections';
       });
     }, function onError() {
-      toastr.error('', 'There was an error generating the video.');
+      toastr.error('There was an error generating the video.');
     }).finally(function () {
       vm.publishing = false;
     });

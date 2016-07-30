@@ -13,6 +13,9 @@ services
   .service('userService', require('./user.service'))
   .service('iconService', require('./icon.service'))
   .service('fontsService', require('./fonts.service'))
-  .service('filterService', require('./filter.service'));
+  .service('filterService', require('./filter.service'))
+  .service('industryService', require('./industry.service'))
+  .service('adTypeService', require('./ad_type.service'))
+  .service('themeService', require('./theme.service'));
 
 module.exports = services.name;

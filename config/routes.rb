@@ -83,6 +83,9 @@ Rails.application.routes.draw do
     resources :images
     resources :video_clips
     resources :filters
+    resources :theme_recommendations do
+      get :available_themes, on: :collection
+    end
   end
 
   # Angular route globbing
