@@ -5,7 +5,7 @@ var config = require('./webpack.base.config');
 config.module.loaders.push({test: /\.scss$/, loader: 'style!css?sourceMap!postcss!resolve-url!sass?sourceMap!import-glob'});
 
 // Source map
-config.devtool = 'eval';
+config.devtool = 'cheap-module-eval-source-map';
 
 // webpack-dev-server config
 config.devServer = {
