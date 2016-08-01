@@ -41,7 +41,6 @@
 }
 .main-content {
   height: 100vh;
-  padding-left: 0px;
 }
 
 // Input/Field Animations
@@ -201,6 +200,7 @@
 .video-nav {
 
   padding: 20px 0px 0px 0px;
+  margin-left: -15px;
   position: absolute;
 
   ul {
