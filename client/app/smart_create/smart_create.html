@@ -1,0 +1,76 @@
+<h1>Smart Create</h1>
+
+<ul class="list-inline smart-create-progress">
+  <li ng-if="$ctrl.step >= 2">
+    <a href="" ng-click="$ctrl.goToStep(1)">
+      {{ $ctrl.config.industry.name }}
+    </a>
+  </li>
+  <li ng-if="$ctrl.step >= 3">
+    <a href="" ng-click="$ctrl.goToStep(2)">
+      {{ $ctrl.config.adType.name }}
+    </a>
+  </li>
+  <li ng-if="$ctrl.step >= 4">
+    <a href="" ng-click="$ctrl.goToStep(3)">
+      {{ $ctrl.config.targetingSpec.name }}
+    </a>
+  </li>
+</ul>
+
+<div class="smart-create-industries" ng-if="$ctrl.step === 1">
+  <div ng-repeat="industry in $ctrl.industries">
+    <a href="" ng-click="$ctrl.selectIndustry(industry)">
+      <img ng-src="{{ industry.image_url_large_square }}">
+    </a>
+
+    <a href="" ng-click="$ctrl.selectIndustry(industry)">
+      <h4>{{ industry.name }}</h4>
+    </a>
+  </div>
+</div>
+
+<div class="smart-create-ad-types" ng-if="$ctrl.step === 2">
+  <div ng-repeat="adType in $ctrl.adTypes">
+    <a href="" ng-click="$ctrl.selectAdType(adType)">
+      <img ng-src="{{ adType.image_url_large_square }}">
+    </a>
+
+    <a href="" ng-click="$ctrl.selectAdType(adType)">
+      <h4>{{ adType.name }}</h4>
+    </a>
+  </div>
+</div>
+
+<div class="smart-create-targeting-specs" ng-if="$ctrl.step === 3">
+  <div ng-repeat="facebookTargetingSpec in $ctrl.facebookTargetingSpecs">
+    <a href="" ng-click="$ctrl.selectTargetingSpec(facebookTargetingSpec)">
+      <img ng-src="{{ facebookTargetingSpec.thumbnail_url }}">
+    </a>
+
+    <a href="" ng-click="$ctrl.selectTargetingSpec(facebookTargetingSpec)">
+      <h4>{{ facebookTargetingSpec.name }}</h4>
+    </a>
+  </div>
+</div>
+
+<div class="smart-create-themes" ng-if="$ctrl.step === 4">
+  <p ng-if="!$ctrl.recommendedThemesAvailable">
+    There are no recommended themes for the chosen combination, but here are some other related themes that match your
+    criteria:
+  </p>
+
+  <div ng-repeat="theme in $ctrl.themes">
+    <a href="" ng-click="$ctrl.selectTheme(theme)">
+      <img ng-src="{{ theme.thumbnail_url_large_square }}">
+    </a>
+
+    <a href="" ng-click="$ctrl.selectTheme(theme)">
+      <h4>{{ theme.name }}</h4>
+    </a>
+
+    <p>{{ theme.description }}</p>
+  </div>
+</div>
+
+<a href="" ng-click="$ctrl.previousStep()" ng-if="$ctrl.step > 1">Previous</a>

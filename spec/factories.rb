@@ -115,6 +115,12 @@ FactoryGirl.define do
     transition
   end
 
+  factory :theme_recommendation do
+    ad_type
+    facebook_targeting_spec
+    theme
+  end
+
   factory :video_type do
     name { Faker::Lorem.word }
     description { Faker::Lorem.sentence }

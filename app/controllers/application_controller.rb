@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
   end
 
+  def render_json_record_not_found(exception)
+    render json: { errors: [exception.message] }, status: :not_found
+  end
+
   def append_info_to_payload(payload)
     super
     payload[:user_id] = current_user&.id

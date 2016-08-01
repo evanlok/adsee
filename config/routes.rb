@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     resources :ad_types, only: [:index]
   end
 
+  resources :themes, only: [] do
+    get :recommended, on: :collection
+  end
+
   resources :ad_types, only: [] do
     resources :themes, only: [:index, :show], shallow: true
   end
@@ -89,6 +93,7 @@ Rails.application.routes.draw do
   end
 
   # Angular route globbing
+  get '/smart_create', to: 'home#index', as: :smart_create
   get '/scene_collections/:id/targeting', to: 'home#scene_editor', as: :targeting_scene_collection
   get '/scene_collections/:id/targeting/*angular_path', to: 'home#scene_editor'
   get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
