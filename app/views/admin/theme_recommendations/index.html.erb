@@ -1,0 +1,34 @@
+<h1>Theme Recommendations</h1>
+
+<p>
+  <%= link_to 'New Theme Recommendation', new_admin_theme_recommendation_path, target: '_self' %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Industry</th>
+    <th>Ad Type</th>
+    <th>Targeting Spec</th>
+    <th colspan="2">Theme</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @theme_recommendations.each do |theme_recommendation| %>
+      <tr>
+        <td><%= theme_recommendation.ad_type.industry.name %></td>
+        <td><%= theme_recommendation.ad_type.name %></td>
+        <td><%= theme_recommendation.facebook_targeting_spec.name %></td>
+        <td><%= theme_recommendation.theme.name %></td>
+        <td class="actions">
+          <%= link_to [:admin, theme_recommendation], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @theme_recommendations %>

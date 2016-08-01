@@ -226,7 +226,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
       // Skip preview if there is an error
       facebookAdService.save({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
         $state.go('adConfig', {facebookAdId: data.id});
-        toastr.error('', 'There was an error generating the video preview.');
+        toastr.error('There was an error generating the video preview.');
       });
     }).finally(function () {
       vm.previewLoading = false;

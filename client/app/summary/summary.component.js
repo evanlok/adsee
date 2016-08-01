@@ -36,12 +36,12 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
   vm.previousStep = previousStep;
 
   function fetchData() {
-    $q.all([fetchSceneCollection(), fetchUserFacebookData()]).then(function () {
+    $q.all([fetchSceneCollectionSummary(), fetchUserFacebookData()]).then(function () {
       vm.loading = false;
     });
   }
 
-  function fetchSceneCollection() {
+  function fetchSceneCollectionSummary() {
     return sceneCollectionService.summaryInfo({id: vm.sceneCollection.id}).then(function (data) {
       vm.sceneCollection = data;
       vm.facebookAd = data.facebook_ad;
@@ -88,20 +88,18 @@ function SummaryController($q, $window, $uibModal, $state, sceneCollectionServic
         $window.location = '/scene_collections';
       });
     }, function onError() {
-      toastr.error('', 'There was an error generating the video.');
+      toastr.error('There was an error generating the video.');
     }).finally(function () {
       vm.publishing = false;
     });
   }
 
   function previousStep() {
-    fetchSceneCollection().then(function (sceneCollection) {
-      if (sceneCollection.integration === 'facebook_ad') {
-        $state.go('adConfig', {facebookAdId: vm.facebookAd.id});
-      } else {
-        $state.go('facebookPostConfig');
-      }
-    });
+    if (vm.sceneCollection.integration === 'facebook_ad') {
+      $state.go('adConfig', {facebookAdId: vm.facebookAd.id});
+    } else {
+      $state.go('facebookPostConfig');
+    }
   }
 }
 

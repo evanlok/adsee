@@ -4,16 +4,16 @@ var component = {
   templateUrl: templateUrl,
   controller: AdConfigController,
   bindings: {
-    facebookAdId: '@'
+    sceneCollection: '<',
+    facebookAd: '<'
   }
 };
 
 /*@ngInject*/
-function AdConfigController($state, $timeout, facebookAdService, userService, facebookAdConfigOptions) {
+function AdConfigController($state, $timeout, userService, facebookAdConfigOptions, stepsNavigator) {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.facebookAd = {};
     vm.adOptions = {};
     vm.pages = [];
     vm.adAccounts = [];
@@ -23,7 +23,7 @@ function AdConfigController($state, $timeout, facebookAdService, userService, fa
     vm.savingAd = false;
     vm.facebookAdConfigOptions = facebookAdConfigOptions;
 
-    fetchFacebookAd();
+    setAdOptions(vm.facebookAd);
     fetchUserFacebookData();
   };
 
@@ -36,13 +36,7 @@ function AdConfigController($state, $timeout, facebookAdService, userService, fa
   vm.openEnd = openEnd;
   vm.adAccountName = adAccountName;
   vm.updateImageUrl = updateImageUrl;
-
-  function fetchFacebookAd() {
-    facebookAdService.get({id: vm.facebookAdId}).then(function (data) {
-      vm.facebookAd = data;
-      setAdOptions(vm.facebookAd);
-    });
-  }
+  vm.previousStep = previousStep;
 
   function fetchUserFacebookData() {
     userService.facebookData().then(function (data) {
@@ -99,6 +93,10 @@ function AdConfigController($state, $timeout, facebookAdService, userService, fa
     });
   }
 
+  function previousStep() {
+    stepsNavigator.goToPreview(vm.sceneCollection);
+  }
+
   function submitAd() {
     vm.savingAd = true;
 
@@ -112,7 +110,7 @@ function AdConfigController($state, $timeout, facebookAdService, userService, fa
     }
 
     vm.facebookAd.$update().then(function () {
-      $state.go('summary', {sceneCollectionId: vm.facebookAd.scene_collection_id});
+      $state.go('summary', {sceneCollectionId: vm.sceneCollection.id});
     }).finally(function () {
       vm.savingAd = false;
     });

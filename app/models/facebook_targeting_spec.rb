@@ -5,6 +5,7 @@ class FacebookTargetingSpec < ActiveRecord::Base
   has_many :facebook_ads, dependent: :nullify
   has_many :scene_collection_facebook_targeting_specs, dependent: :destroy
   has_many :scene_collections, through: :scene_collection_facebook_targeting_specs
+  has_many :theme_recommendations, dependent: :delete_all
 
   # Validations
   validates :name, :data, presence: true

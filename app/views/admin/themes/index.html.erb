@@ -11,6 +11,7 @@
     <th>Description</th>
     <th>Ad Type</th>
     <th>Variants</th>
+    <th>Featured</th>
     <th colspan="2">Scenes</th>
   </tr>
   </thead>
@@ -22,6 +23,11 @@
       <td><%= truncate(theme.description) %></td>
       <td><%= link_to theme.ad_type.name, [:edit, :admin, theme.ad_type], target: '_self' %></td>
       <td><%= theme.theme_variants.map { |tv| tv.video_type.name }.join(', ') %></td>
+      <td>
+        <% if theme.featured %>
+          <i class="fa fa-check"></i>
+        <% end %>
+      </td>
 
       <td class="actions">
         <%= link_to [:edit, :admin, theme], title: 'Edit', target: '_self' do %>

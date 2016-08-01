@@ -10,7 +10,7 @@
     <div class="action-bar">
       <div class="industry-type-header">
 
-        {{ $ctrl.sceneCollection.industry }} 
+        {{ $ctrl.sceneCollection.industry }}
 
         <span ng-if="$ctrl.sceneCollection.ad_type">
           | {{ $ctrl.sceneCollection.ad_type }}
@@ -114,7 +114,7 @@
       <div class="content-column">
         <div class="content-panel">
           <scene-navigator scene-contents="$ctrl.sceneContents"
-                         selected-scene-content="$ctrl.selectedSceneContent"
+                         selected-scene-content-idx="{{ $ctrl.selectedSceneContentIdx }}"
                          on-next="$ctrl.nextSceneContent()"
                          on-previous="$ctrl.previousSceneContent()">
           </scene-navigator>

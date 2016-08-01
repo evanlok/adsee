@@ -12,7 +12,11 @@ class Theme < ActiveRecord::Base
       first
     end
   end
+  has_many :theme_recommendations, dependent: :delete_all
 
   # Validations
   validates :name, :ad_type, presence: true
+
+  # Scopes
+  scope :featured, -> { where(featured: true) }
 end

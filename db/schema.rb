@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726225407) do
+ActiveRecord::Schema.define(version: 20160801191642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,16 @@ ActiveRecord::Schema.define(version: 20160726225407) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "theme_recommendations", force: :cascade do |t|
+    t.integer  "ad_type_id"
+    t.integer  "facebook_targeting_spec_id"
+    t.integer  "theme_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "theme_recommendations", ["ad_type_id", "facebook_targeting_spec_id", "theme_id"], name: "index_recommendation", unique: true, using: :btree
+
   create_table "theme_variant_scenes", force: :cascade do |t|
     t.integer  "theme_variant_id", null: false
     t.integer  "scene_id",         null: false
@@ -264,15 +274,17 @@ ActiveRecord::Schema.define(version: 20160726225407) do
     t.text     "sample_video"
     t.text     "poster_image"
     t.text     "thumbnail"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "ad_type_id"
     t.integer  "font_id"
     t.string   "color"
     t.integer  "video_count"
+    t.boolean  "featured",     default: false
   end
 
   add_index "themes", ["ad_type_id"], name: "index_themes_on_ad_type_id", using: :btree
+  add_index "themes", ["featured"], name: "index_themes_on_featured", using: :btree
   add_index "themes", ["font_id"], name: "index_themes_on_font_id", using: :btree
   add_index "themes", ["song_id"], name: "index_themes_on_song_id", using: :btree
 
