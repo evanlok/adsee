@@ -16,4 +16,7 @@ class Theme < ActiveRecord::Base
 
   # Validations
   validates :name, :ad_type, presence: true
+
+  # Scopes
+  scope :featured, -> { where(featured: true) }
 end
