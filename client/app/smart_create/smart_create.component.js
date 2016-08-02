@@ -81,7 +81,7 @@ function SmartCreateController($window, industryService, adTypeService, facebook
   }
 
   function selectTheme(theme) {
-    $window.location = '/themes/' + theme.id;
+    $window.location = '/themes/' + theme.id + '?targeting_spec_id=' + vm.config.targetingSpec.id;
   }
 
   function goToStep(step) {
