@@ -38,7 +38,7 @@ function SmartCreateController($window, industryService, adTypeService, facebook
   }
 
   function fetchAdTypes() {
-    adTypeService.query({industryId: vm.config.industry.id}).then(function (data) {
+    adTypeService.query({industry_id: vm.config.industry.id}).then(function (data) {
       vm.adTypes = data;
     });
   }

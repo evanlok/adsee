@@ -4,7 +4,7 @@ RSpec.describe ThemesController do
   let!(:theme) { create(:theme) }
 
   describe 'GET index' do
-    it 'renders page' do
+    it 'renders all themes' do
       get :index, format: :json
       expect(response).to be_success
       expect(assigns(:themes)).to contain_exactly(theme)

@@ -1,6 +1,6 @@
 /*@ngInject*/
 function AdTypeService($resource) {
-  var resource = $resource('/industries/:industryId/ad_types/:id',
+  var resource = $resource('/ad_types/:id',
     {
       id: '@id',
       format: 'json'
