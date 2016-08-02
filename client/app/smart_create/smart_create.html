@@ -60,6 +60,12 @@
     criteria:
   </p>
 
+  <div ng-if="$ctrl.recommendedThemesAvailable">
+    <h3>{{ $ctrl.themeRecommendationGroup.title }}</h3>
+
+    <p>{{ $ctrl.themeRecommendationGroup.description }}</p>
+  </div>
+
   <div ng-repeat="theme in $ctrl.themes">
     <a href="" ng-click="$ctrl.selectTheme(theme)">
       <img ng-src="{{ theme.thumbnail_url_large_square }}">

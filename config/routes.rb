@@ -17,9 +17,8 @@ Rails.application.routes.draw do
     resources :ad_types, only: [:index]
   end
 
-  resources :themes, only: [] do
-    get :recommended, on: :collection
-  end
+  resources :themes
+  resources :theme_recommendation_groups, only: :index
 
   resources :ad_types, only: [] do
     resources :themes, only: [:index, :show], shallow: true
