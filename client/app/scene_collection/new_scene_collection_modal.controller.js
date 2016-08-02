@@ -1,6 +1,6 @@
 /*@ngInject*/
 function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
-                                           themeId, skipAspectRatio) {
+                                           themeId, skipAspectRatio, targetingSpecId) {
   var steps = ['integration', 'aspect_ratio'];
   $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
@@ -39,7 +39,8 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
       ad_type_id: $scope.adTypeId,
       theme_id: $scope.themeId,
       integration: $scope.integration,
-      aspect_ratio: $scope.aspectRatio
+      aspect_ratio: $scope.aspectRatio,
+      facebook_targeting_spec_ids: [targetingSpecId]
     }).then(function onSuccess(data) {
       $uibModalInstance.close();
 
