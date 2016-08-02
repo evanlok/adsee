@@ -5,10 +5,29 @@ RSpec.describe ThemesController do
 
   describe 'GET index' do
     it 'renders page' do
-      get :index, ad_type_id: theme.ad_type.id
+      get :index, format: :json
       expect(response).to be_success
-      expect(assigns(:ad_type)).to eq(theme.ad_type)
       expect(assigns(:themes)).to contain_exactly(theme)
+    end
+
+    context 'with ad_type_id filter' do
+      let!(:new_theme) { create(:theme) }
+
+      it 'only returns themes with matching ad type' do
+        get :index, ad_type_id: new_theme.ad_type_id, format: :json
+        expect(response).to be_success
+        expect(assigns(:themes)).to contain_exactly(new_theme)
+      end
+    end
+
+    context 'with featured filter' do
+      let!(:featured_theme) { create(:theme, featured: true) }
+
+      it 'only returns featured themes' do
+        get :index, featured: '1', format: :json
+        expect(response).to be_success
+        expect(assigns(:themes)).to contain_exactly(featured_theme)
+      end
     end
   end
 

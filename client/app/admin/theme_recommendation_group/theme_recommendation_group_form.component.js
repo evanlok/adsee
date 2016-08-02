@@ -41,7 +41,7 @@ function ThemeRecommendationGroupFormController($window, themeRecommendationGrou
   }
 
   function fetchThemes() {
-    return themeService.query({adTypeId: vm.themeRecommendationGroup.ad_type_id}).then(function (data) {
+    return themeService.query({ad_type_id: vm.themeRecommendationGroup.ad_type_id}).then(function (data) {
       vm.themes = data;
     });
   }

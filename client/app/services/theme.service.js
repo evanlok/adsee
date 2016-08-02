@@ -6,7 +6,6 @@ function ThemeService($resource) {
       format: 'json'
     },
     {
-      query: {method: 'GET', url: '/ad_types/:adTypeId/themes', isArray: true},
       recommended: {method: 'GET', url: '/theme_recommendation_groups', isArray: true}
     }
   );

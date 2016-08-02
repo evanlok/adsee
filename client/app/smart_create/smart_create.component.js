@@ -77,7 +77,7 @@ function SmartCreateController($window, industryService, adTypeService, facebook
       if (_.isEmpty(vm.themes)) {
         vm.recommendedThemesAvailable = false;
 
-        themeService.query({adTypeId: vm.config.adType.id}).then(function (data) {
+        themeService.query({ad_type_id: vm.config.adType.id}).then(function (data) {
           vm.themes = data;
         });
       }

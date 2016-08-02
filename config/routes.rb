@@ -17,12 +17,8 @@ Rails.application.routes.draw do
     resources :ad_types, only: [:index]
   end
 
-  resources :themes
+  resources :themes, only: [:index, :show]
   resources :theme_recommendation_groups, only: :index
-
-  resources :ad_types, only: [] do
-    resources :themes, only: [:index, :show], shallow: true
-  end
 
   resources :scene_collections, except: :edit, shallow: true do
     get :summary_info, on: :member

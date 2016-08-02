@@ -3,6 +3,7 @@ class Industry < ActiveRecord::Base
 
   # Associations
   has_many :ad_types, dependent: :nullify
+  has_many :themes, through: :ad_types
 
   # Validations
   validates :name, :image, presence: true
