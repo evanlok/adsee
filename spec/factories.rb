@@ -115,9 +115,13 @@ FactoryGirl.define do
     transition
   end
 
-  factory :theme_recommendation do
+  factory :theme_recommendation_group do
     ad_type
     facebook_targeting_spec
+  end
+
+  factory :theme_recommendation do
+    theme_recommendation_group
     theme
   end
 

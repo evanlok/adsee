@@ -1,5 +1,5 @@
 var admin = angular.module('adsee.admin', [
-  require('./theme_recommendation/theme_recommendation.module')
+  require('./theme_recommendation_group/theme_recommendation_group.module')
 ]);
 
 admin

@@ -27,8 +27,12 @@ RSpec.describe ThemesController do
     let(:ad_type) { create(:ad_type) }
     let(:theme) { create(:theme, ad_type: ad_type) }
     let(:targeting_spec) { create(:facebook_targeting_spec) }
+    let(:theme_recommendation_group) do
+      create(:theme_recommendation_group, ad_type: ad_type, facebook_targeting_spec: targeting_spec)
+    end
+
     let!(:theme_recommendation) do
-      create(:theme_recommendation, ad_type: ad_type, facebook_targeting_spec: targeting_spec, theme: theme)
+      create(:theme_recommendation, theme_recommendation_group: theme_recommendation_group, theme: theme)
     end
 
     it 'returns recommended themes based on ad type and targeting spec' do

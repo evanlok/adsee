@@ -17,8 +17,13 @@ class ThemesController < ApplicationController
   def recommended
     ad_type = AdType.find(params[:ad_type_id])
     facebook_targeting_spec = FacebookTargetingSpec.find(params[:facebook_targeting_spec_id])
-    conditions = { theme_recommendations: { ad_type_id: ad_type, facebook_targeting_spec_id: facebook_targeting_spec } }
-    @themes = Theme.joins(:theme_recommendations).where(conditions)
+    conditions = {
+      theme_recommendation_groups: {
+        ad_type_id: ad_type,
+        facebook_targeting_spec_id: facebook_targeting_spec
+      }
+    }
+    @themes = Theme.joins(:theme_recommendation_groups).where(conditions)
 
     respond_to do |format|
       format.json { render :index }

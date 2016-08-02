@@ -13,6 +13,7 @@ class Theme < ActiveRecord::Base
     end
   end
   has_many :theme_recommendations, dependent: :delete_all
+  has_many :theme_recommendation_groups, through: :theme_recommendations
 
   # Validations
   validates :name, :ad_type, presence: true

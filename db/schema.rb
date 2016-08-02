@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801191642) do
+ActiveRecord::Schema.define(version: 20160802002101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,15 +235,25 @@ ActiveRecord::Schema.define(version: 20160801191642) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "theme_recommendations", force: :cascade do |t|
+  create_table "theme_recommendation_groups", force: :cascade do |t|
     t.integer  "ad_type_id"
     t.integer  "facebook_targeting_spec_id"
-    t.integer  "theme_id"
+    t.string   "title"
+    t.text     "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "theme_recommendations", ["ad_type_id", "facebook_targeting_spec_id", "theme_id"], name: "index_recommendation", unique: true, using: :btree
+  add_index "theme_recommendation_groups", ["ad_type_id", "facebook_targeting_spec_id"], name: "index_ad_type_and_targeting_spec", unique: true, using: :btree
+
+  create_table "theme_recommendations", force: :cascade do |t|
+    t.integer  "theme_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "theme_recommendation_group_id"
+  end
+
+  add_index "theme_recommendations", ["theme_recommendation_group_id", "theme_id"], name: "index_group_and_theme", unique: true, using: :btree
 
   create_table "theme_variant_scenes", force: :cascade do |t|
     t.integer  "theme_variant_id", null: false

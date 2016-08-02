@@ -87,8 +87,8 @@ Rails.application.routes.draw do
     resources :images
     resources :video_clips
     resources :filters
-    resources :theme_recommendations do
-      get :available_themes, on: :collection
+    resources :theme_recommendation_groups do
+      get :available_targeting_specs, on: :collection
     end
   end
 
