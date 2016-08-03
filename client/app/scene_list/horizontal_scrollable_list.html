@@ -1,0 +1,15 @@
+<div class="horizontal-scrollable-list">
+  <a href="" ng-click="$ctrl.previous()" ng-if="$ctrl.hasPrevious()">
+    <i class="fa fa-arrow-left"></i>
+  </a>
+
+  <i class="fa fa-arrow-left" ng-if="!$ctrl.hasPrevious()"></i>
+
+  <ng-transclude></ng-transclude>
+
+  <a href="" ng-click="$ctrl.next()" ng-if="$ctrl.hasNext()">
+    <i class="fa fa-arrow-right"></i>
+  </a>
+
+  <i class="fa fa-arrow-right" ng-if="!$ctrl.hasNext()"></i>
+</div>

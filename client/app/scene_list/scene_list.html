@@ -1,34 +1,40 @@
-<div class="add-scene-wrapper flex-item">
-  <a class="add-scene-button" ng-click="$ctrl.onAddScene()">
-    <i class="fa fa-plus-circle"></i>Add a scene
-  </a>
-</div>
+<div class="scenes-row">
+  <div class="add-scene-wrapper flex-item">
+    <a class="add-scene-button" ng-click="$ctrl.onAddScene()">
+      <i class="fa fa-plus-circle"></i>Add a scene
+    </a>
+  </div>
 
-<div class="flex-item">
-  <ul class="list-inline" ng-sortable="$ctrl.sceneListConfig">
-    <li ng-repeat="sceneContent in $ctrl.sceneContents"
-        ng-class="{selected: $ctrl.isSelected(sceneContent)}" class="scene-timeline-thumb">
+  <div class="flex-item" >
+    <horizontal-scrollable-list spacing="10" ng-if="$ctrl.sceneContents.length">
+      <ul class="list-inline" ng-sortable="$ctrl.sceneListConfig">
+        <li ng-repeat="sceneContent in $ctrl.sceneContents"
+            ng-class="{selected: $ctrl.isSelected(sceneContent)}" class="scene-timeline-thumb">
 
-      <transition-config scene-content="sceneContent"
-                         on-update-transition="$ctrl.sceneEditor.updateSceneContent($event)"
-                         ng-if="!$ctrl.sceneEditor.lastScene(sceneContent)">
+          <transition-config scene-content="sceneContent"
+                             on-update-transition="$ctrl.sceneEditor.updateSceneContent($event)"
+                             ng-if="!$ctrl.sceneEditor.lastScene(sceneContent)">
         <span class="transition-dot"
               uib-popover="transition: {{ sceneContent.transition_name || 'None' }}"
               popover-trigger="mouseenter"
               popover-placement="left"></span>
-      </transition-config>
+          </transition-config>
 
-      <a class="text-center scene-number" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">{{ $index + 1 }}</a>
-      <a class="text-center delete-scene-thumb" ng-click="$ctrl.sceneEditor.removeScene(sceneContent)">
-        <i class="fa fa-close"></i>
-      </a>
-      <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
-    </li>
-  </ul>
-</div>
+          <a class="text-center scene-number" ng-click="$ctrl.onSelect({sceneContent: sceneContent})">{{ $index + 1
+            }}</a>
+          <a class="text-center delete-scene-thumb" ng-click="$ctrl.sceneEditor.removeScene(sceneContent)">
+            <i class="fa fa-close"></i>
+          </a>
+          <img ng-src="{{ sceneContent.scene.thumbnail_small_url }}">
+        </li>
+      </ul>
+    </horizontal-scrollable-list>
+  </div>
 
-<div class="preview-button-wrapper flex-item">
-  <button class="preview-button" ng-click="$ctrl.sceneEditor.preview()" ng-disabled="$ctrl.sceneEditor.previewLoading">
-    <i class="fa fa-play-circle-o" aria-hidden="true"></i> Preview
-  </button>
+  <div class="preview-button-wrapper flex-item">
+    <button class="preview-button" ng-click="$ctrl.sceneEditor.preview()"
+            ng-disabled="$ctrl.sceneEditor.previewLoading">
+      <i class="fa fa-play-circle-o" aria-hidden="true"></i> Preview
+    </button>
+  </div>
 </div>
