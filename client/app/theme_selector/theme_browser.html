@@ -1,0 +1,43 @@
+<div>
+  <h1>BROWSE THEMES</h1>
+
+  <button class="button-ghost" new-scene-collection-link>
+    <i class="fa fa-wrench"></i>&nbsp;Build a custom template
+  </button>
+</div>
+
+<ul>
+  <li ng-class="{active: $ctrl.active('All')}">
+    <a href="" ng-click="$ctrl.selectIndustry()">All</a>
+  </li>
+
+  <li ng-class="{active: $ctrl.active('Featured')}">
+    <a href="" ng-click="$ctrl.showFeaturedThemes()">Featured</a>
+  </li>
+
+  <li ng-repeat="industry in $ctrl.industries" ng-class="{active: $ctrl.active(industry)}">
+    <a href="" ng-click="$ctrl.selectIndustry(industry)">{{ industry.name }}</a>
+  </li>
+</ul>
+
+<div ng-if="$ctrl.loading" class="text-center">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+
+<div ng-if="!$ctrl.loading">
+  <h2>{{ $ctrl.title() }}</h2>
+
+  <div ng-repeat="theme in $ctrl.themes">
+    <a href="" ng-click="$ctrl.selectTheme(theme)">
+      <img ng-src="{{ theme.thumbnail_url_large }}">
+    </a>
+
+    <div>
+      {{ $ctrl.industryNameFromTheme(theme) }} - {{ $ctrl.adTypeFromId(theme.ad_type_id).name }}
+
+      <h4>
+        <a href="" ng-click="$ctrl.selectTheme(theme)">{{ theme.name }}</a>
+      </h4>
+    </div>
+  </div>
+</div>

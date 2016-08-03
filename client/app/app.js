@@ -35,7 +35,8 @@ angular.module('adsee', [
   require('./scene_collection/scene_collection.module'),
   require('./facebook_post_config/facebook_post_config.module'),
   require('./navigation/navigation.module'),
-  require('./smart_create/smart_create.module')
+  require('./smart_create/smart_create.module'),
+  require('./theme_selector/theme_selector.module')
 ]).config(config).run(/*@ngInject*/ function (editableOptions) {
   editableOptions.theme = 'bs3';
 });

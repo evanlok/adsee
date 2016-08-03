@@ -5,7 +5,7 @@
   <ul>
     <% if user_signed_in? %>
         <li><%= link_to 'My Videos', scene_collections_path, target: '_self' %></li>
-        <li><%= link_to 'Create', new_scene_collection_path, target: '_self' %></li>
+        <li><%= link_to 'Create', theme_selector_path, target: '_self' %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, target: '_self' %></li>
     <% else %>
         <li><%= link_to 'Login', new_user_session_path, target: '_self' %></li>

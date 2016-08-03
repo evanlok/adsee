@@ -7,6 +7,11 @@ class ThemesController < ApplicationController
       @themes = @themes.where(ad_type: ad_type)
     end
 
+    if params[:industry_id].present?
+      industry = Industry.find(params[:industry_id])
+      @themes = @themes.joins(ad_type: :industry).where(industries: { id: industry })
+    end
+
     @themes = @themes.featured if params[:featured] == '1'
 
     respond_to do |format|

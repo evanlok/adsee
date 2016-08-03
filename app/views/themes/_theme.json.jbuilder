@@ -1,5 +1,5 @@
 json.extract! theme, :id, :name, :description, :photo_count, :video_count, :color, :sample_video_url, :song_id,
-              :font_id, :created_at, :updated_at
+              :font_id, :ad_type_id, :created_at, :updated_at
 
 json.thumbnail_url_small theme.thumbnail_url(:small)
 json.thumbnail_url_large theme.thumbnail_url(:large)
