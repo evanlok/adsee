@@ -1,0 +1,30 @@
+<h1>Edit Theme Recommendation Group: <%= @group.title %></h1>
+
+<%= simple_form_for [:admin, @group] do |f| %>
+    <div class="form-group">
+      <label>Industry</label>
+      <p class="form-control-static"><%= @group.ad_type.industry.name %></p>
+    </div>
+
+    <div class="form-group">
+      <label>Ad type</label>
+      <p class="form-control-static"><%= @group.ad_type.name %></p>
+    </div>
+
+    <div class="form-group">
+      <label>Facebook targeting spec</label>
+      <p class="form-control-static"><%= @group.facebook_targeting_spec.name %></p>
+    </div>
+
+    <%= f.input :theme_ids, collection: @themes, input_html: { multiple: true }, label: 'Themes' %>
+
+    <%= f.input :title %>
+    <%= f.input :description, input_html: { rows: 4 } %>
+
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', admin_theme_recommendation_groups_path, class: 'btn btn-default', target: '_self' %>
+<% end %>
+
+<script>
+  $('#theme_recommendation_group_theme_ids').select2({width: '100%'});
+</script>

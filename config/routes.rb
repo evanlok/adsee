@@ -17,13 +17,8 @@ Rails.application.routes.draw do
     resources :ad_types, only: [:index]
   end
 
-  resources :themes, only: [] do
-    get :recommended, on: :collection
-  end
-
-  resources :ad_types, only: [] do
-    resources :themes, only: [:index, :show], shallow: true
-  end
+  resources :themes, only: [:index, :show]
+  resources :theme_recommendation_groups, only: :index
 
   resources :scene_collections, except: :edit, shallow: true do
     get :summary_info, on: :member
@@ -87,8 +82,8 @@ Rails.application.routes.draw do
     resources :images
     resources :video_clips
     resources :filters
-    resources :theme_recommendations do
-      get :available_themes, on: :collection
+    resources :theme_recommendation_groups do
+      get :available_targeting_specs, on: :collection
     end
   end
 

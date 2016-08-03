@@ -68,12 +68,16 @@ function SmartCreateController($window, industryService, adTypeService, facebook
       ad_type_id: vm.config.adType.id,
       facebook_targeting_spec_id: vm.config.targetingSpec.id
     }).then(function (data) {
-      vm.themes = data;
+      vm.themeRecommendationGroup = data[0];
+
+      if (vm.themeRecommendationGroup) {
+        vm.themes = vm.themeRecommendationGroup.themes;
+      }
     }).then(function () {
       if (_.isEmpty(vm.themes)) {
         vm.recommendedThemesAvailable = false;
 
-        themeService.query({adTypeId: vm.config.adType.id}).then(function (data) {
+        themeService.query({ad_type_id: vm.config.adType.id}).then(function (data) {
           vm.themes = data;
         });
       }

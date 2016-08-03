@@ -1,0 +1,40 @@
+<h1>Theme Recommendation Groups</h1>
+
+<p>
+  <%= link_to 'New Theme Recommendation Group', new_admin_theme_recommendation_group_path, target: '_self' %>
+</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Industry</th>
+    <th>Ad Type</th>
+    <th>Targeting Spec</th>
+    <th colspan="2">Themes</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.title %></td>
+        <td><%= group.ad_type.industry.name %></td>
+        <td><%= group.ad_type.name %></td>
+        <td><%= group.facebook_targeting_spec.name %></td>
+        <td><%= group.themes.map(&:name).join(', ') %></td>
+        <td class="actions">
+          <%= link_to [:edit, :admin, group], title: 'Edit', target: '_self' do %>
+              <i class="fa fa-pencil"></i>
+          <% end %>
+
+          <%= link_to [:admin, group], method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' }, target: '_self' do %>
+              <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @groups %>

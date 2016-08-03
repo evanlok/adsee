@@ -1,7 +1,13 @@
 class ThemesController < ApplicationController
   def index
-    @ad_type = AdType.find(params[:ad_type_id])
-    @themes = @ad_type.themes
+    @themes = Theme.page(params[:page]).per(50)
+
+    if params[:ad_type_id].present?
+      ad_type = AdType.find(params[:ad_type_id])
+      @themes = @themes.where(ad_type: ad_type)
+    end
+
+    @themes = @themes.featured if params[:featured] == '1'
 
     respond_to do |format|
       format.html
@@ -12,18 +18,5 @@ class ThemesController < ApplicationController
   def show
     @theme = Theme.find(params[:id])
     @theme_variant = @theme.theme_variants.default
-  end
-
-  def recommended
-    ad_type = AdType.find(params[:ad_type_id])
-    facebook_targeting_spec = FacebookTargetingSpec.find(params[:facebook_targeting_spec_id])
-    conditions = { theme_recommendations: { ad_type_id: ad_type, facebook_targeting_spec_id: facebook_targeting_spec } }
-    @themes = Theme.joins(:theme_recommendations).where(conditions)
-
-    respond_to do |format|
-      format.json { render :index }
-    end
-  rescue ActiveRecord::RecordNotFound => e
-    render_json_record_not_found(e)
   end
 end

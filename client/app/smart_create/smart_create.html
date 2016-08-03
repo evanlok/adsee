@@ -26,10 +26,15 @@
     </div>
 
     <div class="smart-create-industries" ng-if="$ctrl.step === 1">
-      <h1>What is your video about?</h1>
+      <h1>What type of video would you like to create?</h1>
       <div ng-repeat="industry in $ctrl.industries" class="select-circle">
         <a href="" ng-click="$ctrl.selectIndustry(industry)" class="select-name">
           <h4>{{ industry.name }}</h4>
+<!--           <ul class="adtype-list">
+            <li><a href="">Property Listing</a></li>
+            <li><a href="">Open House</a></li>
+            <li><a href="">Agent</a></li>
+          </ul> -->
         </a>
 
         <a href="" ng-click="$ctrl.selectIndustry(industry)" class="industry-pic">
@@ -65,10 +70,17 @@
     </div>
 
     <div class="smart-create-themes" ng-if="$ctrl.step === 4">
-      <p ng-if="!$ctrl.recommendedThemesAvailable">
+
+      <p ng-if="!$ctrl.recommendedThemesAvailable" class="no-recommendations">
         There are no recommended themes for the chosen combination, but here are some other related themes that match your
         criteria:
       </p>
+
+      <div ng-if="$ctrl.recommendedThemesAvailable">
+        <h3>{{ $ctrl.themeRecommendationGroup.title }}</h3>
+
+        <p>{{ $ctrl.themeRecommendationGroup.description }}</p>
+      </div>
 
       <div ng-repeat="theme in $ctrl.themes">
 

@@ -1,10 +1,11 @@
 class ThemeRecommendation < ActiveRecord::Base
   # Associations
-  belongs_to :ad_type
-  belongs_to :facebook_targeting_spec
+  belongs_to :theme_recommendation_group
   belongs_to :theme
 
   # Validations
-  validates :ad_type, :facebook_targeting_spec, :theme, presence: true
-  validates :theme_id, uniqueness: { scope: [:ad_type_id, :facebook_targeting_spec_id] }
+  validates :theme_recommendation_group, :theme, presence: true
+  validates :theme_id, uniqueness: { scope: :theme_recommendation_group_id }
+
+  delegate :ad_type, :facebook_targeting_spec, to: :theme_recommendation_group
 end
