@@ -519,6 +519,17 @@
     font-weight: 700;
     margin-bottom: 15px;
   }
+  .uploading-spinner {
+    display: block;
+    text-align: center;
+    background: #e5fcff;
+    padding: 10px 0px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $color-1;
+  }
   .media-upload-button {
     color: white;
     background-color: $color-2;
@@ -2605,6 +2616,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .publish-modal-padding {
   margin-top: 200px;
+  color: white;
 }
 .posttype-modal {
   h2 {
