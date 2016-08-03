@@ -72,8 +72,7 @@
     <div class="smart-create-themes" ng-if="$ctrl.step === 4">
 
       <p ng-if="!$ctrl.recommendedThemesAvailable" class="no-recommendations">
-        There are no recommended themes for the chosen combination, but here are some other related themes that match your
-        criteria:
+        No available recommendations for the chosen combination, but here are some other related themes that match your criteria:
       </p>
 
       <div ng-if="$ctrl.recommendedThemesAvailable">
@@ -84,19 +83,23 @@
 
       <div ng-repeat="theme in $ctrl.themes">
 
-        <div class="select-circle">
+        <div class="suggested-theme">
 
-          <a href="" ng-click="$ctrl.selectTheme(theme)" class="select-name">
-            <h4>{{ theme.name }}</h4>
-          </a>
+          <div class="select-circle">
 
-          <a href="" ng-click="$ctrl.selectTheme(theme)">
-            <img ng-src="{{ theme.thumbnail_url_large_square }}">
-          </a>
+            <a href="" ng-click="$ctrl.selectTheme(theme)" class="select-name">
+              <h4>{{ theme.name }}</h4>
+            </a>
+
+            <a href="" ng-click="$ctrl.selectTheme(theme)">
+              <img ng-src="{{ theme.thumbnail_url_large_square }}">
+            </a>
+
+          </div>
+
+          <div class="theme-description">{{ theme.description }}</div>
 
         </div>
-
-        <div class="theme-description">{{ theme.description }}</div>
 
       </div>
 

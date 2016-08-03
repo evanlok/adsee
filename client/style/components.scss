@@ -951,10 +951,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-weight: 700;
   z-index: 100;
   color: $color-3;
+  text-transform: uppercase;
   padding: 6px 14px 0px;
   position: absolute;
   bottom: 100px;
-  font-size: 14px;
+  font-size: 12px;
   background-color: hsla(204, 95.0000%, 7.8431%, 0.7000);
   border-top-right-radius: 5px;
 }
@@ -2745,8 +2746,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     width: 100%;
   }
 }
-.suggested-selector {
-  margin: 0 auto;
+.suggested-theme {
+  width: 250px;
+  margin: 30px;
+  display: inline-block;
+  .select-circle {
+    margin: 0px;
+  }
 }
 .previous-button {
   padding: 10px 15px;
