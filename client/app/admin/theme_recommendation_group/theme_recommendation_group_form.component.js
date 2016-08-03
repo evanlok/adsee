@@ -29,7 +29,7 @@ function ThemeRecommendationGroupFormController($window, themeRecommendationGrou
   }
 
   function fetchAdTypes() {
-    return adTypeService.query({industryId: vm.themeRecommendationGroup.industry_id}).then(function (data) {
+    return adTypeService.query({industry_id: vm.themeRecommendationGroup.industry_id}).then(function (data) {
       vm.adTypes = data;
     });
   }

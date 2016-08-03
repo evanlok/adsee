@@ -13,10 +13,8 @@ Rails.application.routes.draw do
 
   root to: redirect(ENV['HOME_URL']), id: :home
 
-  resources :industries, only: [:index] do
-    resources :ad_types, only: [:index]
-  end
-
+  resources :industries, only: :index
+  resources :ad_types, only: :index
   resources :themes, only: [:index, :show]
   resources :theme_recommendation_groups, only: :index
 
