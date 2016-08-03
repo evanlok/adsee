@@ -27,15 +27,15 @@
       </div>
     </div>
 
+    <div class="scene-list-label">Scene Selector</div>
     <div class="scenes-row">
-
-    <scene-list scene-contents="$ctrl.sceneContents"
-                selected-scene-content="$ctrl.selectedSceneContent()"
-                on-select="$ctrl.selectSceneContent(sceneContent)"
-                on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
-                on-add-scene="$ctrl.showAddScenePage()"
-                class="scene-thumbs-wrapper">
-    </scene-list>
+      <scene-list scene-contents="$ctrl.sceneContents"
+                  selected-scene-content="$ctrl.selectedSceneContent()"
+                  on-select="$ctrl.selectSceneContent(sceneContent)"
+                  on-sort="$ctrl.updateSceneContentPosition(sceneContent, position)"
+                  on-add-scene="$ctrl.showAddScenePage()"
+                  class="scene-thumbs-wrapper">
+      </scene-list>
 
     </div>
 
