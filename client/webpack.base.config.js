@@ -17,6 +17,8 @@ module.exports = {
       'lodash',
       'angular',
       'angular-resource',
+      'angular-animate',
+      'ng-fx',
       './js/angular-ui-router',
       'angular-ui-bootstrap',
       'angular-tree-control',

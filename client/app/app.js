@@ -5,6 +5,7 @@ var config = require('./app.config');
 
 angular.module('adsee', [
   'ngResource',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ui.select',
