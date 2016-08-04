@@ -5,9 +5,9 @@
     </a>
   </div>
 
-  <div class="flex-item" >
+  <div class="flex-item thumb-list" >
     <horizontal-scrollable-list spacing="10" ng-if="$ctrl.sceneContents.length">
-      <ul class="list-inline" ng-sortable="$ctrl.sceneListConfig">
+      <ul class="list-inline thumbs-center" ng-sortable="$ctrl.sceneListConfig">
         <li ng-repeat="sceneContent in $ctrl.sceneContents"
             ng-class="{selected: $ctrl.isSelected(sceneContent)}" class="scene-timeline-thumb">
 

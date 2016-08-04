@@ -1,15 +1,20 @@
 <div class="horizontal-scrollable-list">
-  <a href="" ng-click="$ctrl.previous()" ng-if="$ctrl.hasPrevious()">
-    <i class="fa fa-arrow-left"></i>
+  <a href="" ng-click="$ctrl.previous()" ng-if="$ctrl.hasPrevious()" class="prev-scene-button active">
+    <i class="fa fa-angle-left"></i>
   </a>
 
-  <i class="fa fa-arrow-left" ng-if="!$ctrl.hasPrevious()"></i>
+  <div class="prev-scene-button" ng-if="!$ctrl.hasPrevious()">
+	<i class="fa fa-angle-left"></i>
+  </div>
+
+  <a href="" ng-click="$ctrl.next()" ng-if="$ctrl.hasNext()" class="next-scene-button active">
+    <i class="fa fa-angle-right"></i>
+  </a>
+
+  <div class="next-scene-button" ng-if="!$ctrl.hasNext()">
+  	<i class="fa fa-angle-right"></i>
+  </div>
 
   <ng-transclude></ng-transclude>
 
-  <a href="" ng-click="$ctrl.next()" ng-if="$ctrl.hasNext()">
-    <i class="fa fa-arrow-right"></i>
-  </a>
-
-  <i class="fa fa-arrow-right" ng-if="!$ctrl.hasNext()"></i>
 </div>
