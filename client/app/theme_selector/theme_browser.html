@@ -1,0 +1,87 @@
+<div class="themes-grid-header">
+
+  <button class="button-ghost" new-scene-collection-link>
+    <i class="fa fa-wrench"></i>&nbsp;Build a custom theme
+  </button>
+
+  <h2>BROWSE THEMES</h2>
+
+</div>
+
+<div class="themes-grid-nav">
+  <ul>
+    <li ng-class="{active: $ctrl.active('All')}">
+      <a href="" ng-click="$ctrl.selectIndustry()">All</a>
+    </li>
+
+    <li ng-class="{active: $ctrl.active('Featured')}">
+      <a href="" ng-click="$ctrl.showFeaturedThemes()">Featured</a>
+    </li>
+
+    <li ng-repeat="industry in $ctrl.industries" ng-class="{active: $ctrl.active(industry)}">
+      <a href="" ng-click="$ctrl.selectIndustry(industry)">{{ industry.name }}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="themes-grid">
+  <h2>{{ $ctrl.title() }}</h2>
+
+  <div ng-if="$ctrl.loading" class="text-center">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
+
+  <div ng-if="!$ctrl.loading" ng-repeat="theme in $ctrl.themes" ng-style="$ctrl.styleForTheme(theme)"
+       class="theme-tile" id="theme_{{ theme.id }}">
+    <a href="" ng-click="$ctrl.expandTheme(theme)">
+
+      <img ng-src="{{ theme.thumbnail_url_large }}">
+
+      <div class="ad-type-label">
+        {{ theme.industry }} &middot; {{ theme.ad_type }}
+      </div>
+
+      <div href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-name">
+        {{ theme.name }}
+      </div>
+
+    </a>
+
+    <div class="theme-preview-expand" ng-if="$ctrl.expandedTheme === theme"
+         output-height on-output-height="$ctrl.updatePreviewHeight(height)" scroll-to-thumb>
+      <div class="row expand-column-width">
+        <div class="theme-preview-expand-inner">
+          <span class="theme-preview-close" ng-click="$ctrl.collapseTheme()"></span>
+          <div class="col-md-7">
+            <video-player url="{{ theme.sample_video_url }}" poster="{{ theme.poster_image_url_large }}"
+                          class="vjs-big-play-centered">
+            </video-player>
+          </div>
+          <div class="theme-preview-info col-md-5">
+            <div class="theme-preview-type">
+              <a>{{ theme.industry }}</a> &middot; <a>{{ theme.ad_type }}</a>
+            </div>
+
+            <h2>{{ theme.name }}</h2>
+
+            <ul class="theme-info-list">
+              <li><i class="fa fa-file-image-o"></i> {{ theme.photo_count }} images</li>
+              <li><i class="fa fa-hourglass-half "></i> {{ theme.duration }} seconds</li>
+              <li><i class="fa fa-music"></i> {{ theme.song }}</li>
+            </ul>
+            <div class="theme-description">
+              {{ theme.description }}
+            </div>
+            <a href="" class="button build-theme-button"
+               new-scene-collection-link theme-id="{{ theme.id }}" skip-aspect-ratio="true">
+              Build this theme
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

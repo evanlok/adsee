@@ -5,12 +5,14 @@ var config = require('./app.config');
 
 angular.module('adsee', [
   'ngResource',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ui.select',
   'treeControl',
   'color.picker',
   'ng-sortable',
+  'duScroll',
   'timer',
   'bcherny/formatAsCurrency',
   'ezfb',
@@ -35,7 +37,8 @@ angular.module('adsee', [
   require('./scene_collection/scene_collection.module'),
   require('./facebook_post_config/facebook_post_config.module'),
   require('./navigation/navigation.module'),
-  require('./smart_create/smart_create.module')
+  require('./smart_create/smart_create.module'),
+  require('./theme_selector/theme_selector.module')
 ]).config(config).run(/*@ngInject*/ function (editableOptions) {
   editableOptions.theme = 'bs3';
 });

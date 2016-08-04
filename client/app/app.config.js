@@ -7,6 +7,14 @@ var filepicker = require('filepicker-js');
 var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY,
                                      ezfbProvider, FACEBOOK_APP_ID) {
   $stateProvider
+    .state('root', {
+      url: '/',
+      template: '<theme-selector></theme-selector>'
+    })
+    .state('themeSelector', {
+      url: '/theme_selector',
+      template: '<theme-selector></theme-selector>'
+    })
     .state('smartCreate', {
       url: '/smart_create',
       template: '<smart-create></smart-create>'

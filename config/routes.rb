@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   authenticated :user do
-    root 'scene_collections#new', as: :authenticated_root
+    root 'home#angular', as: :authenticated_root
   end
 
   root to: redirect(ENV['HOME_URL']), id: :home
@@ -86,13 +86,14 @@ Rails.application.routes.draw do
   end
 
   # Angular route globbing
-  get '/smart_create', to: 'home#index', as: :smart_create
-  get '/scene_collections/:id/targeting', to: 'home#scene_editor', as: :targeting_scene_collection
-  get '/scene_collections/:id/targeting/*angular_path', to: 'home#scene_editor'
-  get '/scene_collections/:id/edit', to: 'home#scene_editor', as: :edit_scene_collection
-  get '/scene_collections/:id/edit/*angular_path', to: 'home#scene_editor'
-  get '/scene_collections/:id/summary', to: 'home#scene_editor'
-  get '/scene_collections/:id/previews/:video_job_id', to: 'home#scene_editor'
-  get '/scene_collections/:id/ad_config/:facebook_ad_id', to: 'home#scene_editor'
-  get '/scene_collections/:id/facebook_post', to: 'home#scene_editor'
+  get '/theme_selector', to: 'home#angular', as: :theme_selector
+  get '/smart_create', to: 'home#angular', as: :smart_create
+  get '/scene_collections/:id/targeting', to: 'home#angular', as: :targeting_scene_collection
+  get '/scene_collections/:id/targeting/*angular_path', to: 'home#angular'
+  get '/scene_collections/:id/edit', to: 'home#angular', as: :edit_scene_collection
+  get '/scene_collections/:id/edit/*angular_path', to: 'home#angular'
+  get '/scene_collections/:id/summary', to: 'home#angular'
+  get '/scene_collections/:id/previews/:video_job_id', to: 'home#angular'
+  get '/scene_collections/:id/ad_config/:facebook_ad_id', to: 'home#angular'
+  get '/scene_collections/:id/facebook_post', to: 'home#angular'
 end
