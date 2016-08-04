@@ -582,12 +582,12 @@
   color: hsla(205, 8.8555%, 8.7387%, 1.0000);
 }
 .video-name {
-  padding: 4px 10px;
-  background-color: hsla(0, 0%, 0.0000%, 0.6500);
+  padding: 5px 10px;
+  background-color: hsla(0, 0%, 0.0000%, 0.500);
   font-size: 14px;
   position: absolute;
   bottom: 0px;
-  margin-bottom: 10px;
+  width: 100%;
 }
 .video-thumb-box {
   padding: 1px;
@@ -596,17 +596,19 @@
   }
   .play-sample {
     position: absolute;
-    margin-top: 14%;
+    margin-left: 8px;
     color: white;
-    text-align: center;
     transition: margin 0.5s ease;
-    font-size: 50px;
+    font-size: 40px;
     vertical-align: middle;
     width: 100%;
     z-index: 10000;
   }
   .img-responsive {
     width: 100%;
+  }
+  .scene-thumb-container {
+    position: relative;
   }
 }
 .delete-box {
