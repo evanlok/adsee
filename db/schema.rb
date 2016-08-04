@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802002101) do
+ActiveRecord::Schema.define(version: 20160804235400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160802002101) do
     t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   add_index "ad_types", ["industry_id"], name: "index_ad_types_on_industry_id", using: :btree
@@ -111,8 +112,9 @@ ActiveRecord::Schema.define(version: 20160802002101) do
   create_table "industries", force: :cascade do |t|
     t.string   "name"
     t.text     "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "scene_attributes", force: :cascade do |t|
