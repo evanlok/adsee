@@ -91,6 +91,7 @@
     font-size: 14px;
     margin-top: -16px;
     margin-bottom: 1.65em;
+    display: block;
   }
 }
 .media-input-group {
@@ -610,6 +611,9 @@
   .scene-thumb-container {
     position: relative;
   }
+}
+.add-scene-row {
+  margin: 0px;
 }
 .delete-box {
   position: absolute;
