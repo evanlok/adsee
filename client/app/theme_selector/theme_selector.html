@@ -1,4 +1,4 @@
-<div class="template-page-wrapper">
+<div class="template-page-wrapper theme-index">
   <div class="row">
     <div class="slick-carousel">
       <div>
@@ -19,15 +19,20 @@
     </div>
   </div>
 
-  <div class="row headline-row themes-row">
+  <div class="row headline-row smartcreate-module">
     <div class="col-md-12">
+      <a ui-sref="smartCreate-link" >
       <h1>SMART BUILD</h1>
 
-      <a ui-sref="smartCreate" class="button-ghost">
-        SELECT YOUR IDEAL THEME
+      <div ui-sref="smartCreate" class="button-ghost smartcreate-button">
+        Build your ideal theme
+      </div>
       </a>
     </div>
   </div>
 
-  <theme-browser></theme-browser>
+  <div class="themes-section">
+    <theme-browser></theme-browser>
+  </div>
+  
 </div>

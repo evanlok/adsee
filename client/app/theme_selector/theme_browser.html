@@ -1,43 +1,77 @@
-<div>
-  <h1>BROWSE THEMES</h1>
+<div class="themes-grid-header">
 
   <button class="button-ghost" new-scene-collection-link>
-    <i class="fa fa-wrench"></i>&nbsp;Build a custom template
+    <i class="fa fa-wrench"></i>&nbsp;Build a custom theme
   </button>
+
+  <h2>BROWSE THEMES</h2>
+
 </div>
 
-<ul>
-  <li ng-class="{active: $ctrl.active('All')}">
-    <a href="" ng-click="$ctrl.selectIndustry()">All</a>
-  </li>
+<div class="themes-grid-nav">
+  <ul>
+    <li ng-class="{active: $ctrl.active('All')}">
+      <a href="" ng-click="$ctrl.selectIndustry()">All</a>
+    </li>
 
-  <li ng-class="{active: $ctrl.active('Featured')}">
-    <a href="" ng-click="$ctrl.showFeaturedThemes()">Featured</a>
-  </li>
+    <li ng-class="{active: $ctrl.active('Featured')}">
+      <a href="" ng-click="$ctrl.showFeaturedThemes()">Featured</a>
+    </li>
 
-  <li ng-repeat="industry in $ctrl.industries" ng-class="{active: $ctrl.active(industry)}">
-    <a href="" ng-click="$ctrl.selectIndustry(industry)">{{ industry.name }}</a>
-  </li>
-</ul>
+    <li ng-repeat="industry in $ctrl.industries" ng-class="{active: $ctrl.active(industry)}">
+      <a href="" ng-click="$ctrl.selectIndustry(industry)">{{ industry.name }}</a>
+    </li>
+  </ul>
+</div>
 
 <div ng-if="$ctrl.loading" class="text-center">
   <i class="fa fa-spinner fa-spin"></i>
 </div>
 
-<div ng-if="!$ctrl.loading">
+<div ng-if="!$ctrl.loading" class="themes-grid">
   <h2>{{ $ctrl.title() }}</h2>
 
-  <div ng-repeat="theme in $ctrl.themes">
+
+  <div ng-repeat="theme in $ctrl.themes" class="theme-tile">
     <a href="" ng-click="$ctrl.selectTheme(theme)">
+
       <img ng-src="{{ theme.thumbnail_url_large }}">
+
+      <div class="ad-type-label">
+        {{ $ctrl.industryNameFromTheme(theme) }} - {{ $ctrl.adTypeFromId(theme.ad_type_id).name }}
+      </div>
+
+      <div href="" ng-click="$ctrl.selectTheme(theme)" class="theme-tile-name">
+        {{ theme.name }}
+      </div>
+
     </a>
 
-    <div>
-      {{ $ctrl.industryNameFromTheme(theme) }} - {{ $ctrl.adTypeFromId(theme.ad_type_id).name }}
-
-      <h4>
-        <a href="" ng-click="$ctrl.selectTheme(theme)">{{ theme.name }}</a>
-      </h4>
+    <div class="theme-preview-expand">
+      <div class="row expand-column-width">
+        <div class="theme-preview-expand-inner">
+          <span class="theme-preview-close"></span>
+          <div class="theme-preview-video col-md-7">
+            <div class="theme-preview-loading"></div>
+          </div>
+          <div class="theme-preview-info col-md-5">
+            <div class="theme-preview-type"><a>real estate</a> • <a>property listing</a></div>
+            <h2>Theme Name</h2>
+            <ul class="theme-info-list">
+              <li><i class="fa fa-file-image-o"></i> 7 images</li>
+              <li><i class="fa fa-hourglass-half "></i> 32 seconds</li>
+              <li><i class="fa fa-music"></i> Corporate man drinks coffee and dies.</li>
+            </ul>
+            <div class="theme-description">
+              Dolor itaque est voluptas debitis vel. Nostrum enim commodi. Deserunt voluptates facere animi sapiente quia harum.
+            </div>
+            <a href="" class="button build-theme-button">Build this theme</a>
+          </div>
+        </div>
+      </div>
     </div>
+    
   </div>
+
 </div>
+
