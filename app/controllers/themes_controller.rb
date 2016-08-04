@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   def index
-    @themes = Theme.page(params[:page]).per(50)
+    @themes = Theme.includes(:theme_variants, :song, :font, ad_type: :industry).page(params[:page]).per(50)
 
     if params[:ad_type_id].present?
       ad_type = AdType.find(params[:ad_type_id])

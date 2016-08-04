@@ -24,46 +24,57 @@
   </ul>
 </div>
 
-<div ng-if="$ctrl.loading" class="text-center">
-  <i class="fa fa-spinner fa-spin"></i>
-</div>
-
-<div ng-if="!$ctrl.loading" class="themes-grid">
+<div class="themes-grid">
   <h2>{{ $ctrl.title() }}</h2>
 
+  <div ng-if="$ctrl.loading" class="text-center">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
 
-  <div ng-repeat="theme in $ctrl.themes" class="theme-tile">
-    <a href="" ng-click="$ctrl.selectTheme(theme)">
+  <div ng-if="!$ctrl.loading" ng-repeat="theme in $ctrl.themes" ng-style="$ctrl.styleForTheme(theme)"
+       class="theme-tile" id="theme_{{ theme.id }}">
+    <a href="" ng-click="$ctrl.expandTheme(theme)">
 
       <img ng-src="{{ theme.thumbnail_url_large }}">
 
       <div class="ad-type-label">
-        {{ $ctrl.industryNameFromTheme(theme) }} - {{ $ctrl.adTypeFromId(theme.ad_type_id).name }}
+        {{ theme.industry }} &middot; {{ theme.ad_type }}
       </div>
 
-      <div href="" ng-click="$ctrl.selectTheme(theme)" class="theme-tile-name">
+      <div href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-name">
         {{ theme.name }}
       </div>
 
     </a>
 
-    <div class="theme-preview-expand">
+    <!--<div output-height on-render="$ctrl.updatePreviewHeight(height)" ng-if="$ctrl.expandedTheme === theme">-->
+      <!--<theme-preview theme="theme" on-close="$ctrl.collapseTheme()"></theme-preview>-->
+    <!--</div>-->
+
+    <div class="theme-preview-expand" ng-if="$ctrl.expandedTheme === theme"
+         output-height on-output-height="$ctrl.updatePreviewHeight(height)" scroll-to-thumb>
       <div class="row expand-column-width">
         <div class="theme-preview-expand-inner">
-          <span class="theme-preview-close"></span>
-          <div class="theme-preview-video col-md-7">
-            <div class="theme-preview-loading"></div>
+          <span class="theme-preview-close" ng-click="$ctrl.collapseTheme()"></span>
+          <div class="col-md-7">
+            <video-player url="{{ theme.sample_video_url }}" poster="{{ theme.poster_image_url_large }}"
+                          class="vjs-big-play-centered">
+            </video-player>
           </div>
           <div class="theme-preview-info col-md-5">
-            <div class="theme-preview-type"><a>real estate</a> • <a>property listing</a></div>
-            <h2>Theme Name</h2>
+            <div class="theme-preview-type">
+              <a>{{ theme.industry }}</a> &middot; <a>{{ theme.ad_type }}</a>
+            </div>
+
+            <h2>{{ theme.name }}</h2>
+
             <ul class="theme-info-list">
-              <li><i class="fa fa-file-image-o"></i> 7 images</li>
-              <li><i class="fa fa-hourglass-half "></i> 32 seconds</li>
-              <li><i class="fa fa-music"></i> Corporate man drinks coffee and dies.</li>
+              <li><i class="fa fa-file-image-o"></i> {{ theme.photo_count }} images</li>
+              <li><i class="fa fa-hourglass-half "></i> {{ theme.duration }} seconds</li>
+              <li><i class="fa fa-music"></i> {{ theme.song }}</li>
             </ul>
             <div class="theme-description">
-              Dolor itaque est voluptas debitis vel. Nostrum enim commodi. Deserunt voluptates facere animi sapiente quia harum.
+              {{ theme.description }}
             </div>
             <a href="" class="button build-theme-button">Build this theme</a>
           </div>

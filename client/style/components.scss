@@ -1861,6 +1861,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   border-left: 1px solid $color-8;
   text-align: center;
   position: relative;
+  min-height: 400px;
 }
 .themes-grid-header {
   background-color: $color-2;
@@ -1931,7 +1932,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   width: 100%;
   margin-top: 20px;
   text-align: left;
-  height: 0;
+  height: auto;
   left: 0px;
   overflow: hidden;
   z-index: 1;
@@ -1940,11 +1941,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   max-width: 1000px;
   margin: 0 auto;
   padding: 50px;
-}
-.theme-preview-video {
-  display: inline-block;
-  height: 300px;
-  background-color: $color-2;
 }
 .theme-preview-info {
   color: $color-3;

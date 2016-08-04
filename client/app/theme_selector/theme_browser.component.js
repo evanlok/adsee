@@ -7,36 +7,34 @@ var component = {
 };
 
 /*@ngInject*/
-function ThemeBrowserController($q, $window, industryService, adTypeService, themeService) {
+function ThemeBrowserController($q, $document, $window, industryService, themeService) {
   var vm = this;
 
   vm.$onInit = function () {
     vm.loading = true;
     vm.queryParams = {};
+    vm.expandedTheme = {};
+    vm.previewHeight = 0;
 
-    $q.all([fetchIndustries(), fetchAdTypes(), fetchThemes()]).then(function () {
+    $q.all([fetchIndustries(), fetchThemes()]).then(function () {
       vm.loading = false;
     });
   };
 
   vm.selectedIndustry = selectedIndustry;
   vm.selectIndustry = selectIndustry;
-  vm.adTypeFromId = adTypeFromId;
-  vm.industryNameFromTheme = industryNameFromTheme;
   vm.title = title;
   vm.showFeaturedThemes = showFeaturedThemes;
   vm.active = active;
+  vm.expandTheme = expandTheme;
+  vm.collapseTheme = collapseTheme;
+  vm.styleForTheme = styleForTheme;
+  vm.updatePreviewHeight = updatePreviewHeight;
   vm.selectTheme = selectTheme;
 
   function fetchIndustries() {
     return industryService.query().then(function (data) {
       vm.industries = data;
-    });
-  }
-
-  function fetchAdTypes() {
-    return adTypeService.query().then(function (data) {
-      vm.adTypes = data;
     });
   }
 
@@ -68,15 +66,6 @@ function ThemeBrowserController($q, $window, industryService, adTypeService, the
     });
   }
 
-  function adTypeFromId(id) {
-    return _.find(vm.adTypes, {id: id});
-  }
-
-  function industryNameFromTheme(theme) {
-    var adType = adTypeFromId(theme.ad_type_id);
-    return _.find(vm.industries, {id: adType.industry_id}).name;
-  }
-
   function title() {
     if (vm.queryParams.industry_id) {
       return vm.selectedIndustry().name;
@@ -105,6 +94,29 @@ function ThemeBrowserController($q, $window, industryService, adTypeService, the
     } else {
       return vm.queryParams.industry_id === category.id;
     }
+  }
+
+  function expandTheme(theme) {
+    vm.expandedTheme = theme;
+    //var element = angular.element(document.getElementById('theme_' + theme.id));
+    //$document.scrollTo(element, 10);
+  }
+
+  function collapseTheme() {
+    vm.expandedTheme = {};
+  }
+
+  function styleForTheme(theme) {
+    if (theme === vm.expandedTheme) {
+      var height = vm.previewHeight + 40;
+      return {'margin-bottom': height + 'px'};
+    } else {
+      return {};
+    }
+  }
+
+  function updatePreviewHeight (height) {
+    vm.previewHeight = height;
   }
 
   function selectTheme(theme) {

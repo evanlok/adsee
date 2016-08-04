@@ -26,6 +26,7 @@ module.exports = {
       'ui-select',
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',
+      'angular-scroll',
       'tinycolor2',
       'select2',
       'sortablejs/ng-sortable',

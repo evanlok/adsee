@@ -11,6 +11,7 @@ angular.module('adsee', [
   'treeControl',
   'color.picker',
   'ng-sortable',
+  'duScroll',
   'timer',
   'bcherny/formatAsCurrency',
   'ezfb',
