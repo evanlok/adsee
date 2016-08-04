@@ -1,3 +1,4 @@
+require('slick-carousel');
 var templateUrl = require('./scene_list.html');
 
 var component = {

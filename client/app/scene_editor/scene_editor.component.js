@@ -61,6 +61,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
   function fetchSceneContents() {
     sceneContentService.query({sceneCollectionId: vm.sceneCollection.id}).then(function (data) {
       vm.sceneContents = data;
+      vm.selectedSceneContentIdx = vm.sceneContents.length - 1;
 
       if (!vm.sceneContents.length) {
         vm.displayAddScene = true;
@@ -169,17 +170,21 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
     });
 
     modal.result.then(function () {
-      sceneContentService.delete({id: sceneContent.id}).then(function () {
-        if (sceneContent === vm.selectedSceneContent()) {
-          var index = _.indexOf(vm.sceneContents, sceneContent);
+      var deletedIdx = _.indexOf(vm.sceneContents, sceneContent);
 
-          if (index == 0) {
+      sceneContentService.delete({id: sceneContent.id}).then(function () {
+        if (deletedIdx === vm.selectedSceneContentIdx) {
+          var index;
+
+          if (deletedIdx === 0) {
             index = 0;
           } else {
-            index -= 1;
+            index = deletedIdx - 1;
           }
 
-          selectSceneContent(vm.sceneContents[index]);
+          vm.selectedSceneContentIdx = index;
+        } else if (deletedIdx < vm.selectedSceneContentIdx) {
+          vm.selectedSceneContentIdx -= 1;
         }
 
         _.pull(vm.sceneContents, sceneContent);
