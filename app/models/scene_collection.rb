@@ -34,6 +34,7 @@ class SceneCollection < ActiveRecord::Base
   def create_scene_contents_from_theme
     return unless theme
 
+    self.ad_type = theme.ad_type
     self.font = theme.font
     self.song = theme.song
     self.color = theme.color

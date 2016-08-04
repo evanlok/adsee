@@ -1,8 +1,7 @@
 /*@ngInject*/
-function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, adTypeId,
-                                           themeId, skipAspectRatio, targetingSpecId) {
+function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $window, sceneCollectionService, themeId,
+                                           skipAspectRatio, targetingSpecId) {
   var steps = ['integration', 'aspect_ratio'];
-  $scope.adTypeId = adTypeId;
   $scope.themeId = themeId;
   $scope.saving = false;
   $scope.integration = '';
@@ -36,7 +35,6 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
     $scope.saving = true;
 
     sceneCollectionService.save({}, {
-      ad_type_id: $scope.adTypeId,
       theme_id: $scope.themeId,
       integration: $scope.integration,
       aspect_ratio: $scope.aspectRatio,

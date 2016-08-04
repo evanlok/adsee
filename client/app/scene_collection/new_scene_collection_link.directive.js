@@ -6,7 +6,6 @@ function NewSceneCollectionLinkDirective($uibModal) {
   return {
     restrict: 'A',
     scope: {
-      adTypeId: '@',
       themeId: '@',
       targetingSpecId: '@',
       skipAspectRatio: '=?'
@@ -26,9 +25,6 @@ function NewSceneCollectionLinkDirective($uibModal) {
         size: 'lg',
         templateUrl: modalTemplateUrl,
         resolve: {
-          adTypeId: function () {
-            return scope.adTypeId;
-          },
           themeId: function () {
             return scope.themeId;
           },
