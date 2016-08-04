@@ -15,7 +15,7 @@
              ng-change="$ctrl.updateText()"
              maxlength="{{ $ctrl.sceneAttribute.display_config.limit }}">
 
-      <span ng-if="$ctrl.sceneAttribute.display_config.limit">{{ $ctrl.sceneAttribute.display_config.limit - $ctrl.value.length }}</span>
+      <span ng-if="$ctrl.sceneAttribute.display_config.limit" class="text-limiter">{{ $ctrl.sceneAttribute.display_config.limit - $ctrl.value.length }} characters left</span>
     </div>
   </div>
 
