@@ -971,10 +971,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .thumb-list {
   position: relative;
+  padding: 0px 25px 0px 40px;
 }
 .thumbs-center {
- text-align: center;
- padding: 0px 30px;
+  text-align: center;
+  padding: 0px 30;
+  height: 80px;
+  overflow-y: visible;
+  li {
+    padding: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 107px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .popover {
+    font-weight: 700;
+  }
 }
 .horizontal-scrollable-list {
   .active {
@@ -1019,22 +1034,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   border-top-right-radius: 5px;
 }
 .add-scene-wrapper {
-}
-.list-inline {
-  height: 80px;
-  overflow-y: visible;
-  li {
-    padding: 0px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    width: 107px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .popover {
-    font-weight: 700;
-  }
 }
 .add-scene-button {
   display: inline-block;
