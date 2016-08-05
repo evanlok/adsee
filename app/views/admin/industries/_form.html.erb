@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, @industry] do |f| %>
   <%= f.input :name %>
+  <%= f.input :description, input_html: { rows: 5 } %>
   <%= render 'admin/shared/image_form_field', f: f, name: :image, version: :small_square %>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
