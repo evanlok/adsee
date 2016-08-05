@@ -55,7 +55,7 @@
               <li ng-repeat="localeKey in $ctrl.targetingSpec.locales" class="demographic-item">
                 {{ $ctrl.findLocaleByKey(localeKey).name }}
 
-                <a href="" ng-click="$ctrl.removeLocale(locale)" class="remove-demo">
+                <a href="" ng-click="$ctrl.removeLocale(localeKey)" class="remove-demo">
                   <i class="fa fa-times-circle-o"></i>
                 </a>
               </li>
@@ -67,7 +67,7 @@
                    placeholder="Enter language">
 
             <ul class="list-unstyled" ng-show="$ctrl.localeSearchQuery">
-              <li ng-repeat="locale in $ctrl.locales | filter:{name: $ctrl.localeSearchQuery}">
+              <li ng-repeat="locale in $ctrl.locales | filter:{name: $ctrl.localeSearchQuery} | orderBy: 'name'">
                 <a href="" ng-click="$ctrl.selectLocale(locale)">{{ locale.name }}</a>
               </li>
             </ul>

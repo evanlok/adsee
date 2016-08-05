@@ -64,8 +64,7 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
     };
 
     $q.all([ezfb.getLoginStatus(), fetchFacebookAd()]).then(function () {
-      return fetchLocales();
-    }).then(function () {
+      fetchLocales();
       fetchTargetingBrowse();
       vm.loaded = true;
     });
@@ -172,8 +171,8 @@ function TargetingDemographicsController($state, $q, facebookAdService, ezfb) {
     vm.localeSearchQuery = '';
   }
 
-  function removeLocale(locale) {
-    _.pull(vm.targetingSpec.locales, locale.key);
+  function removeLocale(localeKey) {
+    _.pull(vm.targetingSpec.locales, localeKey);
   }
 
   function findLocaleByKey(key) {
