@@ -127,10 +127,22 @@
 // Login Page 
 
 .login-page {
-  margin-top: 8%;
+  padding-top: 15%;
+  height: 100%;
+  background-color: $color-3;
+  @media screen and (max-width: 991px) { 
+    padding: 60px;
+  }
+  @media screen and (max-width: 480px) { 
+    padding: 60px 20px;
+  }
   .right-column {
     border-left: 1px solid $color-2;
     padding-left: 40px;
+    @media screen and (max-width: 991px) {
+      padding-left: 15px;
+      border: none;
+    }
   }
   h2 {
     font-weight: 700;
@@ -157,27 +169,6 @@
       border: 3px solid #ccc;
     }
   }
-  input[type="email"][required]:focus + label[placeholder]:before,
-  input[type="email"][required]:valid + label[placeholder]:before,
-  input[type="password"][required]:focus + label[placeholder]:before,
-  input[type="password"][required]:valid + label[placeholder]:before {
-    -webkit-transition-duration: .2s;
-            transition-duration: .2s;
-    -webkit-transform: translate(0, -1.35em) scale(0.9, 0.9);
-            transform: translate(0, -1.35em) scale(0.9, 0.9);
-    opacity: 1;
-  }
-  input[type="email"][required] + label[placeholder],
-  input[type="password"][required] + label[placeholder] {
-    margin-top: calc(-3em + 3px);
-    margin-bottom: calc((3em - 1em) + 2px);
-  }
-  input[type="email"][required] + label[placeholder]:before,
-  input[type="password"][required] + label[placeholder]:before {
-    margin: 0 calc(2em + 15px);
-    background-image: -webkit-linear-gradient(top, $color-3, $color-3);
-    background-image: linear-gradient(to bottom, $color-3, $color-3);
-  }
   .button {
     text-align: center;
     display: block;
@@ -191,8 +182,10 @@
   .fb-button {
     color: white;
     background-color: hsla(221, 40.9091%, 43.1373%, 1.0000);
+    border-color: #375096;
     &:hover {
-      background-color: hsla(221, 60.9091%, 53.1373%, 1.0000)
+      background-color: hsla(221, 60.9091%, 53.1373%, 1.0000);
+      border-color: hsla(221, 60.9091%, 63.1373%, 1.0000);
     }
   }
   .remember {
