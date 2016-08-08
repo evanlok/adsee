@@ -3,6 +3,11 @@
   color: $color-5;
   font-size: 14px;
   padding-top: 50px;
+  .navbar {
+    a, li a {
+      color: $color-3;
+    }
+  } 
 }
 
 .main {
