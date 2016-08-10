@@ -94,7 +94,6 @@ FactoryGirl.define do
   factory :theme do
     name { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
-    photo_count { Faker::Number.number(1) }
     ad_type
 
     trait :with_song_and_font do
@@ -104,9 +103,13 @@ FactoryGirl.define do
   end
 
   factory :theme_variant do
+    name { Faker::Lorem.sentence }
     theme
     video_type
+    aspect_ratio '16:9'
     duration { Faker::Number.number(2) }
+    photo_count { Faker::Number.number(1) }
+    video_count { Faker::Number.number(1) }
   end
 
   factory :theme_variant_scene do

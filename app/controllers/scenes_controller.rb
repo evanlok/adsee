@@ -6,6 +6,10 @@ class ScenesController < ApplicationController
       @scenes = @scenes.with_aspect_ratio(params[:aspect_ratio])
     end
 
+    if params[:name].present?
+      @scenes = @scenes.where('name ilike ?', "%#{params[:name]}%")
+    end
+
     respond_to do |format|
       format.json
     end

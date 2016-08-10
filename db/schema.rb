@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804235400) do
+ActiveRecord::Schema.define(version: 20160809222843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -274,6 +274,13 @@ ActiveRecord::Schema.define(version: 20160804235400) do
     t.integer  "duration",      default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "name"
+    t.integer  "photo_count",   default: 0
+    t.integer  "video_count",   default: 0
+    t.text     "thumbnail"
+    t.text     "sample_video"
+    t.text     "poster_image"
+    t.string   "aspect_ratio"
   end
 
   add_index "theme_variants", ["theme_id", "video_type_id"], name: "index_theme_variants_on_theme_id_and_video_type_id", unique: true, using: :btree
@@ -281,7 +288,6 @@ ActiveRecord::Schema.define(version: 20160804235400) do
   create_table "themes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "photo_count"
     t.integer  "song_id"
     t.text     "sample_video"
     t.text     "poster_image"
@@ -291,7 +297,6 @@ ActiveRecord::Schema.define(version: 20160804235400) do
     t.integer  "ad_type_id"
     t.integer  "font_id"
     t.string   "color"
-    t.integer  "video_count"
     t.boolean  "featured",     default: false
   end
 
