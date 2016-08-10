@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809222843) do
+ActiveRecord::Schema.define(version: 20160810173645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,7 +150,6 @@ ActiveRecord::Schema.define(version: 20160809222843) do
   create_table "scene_collections", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "ad_type_id"
-    t.integer  "theme_id"
     t.string   "color"
     t.integer  "font_id"
     t.integer  "song_id"
@@ -164,11 +163,12 @@ ActiveRecord::Schema.define(version: 20160809222843) do
     t.string   "integration"
     t.jsonb    "integration_data"
     t.string   "name"
+    t.integer  "theme_variant_id"
   end
 
   add_index "scene_collections", ["ad_type_id"], name: "index_scene_collections_on_ad_type_id", using: :btree
   add_index "scene_collections", ["hal_id"], name: "index_scene_collections_on_hal_id", using: :btree
-  add_index "scene_collections", ["theme_id"], name: "index_scene_collections_on_theme_id", using: :btree
+  add_index "scene_collections", ["theme_variant_id"], name: "index_scene_collections_on_theme_variant_id", using: :btree
   add_index "scene_collections", ["user_id"], name: "index_scene_collections_on_user_id", using: :btree
 
   create_table "scene_contents", force: :cascade do |t|

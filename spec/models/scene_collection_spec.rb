@@ -22,26 +22,26 @@ RSpec.describe SceneCollection do
     end
   end
 
-  describe '#create_scene_contents_from_theme' do
+  describe '#create_scene_contents_from_theme_variant' do
     context 'when theme is present' do
       let(:theme) { create(:theme, :with_song_and_font, color: '#000000') }
       let(:transition) { create(:transition) }
       let!(:theme_variant) { create(:theme_variant, theme: theme) }
       let!(:theme_variant_scene) { create(:theme_variant_scene, theme_variant: theme_variant, transition: transition) }
-      let(:scene_collection) { create(:scene_collection, theme: theme) }
+      let(:scene_collection) { create(:scene_collection, theme_variant: theme_variant) }
 
-      it 'creates scene content records from theme scenes' do
-        scene_collection.create_scene_contents_from_theme
+      it 'creates scene content records from theme variant scenes' do
+        scene_collection.create_scene_contents_from_theme_variant
         expect(scene_collection.scene_contents).to_not be_empty
       end
 
       it 'sets transition on scene content record' do
-        scene_collection.create_scene_contents_from_theme
+        scene_collection.create_scene_contents_from_theme_variant
         expect(scene_collection.scene_contents.first.transition).to eq(transition)
       end
 
       it 'sets font, song, color, and aspect_ratio from theme' do
-        scene_collection.create_scene_contents_from_theme
+        scene_collection.create_scene_contents_from_theme_variant
         expect(scene_collection.song).to eq(theme.song)
         expect(scene_collection.font).to eq(theme.font)
         expect(scene_collection.color).to eq(theme.color)
@@ -50,10 +50,10 @@ RSpec.describe SceneCollection do
     end
 
     context 'when there is no theme' do
-      let(:scene_collection) { create(:scene_collection) }
+      let(:scene_collection) { create(:scene_collection, theme_variant_id: nil) }
 
       it 'does nothing' do
-        expect(scene_collection.create_scene_contents_from_theme).to be_nil
+        expect(scene_collection.create_scene_contents_from_theme_variant).to be_nil
         expect(scene_collection.scene_contents).to be_empty
       end
     end
