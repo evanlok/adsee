@@ -19,9 +19,14 @@ function ThemePreviewController() {
   };
 
   vm.onOutputHeight = onOutputHeight;
+  vm.selectThemeVariant = selectThemeVariant;
 
   function onOutputHeight(height) {
     vm.onOpen({$event: {height: height}});
+  }
+
+  function selectThemeVariant(themeVariant) {
+    vm.themeVariant = themeVariant;
   }
 }
 

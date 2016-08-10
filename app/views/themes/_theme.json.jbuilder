@@ -16,13 +16,13 @@ json.theme_variants theme.theme_variants do |theme_variant|
 
   json.video_type theme_variant.video_type.name
 
-  json.thumbnail_url_small theme.thumbnail_url(:small)
-  json.thumbnail_url_large theme.thumbnail_url(:large)
-  json.thumbnail_url_small_square theme.thumbnail_url(:small_square)
-  json.thumbnail_url_large_square theme.thumbnail_url(:large_square)
+  json.thumbnail_url_small theme_variant.thumbnail_url(:small)
+  json.thumbnail_url_large theme_variant.thumbnail_url(:large)
+  json.thumbnail_url_small_square theme_variant.thumbnail_url(:small_square)
+  json.thumbnail_url_large_square theme_variant.thumbnail_url(:large_square)
 
-  json.poster_image_url_small theme.poster_image_url(:small)
-  json.poster_image_url_small_square theme.poster_image_url(:small_square)
-  json.poster_image_url_medium theme.poster_image_url(:medium)
-  json.poster_image_url_large theme.poster_image_url(:large)
+  json.poster_image_url_small theme_variant.poster_image_url(:small)
+  json.poster_image_url_small_square theme_variant.poster_image_url(:small_square)
+  json.poster_image_url_medium theme_variant.poster_image_url(:medium)
+  json.poster_image_url_large theme_variant.poster_image_url(:large)
 end
