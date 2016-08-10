@@ -20,8 +20,4 @@ class Theme < ActiveRecord::Base
 
   # Scopes
   scope :featured, -> { where(featured: true) }
-
-  def duration
-    theme_variants.default.duration
-  end
 end

@@ -7,7 +7,7 @@ var component = {
 };
 
 /*@ngInject*/
-function ThemeBrowserController($q, $document, $window, industryService, themeService) {
+function ThemeBrowserController($q, industryService, themeService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -30,7 +30,6 @@ function ThemeBrowserController($q, $document, $window, industryService, themeSe
   vm.collapseTheme = collapseTheme;
   vm.styleForTheme = styleForTheme;
   vm.updatePreviewHeight = updatePreviewHeight;
-  vm.selectTheme = selectTheme;
 
   function fetchIndustries() {
     return industryService.query().then(function (data) {
@@ -115,12 +114,8 @@ function ThemeBrowserController($q, $document, $window, industryService, themeSe
     }
   }
 
-  function updatePreviewHeight (height) {
-    vm.previewHeight = height;
-  }
-
-  function selectTheme(theme) {
-    $window.location = '/themes/' + theme.id;
+  function updatePreviewHeight ($event) {
+    vm.previewHeight = $event.height;
   }
 }
 

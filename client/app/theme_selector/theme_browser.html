@@ -47,41 +47,8 @@
 
     </a>
 
-    <div class="theme-preview-expand" ng-if="$ctrl.expandedTheme === theme"
-         output-height on-output-height="$ctrl.updatePreviewHeight(height)" scroll-to-thumb>
-      <div class="row expand-column-width">
-        <div class="theme-preview-expand-inner">
-          <span class="theme-preview-close" ng-click="$ctrl.collapseTheme()"></span>
-          <div class="col-md-7">
-            <video-player url="{{ theme.sample_video_url }}" poster="{{ theme.poster_image_url_large }}"
-                          class="vjs-big-play-centered">
-            </video-player>
-          </div>
-          <div class="theme-preview-info col-md-5">
-            <div class="theme-preview-type">
-              <a>{{ theme.industry }}</a> &middot; <a>{{ theme.ad_type }}</a>
-            </div>
-
-            <h2>{{ theme.name }}</h2>
-
-            <ul class="theme-info-list">
-              <li><i class="fa fa-file-image-o"></i> {{ theme.photo_count }} images</li>
-              <li><i class="fa fa-hourglass-half "></i> {{ theme.duration }} seconds</li>
-              <li><i class="fa fa-music"></i> {{ theme.song }}</li>
-            </ul>
-            <div class="theme-description">
-              {{ theme.description }}
-            </div>
-            <a href="" class="button build-theme-button"
-               new-scene-collection-link theme-id="{{ theme.id }}" skip-aspect-ratio="true">
-              Build this theme
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <theme-preview theme="theme" on-open="$ctrl.updatePreviewHeight($event)" on-close="$ctrl.collapseTheme()"
+                   ng-if="$ctrl.expandedTheme === theme" scroll-to-thumb></theme-preview>
   </div>
 
 </div>
-
