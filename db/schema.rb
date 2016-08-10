@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810173645) do
+ActiveRecord::Schema.define(version: 20160810181356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,6 +281,7 @@ ActiveRecord::Schema.define(version: 20160810173645) do
     t.text     "sample_video"
     t.text     "poster_image"
     t.string   "aspect_ratio"
+    t.integer  "position"
   end
 
   add_index "theme_variants", ["theme_id", "video_type_id"], name: "index_theme_variants_on_theme_id_and_video_type_id", unique: true, using: :btree

@@ -2,6 +2,7 @@ class ThemeVariant < ActiveRecord::Base
   mount_uploader :thumbnail, ThumbnailUploader
   mount_uploader :poster_image, ImageUploader
   mount_uploader :sample_video, FileUploader
+  acts_as_list scope: :theme_id
 
   # Associations
   belongs_to :theme

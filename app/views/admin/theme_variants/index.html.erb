@@ -11,6 +11,7 @@
     <th>Name</th>
     <th>Aspect Ratio</th>
     <th>Video Type</th>
+    <th>Position</th>
     <th colspan="2">Scenes</th>
   </tr>
   </thead>
@@ -22,6 +23,7 @@
       <td><%= theme_variant.name %></td>
       <td><%= theme_variant.aspect_ratio %></td>
       <td><%= theme_variant.video_type.name %></td>
+      <td><%= theme_variant.position %></td>
       <td><%= theme_variant.scenes.map(&:name).join(', ') %></td>
 
       <td class="actions">

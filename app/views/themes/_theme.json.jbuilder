@@ -12,7 +12,7 @@ json.thumbnail_url_large_square theme.thumbnail_url(:large_square)
 
 json.theme_variants theme.theme_variants do |theme_variant|
   json.extract! theme_variant, :id, :name, :sample_video_url, :photo_count, :video_count, :duration, :aspect_ratio,
-                :created_at, :updated_at
+                :position, :created_at, :updated_at
 
   json.video_type theme_variant.video_type.name
 

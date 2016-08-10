@@ -2,7 +2,7 @@ class Admin::ThemeVariantsController < Admin::BaseController
   before_action :load_theme_variant, only: [:edit, :update, :destroy]
 
   def index
-    @theme_variants = ThemeVariant.includes(:theme, :video_type, :scenes).order('themes.name, theme_variants.name')
+    @theme_variants = ThemeVariant.includes(:theme, :video_type, :scenes).order('themes.name, theme_variants.position')
                         .page(params[:page])
   end
 
