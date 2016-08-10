@@ -2,19 +2,21 @@
 
 .main-nav {
   width: 100%;
-  background-color: $color-9;
   position: absolute;
+  background-color: $color-3;
+  border-bottom: 1px solid $color-10;
   .logo {
     height: 50px;
-    width: 120px;
-    background-color: $color-2;
     text-align: center;
     display: inline-block;
-    padding: 0px;
-    img {
-      width: 75%;
-      margin: 13px auto 0px;
-    }
+    padding: 5px 8px 0px;
+    color: $color-2;
+    // img {
+    //   width: 75%;
+    //   margin: 13px auto 0px;
+    // }
+    font-weight: 700;
+    font-size: 28px;
   }
   ul {
     list-style: none;
@@ -25,12 +27,12 @@
     margin-bottom: 0px;
     li {
       display: inline-block;
-      border-left: 1px solid $color-5;
+      border-left: 1px solid $color-10;
       height: 100%;
     }
   }
   a {
-    color: $color-3;
+    color: $color-9;
     height: 100%;
     display: block;
     padding: 15px 15px 15px;
@@ -47,6 +49,8 @@
 
 .text-input-group, .login-page, .ad-config .form-group, .signup-page {
 
+  border: 1px solid $color-10;
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -57,7 +61,7 @@
   input[type="text"], input[type="email"], input[type="password"] {
     box-sizing: border-box;
     width: 100%;
-    margin: 0 0 1.65em 0px;
+    margin: 0px;
     border-radius: 0px;
     resize: none;
     background-color: $color-3;
@@ -96,9 +100,10 @@
 }
 .media-input-group {
   border-radius: 0px;
-  margin: 0 0 1.65em 0px;
+  margin: 0px;
   overflow: hidden;
   background-color: $color-3;
+  border: 1px solid $color-10;
   input[type="text"] {
     box-sizing: border-box;
     width: 100%;
@@ -225,7 +230,7 @@
       padding-top: 4px;
       vertical-align: middle;
       &:hover {
-        color: $color-3;
+        color: $color-9;
         i {
           color: $color-2;
           opacity: 1;
@@ -234,7 +239,7 @@
     }
     i {
       font-size: 18px;
-      color: $color-7;
+      color: $color-9;
       opacity: 0.3;
       vertical-align: middle;
     }
@@ -247,10 +252,10 @@
   .active {
     a {
       color: $color-3;
-      background-color: hsla(270, 100.0000%, 99.4444%, 0.1500);
-      -webkit-box-shadow: inset 200px 24px 0px -196px rgba(31,193,185,1);
-      -moz-box-shadow: inset 200px 24px 0px -196px rgba(31,193,185,1);
-      box-shadow: inset 200px 24px 0px -196px rgba(31,193,185,1);
+      background-color: hsla(0, 00.0000%, 0%, 0.1500);
+      -webkit-box-shadow: inset 200px 24px 0px -196px $color-2;
+      -moz-box-shadow: inset 200px 24px 0px -196px $color-2;
+      box-shadow: inset 200px 24px 0px -196px $color-2;
     }
     i {
       color: $color-2;
@@ -271,7 +276,8 @@
   display: flex;
 }
 .scene-editor {
-  background-color: $color-7;
+  background-color: $color-3;
+  border: 1px solid $color-10;
   width: 100%;
   margin: 0px;
   border-radius: 15px;
@@ -287,11 +293,14 @@
     font-size: 30px;
     a {
       cursor: text;
-      border-color: $color-2;
+      border-color: #9899a1;
       &:hover {
         color: $color-1;
       }
     }
+  }
+  .editable {
+    color: #9899a1;
   }
 }
 .action-bar {
@@ -313,13 +322,16 @@
   font-size: 12px;
 }
 .theme-settings {
+  a {
+    color: $color-9;
+  }
   .theme-settings-column {
     height: 45px;
     width:20%;
     float: left;
     border-right: 1px solid $color-10;
     i {
-      color: $color-9;
+      color: #9899a1;
     }
     &:last-child {
       border-right: none;
@@ -341,7 +353,7 @@
     }
     &:hover {
       background-color: $color-3;
-      border-bottom: 1px solid $color-1;
+      border-bottom: 2px solid $color-1;
     }
   }
   .color-picker-wrapper .form-control, .color-picker-wrapper .input-group .input-group-addon {
@@ -352,13 +364,12 @@
     border-left: none;
     border-radius: 0;
     height: 44px;
-    border: 7px solid $color-7;
+    border: 7px solid $color-3;
     padding: 6px 15px;
     margin-right: -1px;
   }
   .color-picker-input {
     height: 44px;
-    background-color: $color-7;
     outline: none;
     border: none;
     box-shadow: none;
@@ -388,7 +399,7 @@
     text-align: center;
     &:hover {
       background-color: $color-3;
-      border-bottom: 1px solid $color-1;
+      border-bottom: 2px solid $color-1;
     }
   }
 }
@@ -829,7 +840,7 @@
   padding: 15px 15px 150px 25px;
   .time {
     color: white;
-    background-color: $color-9;
+    background-color: $color-10;
     padding: 5px 10px;
     margin-left: 7px;
     border-radius: 5px;
@@ -886,6 +897,9 @@
   .nav-left-arrow {
     padding-right: 10px;
   }
+  .inactive {
+    display: inline;
+  }
 }
 
 .scenes-row {
@@ -902,10 +916,10 @@
   display: -webkit-flex;
   display: flex;
   overflow: auto;
-  background-color: hsla(204, 95.0000%, 7.8431%, 0.7000);
+  background-color: hsla(270, 0.8620%, 60.6763%, 0.7000);
   .selected {
     img {
-      outline: 3px solid $color-2;
+      outline: 3px solid $color-7;
     }
   }
 }
@@ -915,6 +929,7 @@
   width: 100%;
   height: 115px;
   bottom: 0px;
+  opacity: 0.1;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
 background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -964,10 +979,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .thumb-list {
   position: relative;
-  padding: 0px 25px 0px 40px;
+  padding: 0px 50px 0px 60px;
 }
 .thumbs-center {
-  text-align: center;
+  text-align: left;
   padding: 0px 30;
   height: 80px;
   overflow-y: visible;
@@ -986,8 +1001,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .horizontal-scrollable-list {
   .active {
+    color: $color-3;
+    background-color: hsla(0, 0%, 0.0000%, 0.2500);
     &:hover {
-      color: white;
       background-color: $color-1;
     }
   }
@@ -997,21 +1013,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   height: 100px;
   font-size: 40px;
   position: absolute;
+  color: $color-10;
 }
 .next-scene-button {
   right: 0px;
   padding: 22px 10px 0px 12px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.10) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.10) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.10) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#80000000',GradientType=1 ); /* IE6-9 */
 }
 .prev-scene-button {
   left: 0px;
   padding: 22px 12px 0px 12px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0.10) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0.10) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(0,0,0,0.10) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#1a000000',GradientType=1 ); /* IE6-9 */
 }
 .scene-list-label {
@@ -1019,11 +1036,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   z-index: 100;
   color: $color-3;
   text-transform: uppercase;
-  padding: 6px 17px 0px;
+  padding: 6px 17px 0px 18px;
   position: absolute;
   bottom: 100px;
   font-size: 12px;
-  background-color: hsla(204, 95.0000%, 7.8431%, 0.7000);
+  background-color: hsla(270, 0.8620%, 60.6763%, 0.7000);
   border-top-right-radius: 5px;
 }
 .add-scene-wrapper {
@@ -1037,13 +1054,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-size: 12px;
   font-weight: bold;
   text-align: center;
-  border: 3px solid $color-2;
+  border: 4px solid $color-2;
   border-radius: 10px;
   margin: 10px;
+  color: $color-2;
+  background-color: $color-3;
   i {
     font-size: 36px;
     display: block;
     margin-bottom: 3px;
+    color: $color-2;
   }
   &:hover {
     color: $color-1;
@@ -1080,10 +1100,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   position: absolute;
   top: 0px;
   right: 0px;
-  padding: 2px 4px 2px 4px;
+  padding: 0px 4px;
   color: white;
   font-weight: bold;
-  background-color: hsla(0, 0%, 0.0000%, 0.7000);
+  background-color: hsla(0, 0%, 0.0000%, 0.5000);
   font-size: 12px;
   &:hover {
     background-color: $color-1;
@@ -1092,8 +1112,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .transition-dot {
   position: absolute;
-  color: $color-2;
-  background-color: #1b2c36;
+  color: $color-3;
+  background-color: #b6bcbf;
   right: -14px;
   top: 22px;
   z-index: 1000;
@@ -1101,12 +1121,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   border-radius: 40px;
   font-size: 12px;
   &:before {
-    content: "\f10c";
+    content: "\f111";
     font-family: "fontAwesome";
   }
   &:hover {
     &:before {
-      content: "\f111";
+      content: "\f10c";
       font-family: "fontAwesome";
     }
   }
@@ -1146,10 +1166,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   max-width: 350px;
   margin: 0 auto ;
   padding: 0px 0px 100px;
+  .form-group {
+    margin-bottom: 20px;
+  }
   .label-box {
-    background-color: $color-3;
-    border-bottom: 1px solid $color-8;
+    background-color: $color-11;
     height: 25px;
+    label, label:before {
+      color: $color-6;
+    }
   }
   .settings-cog {
     float: right;
@@ -1351,6 +1376,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .radio, .checkbox {
     margin-bottom: 20px;
+    label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $color-6;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      margin-top: 0px;
+    }
   }
   .image-padding {
     margin: 0px 10px 10px 10px;
@@ -1780,10 +1814,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .smartcreate-button {
   margin-bottom: 50px;
   display: inline-block;
+  padding: 3px 15px;
+}
+.custom-theme-button {
+  display: block;
+  margin: 20px auto;
 }
 .theme-index {
-  margin: 75px 10px 30px;
-  border-radius: 20px;
+  margin: 50px -15px 0px;
   overflow: hidden;
   .slick-carousel {
     img {
@@ -1798,11 +1836,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     padding: 0px;
     background-color: $color-2;
   }
-  
   h1 {
     margin-top: 30px;
     margin-bottom: 0px;
-    font-size: 44px;
+    font-size: 75px;
     font-weight: 300;
     text-transform: uppercase;
   }
@@ -1850,6 +1887,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     list-style: none;
     padding-left: 0px;
     font-size: 14px;
+    margin-top: 30px;
+    a {
+      color: $color-9;
+      &:hover {
+        color: $color-2;
+      }
+    }
+    .active {
+      font-weight: 700;
+    }
   }
 }
 .themes-grid {
@@ -1860,17 +1907,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   text-align: center;
   position: relative;
   min-height: 400px;
+  h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 0px;
+  }
 }
 .themes-grid-header {
   background-color: $color-2;
   color: white;
   padding: 15px;
   height: 72px;
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 11px 10px 0px;
-  }
   .button-ghost {
     color: $color-3;
     border-color: $color-3;
@@ -1879,11 +1926,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .theme-tile {
   display: inline-block;
-  border: 1px solid $color-8;
   margin: 10px;
   text-align: left;
-  height: 250px;
   vertical-align: top;
+  width: 300px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+  }
+}
+.theme-tile-link {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    .theme-tile-overlay {
+      margin-top: 100px;
+    }
+    // img {
+    //   width: 110%;
+    //   margin: -10px 0px 0px -10px;
+    // }
+  }
 }
 .theme-tile.tile-expanded > a::after {
   top: auto;
@@ -1904,24 +1972,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-top: 0px;
   }
 }
+.theme-tile-overlay {
+  position: absolute;
+  display: block;
+  width: 300px;
+  height: 210px;
+  margin-top: 170px;
+  overflow: hidden;
+  background: hsla(0, 0%, 0.0000%, 0.6000);
+  -webkit-transition: margin-top 300ms ease-out;
+  -moz-transition: margin-top 300ms ease-out;
+  transition: margin-top 300ms ease-out;
+}
 .theme-tile-name {
   display: block;
-  padding: 10px 15px;
+  padding: 10px 15px 0px;
   font-size: 16px;
   font-weight: 700;
-  color: $color-9;
-  height: 69px;
+  color: $color-3;
+  width: 100%;
 }
 .ad-type-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: $color-3;
+  font-size: 10px;
+  color: $color-7;
   display: inline-block;
-  background: hsla(0, 0%, 0.0000%, 0.6000);
-  position: absolute;
   text-transform: uppercase;
-  padding: 4px 8px 3px;
-  margin-top: -22px;
+  padding: 4px 15px 3px;
+  width: 100%;
 }
 .theme-preview-expand {
   position: absolute;
@@ -1948,7 +2025,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   color: $color-3;
   padding: 0px 30px;
   h2 {
-    font-size: 30px;
+    font-size: 24px;
     margin: 8px 0px;
   }
   .theme-info-list {
@@ -2484,7 +2561,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .ui-select-container {
     background: none;
-    border: 5px solid $color-1;
+    border: 5px solid $color-8;
     border-radius: 100px;
     height: 55px;
     margin-bottom: 30px;
@@ -2538,7 +2615,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .advtarg-button {
     line-height: 1;
-    margin: 10px auto 0px;
+    margin: 0px auto;
     font-size: 18px;
     font-weight: 700;
     padding: 10px 20px;
@@ -2797,24 +2874,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .my-videos {
-  max-width: 1200px;
-  margin: 80px auto 20px;
+  margin: 50px -15px 0px;
   padding: 30px 40px 40px;
-  border-radius: 20px;
   background-color: $color-3;
+  text-align: center;
+  h1 {
+    margin-bottom: 30px;
+  }
+  .myvideos-thumbnail {
+    height: 160px;
+    background-color: $color-9;
+  }
   .video-title {
-    font-size: 22px;
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-9;
   }
   .video-item {
     background-color: $color-7;
     display: block;
     margin-bottom: 10px;
-    border-radius: 10px;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+    width: 280px;
+    height: 300px;
+    margin: 5px;
   }
   .video-info {
     padding: 10px 20px;
+    text-align: left;
+    font-size: 14px;
   }
   .watch-button {
     display: inline-block;
@@ -2832,6 +2922,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       font-weight: 700;
     }
   }
+  .delete-link {
+    display: inline-block;
+    padding: 1px 6px 0px;
+    font-weight: 700;
+    border: 1px solid $color-2;
+    border-radius: 30px;
+    margin-top: 4px;
+    font-size: 11px;
+  }
+  .myvideos-pagination {
+    display:block;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .pagination {
+    display: inline-block;
+    margin: 30px auto;
+  }
 }
 .publish-modal-padding {
   margin-top: 200px;
@@ -2845,12 +2954,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 25px;
     font-weight: 700;
     text-transform: uppercase;    
-    border-bottom: 3px solid $color-2;
   }
   .square:hover {
-    img {
-      outline: 6px solid $color-2;
-    }
+    // img {
+    //   outline: 6px solid $color-2;
+    // }
   }
   .modal-footer {
     border-top: none;

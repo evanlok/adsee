@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-md-12">
       <h1><i class="fa fa-file-video-o"></i>&nbsp;My Videos</h1>
-      <br/>
 
       <% @scene_collections.each do |scene_collection| %>
           <div class="video-item">
+
+            <div class="myvideos-thumbnail"></div>
             <% if scene_collection.generated? %>
                 <div class="watch-button">
                   <%= link_to 'Watch', '', 'video-overlay-link' => scene_collection.video.url %>
@@ -16,26 +17,29 @@
               <%= link_to scene_collection.name.present? ? scene_collection.name : "Video #{scene_collection.id}", [:edit, scene_collection], target: '_self', class: "video-title" %>
               <div>
                 <span>
-                  Video Status: <%= scene_collection.status.capitalize %>
+                  Status: <%= scene_collection.status.capitalize %>
                 </span>
-                <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <br/>
                 <span>
                   Ad Status: <%= scene_collection.facebook_ads.first&.status&.capitalize || 'Unpublished' %>
                 </span>
-                <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <br/>
                 <span>
                   Created: <%= scene_collection.created_at.to_s(:full) %>
                 </span>
-                <span class="text-divider-blue">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <br/>
                 <span>
-                  <%= link_to 'Delete', scene_collection_path(scene_collection), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'DELETE', scene_collection_path(scene_collection), method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-link" %>
                 </span>
               </div>
-            </div>        
+            </div> 
+
           </div>
       <% end %>
 
-      <%= paginate @scene_collections %>
+      <div class="myvideos-pagination">
+        <%= paginate @scene_collections %>
+      </div>
 
     </div>
   </div>
