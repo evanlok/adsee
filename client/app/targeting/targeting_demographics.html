@@ -1,9 +1,18 @@
 <div class="targeting-demographic">
 
   <div class="row">
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
 
-      <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
+        <a class="back-button" ui-sref="targetingLocations">
+          <i class="fa fa-arrow-left"></i> BACK
+        </a>
+        <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
 
       <div ng-if="!$ctrl.loaded" class="text-center">
         <i class="fa fa-spinner fa-spin"></i>
@@ -150,13 +159,9 @@
           NEXT <i class="fa fa-arrow-right"></i>
         </button>
 
-        <a class="back-link" ui-sref="targetingLocations">
-          <i class="fa fa-arrow-left"></i> BACK
-        </a>
-
       </div>
     </div>
-    <div class="col-md-3 col-md-offset-1">
+    <div class="col-md-3">
       <div class="reach-box">
         <h4><i class="fa fa-users"></i> Estimated Reach:</h4>
         <reach-estimate targeting-spec="$ctrl.targetingSpec" ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}">

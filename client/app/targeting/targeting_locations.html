@@ -1,8 +1,8 @@
 <div class="targeting-location">
 
   <div class="row">
-    <div class="col-md-9 col-md-offset-1">
-      <a class="" ui-sref="targeting" class="back-button">
+    <div class="col-md-10 col-md-offset-1">
+      <a class="back-button" ui-sref="targeting">
         <i class="fa fa-arrow-left"></i>  Back
       </a>
       <h1><i class="fa fa-crosshairs"></i> Advance Targeting</h1>
@@ -40,7 +40,7 @@
             </select>
           </div>
 
-          <ul class="list-unstyled location-list">
+          <ul class="list-unstyled location-list fa-ul">
             <li ng-repeat="location in $ctrl.selectedLocations" class="location-item">
               <span ng-if="location.include"><i class="fa-li fa fa-map-marker"></i></span>
               <span ng-if="!location.include"><i class="fa-li fa fa-ban"></i></span>

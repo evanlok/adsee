@@ -49,8 +49,6 @@
 
 .text-input-group, .login-page, .ad-config .form-group, .signup-page {
 
-  border: 1px solid $color-10;
-
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -103,7 +101,6 @@
   margin: 0px;
   overflow: hidden;
   background-color: $color-3;
-  border: 1px solid $color-10;
   input[type="text"] {
     box-sizing: border-box;
     width: 100%;
@@ -223,7 +220,7 @@
     padding-left: 0px;
     vertical-align: middle;
     a {
-      color: $color-10;
+      color: $color-4;
       display: block;
       width: 100%;
       height: 100%;
@@ -239,8 +236,7 @@
     }
     i {
       font-size: 18px;
-      color: $color-9;
-      opacity: 0.3;
+      color: $color-4;
       vertical-align: middle;
     }
   }
@@ -283,6 +279,9 @@
   border-radius: 15px;
   position: relative;
   overflow: hidden;
+  -webkit-box-shadow: 10px 10px 51px -12px rgba(0,0,0,0.43);
+  -moz-box-shadow: 10px 10px 51px -12px rgba(0,0,0,0.43);
+  box-shadow: 10px 10px 51px -12px rgba(0,0,0,0.43);
 }
 .video-name-header {
   padding: 15px 25px 0px;
@@ -346,7 +345,7 @@
   .selecter-button {
     padding: 8px 8px 12px;
     font-size: 14px;
-    line-height: 2;
+    line-height: 2.1;
     text-align: center;
     i {
       margin-right: 5px;
@@ -395,7 +394,7 @@
   .add-audio-button, .media-library-button {
     padding: 8px 12px 12px;
     font-size: 14px; 
-    line-height: 2;
+    line-height: 2.1;
     text-align: center;
     &:hover {
       background-color: $color-3;
@@ -522,9 +521,6 @@
   overflow: scroll;
   z-index: 1000;
   background-color: $color-3;
-  -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
-  -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
-  box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   h3 {
     font-weight: 700;
     margin-bottom: 15px;
@@ -1168,12 +1164,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   padding: 0px 0px 100px;
   .form-group {
     margin-bottom: 20px;
+    border: 1px solid $color-10;
   }
   .label-box {
     background-color: $color-11;
     height: 25px;
     label, label:before {
-      color: $color-6;
+      color: $color-4;
     }
   }
   .settings-cog {
@@ -1380,7 +1377,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      color: $color-6;
+      color: $color-4;
     }
     input[type="radio"], input[type="checkbox"] {
       margin-top: 0px;
@@ -2015,9 +2012,65 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   &.ng-enter {
     animation: fadeIn 0.5s;
   }
+  .list-inline {
+    margin-left: 0px;
+    .selected {
+      outline: 5px solid $color-2;
+    }
+  }
+  .variant-list-item {
+    margin-top: 15px;
+    width: 30%;
+    border-radius: 5px;
+    margin-left: 1.6%; 
+    margin-right: 1.6%;
+    padding: 0px;
+    img {
+      width: 100%;
+    }
+  }
+  .variant-header {
+    color: $color-3;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px dotted $color-2;
+    padding: 10px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .variation-count {
+    font-size: 14px;
+    text-transform: none;
+    float: right;
+    line-height: 2;
+  }
+  .variant-info {
+    height: 90px;
+    padding: 10px 14px;
+    background: hsla(0, 0%, 0.0000%, 0.3000);
+    color: $color-3;
+    position: relative;
+  }
+  .variant-specs {
+    padding-left: 0px;
+    bottom: 10px;
+    position: absolute;
+    li {
+      display: inline-block;
+      font-size: 12px;
+      border-right: 1px solid $color-9;
+      padding-right: 5px;
+      i {
+        color: $color-2;
+      }
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
 }
 .expand-column-width {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 50px;
 }
@@ -2031,19 +2084,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .theme-info-list {
     list-style: none;
     padding: 0px;
-    font-size: 16px;
+    margin-top: 10px;
+    font-size: 14px;
     i {
       color: $color-2;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
   .build-theme-button {
     margin-top: 15px;
     display: block;
-    max-width: 280px;
+    max-width: 220px;
     text-align: center;
     color: $color-3;
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 .theme-preview-type {
@@ -2280,10 +2334,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
-  padding: 50px 80px 80px;
+  padding: 20px 80px 80px;
   .ad-config-header {
-    border-bottom: 1px solid $color-9;
+    border-bottom: 1px dotted $color-9;
     padding-bottom: 15px;
+  }
+  .back-button {
+    float: right;
   }
   .video-nav {
     margin-bottom: 50px;
@@ -2638,9 +2695,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
+  .back-button {
+    float: right;
+  }
   input[type="text"], select {
     width: 280px;
     border-color: $color-10;
+  }
+  h1 {
+    border-bottom: 1px dotted $color-6;
+    padding-bottom: 15px;
   }
   h1 i {
     color: $color-2;
@@ -2717,6 +2781,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
+  .back-button {
+    float: right;
+  }
   input[type="text"], select {
     max-width: 280px;
     border-color: $color-10;
@@ -2726,6 +2793,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   input[type="text"],  {
     border-radius: 0px;
+  }
+  h1 {
+    border-bottom: 1px dotted $color-6;
+    padding-bottom: 15px;
   }
   h1 i {
     color: $color-2;
@@ -2791,7 +2862,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .reach-box {
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 5px 10px 10px;
   border: 5px solid $color-2;
   border-radius: 15px;
@@ -2837,7 +2908,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
-  padding: 50px 80px 80px;
+  padding: 20px 80px 80px;
   .button {
     display: block;
     color: white;
@@ -2864,7 +2935,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .summary-header {
     padding-bottom: 10px;
-    border-bottom: 1px solid $color-5;
+    border-bottom: 1px dotted $color-5;
   }
 }
 .signup-page {
@@ -2974,7 +3045,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-top: 40%;
 }
 .smart-create-page {
-  color: white;
+  color: $color-9;
   padding: 80px 0px;
   max-width: 1200px;
   margin: 0 auto;
@@ -2988,13 +3059,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .smart-create-progress {
-  background-color: $color-9;
+  background-color: $color-7;
   margin: 20px auto 0p;
   border-radius: 30px;
   overflow: hidden;
   .col-md-4 {
-    padding: 4px 0px;
-    border-right: 1px solid $color-5;
+    padding: 10px 0px;
+    border-right: 1px solid $color-7;
     &:last-child {
       border: none;
     }
@@ -3012,7 +3083,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     border-radius: 5px;
     .col-md-4 {
       border-right: none;
-      border-bottom: 1px solid $color-5;
+      border-bottom: 1px solid $color-7;
     }
   }
 }
@@ -3024,7 +3095,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .select-circle {
   position: relative;
   display: inline-block;
-  border-radius: 20px;
+  border-radius: 200px;
   overflow: hidden;
   margin: 30px;
   width: 250px;

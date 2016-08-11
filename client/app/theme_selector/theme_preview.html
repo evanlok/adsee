@@ -1,0 +1,44 @@
+<div class="theme-preview-expand" output-height on-output-height="$ctrl.onOutputHeight(height)">
+  <div class="row expand-column-width">
+    <div class="theme-preview-expand-inner">
+      <span class="theme-preview-close" ng-click="$ctrl.onClose({$event: {theme: $ctrl.theme}})"></span>
+      <div class="col-md-7">
+        <video-player url="{{ $ctrl.themeVariant.sample_video_url }}"
+                      poster="{{ $ctrl.themeVariant.poster_image_url_large }}"
+                      class="vjs-big-play-centered">
+        </video-player>
+
+        <ul class="list-inline">
+          <li ng-repeat="themeVariant in $ctrl.theme.theme_variants"
+              ng-class="{selected: $ctrl.themeVariant === themeVariant}">
+            <a href="" ng-click="$ctrl.selectThemeVariant(themeVariant)" title="{{ themeVariant.name }}">
+              <img ng-src="{{ themeVariant.thumbnail_url_small_square }}">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="theme-preview-info col-md-5">
+        <div class="theme-preview-type">
+          <a>{{ $ctrl.theme.industry }}</a> &middot; <a>{{ $ctrl.theme.ad_type }}</a>
+        </div>
+
+        <h2>{{ $ctrl.theme.name }}</h2>
+
+        <ul class="theme-info-list">
+          <li><i class="fa fa-file-image-o"></i> {{ $ctrl.themeVariant.photo_count }} images</li>
+          <li><i class="fa fa-file-video-o"></i> {{ $ctrl.themeVariant.video_count }} videos</li>
+          <li><i class="fa fa-hourglass-half "></i> {{ $ctrl.themeVariant.duration }} seconds</li>
+          <li><i class="fa fa-desktop"></i> {{ $ctrl.themeVariant.aspect_ratio }}</li>
+          <li><i class="fa fa-music"></i> {{ $ctrl.theme.song }}</li>
+        </ul>
+        <div class="theme-description">
+          {{ $ctrl.theme.description }}
+        </div>
+        <a href="" class="button build-theme-button"
+           new-scene-collection-link theme-variant-id="{{ $ctrl.themeVariant.id }}" skip-aspect-ratio="true">
+          Build this theme
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

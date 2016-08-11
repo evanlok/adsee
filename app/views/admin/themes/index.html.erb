@@ -22,7 +22,12 @@
       <td><%= link_to theme.name, [:edit, :admin, theme], target: '_self' %></td>
       <td><%= truncate(theme.description) %></td>
       <td><%= link_to theme.ad_type.name, [:edit, :admin, theme.ad_type], target: '_self' %></td>
-      <td><%= theme.theme_variants.map { |tv| tv.video_type.name }.join(', ') %></td>
+      <td>
+        <% theme.theme_variants.each_with_index do |theme_variant, i| %>
+          <%= link_to theme_variant.name || "TV ##{theme_variant.id}", [:edit, :admin, theme_variant], target: '_self' %><%= ', ' if i < theme.theme_variants.size - 1 %>
+        <% end %>
+      </td>
+
       <td>
         <% if theme.featured %>
           <i class="fa fa-check"></i>

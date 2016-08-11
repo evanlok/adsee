@@ -33,7 +33,6 @@ end
     Theme.create(
       name: Faker::Commerce.product_name,
       description: Faker::Lorem.paragraph,
-      photo_count: rand(3..10),
       ad_type: ad_type,
       song: Song.order('random()').first,
       font: Font.order('random()').first,
@@ -68,9 +67,19 @@ Scene.find_each do |scene|
 end
 
 Theme.find_each do |theme|
-  theme_variant = ThemeVariant.create(theme: theme, video_type: VideoType.order('random()').first, duration: rand(15..60))
+  theme_variant = ThemeVariant.create(
+    name: Faker::Commerce.product_name,
+    theme: theme,
+    video_type: VideoType.order('random()').first,
+    duration: rand(15..60),
+    photo_count: rand(3..10),
+    video_count: rand(2..5),
+    aspect_ratio: %w(16:9 1:1).sample,
+    remote_thumbnail_url: 'http://lorempixel.com/320/180/city',
+    remote_poster_image_url: 'http://lorempixel.com/1280/720/city'
+  )
 
-  Scene.order('random()').limit(5).each do |scene|
+  Scene.with_aspect_ratio(theme_variant.aspect_ratio).order('random()').limit(5).each do |scene|
     ThemeVariantScene.create(theme_variant: theme_variant, scene: scene)
   end
 end

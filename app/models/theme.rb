@@ -7,7 +7,7 @@ class Theme < ActiveRecord::Base
   belongs_to :song
   belongs_to :ad_type
   belongs_to :font
-  has_many :theme_variants, dependent: :destroy do
+  has_many :theme_variants, -> { order(:position) }, dependent: :destroy do
     def default
       first
     end
@@ -20,8 +20,4 @@ class Theme < ActiveRecord::Base
 
   # Scopes
   scope :featured, -> { where(featured: true) }
-
-  def duration
-    theme_variants.default.duration
-  end
 end

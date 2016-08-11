@@ -8,9 +8,19 @@ RSpec.describe SceneCollectionsController do
     let(:ad_type) { create(:ad_type) }
 
     it 'create scene collection and scene content records' do
-      expect_any_instance_of(SceneCollection).to receive(:create_scene_contents_from_theme)
+      expect_any_instance_of(SceneCollection).to receive(:create_scene_contents_from_theme_variant)
       post :create, scene_collection: { ad_type_id: ad_type.id }
       expect(response).to redirect_to(targeting_scene_collection_url(assigns(:scene_collection)))
+    end
+
+    context 'with theme_variant_id' do
+      let(:theme_variant) { create(:theme_variant) }
+
+      it 'creates scene collection from theme variant' do
+        post :create, scene_collection: { theme_variant_id: theme_variant.id }, format: :json
+        expect(response).to be_success
+        expect(SceneCollection.last.theme_variant).to eq(theme_variant)
+      end
     end
   end
 

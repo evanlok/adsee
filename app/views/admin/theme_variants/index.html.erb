@@ -7,9 +7,11 @@
 <table class="table">
   <thead>
   <tr>
-    <th>ID</th>
     <th>Theme</th>
+    <th>Name</th>
+    <th>Aspect Ratio</th>
     <th>Video Type</th>
+    <th>Position</th>
     <th colspan="2">Scenes</th>
   </tr>
   </thead>
@@ -17,9 +19,11 @@
   <tbody>
   <% @theme_variants.each do |theme_variant| %>
     <tr>
-      <td><%= theme_variant.id %></td>
       <td><%= link_to theme_variant.theme.name, [:edit, :admin, theme_variant], target: '_self' %></td>
+      <td><%= theme_variant.name %></td>
+      <td><%= theme_variant.aspect_ratio %></td>
       <td><%= theme_variant.video_type.name %></td>
+      <td><%= theme_variant.position %></td>
       <td><%= theme_variant.scenes.map(&:name).join(', ') %></td>
 
       <td class="actions">

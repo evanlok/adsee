@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   def index
-    @themes = Theme.includes(:theme_variants, :song, :font, ad_type: :industry).page(params[:page]).per(50)
+    @themes = Theme.includes(:song, :font, theme_variants: :video_type, ad_type: :industry).page(params[:page]).per(50)
     filter_ad_type
     filter_industry
 

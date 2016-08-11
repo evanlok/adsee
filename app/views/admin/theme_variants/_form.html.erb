@@ -1,20 +1,29 @@
 <%= simple_form_for [:admin, @theme_variant] do |f| %>
-  <%= f.association :theme %>
-  <%= f.association :video_type %>
-  <%= f.input :duration %>
+    <%= f.input :name %>
+    <%= f.association :theme %>
+    <%= f.association :video_type %>
+    <%= f.input :aspect_ratio, collection: Scene::ASPECT_RATIOS.keys, prompt: 'Select an aspect ratio' %>
+    <%= f.input :photo_count %>
+    <%= f.input :video_count %>
+    <%= f.input :duration %>
+    <%= f.input :position %>
 
-  <h4>Scenes</h4>
+    <%= render 'admin/shared/image_form_field', f: f, name: :thumbnail, version: :small %>
+    <%= render 'admin/shared/image_form_field', f: f, name: :poster_image, version: :small, label_name: 'Poster image' %>
+    <%= render 'admin/shared/video_form_field', f: f, name: :sample_video, label_name: 'Sample video' %>
 
-  <ul id="scenes" class="sortable-scene-list list-unstyled">
-    <%= f.simple_fields_for :theme_variant_scenes do |theme_variant_scene_fields| %>
-      <%= render 'theme_variant_scene_fields', f: theme_variant_scene_fields %>
-    <% end %>
-  </ul>
+    <h4>Scenes</h4>
 
-  <div class="form-group">
-    <%= link_to_add_association 'Add scene', f, :theme_variant_scenes, class: 'btn btn-info', data: { 'association-insertion-node' => '#scenes', 'association-insertion-method' => 'append' } %>
-  </div>
+    <ul id="scenes" class="sortable-scene-list list-unstyled">
+      <%= f.simple_fields_for :theme_variant_scenes do |theme_variant_scene_fields| %>
+          <%= render 'theme_variant_scene_fields', f: theme_variant_scene_fields %>
+      <% end %>
+    </ul>
 
-  <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', admin_themes_path, class: 'btn btn-default', target: '_self' %>
+    <div class="form-group">
+      <%= link_to_add_association 'Add scene', f, :theme_variant_scenes, class: 'btn btn-info', data: { 'association-insertion-node' => '#scenes', 'association-insertion-method' => 'append' } %>
+    </div>
+
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', admin_theme_variants_path, class: 'btn btn-default', target: '_self' %>
 <% end %>

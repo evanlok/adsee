@@ -8,7 +8,7 @@ class SceneCollectionsController < ApplicationController
 
   def index
     @scene_collections = policy_scope(SceneCollection)
-                           .includes(:theme, :videos, :facebook_ads, ad_type: :industry)
+                           .includes(:videos, :facebook_ads, ad_type: :industry, theme_variant: :theme)
                            .order(id: :desc)
                            .page(params[:page])
   end
@@ -28,7 +28,7 @@ class SceneCollectionsController < ApplicationController
     authorize @scene_collection
 
     if @scene_collection.save
-      @scene_collection.create_scene_contents_from_theme
+      @scene_collection.create_scene_contents_from_theme_variant
       @scene_collection.facebook_ads.create
 
       respond_to do |format|
@@ -81,7 +81,7 @@ class SceneCollectionsController < ApplicationController
   def scene_collection_params
     if params[:scene_collection]
       params.require(:scene_collection).permit(
-        :name, :theme_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio, :audio, :integration,
+        :name, :theme_variant_id, :ad_type_id, :color, :font_id, :song_id, :aspect_ratio, :audio, :integration,
         facebook_targeting_spec_ids: [], zip_codes: []
       ).tap do |whitelisted|
         whitelisted[:integration_data] = params[:scene_collection][:integration_data]

@@ -2,8 +2,6 @@
   <%= f.input :name %>
   <%= f.input :description, input_html: { rows: 4 } %>
   <%= f.input :featured %>
-  <%= f.input :photo_count %>
-  <%= f.input :video_count %>
   <%= f.association :ad_type, prompt: 'Select an ad type' %>
   <%= f.association :song, include_blank: 'N/A' %>
   <%= f.association :font, include_blank: 'N/A' %>

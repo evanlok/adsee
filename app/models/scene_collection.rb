@@ -6,7 +6,7 @@ class SceneCollection < ActiveRecord::Base
   belongs_to :song
   belongs_to :font
   belongs_to :ad_type
-  belongs_to :theme
+  belongs_to :theme_variant
   has_many :videos, dependent: :destroy
   has_many :scene_contents, -> { order(:position) }, dependent: :destroy, inverse_of: :scene_collection
   has_many :scenes, through: :scene_contents
@@ -24,6 +24,7 @@ class SceneCollection < ActiveRecord::Base
   after_destroy :delete_audio_from_s3
 
   enum status: { draft: 0, generating: 1, generated: 2, failed: 3 }
+  delegate :theme, to: :theme_variant, allow_nil: true
 
   def valid_scene_contents?
     scene_contents.includes(:scene_attributes, :scene).all? do |scene_content|
@@ -31,16 +32,16 @@ class SceneCollection < ActiveRecord::Base
     end
   end
 
-  def create_scene_contents_from_theme
-    return unless theme
+  def create_scene_contents_from_theme_variant
+    return unless theme_variant
 
     self.ad_type = theme.ad_type
     self.font = theme.font
     self.song = theme.song
     self.color = theme.color
-    self.aspect_ratio = theme.theme_variants.default.aspect_ratio
+    self.aspect_ratio = theme_variant.aspect_ratio
 
-    theme.theme_variants.default.theme_variant_scenes.each do |theme_variant_scene|
+    theme_variant.theme_variant_scenes.each do |theme_variant_scene|
       scene_contents.create(scene_id: theme_variant_scene.scene_id, transition_id: theme_variant_scene.transition_id)
     end
 
