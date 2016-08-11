@@ -8,11 +8,23 @@
                       class="vjs-big-play-centered">
         </video-player>
 
+        <div class="variant-header">Theme Variants <span class="variation-count">9 variations</span></div>
+
         <ul class="list-inline">
           <li ng-repeat="themeVariant in $ctrl.theme.theme_variants"
-              ng-class="{selected: $ctrl.themeVariant === themeVariant}">
+              ng-class="{selected: $ctrl.themeVariant === themeVariant}"
+              class="variant-list-item">
             <a href="" ng-click="$ctrl.selectThemeVariant(themeVariant)" title="{{ themeVariant.name }}">
-              <img ng-src="{{ themeVariant.thumbnail_url_small_square }}">
+              <img ng-src="{{ themeVariant.thumbnail_url_small }}">
+              <div class="variant-info">
+                <div>{{ themeVariant.name }}</div>
+                <ul class="variant-specs">
+                  <li>{{ themeVariant.photo_count }} <i class="fa fa-picture-o"></i></li>
+                  <li>{{ themeVariant.video_count }} <i class="fa fa-video-camera"></i></li>
+                  <li>{{ themeVariant.duration }} <i class="fa fa-clock-o"></i></li>
+                  <li ng-if="themeVariant.aspect_ratio">{{ themeVariant.aspect_ratio}} <i class="fa fa-expand"></i></li>
+                <ul>
+              </div>
             </a>
           </li>
         </ul>
@@ -24,16 +36,17 @@
 
         <h2>{{ $ctrl.theme.name }}</h2>
 
-        <ul class="theme-info-list">
-          <li><i class="fa fa-file-image-o"></i> {{ $ctrl.themeVariant.photo_count }} images</li>
-          <li><i class="fa fa-file-video-o"></i> {{ $ctrl.themeVariant.video_count }} videos</li>
-          <li><i class="fa fa-hourglass-half "></i> {{ $ctrl.themeVariant.duration }} seconds</li>
-          <li><i class="fa fa-desktop"></i> {{ $ctrl.themeVariant.aspect_ratio }}</li>
-          <li><i class="fa fa-music"></i> {{ $ctrl.theme.song }}</li>
-        </ul>
         <div class="theme-description">
           {{ $ctrl.theme.description }}
         </div>
+
+        <ul class="theme-info-list fa-ul">
+          <li><i class="fa fa-file-image-o fa-li"></i> {{ $ctrl.themeVariant.photo_count }} images</li>
+          <li><i class="fa fa-file-video-o fa-li"></i> {{ $ctrl.themeVariant.video_count }} videos</li>
+          <li ng-if="$ctrl.themeVariant.duration"><i class="fa fa-clock-o fa-li"></i> {{ $ctrl.themeVariant.duration }} seconds</li>
+          <li ng-if="$ctrl.themeVariant.aspect_ratio"><i class="fa fa-expand fa-li"></i> {{ $ctrl.themeVariant.aspect_ratio }}</li>
+          <li ng-if="$ctrl.theme.song"><i class="fa fa-music fa-li"></i> {{ $ctrl.theme.song }}</li>
+        </ul>
         <a href="" class="button build-theme-button"
            new-scene-collection-link theme-variant-id="{{ $ctrl.themeVariant.id }}" skip-aspect-ratio="true">
           Build this theme
