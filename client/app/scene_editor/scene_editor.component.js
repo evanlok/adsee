@@ -151,7 +151,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
 
   function addScene(scene) {
     sceneContentService.save({sceneCollectionId: vm.sceneCollection.id}, {scene_id: scene.id}).then(function (data) {
-      vm.sceneContents.push(data);
+      vm.sceneContents = _.concat(vm.sceneContents, data);
       selectSceneContent(_.last(vm.sceneContents));
       vm.displayAddScene = false;
     });
@@ -187,7 +187,7 @@ function SceneEditorController($state, $uibModal, sceneCollectionService, sceneC
           vm.selectedSceneContentIdx -= 1;
         }
 
-        _.pull(vm.sceneContents, sceneContent);
+        vm.sceneContents = _.without(vm.sceneContents, sceneContent);
       });
     });
   }
