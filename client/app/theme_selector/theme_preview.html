@@ -7,27 +7,6 @@
                       poster="{{ $ctrl.themeVariant.poster_image_url_large }}"
                       class="vjs-big-play-centered">
         </video-player>
-
-        <div class="variant-header">Theme Variants <span class="variation-count">9 variations</span></div>
-
-        <ul class="list-inline">
-          <li ng-repeat="themeVariant in $ctrl.theme.theme_variants"
-              ng-class="{selected: $ctrl.themeVariant === themeVariant}"
-              class="variant-list-item">
-            <a href="" ng-click="$ctrl.selectThemeVariant(themeVariant)" title="{{ themeVariant.name }}">
-              <img ng-src="{{ themeVariant.thumbnail_url_small }}">
-              <div class="variant-info">
-                <div>{{ themeVariant.name }}</div>
-                <ul class="variant-specs">
-                  <li>{{ themeVariant.photo_count }} <i class="fa fa-picture-o"></i></li>
-                  <li>{{ themeVariant.video_count }} <i class="fa fa-video-camera"></i></li>
-                  <li>{{ themeVariant.duration }} <i class="fa fa-clock-o"></i></li>
-                  <li ng-if="themeVariant.aspect_ratio">{{ themeVariant.aspect_ratio}} <i class="fa fa-expand"></i></li>
-                <ul>
-              </div>
-            </a>
-          </li>
-        </ul>
       </div>
       <div class="theme-preview-info col-md-5">
         <div class="theme-preview-type">
@@ -52,6 +31,29 @@
           Build this theme
         </a>
       </div>
+      <div class="row variant-header-row">
+        <div class="col-md-12">
+          <div class="variant-header">Theme Variants <span class="variation-count">9 variations</span></div>
+        </div>
+      </div>
+      <ul class="variant-list row">
+        <li ng-repeat="themeVariant in $ctrl.theme.theme_variants"
+            class="col-md-3">
+          <a href="" ng-click="$ctrl.selectThemeVariant(themeVariant)" title="{{ themeVariant.name }}" ng-class="{selected: $ctrl.themeVariant === themeVariant}" class="variant-block">
+            <img ng-src="{{ themeVariant.thumbnail_url_small }}" ng-if="themeVariant.thumbnail_url_small">
+            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/adsee/preview-image-unavailable.jpg" ng-if="!themeVariant.thumbnail_url_small">
+            <div class="variant-info">
+              <div>{{ themeVariant.name }}</div>
+              <ul class="variant-specs">
+                <li>{{ themeVariant.photo_count }} <i class="fa fa-picture-o"></i></li>
+                <li>{{ themeVariant.video_count }} <i class="fa fa-video-camera"></i></li>
+                <li>{{ themeVariant.duration }} <i class="fa fa-clock-o"></i></li>
+                <li ng-if="themeVariant.aspect_ratio">{{ themeVariant.aspect_ratio}} <i class="fa fa-expand"></i></li>
+              <ul>
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

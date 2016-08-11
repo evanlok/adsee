@@ -30,46 +30,16 @@
 
             <div class="form-group">
               <label>Color</label>
-
-              <div ng-if="!editingColor && !config.color">
-                No color selected: <a href="" ng-click="editColor()">change</a>
-              </div>
-
-              <div class="row" ng-if="config.color || editingColor">
-                <div class="col-md-10">
-                  <color-picker ng-model="config.color"
-                                options="colorPickerOptions">
-                  </color-picker>
-                </div>
-
-                <div class="col-md-2">
-                  <a href="" ng-click="resetColor()">
-                    <i class="fa fa-close"></i>
-                  </a>
-                </div>
-              </div>
+                <color-picker ng-model="config.color"
+                              options="colorPickerOptions">
+                </color-picker>
             </div>
 
             <div class="form-group">
               <label>Background</label>
-
-              <div ng-if="!editingBackgroundColor && !config.background_color">
-                No background color selected: <a href="" ng-click="editBackgroundColor()">change</a>
-              </div>
-
-              <div class="row" ng-if="config.background_color || editingBackgroundColor">
-                <div class="col-md-10">
-                  <color-picker ng-model="config.background_color"
-                                options="colorPickerOptions">
-                  </color-picker>
-                </div>
-
-                <div class="col-md-2">
-                  <a href="" ng-click="resetBackgroundColor()">
-                    <i class="fa fa-close"></i>
-                  </a>
-                </div>
-              </div>
+              <color-picker ng-model="config.background_color"
+                            options="colorPickerOptions">
+              </color-picker>
             </div>
           </form>
         </div>

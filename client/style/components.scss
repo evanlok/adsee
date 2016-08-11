@@ -43,6 +43,7 @@
 }
 .main-content {
   height: 100vh;
+  background-color: $color-9;
 }
 
 // Input/Field Animations
@@ -90,10 +91,12 @@
     padding: 0 2px;
   }
   .text-limiter {
-    font-size: 14px;
-    margin-top: -16px;
-    margin-bottom: 1.65em;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 6px;
     display: block;
+    margin-left: 13px;
+    color: #b8b7b9;
   }
 }
 .media-input-group {
@@ -220,14 +223,16 @@
     padding-left: 0px;
     vertical-align: middle;
     a {
-      color: $color-4;
+      color: $color-3;
       display: block;
       width: 100%;
       height: 100%;
       padding-top: 4px;
       vertical-align: middle;
+      opacity: 0.6;
       &:hover {
-        color: $color-9;
+        color: $color-3;
+        opacity: 1;
         i {
           color: $color-2;
           opacity: 1;
@@ -236,7 +241,7 @@
     }
     i {
       font-size: 18px;
-      color: $color-4;
+      color: $color-3;
       vertical-align: middle;
     }
   }
@@ -248,6 +253,7 @@
   .active {
     a {
       color: $color-3;
+      opacity: 1;
       background-color: hsla(0, 00.0000%, 0%, 0.1500);
       -webkit-box-shadow: inset 200px 24px 0px -196px $color-2;
       -moz-box-shadow: inset 200px 24px 0px -196px $color-2;
@@ -273,7 +279,6 @@
 }
 .scene-editor {
   background-color: $color-3;
-  border: 1px solid $color-10;
   width: 100%;
   margin: 0px;
   border-radius: 15px;
@@ -330,7 +335,7 @@
     float: left;
     border-right: 1px solid $color-10;
     i {
-      color: #9899a1;
+      color: $color-2;
     }
     &:last-child {
       border-right: none;
@@ -812,9 +817,12 @@
 }
 
 .color-settings-box {
-  border: 1px solid $color-10;
+  background-color: $color-7;
   border-radius: 15px;
   padding: 30px 30px 15px;
+  .rz-bar {
+    background-color: $color-3;
+  }
 }
 
 .color-settings-text {
@@ -836,7 +844,7 @@
   padding: 15px 15px 150px 25px;
   .time {
     color: white;
-    background-color: $color-10;
+    background-color: $color-9;
     padding: 5px 10px;
     margin-left: 7px;
     border-radius: 5px;
@@ -912,7 +920,7 @@
   display: -webkit-flex;
   display: flex;
   overflow: auto;
-  background-color: hsla(270, 0.8620%, 60.6763%, 0.7000);
+  background-color: hsla(212, 12.0077%, 38.7591%, 0.6000);
   .selected {
     img {
       outline: 3px solid $color-7;
@@ -975,7 +983,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .thumb-list {
   position: relative;
-  padding: 0px 50px 0px 60px;
+  padding: 0px 40px 0px 50px;
 }
 .thumbs-center {
   text-align: left;
@@ -993,6 +1001,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .popover {
     font-weight: 700;
+  }
+  @media screen and (max-width: 1050px) {
+    text-align: center;
   }
 }
 .horizontal-scrollable-list {
@@ -1036,7 +1047,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   position: absolute;
   bottom: 100px;
   font-size: 12px;
-  background-color: hsla(270, 0.8620%, 60.6763%, 0.7000);
+  background-color: hsla(212, 12.0077%, 38.7591%, 0.6000);
   border-top-right-radius: 5px;
 }
 .add-scene-wrapper {
@@ -1746,6 +1757,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 200px;
+  h2 {
+    font-size: 24px;
+  }
   input, select {
     border-color: $color-10;
   }
@@ -1762,6 +1776,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       max-width: 280px;
       margin: 0 auto;
     }
+  }
+  .color-picker-wrapper {
+    width: 280px;
+    margin: 0 auto;
   }
   .rzslider .rz-pointer {
     background-color: $color-1;
@@ -2012,22 +2030,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   &.ng-enter {
     animation: fadeIn 0.5s;
   }
-  .list-inline {
-    margin-left: 0px;
+  .variant-list {
+    list-style: none;
+    padding: 0px 10px;
+    margin-top: 5px;
     .selected {
-      outline: 5px solid $color-2;
+      border: 5px solid $color-2;
     }
   }
-  .variant-list-item {
-    margin-top: 15px;
-    width: 30%;
-    border-radius: 5px;
-    margin-left: 1.6%; 
-    margin-right: 1.6%;
-    padding: 0px;
-    img {
-      width: 100%;
-    }
+  .variant-block {
+    display: block;
+    border: 5px solid $color-9;
+  }
+  .variant-header-row {
+    padding: 0px 15px;
   }
   .variant-header {
     color: $color-3;
@@ -2218,7 +2234,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 
 .theme-preview {
-  background-color: $color-3;
+  color: $color-3;
+  background-color: $color-9;
   padding-top: 7%;
   height: 100%;
   h1 {
@@ -2256,8 +2273,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-size: 18px;
   font-weight: 700;
   font-size: 26px;
-  border-radius: 10px;
-  height: 80px;
+  border-radius: 60px;
 }
 .theme-data-point {
   display: inline-block;
@@ -2548,6 +2564,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
       overflow: hidden;
       margin-bottom: 30px;
     }
+    a {
+      border-radius: 150px;
+    }
   }
   .target-name {
     font-weight: bold;
@@ -2588,7 +2607,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     &:hover {
       border: 5px solid $color-1;
       .target-name {
-        padding-top: 10px;
+        padding-top: 20px;
         padding-bottom: 0px;
       }
       .overlay-bg {
@@ -2598,6 +2617,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   .target-description {
     font-size: 14px;
+    padding: 0px 20px;
   }
   .location-header {
     font-size: 20px;
@@ -3045,10 +3065,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-top: 40%;
 }
 .smart-create-page {
-  color: $color-9;
+  color: $color-3;
   padding: 80px 0px;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 100%;
   text-align: center;
   .theme-description {
     max-width: 250px;
@@ -3060,12 +3081,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .smart-create-progress {
   background-color: $color-7;
-  margin: 20px auto 0p;
+  margin: 20px auto 0px;
   border-radius: 30px;
   overflow: hidden;
+  max-width: 1000px;
   .col-md-4 {
     padding: 10px 0px;
-    border-right: 1px solid $color-7;
+    border-right: 1px solid $color-9;
     &:last-child {
       border: none;
     }
@@ -3105,7 +3127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   -moz-transition: all 300ms;
   transition: all 300ms;
   &:hover {
-     border: 5px solid $color-3;
+     border: 10px solid $color-2;
     .select-name {
       background-color: hsla(0, 0%, 0.0000%, 0.6000);
     }
@@ -3123,7 +3145,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     h4 {
       font-weight: 700;
       font-size: 22px;
-      margin-top: 80px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
       -webkit-transition: all 300ms;
       -moz-transition: all 300ms;
       transition: all 300ms;
