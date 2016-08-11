@@ -16,7 +16,8 @@ var component = {
   }
 };
 
-/*@ngInject*/ function SceneListController() {
+/*@ngInject*/
+function SceneListController() {
   var vm = this;
 
   vm.$onInit = function () {

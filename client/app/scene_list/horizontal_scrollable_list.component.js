@@ -4,36 +4,44 @@ var component = {
   templateUrl: templateUrl,
   controller: HorizontalScrollableListController,
   bindings: {
+    items: '<',
     spacing: '@'
   },
   transclude: true
 };
 
 /*@ngInject*/
-function HorizontalScrollableListController($window, $element, $scope) {
+function HorizontalScrollableListController($window, $element, $timeout) {
   var vm = this;
-  var items, start, itemsToDisplay;
+  var listItems, start, itemsToDisplay;
 
   vm.$onInit = function () {
     start = 0;
   };
 
-  vm.$postLink = function () {
-    $scope.$watch(function () {
-      return $element.find('ul')[0].childElementCount;
-    }, function(newVal, oldVal) {
-      items = $element.find('li');
-      var added = false;
+  vm.$onChanges = function (changes) {
+    if (changes.items) {
+      var newLength = changes.items.currentValue.length;
+      var oldLength = changes.items.isFirstChange() ? 0 : changes.items.previousValue.length;
 
-      if (newVal < oldVal && start + itemsToDisplay > items.length) {
-        start -= 1;
-      } else if (newVal > oldVal) {
-        added = true;
+      if (newLength !== oldLength) {
+        $timeout(function () {
+          listItems = $element.find('li');
+          var added = false;
+
+          if (newLength < oldLength && start + itemsToDisplay > listItems.length) {
+            start -= 1;
+          } else if (newLength > oldLength) {
+            added = true;
+          }
+
+          initializeItemDisplay(added);
+        });
       }
+    }
+  };
 
-      initializeItemDisplay(added);
-    });
-
+  vm.$postLink = function () {
     angular.element($window).on('resize', initializeItemDisplay);
   };
 
@@ -57,7 +65,7 @@ function HorizontalScrollableListController($window, $element, $scope) {
     itemsToDisplay = Math.floor(listWidth / itemWidth);
 
     if (addedItem) {
-      start = items.length - itemsToDisplay;
+      start = listItems.length - itemsToDisplay;
     }
 
     if (start < 0) {
@@ -68,7 +76,7 @@ function HorizontalScrollableListController($window, $element, $scope) {
   }
 
   function next() {
-    if (start + itemsToDisplay < items.length) {
+    if (start + itemsToDisplay < listItems.length) {
       start += 1;
       toggleDisplay();
     }
@@ -86,13 +94,13 @@ function HorizontalScrollableListController($window, $element, $scope) {
   }
 
   function hasNext() {
-    return items && start + itemsToDisplay < items.length;
+    return listItems && start + itemsToDisplay < listItems.length;
   }
 
   function toggleDisplay() {
-    items.slice(0, start).addClass('hidden');
-    items.slice(start, start + itemsToDisplay).removeClass('hidden');
-    items.slice(start + itemsToDisplay).addClass('hidden');
+    listItems.slice(0, start).addClass('hidden');
+    listItems.slice(start, start + itemsToDisplay).removeClass('hidden');
+    listItems.slice(start + itemsToDisplay).addClass('hidden');
   }
 }
 
