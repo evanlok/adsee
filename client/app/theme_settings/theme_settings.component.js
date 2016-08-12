@@ -24,7 +24,7 @@ function ThemeSettingsController($uibModal, $q, songsService, fontsService) {
   var vm = this;
 
   vm.$onInit = function () {
-    vm.colorPickerOptions = {format: 'hex', swatchPos: 'right'};
+    vm.colorPickerOptions = {format: 'hex', swatchPos: 'right', placeholder: 'Pick a color'};
 
     $q.all([fetchFonts(), fetchSongs()]).then(function () {
       setCurrentSongAndFont();

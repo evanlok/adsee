@@ -17,8 +17,10 @@
 <div class="themes-grid">
   <h2>Browse {{ $ctrl.title() }} Themes</h2>
 
+  <div>{{ industry.description }}</div>
+
   <button class="button-ghost custom-theme-button" new-scene-collection-link>
-    <i class="fa fa-wrench"></i>&nbsp;Build a custom theme
+    <i class="fa fa-wrench"></i>&nbsp;Create your own theme
   </button>
 
 
@@ -30,14 +32,14 @@
        class="theme-tile" id="theme_{{ theme.id }}">
     <a href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-link">
 
-      <div class="theme-tile-overlay">
+      <div class="theme-tile-overlay" ng-class="$ctrl.active('All') ? 'theme-title-height' : 'theme-adtype-height'">
 
         <div href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-name">
           {{ theme.name }}
         </div>
 
         <div class="ad-type-label">
-          {{ theme.industry }} &middot; {{ theme.ad_type }}
+          {{ theme.ad_type }}
         </div>
 
       </div>

@@ -81,28 +81,27 @@
         <p>{{ $ctrl.themeRecommendationGroup.description }}</p>
       </div>
 
-      <div ng-repeat="theme in $ctrl.themes">
+      <div class="suggested-theme-container">
 
-        <div class="suggested-theme">
+        <div ng-repeat="theme in $ctrl.themes" class="suggested-theme">
 
-          <div class="select-circle">
+            <div class="select-circle">
 
-            <a href="" ng-click="$ctrl.selectTheme(theme)" class="select-name">
-              <h4>{{ theme.name }}</h4>
-            </a>
+              <a href="" ng-click="$ctrl.selectTheme(theme)" class="select-name">
+                <h4>{{ theme.name }}</h4>
+              </a>
 
-            <a href="" ng-click="$ctrl.selectTheme(theme)">
-              <img ng-src="{{ theme.thumbnail_url_large_square }}">
-            </a>
+              <a href="" ng-click="$ctrl.selectTheme(theme)">
+                <img ng-src="{{ theme.thumbnail_url_large_square }}">
+              </a>
 
-          </div>
+            </div>
 
-          <div class="theme-description">{{ theme.description }}</div>
+            <div class="theme-description">{{ theme.description }}</div>
 
         </div>
 
       </div>
-
               
     </div>
 
