@@ -30,16 +30,13 @@
       <div ng-repeat="industry in $ctrl.industries" class="select-circle">
         <a href="" ng-click="$ctrl.selectIndustry(industry)" class="select-name">
           <h4>{{ industry.name }}</h4>
-<!--           <ul class="adtype-list">
-            <li><a href="">Property Listing</a></li>
-            <li><a href="">Open House</a></li>
-            <li><a href="">Agent</a></li>
-          </ul> -->
         </a>
 
         <a href="" ng-click="$ctrl.selectIndustry(industry)" class="industry-pic">
           <img ng-src="{{ industry.image_url_large_square }}">
         </a>
+
+        <p>{{ industry.description }}</p>
       </div>
     </div>
 
@@ -53,6 +50,8 @@
         <a href="" ng-click="$ctrl.selectAdType(adType)">
           <img ng-src="{{ adType.image_url_large_square }}">
         </a>
+
+        <p>{{ adType.description }}</p>
       </div>
     </div>
 

@@ -8,6 +8,7 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th>Description</th>
     <th colspan="2">Image</th>
   </tr>
   </thead>
@@ -16,6 +17,7 @@
   <% @industries.each do |industry| %>
     <tr>
       <td><%= link_to industry.name, [:edit, :admin, industry], target: '_self' %></td>
+      <td><%= truncate(industry.description, length: 80) %></td>
       <td><%= image_tag industry.image.url(:small_square), width: 50 %></td>
       <td class="actions">
         <%= link_to [:edit, :admin, industry], title: 'Edit', target: '_self' do %>
