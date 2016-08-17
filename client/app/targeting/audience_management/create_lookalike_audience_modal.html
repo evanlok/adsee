@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <button type="button" class="close aspect-close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+    <span aria-hidden="true">&times; close</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form ng-show="!saving">
+    <div class="form-group">
+      <label for="lookalike_audience_name">Name</label>
+      <input id="lookalike_audience_name" type="text" class="form-control" ng-model="lookalikeAudience.name">
+    </div>
+
+    <div class="form-group">
+      <label for="lookalike_audience_description">Description</label>
+      <textarea id="lookalike_audience_description" class="form-control"
+                ng-model="lookalikeAudience.description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Source</label>
+
+      <ui-select ng-model="lookalikeAudience.origin_audience_id">
+        <ui-select-match placeholder="Select an origin audience">
+          <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+
+        <ui-select-choices
+            repeat="item.id as item in (customAudiences | filter: $select.search | orderBy: 'name') track by item.id">
+          <span ng-bind="item.name"></span>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="form-group">
+      <label>Country</label>
+
+      <ui-select ng-model="lookalikeAudience.lookalike_spec.country">
+        <ui-select-match placeholder="Select a country">
+          <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+
+        <ui-select-choices
+            repeat="item.key as item in (countries | filter: $select.search | orderBy: 'name') track by item.key">
+          <span ng-bind="item.name"></span>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="form-group">
+      <label for="lookalike_audience_type">Type</label>
+
+      <select id="lookalike_audience_type" ng-model="lookalikeAudience.lookalike_spec.type" class="form-control">
+        <option value="">Select a type</option>
+        <option value="similarity">Similarity</option>
+        <option value="reach">Reach</option>
+      </select>
+    </div>
+  </form>
+
+  <div ng-show="saving" class="text-center">
+    <p>Lookalike audience is saving...</p>
+
+    <i class="fa fa-spin fa-spinner"></i>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="$dismiss()" ng-disabled="saving">Cancel</button>
+  <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="saving">Save</button>
+</div>

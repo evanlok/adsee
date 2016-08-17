@@ -1,6 +1,8 @@
 var templateUrl = require('./custom_audience.html');
 var createCustomAudienceModalCtrl = require('./create_custom_audience_modal.controller');
 var createCustomAudienceModalTemplateUrl = require('./create_custom_audience_modal.html');
+var createLookalikeAudienceModalCtrl = require('./create_lookalike_audience_modal.controller');
+var createLookalikeAudienceModalTemplateUrl = require('./create_lookalike_audience_modal.html');
 
 var component = {
   templateUrl: templateUrl,
@@ -32,6 +34,7 @@ function CustomAudienceController(ezfb, $uibModal) {
 
   vm.onSelectChange = onSelectChange;
   vm.createCustomAudience = createCustomAudience;
+  vm.createLookalikeAudience = createLookalikeAudience;
 
   function fetchCustomAudiences() {
     return ezfb.api(vm.adAccountId + '/customaudiences', {fields: 'id, approximate_count, data_source, name, description, subtype, time_created, operation_status'}).then(function (data) {
@@ -55,6 +58,25 @@ function CustomAudienceController(ezfb, $uibModal) {
       resolve: {
         adAccountId: function () {
           return vm.adAccountId;
+        }
+      }
+    });
+
+    modal.result.then(function () {
+      fetchCustomAudiences();
+    });
+  }
+
+  function createLookalikeAudience() {
+    var modal = $uibModal.open({
+      controller: createLookalikeAudienceModalCtrl,
+      templateUrl: createLookalikeAudienceModalTemplateUrl,
+      resolve: {
+        adAccountId: function () {
+          return vm.adAccountId;
+        },
+        customAudiences: function () {
+          return vm.customAudiences;
         }
       }
     });

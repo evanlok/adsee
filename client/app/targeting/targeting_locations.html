@@ -19,7 +19,7 @@
         <h2>Ad Account</h2>
 
         <div class="form-group">
-          <select class="" ng-model="$ctrl.facebookAd.ad_account_id"
+          <select class="" ng-model="$ctrl.facebookAd.ad_account_id" ng-change="$ctrl.adAccountChanged()"
                   ng-options="adAccount.id as $ctrl.formatAdAccount(adAccount) for adAccount in $ctrl.adAccounts">
           </select>
         </div>
@@ -28,7 +28,7 @@
           Who do you want your ads to reach?
         </h2>
 
-        <h3>Custom Audience</h3>
+        <h3>Custom Audience <small>(optional)</small></h3>
 
         <custom-audience ng-if="$ctrl.facebookAd.ad_account_id"
                          ad-account-id="{{ $ctrl.facebookAd.ad_account_id }}"

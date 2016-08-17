@@ -7,24 +7,26 @@ class CustomAudienceService {
     this.ezfb = ezfb;
   }
 
-  create(adAccountId, name, description, file) {
+  createCustomAudience(adAccountId, params, file) {
     let parsedEmails = [];
 
     return this.parseFile(file).then(emails => {
       parsedEmails = emails;
     }).then(() => {
-      return this.createCustomAudience(adAccountId, name, description);
+      return this.createCustomAudienceRecord(adAccountId, params);
     }).then(data => {
       return this.addUsersToCustomAudience(data.id, parsedEmails);
     });
   }
 
-  createCustomAudience(adAccountId, name, description) {
-    const params = {
-      name: name,
-      description: description,
-      subtype: 'CUSTOM'
-    };
+  createLookalikeAudience(adAccountId, params) {
+    params.subtype = 'LOOKALIKE';
+
+    return this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params);
+  }
+
+  createCustomAudienceRecord(adAccountId, params) {
+    params.subtype = 'CUSTOM';
 
     return this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params);
   }
@@ -55,8 +57,9 @@ class CustomAudienceService {
     const deferred = this.$q.defer();
     const reader = new FileReader();
 
-    reader.onload = () => {
-      try {
+    try {
+      reader.onload = () => {
+
         let emails = [];
         let lines = reader.result.split('\n');
 
@@ -67,13 +70,12 @@ class CustomAudienceService {
         });
 
         deferred.resolve(emails);
-      }
-      catch (error) {
-        deferred.reject(error);
-      }
-    };
+      };
 
-    reader.readAsText(file);
+      reader.readAsText(file);
+    } catch (error) {
+      deferred.reject(error);
+    }
 
     return deferred.promise;
   }

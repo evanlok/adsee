@@ -41,6 +41,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   vm.updateCustomAudiences = updateCustomAudiences;
   vm.updateTargetingSpec = updateTargetingSpec;
   vm.formatAdAccount = formatAdAccount;
+  vm.adAccountChanged = adAccountChanged;
   vm.save = save;
 
   function fetchFacebookAd() {
@@ -271,6 +272,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   
   function formatAdAccount(adAccount) {
     return (adAccount.business_name || adAccount.name) + ' (' + adAccount.account_id + ')';
+  }
+
+  function adAccountChanged() {
+    delete vm.targetingSpec.custom_audiences;
   }
 
   function save() {
