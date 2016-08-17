@@ -44,6 +44,7 @@ module.exports = {
       'node-uuid',
       'bowser',
       'toastr',
+      'js-sha256',
       './js/recorder.js',
       './app/vendor.js'
     ]

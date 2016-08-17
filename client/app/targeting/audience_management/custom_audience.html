@@ -1,0 +1,30 @@
+<div class="form-group">
+  <ui-select multiple ng-model="$ctrl.selectedCustomAudiences" on-select="$ctrl.onSelectChange()" on-remove="$ctrl.onSelectChange()">
+    <ui-select-match placeholder="Select custom audience">
+      {{ $item.name }}
+    </ui-select-match>
+    <ui-select-choices repeat="item in ($ctrl.customAudiences | filter: $select.search) track by item.id">
+      <span ng-bind="item.name"></span>
+    </ui-select-choices>
+  </ui-select>
+</div>
+
+<div class="btn-group" uib-dropdown is-open="$ctrl.createNewDropDownOpen">
+  <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+    Create new <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+    <li role="menuitem"><a href="" ng-click="$ctrl.createCustomAudience()">Custom Audience</a></li>
+    <li role="menuitem"><a href="" ng-click="$ctrl.createLookalikeAudience()">Lookalike Audience</a></li>
+  </ul>
+</div>
+
+<form>
+  <div class="form-group">
+    <label for="csv">CSV File</label>
+    <input type="file" id="csv">
+  </div>
+
+  <a href="" ng-click="">Upload</a>
+</form>

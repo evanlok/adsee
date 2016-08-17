@@ -38,6 +38,7 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   vm.formatLocationType = formatLocationType;
   vm.selectLocation = selectLocation;
   vm.removeLocation = removeLocation;
+  vm.updateCustomAudiences = updateCustomAudiences;
   vm.updateTargetingSpec = updateTargetingSpec;
   vm.formatAdAccount = formatAdAccount;
   vm.save = save;
@@ -202,6 +203,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   function removeLocation(location) {
     _.pull(vm.selectedLocations, location);
     updateTargetingSpec();
+  }
+
+  function updateCustomAudiences($event) {
+    vm.targetingSpec.custom_audiences = $event.customAudiences;
   }
 
   function updateTargetingSpec() {
