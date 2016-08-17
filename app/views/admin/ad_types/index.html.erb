@@ -8,6 +8,7 @@
   <thead>
   <tr>
     <th>Name</th>
+    <td>Description</td>
     <th>Image</th>
     <th colspan="2">Industry</th>
   </tr>
@@ -17,6 +18,7 @@
   <% @ad_types.each do |ad_type| %>
     <tr>
       <td><%= link_to ad_type.name, [:edit, :admin, ad_type], target: '_self' %></td>
+      <td><%= truncate(ad_type.description, length: 80) %></td>
       <td><%= image_tag ad_type.image.url(:small_square), width: 50 %></td>
       <td><%= link_to ad_type.industry.name, [:edit, :admin, ad_type.industry], target: '_self' %></td>
       <td class="actions">
