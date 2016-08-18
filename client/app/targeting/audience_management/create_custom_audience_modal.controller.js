@@ -11,14 +11,10 @@ function CreateCustomAudienceModalController($scope, $uibModalInstance, customAu
 
     let params = _.omit($scope.customAudience, ['file']);
 
-    customAudienceService.createCustomAudience(adAccountId, params, $scope.customAudience.file).then(data => {
-      if (data.error) {
-        toastr.error(data.error.message, 'There was an error creating your custom audience');
-      } else {
-        $uibModalInstance.close();
-      }
-    }, () => {
-      toastr.error('There was an error parsing your file');
+    customAudienceService.createCustomAudience(adAccountId, params, $scope.customAudience.file).then(() => {
+      $uibModalInstance.close();
+    }, (data) => {
+      toastr.error(data.error.message, 'There was an error creating your custom audience');
     }).finally(() => {
       $scope.saving = false;
     });

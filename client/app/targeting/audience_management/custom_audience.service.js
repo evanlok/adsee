@@ -20,15 +20,33 @@ class CustomAudienceService {
   }
 
   createLookalikeAudience(adAccountId, params) {
+    const deferred = this.$q.defer();
     params.subtype = 'LOOKALIKE';
 
-    return this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params);
+    this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params).then(data => {
+      if (data.error) {
+        deferred.reject(data);
+      } else {
+        deferred.resolve(data);
+      }
+    });
+
+    return deferred.promise;
   }
 
   createCustomAudienceRecord(adAccountId, params) {
+    const deferred = this.$q.defer();
     params.subtype = 'CUSTOM';
 
-    return this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params);
+    this.ezfb.api(`${adAccountId}/customaudiences`, 'POST', params).then(data => {
+      if (data.error) {
+        deferred.reject(data);
+      } else {
+        deferred.resolve(data);
+      }
+    });
+
+    return deferred.promise;
   }
 
   addUsersToCustomAudience(customAudienceId, emails) {
@@ -47,7 +65,17 @@ class CustomAudienceService {
         }
       };
 
-      promises.push(this.ezfb.api(`${customAudienceId}/users`, 'POST', params));
+      let deferred = this.$q.defer();
+
+      this.ezfb.api(`${customAudienceId}/users`, 'POST', params).then(data => {
+        if (data.error) {
+          deferred.reject(data);
+        } else {
+          deferred.resolve(data);
+        }
+      });
+
+      promises.push(deferred.promise);
     });
 
     return this.$q.all(promises);
@@ -74,7 +102,7 @@ class CustomAudienceService {
 
       reader.readAsText(file);
     } catch (error) {
-      deferred.reject(error);
+      deferred.reject({error: {message: 'There was an error parsing your file', type: 'FileParseError', exception: error}});
     }
 
     return deferred.promise;

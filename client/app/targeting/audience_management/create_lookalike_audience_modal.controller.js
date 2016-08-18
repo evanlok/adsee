@@ -18,12 +18,10 @@ function CreateLookalikeAudienceModalController($scope, $uibModalInstance, ezfb,
   function save() {
     $scope.saving = true;
 
-    customAudienceService.createLookalikeAudience(adAccountId, $scope.lookalikeAudience).then(data => {
-      if (data.error) {
-        toastr.error(data.error.message, 'There was an error creating your lookalike audience');
-      } else {
-        $uibModalInstance.close();
-      }
+    customAudienceService.createLookalikeAudience(adAccountId, $scope.lookalikeAudience).then(() => {
+      $uibModalInstance.close();
+    }, data => {
+      toastr.error(data.error.message, 'There was an error creating your lookalike audience');
     }).finally(() => {
       $scope.saving = false;
     });
