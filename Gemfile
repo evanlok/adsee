@@ -64,6 +64,8 @@ gem 'pg_search'
 gem 'api-pagination'
 gem 'sidekiq'
 gem 'sinatra', require: false
+gem 'addressable'
+gem 'activerecord-import'
 
 group :development do
   gem 'quiet_assets'
