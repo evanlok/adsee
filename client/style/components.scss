@@ -9,14 +9,14 @@
     height: 50px;
     text-align: center;
     display: inline-block;
-    padding: 5px 8px 0px;
+    padding: 5px 8px 0px 15px;
     color: $color-2;
-    // img {
-    //   width: 75%;
-    //   margin: 13px auto 0px;
-    // }
     font-weight: 700;
     font-size: 28px;
+  }
+  .svg-logo {
+    fill: $color-2;
+    width: 120px;
   }
   ul {
     list-style: none;
@@ -126,6 +126,84 @@
   }
   .image-padding img {
     width: 100%
+  }
+}
+
+// Homepage
+#fullpage {
+  padding-top: 50px;
+  height: 100%;
+  .section {
+    height: 100%;
+    margin-left: -15px;
+    margin-right: -15px;
+    color: white;
+    position: relative;
+  }
+  #section1 {
+    background: url("../images/11H.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .row, .col-md-8 {
+      height: 100%;
+    }
+  }
+  #section2 {
+    background-color: red;
+  }
+  #section3 {
+    background-color: $color-2;
+  }
+  #section4 {
+    background: url("../images/paint.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  #section4 {
+    background-color: orange;
+  }
+  #section5 {
+    color: $color-9;
+    background-color: white;
+  }
+  h1 {
+    margin: 0px;
+    font-size: 2.5rem;
+  }
+  .vixer-logo {
+    margin-bottom: 15px;
+  }
+  .tagline {
+    width: 100%;
+    display: block;
+    background: $color-2;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 2.5vw;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 10px;
+  }
+  .background-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+    opacity: 0.4;
+    top: 0px;
+    z-index: 1;
+  }
+  .main-text {
+    z-index: 100;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+    padding: 0px 20px;
   }
 }
 
