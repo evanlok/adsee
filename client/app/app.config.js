@@ -3,6 +3,7 @@ $.fn.select2.defaults.set('theme', 'bootstrap');
 
 // Filestack / Filepicker
 var filepicker = require('filepicker-js');
+var toastr = require('toastr');
 
 var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY,
                                      ezfbProvider, FACEBOOK_APP_ID) {
@@ -86,6 +87,8 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
   ezfbProvider.setInitParams({
     appId: FACEBOOK_APP_ID
   });
+
+  toastr.options.positionClass = 'toast-top-full-width';
 };
 
 module.exports = config;
