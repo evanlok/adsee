@@ -7,17 +7,23 @@ function CreateCustomAudienceModalController($scope, $uibModalInstance, customAu
   $scope.save = save;
 
   function save() {
-    $scope.saving = true;
+    $scope.customAudienceForm.$setSubmitted();
 
-    let params = _.omit($scope.customAudience, ['file']);
+    if ($scope.customAudienceForm.$invalid) {
+      $scope.$broadcast('show-errors-check-validity');
+    } else {
+      $scope.saving = true;
 
-    customAudienceService.createCustomAudience(adAccountId, params, $scope.customAudience.file).then(() => {
-      $uibModalInstance.close();
-    }, (data) => {
-      toastr.error(data.error.message, 'There was an error creating your custom audience');
-    }).finally(() => {
-      $scope.saving = false;
-    });
+      let params = _.omit($scope.customAudience, ['file']);
+
+      customAudienceService.createCustomAudience(adAccountId, params, $scope.customAudience.file).then(() => {
+        $uibModalInstance.close();
+      }, (data) => {
+        toastr.error(data.error.message, 'There was an error creating your custom audience');
+      }).finally(() => {
+        $scope.saving = false;
+      });
+    }
   }
 }
 

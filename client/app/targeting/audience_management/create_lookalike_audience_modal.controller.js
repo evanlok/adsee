@@ -7,6 +7,7 @@ function CreateLookalikeAudienceModalController($scope, $uibModalInstance, ezfb,
   fetchCountries();
 
   $scope.saving = false;
+  $scope.showError = showError;
   $scope.save = save;
 
   function fetchCountries() {
@@ -15,16 +16,30 @@ function CreateLookalikeAudienceModalController($scope, $uibModalInstance, ezfb,
     });
   }
 
-  function save() {
-    $scope.saving = true;
+  function showError(field) {
+    if ($scope.lookalikeAudienceForm[field] && ($scope.lookalikeAudienceForm.$submitted || $scope.lookalikeAudienceForm[field].$dirty)) {
+      return $scope.lookalikeAudienceForm[field].$invalid;
+    } else {
+      return false;
+    }
+  }
 
-    customAudienceService.createLookalikeAudience(adAccountId, $scope.lookalikeAudience).then(() => {
-      $uibModalInstance.close();
-    }, data => {
-      toastr.error(data.error.message, 'There was an error creating your lookalike audience');
-    }).finally(() => {
-      $scope.saving = false;
-    });
+  function save() {
+    $scope.lookalikeAudienceForm.$setSubmitted();
+
+    if ($scope.lookalikeAudienceForm.$invalid) {
+      $scope.$broadcast('show-errors-check-validity');
+    } else {
+      $scope.saving = true;
+
+      customAudienceService.createLookalikeAudience(adAccountId, $scope.lookalikeAudience).then(() => {
+        $uibModalInstance.close();
+      }, data => {
+        toastr.error(data.error.message, 'There was an error creating your lookalike audience');
+      }).finally(() => {
+        $scope.saving = false;
+      });
+    }
   }
 }
 

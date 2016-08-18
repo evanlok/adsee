@@ -29,6 +29,7 @@ module.exports = {
       'angularjs-color-picker/dist/angularjs-color-picker',
       'angular-timer',
       'angular-scroll',
+      'angular-bootstrap-show-errors',
       'tinycolor2',
       'select2',
       'sortablejs/ng-sortable',
