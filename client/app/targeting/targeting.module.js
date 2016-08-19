@@ -1,4 +1,8 @@
-var targeting = angular.module('adsee.targeting', []);
+import audienceManagement from './audience_management/audience_management.module';
+
+var targeting = angular.module('adsee.targeting', [
+  audienceManagement
+]);
 
 targeting
   .component('targeting', require('./targeting.component'))

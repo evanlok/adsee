@@ -38,8 +38,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   vm.formatLocationType = formatLocationType;
   vm.selectLocation = selectLocation;
   vm.removeLocation = removeLocation;
+  vm.updateCustomAudiences = updateCustomAudiences;
   vm.updateTargetingSpec = updateTargetingSpec;
   vm.formatAdAccount = formatAdAccount;
+  vm.adAccountChanged = adAccountChanged;
   vm.save = save;
 
   function fetchFacebookAd() {
@@ -204,6 +206,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
     updateTargetingSpec();
   }
 
+  function updateCustomAudiences($event) {
+    vm.targetingSpec.custom_audiences = $event.customAudiences;
+  }
+
   function updateTargetingSpec() {
     var attrs = {
       geo_locations: buildGeolocationSpec(true),
@@ -266,6 +272,10 @@ function TargetingLocationsController($state, $q, facebookAdService, ezfb) {
   
   function formatAdAccount(adAccount) {
     return (adAccount.business_name || adAccount.name) + ' (' + adAccount.account_id + ')';
+  }
+
+  function adAccountChanged() {
+    delete vm.targetingSpec.custom_audiences;
   }
 
   function save() {

@@ -14,6 +14,7 @@ angular.module('adsee', [
   'ng-sortable',
   'duScroll',
   'timer',
+  'ui.bootstrap.showErrors',
   'bcherny/formatAsCurrency',
   'ezfb',
   'rzModule',
