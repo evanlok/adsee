@@ -1,1 +1,52 @@
-Home Page
+<div id="fullpage">
+  <div class="section" id="section1">
+    <div class="home-nav">
+      <ul class="home-nav-list">
+        <li class="social-video-for">Social Video for:</li>
+        <li><a href="">Content Marketing</a></li>
+        <li><a href="">Advertising</a></li>
+        <li><%= link_to 'Login', new_user_session_path, target: '_self', :class=> 'login-nav-button' %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path, target: '_self', :class=> 'login-nav-button' %></li>
+      </ul>
+      <a href=""><%= image_tag "vixer-logo.svg", :class=> "vixer-nav-logo" %></a>
+    </div>
+    <div class="background-overlay"></div>
+
+        <div class="main-text">
+          <div class='content'>
+            <div class='visible'>
+              <p>
+                Social Video
+              </p>
+              <ul>
+                <li>Marketing</li>
+                <li>Advertising</li>
+                <li>To Inform</li>
+                <li>To Promote</li>
+                <li>To Sell</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+  </div>
+  <div class="section" id="section2">
+    <div class="background-overlay"></div>
+    <div class="text-overlay ">
+
+      <h1>content marketing</h1>
+      <div class="section-subtext">Social video creation made quick and accessible. No video editing expertise is required to use Vixer’s social video platform, only a story to share. Get your videos on Facebook in a matter of minutes.</div>
+      <a href="" class="button-ghost">Learn more</a>
+
+    </div>
+  </div>
+  <div class="section" id="section3">
+    <div class="background-overlay"></div>
+      <div class="text-overlay">
+        <h1>advertising</h1>
+        <div class="section-subtext">Reach your target audience with a personalize message that delivers trackable results. Acquire new lookalike audiences by finding and advertising new prospects that are similar to your most valued customers.</div>
+        <a href="" class="button-ghost">Learn more</a>
+      </div>
+    </div>
+  </div>
+</div>
