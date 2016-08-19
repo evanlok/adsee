@@ -328,6 +328,7 @@ ActiveRecord::Schema.define(version: 20160829194456) do
   create_table "themes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "photo_count"
     t.integer  "song_id"
     t.text     "sample_video"
     t.text     "poster_image"
@@ -337,6 +338,7 @@ ActiveRecord::Schema.define(version: 20160829194456) do
     t.integer  "ad_type_id"
     t.integer  "font_id"
     t.string   "color"
+    t.integer  "video_count"
     t.boolean  "featured",     default: false
   end
 
@@ -370,10 +372,10 @@ ActiveRecord::Schema.define(version: 20160829194456) do
     t.boolean  "admin",                     default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.string   "facebook_oauth_token"
-    t.datetime "facebook_oauth_expires_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "facebook_oauth_token"
+    t.datetime "facebook_oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

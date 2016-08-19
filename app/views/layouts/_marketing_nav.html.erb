@@ -1,10 +1,11 @@
 <div class="home-nav">
   <ul class="home-nav-list">
-    <li class="social-video-for">Social Video for:</li>
-    <li><%= link_to 'Content Marketing', page_path('content_marketing'), target: '_self' %></li>
-    <li><%= link_to 'Advertising', page_path('advertising'), target: '_self' %></li>
+<!--     <li class="social-video-for">Social Video for:</li> -->
+    <li><%= link_to 'Content Creators', page_path('content_marketing'), target: '_self' %></li>
+    <li><%= link_to 'Small Business', page_path('advertising'), target: '_self' %></li>
+    <li><%= link_to 'Enterprise', page_path('enterprise'), target: '_self' %></li>
     <li><%= link_to 'Login', new_user_session_path, target: '_self', class: 'login-nav-button' %></li>
-    <li><%= link_to 'Sign up', new_user_registration_path, target: '_self', class: 'login-nav-button' %></li>
+<!--     <li><%#= link_to 'Sign up', new_user_registration_path, target: '_self', class: 'login-nav-button' %></li> -->
   </ul>
 
   <%= link_to root_path, target: '_self' do %>

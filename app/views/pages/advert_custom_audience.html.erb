@@ -1,15 +1,30 @@
 <div id="advert-custom-audience">
-	<div class="row">
-		<div class="col-md-12">
-			<h1>Custom Audience Targeting</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</div>
-		<div class="col-md-6">
-			<%= image_tag "devices.png", :class=> "" %>
-		</div>
-	</div>
+  <%= render 'layouts/marketing_nav' %>
+  <div class="hero-image"></div>
+  <div class="row">
+    <div class="col-md-12 hp-info-pad">
+      <h1>Custom Audience Targeting</h1>
+
+      <h3>With custom audiences you can target people in your email list where they are on social media at the right time and with the right message. </h3>
+
+      <div>
+        <%= image_tag "facebook_custom_audiences.png", :class=> "" %>
+      </div>
+
+      <strong>Simply upload your email list to Vixer and several steps will be taken:</strong>
+
+      <ul>
+        <li>Vixer will create highly detailed user profiles of matched people from your list. These user profiles will include 4 types of data:</li>
+          <ul>
+            <li>Demographics data: age, gender, income, marital status, and more</li>
+            <li>Geographic data: location, places traveled, places liked</li>
+            <li>Psychographics data: activities, attitudes, personality, interests, etc.</li>
+            <li>Behavioral data: Usage rates, purchase history, patterns, etc.</li>
+          </ul>
+
+        <li>Your user profiles will be analyzed to create multiple target audiemces that will best achieve your campaign goals.</li> 
+        <li>Vixer will then create the custom audiences on Facebook (other social platforms coming soon) before starting your campaign with your set budget and schedule</li>
+      </ul>
+    </div>
+  </div>
 </div>
