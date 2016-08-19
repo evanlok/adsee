@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>Adsee</title>
+  <script src="https://use.typekit.net/afx6peu.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <%= webpack_bundle_for('vendor', :css) %>
+  <%= webpack_bundle_for('app', :css) %>
+  <%= webpack_bundle_for('manifest', :js) %>
+  <%= webpack_bundle_for('vendor', :js) %>
+  <%= webpack_bundle_for('app', :js) %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/angular_config' %>
+  <%= yield :head %>
+</head>
+
+<%= content_for?(:content) ? yield(:content) : yield %>
+</html>

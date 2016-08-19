@@ -8,10 +8,6 @@ var toastr = require('toastr');
 var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locationProvider, uiSelectConfig, FILESTACK_API_KEY,
                                      ezfbProvider, FACEBOOK_APP_ID) {
   $stateProvider
-    .state('root', {
-      url: '/',
-      template: '<theme-selector></theme-selector>'
-    })
     .state('themeSelector', {
       url: '/theme_selector',
       template: '<theme-selector></theme-selector>'

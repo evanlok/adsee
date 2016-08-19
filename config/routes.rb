@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   authenticated :user do
-    root 'home#angular', as: :authenticated_root
+    root to: redirect('/theme_selector'), as: :authenticated_root
   end
-
-  root to: redirect(ENV['HOME_URL']), id: :home
 
   resources :industries, only: :index
   resources :ad_types, only: :index
@@ -85,18 +83,6 @@ Rails.application.routes.draw do
       get :available_targeting_specs, on: :collection
     end
   end
-
-  #static-pages
-  get '/content_marketing' => 'pages#content_marketing', :as => :content_marketing
-  get '/advertising' => 'pages#advertising', :as => :advertising
-  get '/advert_customtarget' => 'pages#advert_customtarget', :as => :advert_customtarget
-  get '/advert_custom_audience' => 'pages#advert_custom_audience', :as => :advert_custom_audience
-  get '/advert_lookalike' => 'pages#advert_lookalike', :as => :advert_lookalike
-  get '/learn_edit' => 'pages#learn_edit', :as => :learn_edit
-  get '/learn_industry' => 'pages#learn_industry', :as => :learn_industry
-  get '/learn_social' => 'pages#learn_social', :as => :learn_social
-  get '/learn_target' => 'pages#learn_target', :as => :learn_target
-  get '/learn_theme' => 'pages#learn_theme', :as => :learn_theme
 
   # Angular route globbing
   get '/theme_selector', to: 'home#angular', as: :theme_selector

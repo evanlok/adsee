@@ -1,15 +1,7 @@
 <div id="fullpage-marketing">
   <div class="section" id="section1">
-    <div class="home-nav">
-      <ul class="home-nav-list">
-        <li class="social-video-for">Social Video for:</li>
-        <li><%= link_to 'Content Marketing', content_marketing_path %></li>
-        <li><%= link_to 'Advertising', advertising_path  %></li>
-        <li><%= link_to 'Login', new_user_session_path, target: '_self', :class=> 'login-nav-button' %></li>
-        <li><%= link_to 'Sign up', new_user_registration_path, target: '_self', :class=> 'login-nav-button' %></li>
-      </ul>
-      <a href=""><%= image_tag "vixer-logo.svg", :class=> "vixer-nav-logo" %></a>
-    </div>
+    <%= render 'layouts/marketing_nav' %>
+
     <div class="row ">
       <div class="col-md-12">
         <div class="car">
@@ -23,7 +15,7 @@
         <div class="text-overlay">
           <h1>pick an industry</h1>
           <div class="section-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-          <%= link_to 'Learn More', learn_industry_path, target: '_self', :class=> 'button-ghost' %>
+          <%= link_to 'Learn More', page_path('learn_industry'), target: '_self', :class=> 'button-ghost' %>
         </div>
       </div>
     </div>
@@ -36,7 +28,7 @@
       <h1>pick<br>
         your<br>target</h1>
       <div class="section-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-      <%= link_to 'Learn More', learn_target_path, target: '_self', :class=> 'button-ghost' %>
+      <%= link_to 'Learn More', page_path('learn_targeting'), target: '_self', :class=> 'button-ghost' %>
     </div>
   </div>
   <div class="section" id="section3">
@@ -46,7 +38,7 @@
         <div class="section-text">
           <h1>select your theme</h1>
           <div class="section-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-          <%= link_to 'Learn More', learn_theme_path, target: '_self', :class=> 'button-ghost' %>
+          <%= link_to 'Learn More', page_path('learn_theme'), target: '_self', :class=> 'button-ghost' %>
         </div>
       </div>
     </div>
@@ -56,7 +48,7 @@
       <div class="text-overlay">
         <h1>edit<br>your<br>video</h1>
         <div class="section-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-        <%= link_to 'Learn More', learn_edit_path, target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Learn More', page_path('learn_edit'), target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
     <div class="section-subtext"></div>
@@ -70,7 +62,7 @@
       <div class="text-overlay">
         <h1>get social</h1>
         <div class="section-subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-        <%= link_to 'Learn More', learn_social_path, target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Learn More', page_path('learn_social'), target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
   </div>
