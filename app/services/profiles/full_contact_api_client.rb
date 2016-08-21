@@ -17,7 +17,7 @@ module Profiles
       end
 
       requests = Array.wrap(emails).map do |email|
-        "#{FULL_CONTACT_BASE_URL}/person.json?email=#{email}&macromeasures=true"
+        "#{FULL_CONTACT_BASE_URL}/person.json?email=#{email}&macromeasures=true&style=dictionary"
       end
 
       http_client.post('batch.json', requests: requests).body

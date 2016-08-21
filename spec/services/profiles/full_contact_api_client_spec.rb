@@ -5,16 +5,14 @@ RSpec.describe Profiles::FullContactApiClient do
   let(:headers) { { 'X-FullContact-APIKey' => api_key } }
   subject(:client) { Profiles::FullContactApiClient.new(api_key) }
 
-  # around do |example|
-  #   ClimateControl.modify FULL_CONTACT_API_KEY: api_key do
-  #     example.run
-  #   end
-  # end
-
   describe '#batch_get_people' do
     let(:email) { Faker::Internet.email }
     let(:body) do
-      { requests: ["#{subject.class::FULL_CONTACT_BASE_URL}/person.json?email=#{email}&macromeasures=true"] }
+      {
+        requests: [
+          "#{subject.class::FULL_CONTACT_BASE_URL}/person.json?email=#{email}&macromeasures=true&style=dictionary"
+        ]
+      }
     end
 
     it 'sends batch request from list of emails' do

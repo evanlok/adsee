@@ -13,7 +13,7 @@ module Profiles
         values = []
 
         response['responses'].each do |request_url, data|
-          email = Addressable::URI.parse(request_url).query_values['email']
+          email = Addressable::URI.parse(request_url).query_values['email'].strip.downcase
           values << [email, data]
         end
 
