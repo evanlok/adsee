@@ -10,7 +10,7 @@ module.exports = {
   // the main entry point for our application's frontend JS
   entry: {
     app: './app/app.js',
-    vendor: './app/vendor.js'
+    vendor: ['./app/vendor.js']
   },
 
   output: {
@@ -37,7 +37,7 @@ module.exports = {
     new ngAnnotatePlugin({add: true}),
     new AssetsPlugin({path: path.join(__dirname, '..', 'public', 'assets')}),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
+      name: ['vendor', 'manifest'],
       minChunks: Infinity
     })
   ],
