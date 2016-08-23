@@ -48,7 +48,7 @@
       </ui-select>
     </div>
 
-    <div class="form-group" show-errors>
+    <div class="form-group" show-errors ng-if="!displayCustomAudienceSize">
       <label for="lookalike_audience_type" class="control-label">Type</label>
 
       <select id="lookalike_audience_type" ng-model="lookalikeAudience.lookalike_spec.type" class="form-control"
@@ -57,6 +57,23 @@
         <option value="similarity">Similarity</option>
         <option value="reach">Reach</option>
       </select>
+
+      <span class="help-block">
+        <a href="" ng-click="showCustomAudienceSizing()">Custom audience sizing</a>
+      </span>
+    </div>
+
+    <div class="form-group" ng-if="displayCustomAudienceSize">
+      <label>Audience Size</label>
+
+      <rzslider rz-slider-model="lookalikeAudience.lookalike_spec.starting_ratio"
+                rz-slider-high="lookalikeAudience.lookalike_spec.ratio"
+                rz-slider-options="ratioSliderOptions">
+      </rzslider>
+
+      <span class="help-block">
+        <a href="" ng-click="showBasicAudienceSizing()">Automatic audience sizing</a>
+      </span>
     </div>
   </form>
 

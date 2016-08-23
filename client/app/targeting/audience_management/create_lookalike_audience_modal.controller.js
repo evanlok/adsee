@@ -1,13 +1,27 @@
 import toastr from 'toastr';
 
 /*@ngInject*/
-function CreateLookalikeAudienceModalController($scope, $uibModalInstance, ezfb, customAudienceService, adAccountId, customAudiences) {
+function CreateLookalikeAudienceModalController($scope, $timeout, $uibModalInstance, ezfb, customAudienceService,
+                                                adAccountId, customAudiences) {
   $scope.customAudiences = _.filter(customAudiences, {subtype: 'CUSTOM'});
   $scope.lookalikeAudience = {};
+  $scope.displayCustomAudienceSize = false;
+  $scope.ratioSliderOptions = {
+    floor: 0,
+    ceil: 0.2,
+    step: 0.01,
+    precision: 2,
+    translate: function (value) {
+      return (value * 100).toFixed() + '%';
+    },
+  };
+
   fetchCountries();
 
   $scope.saving = false;
   $scope.showError = showError;
+  $scope.showCustomAudienceSizing = showCustomAudienceSizing;
+  $scope.showBasicAudienceSizing = showBasicAudienceSizing;
   $scope.save = save;
 
   function fetchCountries() {
@@ -22,6 +36,16 @@ function CreateLookalikeAudienceModalController($scope, $uibModalInstance, ezfb,
     } else {
       return false;
     }
+  }
+
+  function showCustomAudienceSizing() {
+    $scope.lookalikeAudience.lookalike_spec = {starting_ratio: 0, ratio: 0.03};
+    $scope.displayCustomAudienceSize = true;
+  }
+
+  function showBasicAudienceSizing() {
+    delete $scope.lookalikeAudience.lookalike_spec;
+    $scope.displayCustomAudienceSize = false;
   }
 
   function save() {
