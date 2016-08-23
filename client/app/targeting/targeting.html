@@ -34,9 +34,9 @@
     Select your target demographic and click continue
   </label>
 
-  <div class="row targeting-spec-list">
-    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs">
-      <div class="col-md-3 col-xs-6">
+  <div class="targeting-spec-list">
+    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs" class="target-container">
+
         <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
            ng-class="{selected: $ctrl.selected(targetingSpec)}"
            style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
@@ -48,7 +48,7 @@
             </p>
           </div>
         </a>
-      </div>
+
     </div>
   </div>
 

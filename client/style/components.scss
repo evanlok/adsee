@@ -3132,12 +3132,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 15px;
   }
   .targeting-spec-list {
-    .col-md-3 {
-      overflow: hidden;
-      margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+    .target-container {
+      display: inline-block;
+      margin: 10px 15px;
     }
     a {
       border-radius: 150px;
+      width: 240px;
+      display: inline-block
     }
   }
   .target-name {
