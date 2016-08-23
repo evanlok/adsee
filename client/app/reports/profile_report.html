@@ -1,0 +1,35 @@
+<h1>Profile Report</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <div id="matches-bar-chart"></div>
+  </div>
+
+  <div class="col-md-4">
+    <table class="table table-striped">
+      <thead>
+      <th>Field</th>
+      <th>Matches</th>
+      <th>Percent</th>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="attrName in $ctrl.tableAttributes">
+        <td>{{ attrName | titlecase }}</td>
+        <td>{{ $ctrl.profileReport[attrName] }}</td>
+        <td>{{ $ctrl.matchPercentage(attrName) | number }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="us-heatmap"></div>
+  </div>
+
+  <div class="col-md-6">
+    <div id="world-heatmap"></div>
+  </div>
+</div>

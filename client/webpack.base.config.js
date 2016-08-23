@@ -64,6 +64,9 @@ module.exports = {
           'url?limit=10000hash=sha512&digest=hex&name=[name]-[hash].[ext]'
         ]
       },
+      {
+        test: /\.json$/i, loader: 'json'
+      },
       // Not all apps require jQuery. Many Rails apps do, such as those using TurboLinks or
       // bootstrap js
       {test: require.resolve("jquery"), loader: "expose?$!expose?jQuery"},

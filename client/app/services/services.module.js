@@ -1,3 +1,4 @@
+import plotlyService from './plotly.service';
 var services = angular.module('adsee.services', []);
 
 services
@@ -16,6 +17,7 @@ services
   .service('filterService', require('./filter.service'))
   .service('industryService', require('./industry.service'))
   .service('adTypeService', require('./ad_type.service'))
-  .service('themeService', require('./theme.service'));
+  .service('themeService', require('./theme.service'))
+  .service('plotlyService', plotlyService);
 
 module.exports = services.name;

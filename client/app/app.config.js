@@ -76,6 +76,15 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       url: '/summary',
       template: '<summary scene-collection="$resolve.sceneCollection"></summary>',
       parent: 'sceneCollectionWizard'
+    })
+    .state('profileReport', {
+      url: '/reports/:report_id',
+      template: '<profile-report profile-report="$resolve.profileReport"></profile-report>',
+      resolve: {
+        profileReport: /* @ngInject */ function ($stateParams, profileReportService) {
+          return profileReportService.get({id: $stateParams.report_id});
+        }
+      }
     });
 
   $locationProvider.html5Mode(true);
