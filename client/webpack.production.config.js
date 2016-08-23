@@ -6,7 +6,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 config.output.publicPath = '/assets/webpack/';
 
 // Add hash to output file
-config.output.filename = '[name]-bundle-[hash].js';
+config.output.filename = '[name]-bundle-[chunkhash].js';
+config.output.chunkFilename = '[chunkhash].js';
+
 
 // Optimizations
 config.module.loaders.push({

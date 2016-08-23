@@ -10,45 +10,7 @@ module.exports = {
   // the main entry point for our application's frontend JS
   entry: {
     app: './app/app.js',
-    vendor: [
-      'jquery', 
-      'jquery-ujs', 
-      'bootstrap-sass',
-      'lodash',
-      'angular',
-      'angular-resource',
-      'angular-animate',
-      'ng-fx',
-      './js/angular-ui-router',
-      'angular-ui-bootstrap',
-      'angular-tree-control',
-      'angular-easyfb',
-      'angularjs-slider',
-      'angular-xeditable',
-      'ui-select',
-      'angularjs-color-picker/dist/angularjs-color-picker',
-      'angular-timer',
-      'angular-scroll',
-      'angular-bootstrap-show-errors',
-      'tinycolor2',
-      'select2',
-      'sortablejs/ng-sortable',
-      'filepicker-js',
-      'video.js',
-      'howler',
-      'format-as-currency',
-      'moment',
-      'humanize-duration',
-      'getusermedia',
-      'scriptjs',
-      'slick-carousel',
-      'node-uuid',
-      'bowser',
-      'toastr',
-      'js-sha256',
-      './js/recorder.js',
-      './app/vendor.js'
-    ]
+    vendor: ['./app/vendor.js']
   },
 
   output: {
@@ -75,7 +37,7 @@ module.exports = {
     new ngAnnotatePlugin({add: true}),
     new AssetsPlugin({path: path.join(__dirname, '..', 'public', 'assets')}),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
+      name: ['vendor', 'manifest'],
       minChunks: Infinity
     })
   ],

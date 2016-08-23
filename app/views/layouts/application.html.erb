@@ -10,6 +10,7 @@
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <%= webpack_bundle_for('vendor', :css) %>
   <%= webpack_bundle_for('app', :css) %>
+  <%= webpack_bundle_for('manifest', :js) %>
   <%= webpack_bundle_for('vendor', :js) %>
   <%= webpack_bundle_for('app', :js) %>
   <%= csrf_meta_tags %>

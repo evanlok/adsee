@@ -1,6 +1,8 @@
 // CSS
 require('./../style/app.scss');
 
+require('./vendor');
+
 var config = require('./app.config');
 
 angular.module('adsee', [
