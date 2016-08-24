@@ -7,60 +7,7 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="location-header">
-      <span class="fa-stack">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
-      </span>
-      Select Locations (optional)
-    </label>
-
-    <ui-select ng-model="$ctrl.zipCodes" multiple tagging tagging-label="">
-      <ui-select-match placeholder="Enter target zip codes...">{{ $item }}</ui-select-match>
-
-      <ui-select-choices repeat="zipCode in [] | filter:$select.search">
-        {{ zipCode }}
-      </ui-select-choices>
-    </ui-select>
-
-  </div>
-
-  <label class="location-header">
-    <span class="fa-stack">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-    </span>
-    Select your target demographic and click continue
-  </label>
-
-  <div class="targeting-spec-list">
-    <div ng-repeat="targetingSpec in $ctrl.targetingSpecs" class="target-container">
-
-        <a href="" ng-click="$ctrl.selectTargetingSpec(targetingSpec)"
-           ng-class="{selected: $ctrl.selected(targetingSpec)}"
-           style="background-image: url('{{ targetingSpec.thumbnail_url }}');" class="target-selection">
-          <div class="overlay-bg">
-            <h4 class="target-name">{{ targetingSpec.name }}</h4>
-
-            <p class="target-description">
-              {{ targetingSpec.description }}
-            </p>
-          </div>
-        </a>
-
-    </div>
-  </div>
-
-  <button type="button" class="button-ghost advtarg-button" ui-sref="targetingLocations">
-    <i class="fa fa-wrench"></i> ADVANCED TARGETING
-    <span class="overrides-text">Overrides demographic group selection above.</span>
-  </button>
-
-  <button type="button" class="button next" ng-click="$ctrl.saveTargeting()"
-          ng-disabled="$ctrl.saving || $ctrl.selectedTargetingSpecIds.length === 0">
-    NEXT <i class="fa fa-arrow-right"></i>
-  </button>
+  <basic-targeting-form scene-collection="$ctrl.sceneCollection" saving="$ctrl.saving"
+                        on-save="$ctrl.saveTargeting($event)">
+  </basic-targeting-form>
 </div>
-
-

@@ -3283,7 +3283,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 
-.targeting-location {
+.advanced-targeting {
   margin-right: 0px;
   padding: 40px 60px 60px;
   margin-left: 140px;
@@ -3294,16 +3294,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   .back-button {
     float: right;
   }
-  input[type="text"], select {
-    width: 280px;
-    border-color: $color-10;
-  }
+
   h1 {
     border-bottom: 1px dotted $color-6;
     padding-bottom: 15px;
   }
   h1 i {
     color: $color-2;
+  }
+}
+
+.advanced-targeting-locations-form {
+  input[type="text"], select {
+    width: 280px;
+    border-color: $color-10;
   }
   h2 {
     font-size: 18px;
@@ -3369,17 +3373,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 
-.targeting-demographic {
-  margin-right: 0px;
-  padding: 30px 60px 60px;
-  margin-left: 140px;
-  margin-top: 70px;
-  background-color: $color-3;
-  height: 100%;
-  border-radius: 15px;
-  .back-button {
-    float: right;
-  }
+.advanced-targeting-demographics-form {
   input[type="text"], select {
     max-width: 280px;
     border-color: $color-10;
@@ -3389,13 +3383,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
   input[type="text"],  {
     border-radius: 0px;
-  }
-  h1 {
-    border-bottom: 1px dotted $color-6;
-    padding-bottom: 15px;
-  }
-  h1 i {
-    color: $color-2;
   }
   h2 {
     font-size: 18px;
@@ -3775,7 +3762,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-top: 30px;
   display: inline-block;
 }
-.smart-create-themes {
+.smart-create-integration-type {
   padding: 50px;
 }
 

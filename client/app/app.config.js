@@ -28,22 +28,22 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('targeting', {
       url: '/targeting',
-      template: '<targeting scene-collection="$resolve.sceneCollection"></targeting>',
+      template: '<targeting scene-collection="$ctrl.sceneCollection"></targeting>',
       parent: 'sceneCollectionWizard'
     })
     .state('targetingLocations', {
       url: '/targeting/locations',
-      template: '<targeting-locations scene-collection="$resolve.sceneCollection"></targeting-locations>',
+      template: '<targeting-locations scene-collection="$ctrl.sceneCollection"></targeting-locations>',
       parent: 'sceneCollectionWizard'
     })
     .state('targetingDemographics', {
       url: '/targeting/demographics',
-      template: '<targeting-demographics scene-collection="$resolve.sceneCollection"></targeting-demographics>',
+      template: '<targeting-demographics scene-collection="$ctrl.sceneCollection"></targeting-demographics>',
       parent: 'sceneCollectionWizard'
     })
     .state('sceneEditor', {
       url: '/edit',
-      template: '<scene-editor scene-collection="$resolve.sceneCollection"></scene-editor>',
+      template: '<scene-editor scene-collection="$ctrl.sceneCollection"></scene-editor>',
       parent: 'sceneCollectionWizard'
     })
     .state('preview', {
@@ -55,7 +55,7 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('adConfig', {
       url: '/ad_config/:facebookAdId',
-      template: '<ad-config facebook-ad="$resolve.facebookAd" scene-collection="$resolve.sceneCollection"></ad-config>',
+      template: '<ad-config facebook-ad="$resolve.facebookAd" scene-collection="$ctrl.sceneCollection"></ad-config>',
       resolve: {
         facebookAd: /*@ngInject */ function ($stateParams, facebookAdService) {
           return facebookAdService.get({id: $stateParams.facebookAdId});
@@ -65,12 +65,12 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
     })
     .state('facebookPostConfig', {
       url: '/facebook_post',
-      template: '<facebook-post-config scene-collection="$resolve.sceneCollection"></facebook-post-config>',
+      template: '<facebook-post-config scene-collection="$ctrl.sceneCollection"></facebook-post-config>',
       parent: 'sceneCollectionWizard'
     })
     .state('summary', {
       url: '/summary',
-      template: '<summary scene-collection="$resolve.sceneCollection"></summary>',
+      template: '<summary scene-collection="$ctrl.sceneCollection"></summary>',
       parent: 'sceneCollectionWizard'
     })
     .state('profileReport', {

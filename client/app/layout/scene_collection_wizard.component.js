@@ -15,8 +15,8 @@ function SceneCollectionWizardController(sceneCollectionService) {
   vm.updateSceneCollection = updateSceneCollection;
   vm.reloadSceneCollection = reloadSceneCollection;
 
-  function updateSceneCollection($event) {
-    return sceneCollectionService.update({id: vm.sceneCollection.id}, $event.sceneCollection).then(function onSuccess(data) {
+  function updateSceneCollection(params) {
+    return sceneCollectionService.update({id: vm.sceneCollection.id}, params).then(function onSuccess(data) {
       vm.sceneCollection = data;
     });
   }
