@@ -1,7 +1,7 @@
 class CreateProfileReports < ActiveRecord::Migration
   def change
     create_table :profile_reports do |t|
-      t.string :name
+      t.string :title
       t.text :description
       t.belongs_to :user
       t.text :attachment

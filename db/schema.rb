@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160819171248) do
   end
 
   create_table "profile_reports", force: :cascade do |t|
-    t.integer  "name",        default: 0
+    t.string   "title"
     t.text     "description"
     t.integer  "user_id"
     t.text     "attachment"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160819171248) do
     t.integer  "matched",     default: 0
     t.integer  "male",        default: 0
     t.integer  "female",      default: 0
+    t.integer  "name",        default: 0
     t.integer  "age",         default: 0
     t.integer  "gender",      default: 0
     t.integer  "photo",       default: 0
