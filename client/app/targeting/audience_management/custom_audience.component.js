@@ -15,7 +15,7 @@ var component = {
 };
 
 /* @ngInject */
-function CustomAudienceController(ezfb, $uibModal) {
+function CustomAudienceController(ezfb, $uibModal, customAudienceService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -37,7 +37,7 @@ function CustomAudienceController(ezfb, $uibModal) {
   vm.createLookalikeAudience = createLookalikeAudience;
 
   function fetchCustomAudiences() {
-    return ezfb.api(vm.adAccountId + '/customaudiences', {limit: 1000, fields: 'id, approximate_count, data_source, name, description, subtype, time_created, operation_status'}).then(function (data) {
+    return customAudienceService.query(vm.adAccountId).then(function (data) {
       vm.customAudiences = data.data;
       vm.selectedCustomAudiences = _.intersectionBy(vm.customAudiences, vm.facebookCustomAudiences, 'id');
     });

@@ -63,12 +63,13 @@ function SmartCreateController($window, $state, industryService, adTypeService, 
     vm.saving = true;
 
     sceneCollectionService.save({}, {ad_type_id: vm.config.adType.id, integration: $event.type}).then(function (data) {
-      $state.go('clients', {sceneCollectionId: data.id});
+      $state.go('audience', {sceneCollectionId: data.id});
     }).finally(function () {
       vm.saving = false;
     });
   }
 
+  /*
   function selectTargetingSpec(targetingSpec) {
     vm.config.targetingSpec = targetingSpec;
     vm.step = 4;
@@ -102,6 +103,7 @@ function SmartCreateController($window, $state, industryService, adTypeService, 
   function selectTheme(theme) {
     $window.location = '/themes/' + theme.id + '?targeting_spec_id=' + vm.config.targetingSpec.id;
   }
+  */
 
   function goToStep(step) {
     vm.step = step;

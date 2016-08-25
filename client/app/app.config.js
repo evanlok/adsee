@@ -26,6 +26,11 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
         }
       }
     })
+    .state('audience', {
+      url: '/audience',
+      template: '<audience scene-collection="$ctrl.sceneCollection"></audience>',
+      parent: 'sceneCollectionWizard'
+    })
     .state('targeting', {
       url: '/targeting',
       template: '<targeting scene-collection="$ctrl.sceneCollection"></targeting>',

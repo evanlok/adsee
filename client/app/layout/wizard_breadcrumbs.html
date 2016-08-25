@@ -1,5 +1,9 @@
 <div class="video-nav">
   <ul>
+    <li ng-class="{active: $ctrl.stateName() === 'audience'}" ng-if="$ctrl.showFacebookAdLinks()">
+      <a ui-sref="audience"><div class="nav-icon"><i class="fa fa-user"></i></div>Clients</a>
+    </li>
+
     <li ng-class="{active: $ctrl.stateName().match('targeting')}" ng-if="$ctrl.showFacebookAdLinks()">
       <a href="" ng-click="$ctrl.goToTargeting()"><div class="nav-icon"><i class="fa fa-crosshairs"></i></div>Targeting</a>
     </li>

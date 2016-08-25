@@ -8,4 +8,8 @@ class ProfileReportPolicy < ApplicationPolicy
   def show?
     user.id == record.user_id
   end
+
+  alias create? show?
+  alias update? show?
+  alias destroy? show?
 end

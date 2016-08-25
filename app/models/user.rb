@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :scene_collections, dependent: :destroy
   has_many :images
   has_many :video_clips
+  has_many :profile_reports, dependent: :destroy
 
   def self.from_omniauth(auth)
     user = where(email: auth.info.email).first_or_initialize do |u|

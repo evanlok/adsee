@@ -1,0 +1,42 @@
+<div class="email-uploader">
+  <h1>Upload your clients</h1>
+
+  <div class="text-center" ng-if="!$ctrl.loaded">
+    <i class="fa fa-spin fa-spinner"></i>
+  </div>
+
+  <div ng-if="$ctrl.loaded">
+    <div ng-if="!$ctrl.audienceOption" class="text-center">
+      <div>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.newAudience()">New Audience</button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-info" ng-click="$ctrl.existingAudience()">Existing Audience
+        </button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.skip()">Skip</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-if="$ctrl.audienceOption === 'new'">
+        <email-uploader-form profile-report="$ctrl.profileReport" ad-account-id="{{ $ctrl.adAccountId }}"
+                             saving="$ctrl.saving"
+                             on-save="$ctrl.saveNewAudience($event)" on-cancel="$ctrl.cancel()">
+        </email-uploader-form>
+      </div>
+
+      <div class="col-md-6 col-md-offset-3" ng-if="$ctrl.audienceOption === 'existing'">
+        <existing-audience-form ad-account-id="{{ $ctrl.adAccountId }}"
+                           existing-custom-audiences="$ctrl.facebookAd.targeting.custom_audiences"
+                           saving="$ctrl.saving"
+                           on-cancel="$ctrl.cancel()"
+                           on-save="$ctrl.saveExistingAudience($event)">
+        </existing-audience-form>
+      </div>
+    </div>
+  </div>
+</div>

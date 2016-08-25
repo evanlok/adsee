@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   resources :fonts, only: :index
   resources :songs, only: :index
   resources :filters, only: :index
-  resources :profile_reports, only: :show
+  resources :profile_reports, only: [:show, :create, :update]
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
@@ -87,6 +87,8 @@ Rails.application.routes.draw do
   # Angular route globbing
   get '/theme_selector', to: 'home#angular', as: :theme_selector
   get '/smart_create', to: 'home#angular', as: :smart_create
+  get '/scene_collections/:id/audience', to: 'home#angular'
+  get '/scene_collections/:id/themes', to: 'home#angular'
   get '/scene_collections/:id/targeting', to: 'home#angular', as: :targeting_scene_collection
   get '/scene_collections/:id/targeting/*angular_path', to: 'home#angular'
   get '/scene_collections/:id/edit', to: 'home#angular', as: :edit_scene_collection

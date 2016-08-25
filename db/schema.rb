@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819171248) do
+ActiveRecord::Schema.define(version: 20160825203731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,8 +120,6 @@ ActiveRecord::Schema.define(version: 20160819171248) do
   create_table "profile_reports", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "user_id"
-    t.text     "attachment"
     t.integer  "status",      default: 0
     t.integer  "total",       default: 0
     t.integer  "matched",     default: 0
@@ -144,6 +142,8 @@ ActiveRecord::Schema.define(version: 20160819171248) do
     t.jsonb    "countries",   default: {}
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.text     "file_path"
+    t.integer  "user_id"
   end
 
   create_table "profiles", force: :cascade do |t|

@@ -7,6 +7,15 @@ class CustomAudienceService {
     this.ezfb = ezfb;
   }
 
+  query(adAccountId) {
+    return this.ezfb.getLoginStatus().then(() => {
+      return this.ezfb.api(adAccountId + '/customaudiences', {
+        limit: 1000,
+        fields: 'id, approximate_count, data_source, name, description, subtype, time_created, operation_status'
+      });
+    });
+  }
+
   createCustomAudience(adAccountId, params, file) {
     let parsedEmails = [];
 

@@ -11,7 +11,7 @@ var component = {
 };
 
 /* @ngInject */
-function AdvancedTargetingLocationsFormController(ezfb) {
+function AdvancedTargetingLocationsFormController(ezfb, adAccountService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -50,7 +50,7 @@ function AdvancedTargetingLocationsFormController(ezfb) {
   vm.save = save;
 
   function fetchAdAccounts() {
-    return ezfb.api('/me/adaccounts', {fields: 'id, account_id, name, business_name'}).then(function (data) {
+    return adAccountService.query().then(function (data) {
       vm.adAccounts = data.data;
 
       if (!vm.facebookAd.ad_account_id && vm.adAccounts[0]) {

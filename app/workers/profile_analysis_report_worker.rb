@@ -11,7 +11,7 @@ class ProfileAnalysisReportWorker
   end
 
   def perform
-    raise 'No attachment to process on report' unless @report.attachment?
+    raise 'No file to process on report' unless @report.file_url
     @report.processing!
     emails = []
 
@@ -47,7 +47,7 @@ class ProfileAnalysisReportWorker
 
   def open_email_file
     tempfile = Tempfile.new('emails')
-    source = open(@report.attachment_url)
+    source = open(@report.file_url)
     IO.copy_stream(source, tempfile)
     tempfile.rewind
     yield tempfile

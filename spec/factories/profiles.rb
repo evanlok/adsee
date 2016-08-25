@@ -108,11 +108,11 @@ FactoryGirl.define do
   end
 
   factory :profile_report do
-    user
-    name { Faker::Lorem.word }
+    scene_collection
+    title { Faker::Lorem.word }
 
     trait :with_attachment do
-      attachment { build(:emails_csv) }
+      file_path 'path/to/emails.csv'
     end
   end
 
