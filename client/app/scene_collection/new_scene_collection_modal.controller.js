@@ -8,8 +8,8 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
   $scope.step = 'integration';
   $scope.skipAspectRatio = skipAspectRatio;
 
-  $scope.selectIntegration = function (integration) {
-    $scope.integration = integration;
+  $scope.selectIntegration = function ($event) {
+    $scope.integration = $event.type;
 
     if ($scope.skipAspectRatio) {
       $scope.save();

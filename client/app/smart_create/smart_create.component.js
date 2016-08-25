@@ -7,7 +7,7 @@ var component = {
 };
 
 /*@ngInject*/
-function SmartCreateController($window, industryService, adTypeService, facebookTargetingSpecService, themeService) {
+function SmartCreateController($window, $state, industryService, adTypeService, facebookTargetingSpecService, sceneCollectionService, themeService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -20,6 +20,7 @@ function SmartCreateController($window, industryService, adTypeService, facebook
 
   vm.selectIndustry = selectIndustry;
   vm.selectAdType = selectAdType;
+  vm.selectIntegrationType = selectIntegrationType;
   vm.selectTargetingSpec = selectTargetingSpec;
   vm.selectTheme = selectTheme;
   vm.goToStep = goToStep;
@@ -52,6 +53,20 @@ function SmartCreateController($window, industryService, adTypeService, facebook
   function selectAdType(adType) {
     vm.config.adType = adType;
     vm.step = 3;
+  }
+
+  function selectIntegrationType($event) {
+    if (vm.saving) {
+      return;
+    }
+
+    vm.saving = true;
+
+    sceneCollectionService.save({}, {ad_type_id: vm.config.adType.id, integration: $event.type}).then(function (data) {
+      $state.go('clients', {sceneCollectionId: data.id});
+    }).finally(function () {
+      vm.saving = false;
+    });
   }
 
   function selectTargetingSpec(targetingSpec) {

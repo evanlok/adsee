@@ -7,37 +7,7 @@
 
   <div class="modal-body">
     <div ng-if="step === 'integration'">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Select a facebook post type:</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <a href="" class="square" ng-click="selectIntegration('facebook_ad')">
-            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/ad-post.png"
-                 class="img-responsive post-image">
-            <div class="posttype-title">Advertisement</div>
-            <div class="">A powerful and unique way to create content and advertise to the people most likely to care about your business.</div>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="" class="square" ng-click="selectIntegration('facebook_page_post')">
-            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/brand-post.png"
-                 class="img-responsive post-image">
-            <div class="posttype-title">Brand Post</div>
-            <div class="">Create and publish content to communicate with your brand followers directly on you brand's page.</div>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="" class="square" ng-click="selectIntegration('facebook_post')">
-            <img src="https://vejeo.s3.amazonaws.com/vidgenie/images/sample-photos/profile-post.png"
-                 class="img-responsive post-image">
-            <div class="posttype-title">Profile Post</div>
-            <div class="">Create and publish content to post on your personal profile page.</div>
-          </a>
-        </div>
-      </div>
+      <facebook-integration-types on-select="selectIntegration($event)"></facebook-integration-types>
     </div>
 
     <div class="row" ng-if="step === 'aspect_ratio'">
