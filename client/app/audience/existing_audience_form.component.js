@@ -10,7 +10,10 @@ class ExistingAudienceFormController {
   $onInit() {
     this.selectedCustomAudiences = [];
     this.fetchAdAccounts();
-    this.fetchCustomAudiences();
+
+    if (this.adAccountId) {
+      this.fetchCustomAudiences();
+    }
   }
 
   fetchAdAccounts() {
@@ -20,6 +23,8 @@ class ExistingAudienceFormController {
   }
 
   fetchCustomAudiences() {
+    this.selectedCustomAudiences = [];
+
     return this.customAudienceService.query(this.adAccountId).then(data => {
       this.customAudiences = data.data;
       this.selectedCustomAudiences = _.intersectionBy(this.customAudiences, this.existingCustomAudiences, 'id');
@@ -28,10 +33,6 @@ class ExistingAudienceFormController {
 
   formatAdAccount(adAccount) {
     return this.adAccountService.formatAdAccount(adAccount);
-  }
-
-  adAccountChanged() {
-    this.selectedCustomAudiences = [];
   }
 
   save() {

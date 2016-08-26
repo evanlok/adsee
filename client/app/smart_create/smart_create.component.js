@@ -61,7 +61,15 @@ function SmartCreateController($state, industryService, adTypeService, facebookT
     vm.saving = true;
 
     sceneCollectionService.save({}, {ad_type_id: vm.config.adType.id, integration: $event.type}).then(function (data) {
-      $state.go('audience', {sceneCollectionId: data.id});
+      var state;
+
+      if ($event.type === 'facebook_ad') {
+        state = 'audience';
+      } else {
+        state = 'targeting';
+      }
+
+      $state.go(state, {sceneCollectionId: data.id});
     }).finally(function () {
       vm.saving = false;
     });

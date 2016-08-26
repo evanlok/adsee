@@ -1,10 +1,11 @@
-var templateUrl = require('./basic_targeting.html');
+var templateUrl = require('./basic_targeting_form.html');
 
 var component = {
   templateUrl: templateUrl,
   controller: BasicTargetingFormController,
   bindings: {
     sceneCollection: '<',
+    advancedTargetingDisabled: '<?',
     saving: '<',
     onSave: '&'
   }

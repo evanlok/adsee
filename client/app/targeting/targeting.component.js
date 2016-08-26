@@ -19,7 +19,12 @@ function TargetingController($state, $q, facebookAdService) {
     vm.saving = false;
   };
 
+  vm.advancedTargetingDisabled = advancedTargetingDisabled;
   vm.saveTargeting = saveTargeting;
+
+  function advancedTargetingDisabled() {
+    return vm.sceneCollection.integration !== 'facebook_ad';
+  }
 
   function saveTargeting($event) {
     vm.saving = true;
@@ -28,7 +33,7 @@ function TargetingController($state, $q, facebookAdService) {
     var scUpdatePromise = vm.sceneCollectionWizard.updateSceneCollection($event.sceneCollection);
 
     $q.all([adUpdatePromise, scUpdatePromise]).then(function () {
-      $state.go('sceneEditor', {sceneCollectionId: vm.sceneCollection.id});
+      $state.go('themes', {sceneCollectionId: vm.sceneCollection.id});
     }).finally(function () {
       vm.saving = false;
     });
