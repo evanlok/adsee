@@ -28,14 +28,19 @@
           <li ng-if="$ctrl.themeVariant.aspect_ratio"><i class="fa fa-expand fa-li"></i> {{ $ctrl.themeVariant.aspect_ratio }}</li>
           <li ng-if="$ctrl.theme.song"><i class="fa fa-music fa-li"></i> {{ $ctrl.theme.song }}</li>
         </ul>
-        <a href="" class="button build-theme-button"
+
+        <a href="" class="button build-theme-button" ng-if="!$ctrl.themeList.onSelect"
            new-scene-collection-link theme-variant-id="{{ $ctrl.themeVariant.id }}" skip-aspect-ratio="true">
+          Build this theme
+        </a>
+
+        <a href="" class="button build-theme-button" ng-if="$ctrl.themeList.onSelect" ng-click="$ctrl.buildThemeVariant($ctrl.themeVariant)">
           Build this theme
         </a>
       </div>
       <div class="row variant-header-row">
         <div class="col-md-12">
-          <div class="variant-header">Theme Variants <span class="variation-count">9 variations</span></div>
+          <div class="variant-header">Theme Variants <span class="variation-count">{{ $ctrl.theme.theme_variants.length }} variations</span></div>
         </div>
       </div>
       <ul class="variant-list row">

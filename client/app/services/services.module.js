@@ -1,6 +1,7 @@
 import plotlyService from './plotly.service';
 import profileReportService from './profile_report.service';
 import adAccountService from './ad_account.service';
+import themeVariantService from './theme_variant.service';
 var services = angular.module('adsee.services', []);
 
 services
@@ -22,6 +23,7 @@ services
   .service('themeService', require('./theme.service'))
   .service('profileReportService', profileReportService)
   .service('adAccountService', adAccountService)
+  .service('themeVariantService', themeVariantService)
   .service('plotlyService', plotlyService);
 
 module.exports = services.name;

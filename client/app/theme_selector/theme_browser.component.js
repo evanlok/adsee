@@ -13,8 +13,6 @@ function ThemeBrowserController($q, industryService, themeService) {
   vm.$onInit = function () {
     vm.loading = true;
     vm.queryParams = {};
-    vm.expandedTheme = {};
-    vm.previewHeight = 0;
 
     $q.all([fetchIndustries(), fetchThemes()]).then(function () {
       vm.loading = false;
@@ -26,10 +24,6 @@ function ThemeBrowserController($q, industryService, themeService) {
   vm.title = title;
   vm.showFeaturedThemes = showFeaturedThemes;
   vm.active = active;
-  vm.expandTheme = expandTheme;
-  vm.collapseTheme = collapseTheme;
-  vm.styleForTheme = styleForTheme;
-  vm.updatePreviewHeight = updatePreviewHeight;
 
   function fetchIndustries() {
     return industryService.query().then(function (data) {
@@ -93,29 +87,6 @@ function ThemeBrowserController($q, industryService, themeService) {
     } else {
       return vm.queryParams.industry_id === category.id;
     }
-  }
-
-  function expandTheme(theme) {
-    vm.expandedTheme = theme;
-    //var element = angular.element(document.getElementById('theme_' + theme.id));
-    //$document.scrollTo(element, 10);
-  }
-
-  function collapseTheme() {
-    vm.expandedTheme = {};
-  }
-
-  function styleForTheme(theme) {
-    if (theme === vm.expandedTheme) {
-      var height = vm.previewHeight + 40;
-      return {'margin-bottom': height + 'px'};
-    } else {
-      return {};
-    }
-  }
-
-  function updatePreviewHeight ($event) {
-    vm.previewHeight = $event.height;
   }
 }
 

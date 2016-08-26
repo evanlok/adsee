@@ -44,7 +44,12 @@ class SceneCollectionsController < ApplicationController
   end
 
   def update
-    if @scene_collection.update(scene_collection_params)
+    @scene_collection.attributes = scene_collection_params
+    create_scene_contents = @scene_collection.theme_variant_id_changed?
+
+    if @scene_collection.save
+      @scene_collection.create_scene_contents_from_theme_variant if create_scene_contents
+
       respond_to do |format|
         format.json { render :show }
       end

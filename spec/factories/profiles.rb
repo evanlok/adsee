@@ -108,7 +108,7 @@ FactoryGirl.define do
   end
 
   factory :profile_report do
-    scene_collection
+    user
     title { Faker::Lorem.word }
 
     trait :with_attachment do

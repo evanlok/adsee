@@ -29,5 +29,15 @@ RSpec.describe SceneCollectionsController do
       patch :update, id: scene_collection, scene_collection: { color: '#ffffff' }, format: :json
       expect(response).to be_success
     end
+
+    context 'when theme_variant_id changes' do
+      let(:theme_variant) { create(:theme_variant) }
+
+      it 'calls scene_collection#create_scene_contents_from_theme_variant' do
+        expect_any_instance_of(SceneCollection).to receive(:create_scene_contents_from_theme_variant)
+        patch :update, id: scene_collection, scene_collection: { theme_variant_id: theme_variant.id }, format: :json
+        expect(response).to be_success
+      end
+    end
   end
 end

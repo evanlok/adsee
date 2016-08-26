@@ -7,7 +7,7 @@ var component = {
 };
 
 /*@ngInject*/
-function SmartCreateController($window, $state, industryService, adTypeService, facebookTargetingSpecService, sceneCollectionService, themeService) {
+function SmartCreateController($state, industryService, adTypeService, facebookTargetingSpecService, sceneCollectionService) {
   var vm = this;
 
   vm.$onInit = function () {
@@ -21,8 +21,6 @@ function SmartCreateController($window, $state, industryService, adTypeService, 
   vm.selectIndustry = selectIndustry;
   vm.selectAdType = selectAdType;
   vm.selectIntegrationType = selectIntegrationType;
-  vm.selectTargetingSpec = selectTargetingSpec;
-  vm.selectTheme = selectTheme;
   vm.goToStep = goToStep;
   vm.previousStep = previousStep;
 
@@ -68,42 +66,6 @@ function SmartCreateController($window, $state, industryService, adTypeService, 
       vm.saving = false;
     });
   }
-
-  /*
-  function selectTargetingSpec(targetingSpec) {
-    vm.config.targetingSpec = targetingSpec;
-    vm.step = 4;
-    fetchThemes();
-  }
-
-  function fetchThemes() {
-    vm.themes = [];
-    vm.recommendedThemesAvailable = true;
-
-    themeService.recommended({
-      ad_type_id: vm.config.adType.id,
-      facebook_targeting_spec_id: vm.config.targetingSpec.id
-    }).then(function (data) {
-      vm.themeRecommendationGroup = data[0];
-
-      if (vm.themeRecommendationGroup) {
-        vm.themes = vm.themeRecommendationGroup.themes;
-      }
-    }).then(function () {
-      if (_.isEmpty(vm.themes)) {
-        vm.recommendedThemesAvailable = false;
-
-        themeService.query({ad_type_id: vm.config.adType.id}).then(function (data) {
-          vm.themes = data;
-        });
-      }
-    });
-  }
-
-  function selectTheme(theme) {
-    $window.location = '/themes/' + theme.id + '?targeting_spec_id=' + vm.config.targetingSpec.id;
-  }
-  */
 
   function goToStep(step) {
     vm.step = step;

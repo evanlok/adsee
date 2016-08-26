@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :industries, only: :index
   resources :ad_types, only: :index
   resources :themes, only: [:index, :show]
+  resources :theme_variants, only: [:show]
   resources :theme_recommendation_groups, only: :index
 
   resources :scene_collections, except: :edit, shallow: true do

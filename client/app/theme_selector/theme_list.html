@@ -1,0 +1,23 @@
+<div class="theme-list">
+  <div ng-repeat="theme in $ctrl.themes" ng-style="$ctrl.styleForTheme(theme)"
+       class="theme-tile" id="theme_{{ theme.id }}">
+    <a href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-link">
+
+      <div class="theme-tile-overlay" ng-class="$ctrl.showAdType ? 'theme-adtype-height' : 'theme-title-height'">
+
+        <div href="" ng-click="$ctrl.expandTheme(theme)" class="theme-tile-name">
+          {{ theme.name }}
+        </div>
+
+        <div class="ad-type-label">
+          {{ theme.ad_type }}
+        </div>
+      </div>
+
+      <img ng-src="{{ theme.thumbnail_url_large }}">
+    </a>
+
+    <theme-preview theme="theme" on-open="$ctrl.updatePreviewHeight($event)" on-close="$ctrl.collapseTheme()"
+                   ng-if="$ctrl.expandedTheme === theme" scroll-to-thumb></theme-preview>
+  </div>
+</div>

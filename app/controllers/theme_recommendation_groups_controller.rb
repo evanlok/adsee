@@ -9,7 +9,8 @@ class ThemeRecommendationGroupsController < ApplicationController
       }
     }
 
-    @theme_recommendation_groups = ThemeRecommendationGroup.where(conditions).includes(:themes)
+    includes = { themes: [:song, :font, { theme_variants: :video_type, ad_type: :industry }] }
+    @theme_recommendation_groups = ThemeRecommendationGroup.where(conditions).includes(includes)
 
     respond_to do |format|
       format.json

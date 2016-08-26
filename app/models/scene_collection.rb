@@ -34,6 +34,7 @@ class SceneCollection < ActiveRecord::Base
 
   def create_scene_contents_from_theme_variant
     return unless theme_variant
+    scene_contents.destroy_all
 
     self.ad_type = theme.ad_type
     self.font = theme.font

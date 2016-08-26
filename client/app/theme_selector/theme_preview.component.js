@@ -7,6 +7,9 @@ var component = {
     theme: '<',
     onOpen: '&',
     onClose: '&'
+  },
+  require: {
+    themeList: '^^'
   }
 };
 
@@ -20,6 +23,7 @@ function ThemePreviewController() {
 
   vm.onOutputHeight = onOutputHeight;
   vm.selectThemeVariant = selectThemeVariant;
+  vm.buildThemeVariant = buildThemeVariant;
 
   function onOutputHeight(height) {
     vm.onOpen({$event: {height: height}});
@@ -27,6 +31,11 @@ function ThemePreviewController() {
 
   function selectThemeVariant(themeVariant) {
     vm.themeVariant = themeVariant;
+  }
+
+  function buildThemeVariant(themeVariant) {
+    var payload = {themeVariant: themeVariant};
+    vm.themeList.onSelect({$event: payload});
   }
 }
 

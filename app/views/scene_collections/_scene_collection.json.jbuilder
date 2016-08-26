@@ -1,5 +1,5 @@
 json.extract! scene_collection, :id, :name, :color, :font_id, :song_id, :zip_codes, :aspect_ratio, :audio, :audio_url,
-              :integration, :integration_data, :advanced_targeting
+              :integration, :integration_data, :advanced_targeting, :ad_type_id, :theme_variant_id
 
 json.industry scene_collection.ad_type&.industry&.name
 json.ad_type scene_collection.ad_type&.name

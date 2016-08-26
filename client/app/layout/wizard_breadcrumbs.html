@@ -8,6 +8,10 @@
       <a href="" ng-click="$ctrl.goToTargeting()"><div class="nav-icon"><i class="fa fa-crosshairs"></i></div>Targeting</a>
     </li>
 
+    <li ng-class="{active: $ctrl.stateName() === 'themes'}">
+      <a ui-sref="themes"><div class="nav-icon"><i class="fa fa-film"></i></div>Themes</a>
+    </li>
+
     <li ng-class="{active: $ctrl.stateName() === 'sceneEditor'}">
       <a ui-sref="sceneEditor"><div class="nav-icon"><i class="fa fa-pencil-square "></i></div>Scene Editor</a>
     </li>

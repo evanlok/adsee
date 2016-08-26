@@ -43,7 +43,8 @@ angular.module('adsee', [
   require('./smart_create/smart_create.module'),
   require('./theme_selector/theme_selector.module'),
   require('./reports/reports.module').default,
-  require('./audience/audience.module').default
+  require('./audience/audience.module').default,
+  require('./themes/themes.module').default
 ]).config(config).run(/*@ngInject*/ function (editableOptions) {
   editableOptions.theme = 'bs3';
 });

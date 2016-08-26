@@ -1,0 +1,25 @@
+<div>
+  <div ng-if="$ctrl.sceneCollection.theme_variant_id">
+    <h1>{{ $ctrl.themeVariant.theme.name }}</h1>
+
+    <img ng-src="{{ $ctrl.themeVariant.poster_image_url_medium }}">
+
+    <p>{{ $ctrl.themeVariant.theme.description }}</p>
+
+    <div>
+      <a ui-sref="sceneEditor" class="btn btn-primary">Next</a>
+    </div>
+  </div>
+
+  <div ng-if="!$ctrl.sceneCollection.theme_variant_id">
+    <h1>Themes</h1>
+
+    <div ng-if="$ctrl.loading" class="text-center">
+      <i class="fa fa-spin fa-spinner"></i>
+    </div>
+
+    <div ng-if="!$ctrl.loading">
+      <theme-list themes="$ctrl.themes" on-select="$ctrl.selectThemeVariant($event)"></theme-list>
+    </div>
+  </div>
+</div>

@@ -36,6 +36,11 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       template: '<targeting scene-collection="$ctrl.sceneCollection"></targeting>',
       parent: 'sceneCollectionWizard'
     })
+    .state('themes', {
+      url: '/themes',
+      template: '<themes scene-collection="$ctrl.sceneCollection"></themes>',
+      parent: 'sceneCollectionWizard'
+    })
     .state('targetingLocations', {
       url: '/targeting/locations',
       template: '<targeting-locations scene-collection="$ctrl.sceneCollection"></targeting-locations>',
