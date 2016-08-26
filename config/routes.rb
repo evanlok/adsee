@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     end
   end
 
+  match '/contacts',     to: 'contacts#new',     via: 'get'
+  resources "contacts", only: [:new, :create]
+
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]

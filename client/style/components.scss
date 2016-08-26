@@ -221,7 +221,7 @@
   }
   h1 {
     margin: 0px;
-    font-size: 11vw;
+    font-size: 9.5vw;
     font-weight: 900;
     line-height: 0.9;
     margin-bottom: 20px;
@@ -341,8 +341,7 @@
     .visible {
       font-weight:700;
       overflow:hidden;
-      height: 70px;
-      width: 645px;
+      height: 4.5vw;
       span {
         color: $color-2;
       }
@@ -507,7 +506,7 @@
       font-weight: 700;
     }
     h1 {
-      margin-top: -3%;
+      margin-top: -2%;
       margin-bottom: 0px;
     }
   }
@@ -580,7 +579,7 @@
       font-weight: 700;
     }
     h1 {
-      margin-top: -3%;
+      margin-top: -2%;
       margin-bottom: 10px;
     }
   }
@@ -4052,5 +4051,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .smart-create-integration-type {
   padding: 50px;
+}
+
+#contact {
+  height: 100%;
+  margin: 0px -15px;
+  padding: 40px;
+  color: white;
+  h2 {
+    font-weight: 700;
+  }
+  .col-md-6 {
+    padding: 0px 30px;
+  }
+  .contact-form-box {
+    max-width: 700px;
+    margin: 0px auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .button {
+    border: 4px solid $color-2;
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 20px;
+  }
+ .form-group {
+    margin: 0px;
+  }
+  label {
+    color: $color-2;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
 }
 
