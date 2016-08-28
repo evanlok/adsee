@@ -1,31 +1,35 @@
 <div id="fullpage">
+
   <div class="section" id="section1">
     <%= render 'layouts/marketing_nav' %>
 
     <div class="background-overlay"></div>
+    <video playsinline autoplay muted loop poster="../images/11H.jpg" id="bgvid">
+        <source src="https://d15t32v9fjxgrp.cloudfront.net/videos/adsee.webm" type="video/webm">
+        <source src="https://d15t32v9fjxgrp.cloudfront.net/videos/adsee.mp4" type="video/mp4">
+    </video>
 
-        <div class="main-text">
-            Using <span class="highlight-text">Data Intelligence</span> To Create
-            <div class='content'>
-              <p class="">Better Social <span class="highlight-text">Videos</span> That</p>
-              <div class='visible'>
-                <ul>
-                  <li>Inform.</li>
-                  <li>Promote.</li>
-                  <li>Sell.</li>
-                  <li>Engage.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+    <div class="main-text">
+      Using <span class="highlight-text">Data Intelligence</span> To Produce
+      <div class='content'>
+        <p class="">Better Social <span class="highlight-text">Videos</span> That</p>
+        <div class='visible'>
+          <ul>
+            <li>Inform.</li>
+            <li>Promote.</li>
+            <li>Sell.</li>
+            <li>Engage.</li>
+          </ul>
         </div>
-
+      </div>
+    </div>
   </div>
+
 
   <div class="section" id="section2">
     <div class="background-overlay"></div>
     <div class="text-overlay ">
-<!--       <div class="for">for</div> -->
+      <div class="for">Vixer for</div>
       <h1>content<br>creators</h1>
       <div class="section-subtitle">Make videos people want to share.</div>
       <div class="section-subtext">Use data intelligence about your target audience and the efficiency of short-form videos to easily create videos that are made to be shared and liked. Create the perfect videos that are personalized, targeted to each of your audiences, and customized to each social platform. </div>
@@ -48,14 +52,7 @@
           <div class="feature-title">Add Voice Over</div>
         </div>
       </div>
-
-<!--       <ul>
-        <li>Engaging, purposeful video themes</li>
-        <li>Complete control of creative</li>
-        <li>Add or remove scenes at will</li>
-        <li>Record voice over or upload media to add your own commentary</li>
-      </ul> -->
-      <%= link_to 'Learn more', page_path('content_marketing'), target: '_self', :class=> "button-ghost" %>
+      <%= link_to 'Learn more', page_path('content_creators'), target: '_self', :class=> "button-ghost" %>
     </div>
   </div>
 
@@ -64,7 +61,7 @@
     <div class="background-overlay"></div>
 
     <div class="text-overlay">
-<!--       <div class="for">for</div> -->
+      <div class="for">Vixer for</div>
       <h1>small<br>business</h1>
       <div class="section-subtitle">Easily promote a new product, event, or story with the power of video.</div>
       <div class="section-subtext">Leverage your CRM data as well as the power of social media to showcase your products and services. Advertise to your current customers on social platforms for upsell opportunities or gain new customers by creating new lookalike target audiences using your client list. Explore your audience's demographic, geographic and psychographic data with highly detailed audience profiles reports generated from your CRM data</div>
@@ -92,7 +89,7 @@
         <li>Create lookalike target segments using your CRM data and create personalized videos targeting them</li>
         <li>Generate a user profiles report to learn more about who your customers are and how to communicate to them</li>
       </ul> -->
-      <%= link_to 'Learn more', page_path('advertising'), target: '_self', :class=> "button-ghost" %>
+      <%= link_to 'Learn more', page_path('small_business'), target: '_self', :class=> "button-ghost" %>
     </div>
 
   </div>
@@ -102,6 +99,7 @@
     <div class="background-overlay"></div>
 
     <div class="text-overlay">
+      <div class="for">Vixer for</div>
       <h1>enterprise</h1>
       <div class="col-md-12">
         <div class="section-subtitle">Leverage the power of data intelligence to create better performing videos.</div>
@@ -120,7 +118,7 @@
             <div class="feature-title">Data driven Look-a-like targeting</div>
           </div>
           <div class="icon-tile">
-            <%= image_tag "icons/custom-audience-icon.png", :class=> "icon" %>
+            <%= image_tag "icons/segment-icon.png", :class=> "icon" %>
             <div class="feature-title">Demographic and Psychographic user analysis</div>
           </div>
           <div class="icon-tile">
@@ -142,7 +140,7 @@
         <div class="for">for</div>
         <h1>real estate</h1>
         <div class="section-subtext">Video is the best tool to advertise your house, promote your open house of improve your brand recognition on social media. You can now advertise your house to the right people at the right time and the right place</div>
-        <%= link_to 'Learn more', page_path('real_estate'), target: '_self', :class=> "button-ghost" %>
+        <%= link_to 'Learn more', 'http://vixer.launchrock.com/', target: '_self', :class=> "button-ghost" %>
       </div>
     </div>
     <div class="col-md-4 gaming">
@@ -151,7 +149,7 @@
         <div class="for">for</div>
         <h1>gaming</h1>
         <div class="section-subtext">Every gamer is different so every piece of content and ad cretaed targeting gamers should be different to match their likes and expectations. Vixer makes it possible</div>
-        <%= link_to 'Learn more', page_path('gaming'), target: '_self', :class=> "button-ghost" %>
+        <%= link_to 'Learn more', 'http://vixer.launchrock.com/', target: '_self', :class=> "button-ghost" %>
       </div>
     </div>
     <div class="col-md-4 travel">
@@ -160,7 +158,7 @@
         <div class="for">for</div>
         <h1>travel</h1>
         <div class="section-subtext">Learn from your current and past clients to create the most engaging and relevant content and ad for them. Leverage the knowledge gained from those past clients to acquire new, similar clients from social media</div>
-        <%= link_to 'Learn more', page_path('travel'), target: '_self', :class=> "button-ghost" %>
+        <%= link_to 'Learn more', 'http://vixer.launchrock.com/', target: '_self', :class=> "button-ghost" %>
       </div>
     </div>
 

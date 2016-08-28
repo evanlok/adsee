@@ -1,21 +1,31 @@
-<div id="fullpage-marketing">
+<div id="content-creators">
   <div class="section" id="section1">
     <%= render 'layouts/marketing_nav' %>
+    <div class="background-overlay"></div>
+    <div class="col-md-12 section-text">
+      <%= image_tag "devices-icon.png", :class=> "devices-icon" %>
+      <h1>optimized for<br>social media</h1>
+      <div class="section-subtext">
+        <div class="subtext-format">
+          Create videos with aspect ratios that are optimized for the enviroments where they will be shown. Widescreen, square, or vertical, use the appropriate format that will engage your viewers the most.
+        </div>
+      </div>
+      <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
+    </div>
+  </div>
+  <div class="section" id="section2">
 
     <div class="row ">
+      <%= image_tag "coffee.png", :class=> "coffee" %>
+      <div class="background-overlay"></div>
       <div class="col-md-12">
-        <!-- <div class="car">
-          <%= image_tag "car.png" %>
-        </div> -->
-        <%= image_tag "coffee.png", :class=> "coffee" %>
-        <!-- <div class="vacation">
-          <%= image_tag "sunglasses.png", :class=> "sunglasses" %>
-          <%= image_tag "Sand.png", :class=> "" %>
-        </div> -->
+        <div class="pantone">
+          <%= image_tag "pantones.png" %>
+        </div>
         <div class="text-overlay">
           <h1>Pick your<br>video designs</h1>
           <div class="section-subtext">Choose the right video design to achieve your video goal. You want to share a story? promote a product or an event? Pick from one of the video designs that were created just for that.</div>
-          <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
+          <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
         </div>
       </div>
     </div>
@@ -25,25 +35,25 @@
     <div class="row ">
       <div class="col-md-12">
         <div class="section-text">
-          <h1>build your own</h1>
+          <h1>Build your own</h1>
           <div class="section-subtext">Feeling creative? Vixer allows you to build your own video template from our growing list of scenes, animations, effects, music and features. Make your videos unique and a great fit to your brand’s guidelines.</div>
-          <%= link_to 'Learn More', page_path('learn_theme'), target: '_self', :class=> 'button-ghost' %>
+          <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
         </div>
       </div>
     </div>
   </div>
   <div class="section" id="section4">
-    <div class="col-md-6">
+    <div class="col-md-7">
+      <%= image_tag "imac2.png", :class=> "imac" %>
+    </div>
+    <div class="col-md-5">
       <div class="text-overlay">
         <h1>advanced<br>editor</h1>
         <div class="section-subtext">Our video editor is easy to use but deep in features. Choose our default settings for themes and scenes or go as deep as your creativity will allow during video editing. You can pick your video format, 16:9 or square which is perfect for Facebook, add filters, change the music, add your own voice over, change colors, change text fonts, text colors, sizes, alignments. Move your scenes around, and much more.</div>
-        <%= link_to 'Learn More', page_path('learn_edit'), target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
     <div class="section-subtext"></div>
-    <div class="col-md-6">
-      <%= image_tag "imac.png", :class=> "imac" %>
-    </div>
   </div>
   <div class="section" id="section5">
     <div class="background-overlay"></div>
@@ -51,7 +61,7 @@
       <div class="text-overlay">
         <h1>all from one place</h1>
         <div class="section-subtext">Vixer allows you to create, edit, and publish your videos to social media platforms all from one place, saving you valuable time in the process. More social platforms integration are in the works.</div>
-        <%= link_to 'Learn More', page_path('learn_social'), target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
   </div>

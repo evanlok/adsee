@@ -3,8 +3,7 @@
 .main-nav {
   width: 100%;
   position: absolute;
-  background-color: $color-3;
-  border-bottom: 1px solid $color-10;
+  background-color: $color-9;
   .logo {
     height: 50px;
     text-align: center;
@@ -27,12 +26,12 @@
     margin-bottom: 0px;
     li {
       display: inline-block;
-      border-left: 1px solid $color-10;
+      border-left: 1px solid hsla(0, 0%, 0.0000%, 0.3000);
       height: 100%;
     }
   }
   a {
-    color: $color-9;
+    color: $color-3;
     height: 100%;
     display: block;
     padding: 15px 15px 15px;
@@ -48,7 +47,7 @@
 
 // Input/Field Animations
 
-.text-input-group, .login-page, .ad-config .form-group, .signup-page {
+.text-input-group, .login-page, .ad-config .form-group, .signup-page, #contact {
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -130,14 +129,19 @@
 }
 
 // Homepage
-#fullpage, #fullpage-marketing, #fullpage-advertising, #advert-custom-audience, #gaming-page {
+#fullpage, #content-creators, #enterprise, #small-business, #advert-custom-audience, #gaming-page {
   height: 100%;
+  @media screen and (max-width: 991px) { 
+    height: auto;
+  }
   .home-nav {
     position: relative;
     z-index: 1000;
     height: 50px;
     margin-top: 0px;
     .home-nav-list {
+      position: absolute;
+      right: 0px;
       padding: 20px;
       float: right;
       li {
@@ -205,6 +209,7 @@
 }
 
 #fullpage {
+  position: relative;
   .row {
     margin-left: 0px;
     margin-right: 0px;
@@ -225,7 +230,7 @@
     margin: 0px;
     font-size: 11vw;
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 1;
     margin-bottom: 20px;
   }
   .vixer-logo {
@@ -247,21 +252,18 @@
     z-index: 100;
     position: relative;
     padding: 0px 20px;
-    bottom: 20px;
-    position: absolute;
-    color: $color-2;
-    margin-left: 70px;
-    .button-ghost {
-      font-size: 30px;
-      font-weight: 700;
-      display: inline-block;
-    }
+    color: $color-3;
+    font-size: 4vw;
+    line-height: 1.2;
+    font-weight: 700;
+    top: 45%;
+    transform: translateY(-50%);
+    padding-left: 20%;
   }
   .highlight-text {
-    color: $color-3;
+    color: $color-2;
   }
   .text-overlay {
-    text-align: center;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -271,7 +273,6 @@
   .section-subtext {
     display: block;
     font-size: 16px;
-    margin: 0 auto;
   }
   .section-subtitle {
     font-size: 28px;
@@ -291,12 +292,12 @@
     margin-bottom: 10px;
   }
   #section1 {
-    background: url("../images/11H.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     position: relative;
+    overflow: hidden;
+    height: 100%;
+    @media screen and (max-width: 991px) { 
+      height: 100vh;
+    }
     .home-nav {
       padding: 30px;
     }
@@ -306,6 +307,26 @@
     }
     .row, .col-md-8 {
       height: 100%;
+    }
+    .background-overlay {
+      z-index: 2;
+      opacity: 0.25;
+    }
+    video#bgvid { 
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background: url("../images/11H.jpg") no-repeat;
+      background-size: cover; 
     }
     .social-video-text {
       font-size: 13vw;
@@ -328,75 +349,73 @@
       z-index: 100;
     }
     .content {
-      font-size: 65px;
-      line-height: 65px;
+      font-size: 4vw;
+      line-height: 1.25;
       color: #ecf0f1;
       height: 140px;
       overflow:hidden;
+      display: inline-block;
     }
     .static-text {
-      text-align: left;
-      font-size: 65px;
       font-weight: 700;
-      line-height: 1;
+      color: $color-3;
+      text-align: center;
+    }
+    p {
+      position: absolute;
     }
     .visible {
       font-weight:700;
       overflow:hidden;
-      height: 4vw;
+      height: 4.5vw;
       span {
         color: $color-2;
       }
-      // &:before {
-      //   content:'[';
-      //   left: 0;
-      //   line-height:65px;
-      // }
-      // &:after {
-      //   content:']';
-      //   position:absolute;
-      //   right: 0;
-      //   line-height:65px;
-      // }
-      // &:after, &:before {
-      //   position:absolute;
-      //   top:0;
-      //   color:$color-2;
-      //   font-size:65px;
-      //   animation:1s linear 0s normal none infinite opacity;
-      // }
       span {
         display:inline;
         float:left;
         margin:0;
       }
-
       ul {
         margin-top:0;
         text-align:left;
         list-style:none;
-        padding-left: 150px;
+        padding-left: 47.4vw;
         animation:6s linear 0s normal none infinite change;
       }
 
       ul li {
-        line-height:66px;
+        line-height:1.25;
         margin:0;
-        color: $color-3;
+        color: $color-2;
+      }
+
+      @-webkit-keyframes opacity {
+        0%, 100% {opacity:0;}
+        50% {opacity:1;}
+      }
+
+      @-webkit-keyframes change {
+        0%, 12%, 100% {transform:translateY(0);}
+        17%,29% {transform:translateY(-25%);}
+        34%,46% {transform:translateY(-50%);}
+        51%,63% {transform:translateY(-75%);}
+        68%,80% {transform:translateY(-50%);}
+        85%,97% {transform:translateY(-25%);}
       }
 
       @keyframes opacity {
-        0%, 100%   {opacity:0;}
-        50%  {opacity:1;}
+        0%, 100% {opacity:0;}
+        50% {opacity:1;}
       }
 
       @keyframes change {
-        0%, 12%, 100%   {transform:translateY(0);}
-        17%,29%  {transform:translateY(-20%);}
-        34%,46%  {transform:translateY(-40%);}
-        51%,63%  {transform:translateY(-60%);}
-        68%,80%  {transform:translateY(-80%);}
-        85%,97%  {transform:translateY(0%);}
+        0%, 12%, 100% {transform:translateY(0);}
+        17%,29% {transform:translateY(-25%);}
+        34%,46% {transform:translateY(-50%);}
+        51%,63% {transform:translateY(-75%);}
+        68%,80% {transform:translateY(-50%);}
+        85%,97% {transform:translateY(-25%);}
       }
     }
 
@@ -408,12 +427,15 @@
     }
   }
   #section2 {
-    background: url("../images/creators.jpg") no-repeat center center fixed;
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/creators.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    @media screen and (max-width: 991px) { 
+      height: 100vh;
+    }
     .text-overlay {
       padding: 50px;
       position: absolute;
@@ -442,11 +464,14 @@
   }
 
   #section3 {
-    background: url("../images/coffeeshop2.jpg") no-repeat center center fixed;
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/coffeeshop2.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    @media screen and (max-width: 991px) { 
+      height: auto;
+    }
     .background-overlay {
       opacity: 0.45;
     }
@@ -513,7 +538,7 @@
     }
   }
   #section4 {
-    background: url("../images/building.jpg") no-repeat center center fixed;
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/building.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -587,7 +612,7 @@
   }
   #section5 {
     .real-estate {
-      background: url("../images/realestate-bg.jpg") no-repeat center center fixed;
+      background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/realestate-bg.jpg") no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -595,7 +620,7 @@
       padding: 0px;
     }
     .gaming {
-      background: url("../images/gaming-bg.jpg") no-repeat center center fixed;
+      background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/gaming-bg.jpg") no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -603,7 +628,7 @@
       padding: 0px;
     }
     .travel {
-      background: url("../images/travel-bg.jpg") no-repeat center center fixed;
+      background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/travel-bg.jpg") no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -672,24 +697,56 @@
     }
   }
 }
-#fullpage-marketing {
+#content-creators {
   h1 {
     margin: 0px;
-    font-size: 9vw;
+    font-size: 8vw;
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 1;
   }
   #section1 {
-    background: url("../images/wood.jpg") no-repeat center center fixed;
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/devices-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .her-img {
+      width: 100%;
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .section-text {
+      padding: 70px 50px;
+      position: absolute;
+      bottom: 0px;
+      z-index: 100;
+    }
+    .section-subtext {
+      position: relative;
+    }
+    .subtext-format {
+      max-width: 600px;
+    }
+    .button-ghost {
+      border-color: white;
+      color: white;
+    }
+    .devices-icon {
+      width:280px;
+    }
+  }
+  #section2 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/style-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
-    padding: 30px;
+    padding: 30px 15px;
     position: relative;
     .row, .col-md-12 {
       height: 100%;
+      padding: 0px;
     }
     .text-overlay {
       padding: 50px;
@@ -702,21 +759,136 @@
     }
     .coffee {
       right: -100px;
-    }
-    .car  {
-      position: absolute;
-      left: -100px;
-    }
-    .vacation {
-      position: absolute;
-      bottom: 328px;
-      right: 580px;
-    }
-    img {
+      z-index: 100;
       position: absolute;
     }
-    .sunglasses {
+    .pantone {
+      position: absolute;
+      z-index: 100;
+      bottom: -30px;
+      right: 10px;
+    }
+  }
+  #section3 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/build-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .section-text {
+      position: relative;
+      margin: 25% auto 0px;
       z-index: 1;
+      width: 90%;
+      text-align: center;
+    }
+    .section-subtext {
+      max-width: 700px;
+      margin: 0px auto;
+    }
+    .button-ghost {
+      border-color: white;
+      color: white;
+    }
+  }
+  #section4 {
+    background-color: #d3d3d3;
+    overflow: hidden;
+    color: $color-9;
+    .text-overlay {
+      margin-top: 20%;
+      padding: 30px;
+      text-align: right;
+    }
+    .imac {
+      margin-top: 40px;
+      margin-left: -30px;
+    }
+    .button-ghost {
+      border-color: $color-9;
+      color: $color-9;
+      &:hover {
+        color: white;
+        border-color: white;
+      }
+    }
+  }
+  #section5 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/social.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    background-color: hsla(205, 97.0588%, 60.0000%, 1.0000);
+    .text-overlay {
+      position: relative;
+      z-index: 100;
+      padding: 50px 30px 30px;
+    }
+    .section-subtext {
+      max-width: 700px;
+    }
+    .button-ghost {
+      border-color: white;
+      color: white;
+    }
+  }
+  
+}
+#small-business {
+  h1 {
+    margin: 0px;
+    font-size: 8vw;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .section-subtext {
+    margin: 10px 0px;
+  }
+  #section1 {
+     background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/retarget-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    .row, .col-md-12 {
+      height: 100%;
+    }
+    .text-overlay {
+      padding: 50px;
+      float: right;
+      z-index: 100;
+      position: absolute;
+      text-align: right;
+      right: 0px;
+      bottom: 40px;
+    }
+    .section-subtext {
+      max-width: 700px;
+    }
+    h3 {
+      font-size: 2vw;
+      font-weight: 700;
+    }
+    .retarget-img {
+      position: relative;
+      max-width: 700px;
+      margin: 10px 0px;
+      text-align: right;
+      img {
+        width: 80%;
+      }
+    }
+    .button-ghost {
+      width: 280px;
+      font-size: 22px;
+      margin-top: 20px;
+      display: inline-block;
+      text-align: center;
+      border-color: white;
+      color: white;
     }
   }
   #section2 {
@@ -739,33 +911,17 @@
     }
   }
   #section3 {
-    background: url("../images/paint.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    .section-text {
-      position: relative;
-      margin: 30% auto 0px;
-      z-index: 1;
-      width: 90%;
-      text-align: center;
-    }
-    .button-ghost {
-      border-color: white;
-      color: white;
-    }
-  }
-  #section4 {
-    background-color: white;
+    background-color: #d3d3d3;
     overflow: hidden;
     color: $color-9;
     .text-overlay {
       margin-top: 20%;
       padding: 30px;
+      text-align: right;
     }
     .imac {
       margin-left: -30px;
+      margin-top: 40px;
     }
     .button-ghost {
       border-color: $color-9;
@@ -776,8 +932,8 @@
       }
     }
   }
-  #section5 {
-    background: url("../images/social.jpg") no-repeat center center fixed;
+  #section4 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/social.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -797,9 +953,39 @@
       color: white;
     }
   }
-  
+  #section5 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/devices-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .her-img {
+      width: 100%;
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .section-text {
+      padding: 70px 50px;
+      position: absolute;
+      bottom: 0px;
+      z-index: 100;
+    }
+    .section-subtext {
+      position: relative;
+    }
+    .subtext-format {
+      max-width: 600px;
+    }
+    .button-ghost {
+      border-color: white;
+      color: white;
+    }
+    .devices-icon {
+      width:280px;
+    }
+  }
 }
-#fullpage-advertising {
+#enterprise {
   h1 {
     margin: 0px;
     font-size: 9vw;
@@ -829,21 +1015,23 @@
     margin-top: 20px;
   }
   #section1 {
-    background: url("../images/custom-target.jpg") no-repeat center center fixed;
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/retarget-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100%;
     position: relative;
     .row, .col-md-12 {
       height: 100%;
     }
     .text-overlay {
       padding: 50px;
-      position: absolute;
+      float: right;
       z-index: 100;
-      bottom: 40%;
+      position: absolute;
+      text-align: right;
+      right: 0px;
+      bottom: 50px;
     }
     .section-subtext {
       max-width: 700px;
@@ -862,7 +1050,26 @@
     }
   }
   #section2 {
-    background: url("../images/lookalike.jpg") no-repeat center center fixed;
+    background-color: $color-1;
+    h1 { 
+      font-size: 6vw;
+    }    
+    .her-img {
+      width: 100%;
+      margin-top: 100px;
+      margin-left: -30px;
+    }
+    .section-text {
+      margin-top: 100px;
+      padding: 20px 40px 20px 20px;
+    }
+    .button-ghost {
+      border-color: white;
+      color: white;
+    }
+  }
+  #section3 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/devices-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -874,25 +1081,26 @@
     }
     .section-text {
       padding: 70px 50px;
-      text-align: right;
-      position: relative;
+      position: absolute;
+      bottom: 0px;
       z-index: 100;
     }
     .section-subtext {
-      text-align: right;
       position: relative;
     }
     .subtext-format {
-      float: right;
       max-width: 600px;
     }
     .button-ghost {
       border-color: white;
       color: white;
     }
+    .devices-icon {
+      width:280px;
+    }
   }
-  #section3 {
-    background: url("../images/paint.jpg") no-repeat center center fixed;
+  #section4 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/paint.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -901,7 +1109,7 @@
       position: relative;
       margin: 30% auto 0px;
       z-index: 1;
-      width: 90%;
+      max-width: 800px;
       text-align: center;
     }
     .button-ghost {
@@ -910,8 +1118,42 @@
     }
   }
 
-  #section4 {
-    background: url("../images/lookalike.jpg") no-repeat center center fixed;
+  #section5 {
+     background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/custom-target.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+    .row, .col-md-12 {
+      height: 100%;
+    }
+    .text-overlay {
+      padding: 50px;
+      position: absolute;
+      z-index: 100;
+      bottom: 30px;
+    }
+    .section-subtext {
+      max-width: 700px;
+    }
+    .button-ghost {
+      width: 280px;
+      font-size: 22px;
+      margin-top: 20px;
+      display: inline-block;
+      text-align: center;
+      border-color: white;
+      color: white;
+    }
+    img {
+      position: absolute;
+    }
+    
+  }
+  #section6 {
+    background: url("https://d15t32v9fjxgrp.cloudfront.net/site-assets/hp-backgrounds/video-bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -922,9 +1164,8 @@
     }
     .text-overlay {
       padding: 50px;
-      position: absolute;
       z-index: 100;
-      bottom: 40%;
+      position: relative;
     }
     .section-subtext {
       max-width: 700px;
@@ -1007,9 +1248,12 @@
 // Login Page 
 
 .login-page {
+  color: white;
+  background-color: hsla(216, 9.6154%, 20.3922%, 1.0000);
+  margin-left: -15px;
+  margin-right: -15px;
   padding-top: 15%;
   height: 100%;
-  background-color: $color-3;
   @media screen and (max-width: 991px) { 
     padding: 60px;
   }
@@ -1026,6 +1270,7 @@
   }
   h2 {
     font-weight: 700;
+    text-align: center;
   }
   .fa-stack  {
     float: left;
@@ -1146,10 +1391,10 @@
 
 }
 .editor-container {
-  margin-top: 70px;
+  margin-top: 50px;
   margin-left: 140px;
   margin-right: 5px;
-  height: calc(100vh - 93px);
+  height: calc(100vh - 73px);
   display: flex;
 }
 .scene-editor {
@@ -2041,6 +2286,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .content-wrapper {
   padding: 0px 40px 280px 40px;
   overflow: scroll;
+}
+.content-wrapper::-webkit-scrollbar { 
+  display: none; 
 }
 .content-edit-wrapper {
   color: $color-5;
@@ -3228,7 +3476,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 //Ad Config 
 .ad-config {
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 20px;
   background-color: $color-3;
   height: 100%;
@@ -3435,7 +3683,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .targeting {
   padding: 30px 60px 60px;
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
@@ -3598,7 +3846,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-right: 0px;
   padding: 40px 60px 60px;
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
@@ -3688,7 +3936,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-right: 0px;
   padding: 30px 60px 60px;
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
@@ -3784,7 +4032,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .facebook-post-config {
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 20px;
   background-color: $color-3;
   height: 100%;
@@ -3807,7 +4055,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .ad-summary {
   margin-left: 140px;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 20px;
   background-color: $color-3;
   height: 100%;
@@ -4086,5 +4334,85 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .smart-create-integration-type {
   padding: 50px;
+}
+//contact page
+#contact {
+  color: white;
+  background-color: hsla(216, 9.6154%, 20.3922%, 1.0000);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-top: 15%;
+  height: 100%;
+  h2 {
+    font-weight: 700;
+  }
+  .contact-form-box {
+    margin: 0px auto;
+    padding: 0px 20px;
+    max-width: 900px;
+    background-color: hsla(216, 9.6154%, 20.3922%, 1.0000);
+  }
+  .simple_form {
+    padding: 0px 15px;
+  }
+  @media screen and (max-width: 991px) { 
+    padding: 60px;
+  }
+  @media screen and (max-width: 480px) { 
+    padding: 60px 20px;
+  }
+  .left-column {
+    padding-right: 25px;
+    @media screen and (max-width: 991px) {
+      padding-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+  .right-column {
+    border-left: 1px solid $color-2;
+    padding-left: 40px;
+    @media screen and (max-width: 991px) {
+      padding-left: 15px;
+      border: none;
+    }
+  }
+  h2 {
+    font-weight: 700;
+  }
+  input[type="email"], input[type="text"] {
+    width: 100%;
+    height: 50px;
+    border: 3px solid #ccc;
+    margin-top: 10px;
+    padding-left: 45px;
+    &:hover {
+      border: 3px solid #ccc;
+    }
+  }
+  textarea {
+    width: 100%;
+    border: 3px solid #ccc;
+    margin-top: 10px;
+    padding-left: 45px;
+    border-radius: 0px;
+    &:hover {
+      border: 3px solid #ccc;
+    }
+  }
+  .form-group {
+    margin-bottom: 0px;
+  }
+  .button {
+    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+    padding: 10px;
+    margin-top: 20px;
+    border: 5px solid $color-2;
+  }
 }
 

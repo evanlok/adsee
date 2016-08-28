@@ -1,21 +1,17 @@
-<div id="fullpage-marketing">
+<div id="small-business">
   <div class="section" id="section1">
     <%= render 'layouts/marketing_nav' %>
-
+    <div class="background-overlay"></div>
     <div class="row ">
       <div class="col-md-12">
-        <div class="car">
-          <%= image_tag "car.png" %>
-        </div>
-        <%= image_tag "coffee.png", :class=> "coffee" %>
-        <div class="vacation">
-          <%= image_tag "sunglasses.png", :class=> "sunglasses" %>
-          <%= image_tag "Sand.png", :class=> "" %>
-        </div>
         <div class="text-overlay">
           <h1>CRM<br>retargeting</h1>
+          <div class="retarget-img">
+          <h3>Create localized and personalized video ads on social media with just an email address.</h3>
+          <%= image_tag "icons/crm-retarget-graphic.png", :class=> "" %>
           <div class="section-subtext">Re-engage existing customers where they are on social media. Divide them in target segments and craft customized, localized and personalized videos for each of your target audiences</div>
-          <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
+          </div>
+          <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
         </div>
       </div>
     </div>
@@ -29,42 +25,42 @@
         <h1>lookalike<br>
           targeting</h1>
         <div class="section-subtext">The best way to find and acquire new customers is to know who your current customers really are and find more like them. Vixer User Profile Reports will give you a detailed look at your current customers using your CRM data. You can then create new Lookalike audiences on that will allow you to create personalized video ads targeting these groups of people that are the most likely to engage with your ads.</div>
-        <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
   </div>
-  <div class="section" id="section3">
+  <div class="section" id="section5">
     <div class="background-overlay"></div>
-    <div class="row ">
-      <div class="col-md-12">
-        <div class="section-text">
-          <h1>dynamic videos</h1>
-          <div class="section-subtext">Increase your video ads performance by dynamically localizing, customizing and personalizing your video ads to match your different audience groups</div>
-          <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
+    <div class="col-md-12 section-text">
+      <%= image_tag "devices-icon.png", :class=> "devices-icon" %>
+      <h1>optimized for<br>social media</h1>
+      <div class="section-subtext">
+        <div class="subtext-format">
+          Create videos with aspect ratios that are optimized for the enviroments where they will be shown. Widescreen, square, or vertical, use the appropriate format that will engage your viewers the most.
         </div>
+      </div>
+      <%= link_to 'Get Started',  'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
+    </div>
+  </div>
+  <div class="section" id="section3">
+    <div class="col-md-7">
+      <%= image_tag "imac2.png", :class=> "imac" %>
+    </div>
+    <div class="col-md-5">
+      <div class="text-overlay">
+        <h1>guided<br>creation process</h1>
+        <div class="section-subtext">Creating a video ad or video content on Vixer simply pick your domain, your subject matter and your target audience. The application will guide you throught the pocess of creating your video within maximize performance within minutes.</div>
+        <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
   </div>
   <div class="section" id="section4">
-    <div class="col-md-6">
-      <div class="text-overlay">
-        <h1>guided<br>creation process</h1>
-        <div class="section-subtext">Creating a video ad or video content on Vixer simply pick your domain, your subject matter and your target audience. The application will guide you throught the pocess of creating your video within maximize performance within minutes.</div>
-        <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
-      </div>
-    </div>
-    <div class="section-subtext"></div>
-    <div class="col-md-6">
-      <%= image_tag "imac.png", :class=> "imac" %>
-    </div>
-  </div>
-  <div class="section" id="section5">
     <div class="background-overlay"></div>
     <div class="col-md-12">
       <div class="text-overlay">
         <h1>customer profile reporting</h1>
         <div class="section-subtext">Upload your CRM customer data to receive within minutes an extensive user profile report which includes demographic, geographic and psychographic data.</div>
-        <%= link_to 'Get Started', new_user_session_path, target: '_self', :class=> 'button-ghost' %>
+        <%= link_to 'Get Started', 'http://vixer.launchrock.com/', target: '_self', :class=> 'button-ghost' %>
       </div>
     </div>
   </div>

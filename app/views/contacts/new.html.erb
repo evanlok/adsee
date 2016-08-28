@@ -1,15 +1,15 @@
 <div id="contact">
 <div class="contact-form-box">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 left-column">
       <h2>Contact Us</h2>
       <div class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 right-column">
       <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
         <%= f.input :name, :required => true %>
         <%= f.input :email, :required => true %>
-        <%= f.input :message, :as => :text, :required => true, :input_html => {:rows => 7} %>
+        <%= f.input :message, :as => :text, :input_html => {:rows => 7} %>
         <div class= "hidden">
           <%= f.input :nickname, :hint => 'Leave this field blank!' %>
         </div>
