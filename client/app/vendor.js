@@ -6,6 +6,7 @@ require('lodash');
 require('angular');
 require('angular-resource');
 require('angular-animate');
+require('ngtouch');
 require('ng-fx');
 require('./../js/angular-ui-router');
 require('angular-ui-bootstrap');
