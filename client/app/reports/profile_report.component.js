@@ -13,10 +13,8 @@ class ProfileReportController {
     this.plotlyConfig = {showLink: false, displaylogo: false};
   }
 
-  $onChanges(changes) {
-    if (changes.profileReport) {
-      this.renderCharts();
-    }
+  $postLink() {
+    this.renderCharts();
   }
 
   renderCharts() {
