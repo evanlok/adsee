@@ -1,0 +1,27 @@
+<div class="profile-report-list">
+  <h1>Reports</h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="profileReport in $ctrl.profileReports">
+      <td><a ui-sref="profileReport({id: profileReport.id})">{{ profileReport.title }}</a></td>
+      <td>{{ profileReport.description }}</td>
+      <td>{{ profileReport.created_at | date }}</td>
+      <td>{{ profileReport.status }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage"
+                  ng-change="$ctrl.pageChanged()">
+  </uib-pagination>
+</div>

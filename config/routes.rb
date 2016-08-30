@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   resources :fonts, only: :index
   resources :songs, only: :index
   resources :filters, only: :index
-  resources :profile_reports, only: [:show, :create, :update]
+  resources :profile_reports, only: [:index, :show, :create, :update]
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
@@ -99,4 +99,5 @@ Rails.application.routes.draw do
   get '/scene_collections/:id/ad_config/:facebook_ad_id', to: 'home#angular'
   get '/scene_collections/:id/facebook_post', to: 'home#angular'
   get '/reports/:id', to: 'home#angular'
+  get '/reports', to: 'home#angular', as: :reports
 end

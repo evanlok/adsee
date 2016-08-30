@@ -7,9 +7,23 @@ class ProfileReportService {
         format: 'json'
       },
       {
+        query: {
+          method: 'GET',
+          isArray: true,
+          interceptor: {
+            response: function (response) {
+              response.resource.$httpHeaders = response.headers;
+              return response.resource;
+            }
+          }
+        },
         update: {method: 'PUT'}
       }
     );
+  }
+
+  query(params) {
+    return this.resource.query(params).$promise;
   }
 
   get(params) {

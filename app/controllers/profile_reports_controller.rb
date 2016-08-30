@@ -1,6 +1,17 @@
 class ProfileReportsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_profile_report, only: [:show, :update]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+
+  def index
+    @reports = policy_scope(ProfileReport).order(created_at: :desc)
+    @reports = paginate(@reports, per_page: 25)
+
+    respond_to do |format|
+      format.json
+    end
+  end
 
   def show
     respond_to do |format|

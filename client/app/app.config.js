@@ -83,12 +83,24 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
       template: '<summary scene-collection="$ctrl.sceneCollection"></summary>',
       parent: 'sceneCollectionWizard'
     })
+    .state('profileReports', {
+      url: '/reports?page',
+      template: '<profile-report-list profile-reports="$resolve.profileReports" current-page="{{ $resolve.page }}"></profile-report-list>',
+      resolve: {
+        profileReports: /* @ngInject */ function ($stateParams, profileReportService) {
+          return profileReportService.query({page: $stateParams.page});
+        },
+        page: /* @ngInject */ function ($stateParams) {
+          return $stateParams.page;
+        }
+      }
+    })
     .state('profileReport', {
-      url: '/reports/:report_id',
+      url: '/reports/:id',
       template: '<profile-report profile-report="$resolve.profileReport"></profile-report>',
       resolve: {
         profileReport: /* @ngInject */ function ($stateParams, profileReportService) {
-          return profileReportService.get({id: $stateParams.report_id});
+          return profileReportService.get({id: $stateParams.id});
         }
       }
     });
