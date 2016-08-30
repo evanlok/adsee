@@ -1,4 +1,6 @@
 class ProfileReport < ActiveRecord::Base
+  FileDownloadError = Class.new(StandardError)
+
   # Associations
   belongs_to :user
 
@@ -13,22 +15,10 @@ class ProfileReport < ActiveRecord::Base
 
   def open_file
     raise 'No report file available' unless file_url
-    tempfile = Tempfile.new('emails')
-    request = Typhoeus::Request.new(URI.encode(file_url))
-
-    request.on_body do |chunk|
-      tempfile.write(chunk)
-    end
-
-    request.on_complete do |_response|
-      tempfile.rewind
-    end
-
-    request.run
-
-    yield tempfile
+    file = FileDownloader.new(URI.encode(file_url)).save_to_temp_file
+    yield file
   ensure
-    tempfile.close!
+    file.close! if file
   end
 
   def emails_in_batches(batch_size = 1000)
