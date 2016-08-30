@@ -37,7 +37,7 @@ function TargetingDemographicsController($state, $q, facebookAdService) {
     var scPromise = vm.sceneCollectionWizard.reloadSceneCollection();
 
     $q.all([updatePromise, targetingUpdatePromise, scPromise]).then(function () {
-      $state.go('sceneEditor');
+      $state.go('themes');
     }).finally(function () {
       vm.saving = false;
     });
