@@ -14,7 +14,7 @@ class ProfileReport < ActiveRecord::Base
   def open_file
     raise 'No report file available' unless file_url
     tempfile = Tempfile.new('emails')
-    request = Typhoeus::Request.new(file_url)
+    request = Typhoeus::Request.new(URI.encode(file_url))
 
     request.on_body do |chunk|
       tempfile.write(chunk)
