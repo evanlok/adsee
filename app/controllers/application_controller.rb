@@ -27,8 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render_errors(errors)
+    render json: { errors: errors }, status: :unprocessable_entity
+  end
+
   def render_json_model_errors(record)
-    render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
+    render_errors(record.errors.full_messages)
   end
 
   def render_json_record_not_found(exception)

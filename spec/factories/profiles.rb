@@ -110,10 +110,7 @@ FactoryGirl.define do
   factory :profile_report do
     user
     title { Faker::Lorem.word }
-
-    trait :with_attachment do
-      file_path 'path/to/emails.csv'
-    end
+    file_path 'path/to/emails.csv'
   end
 
   factory :emails_csv, class: Rack::Test::UploadedFile do

@@ -11,12 +11,13 @@ class ProfileReportsController < ApplicationController
   def create
     @report = current_user.profile_reports.build(profile_report_params)
     authorize @report
+    result = Profiles::ProfileReportBuilder.new(@report, params[:ad_account_id]).create
 
     respond_to do |format|
-      if @report.save
+      if result.created?
         format.json { render :show, status: :created }
       else
-        format.json { render_json_model_errors(@report) }
+        format.json { render_errors(result.error_messages) }
       end
     end
   end
@@ -40,5 +41,17 @@ class ProfileReportsController < ApplicationController
 
   def profile_report_params
     params.require(:profile_report).permit(:title, :description, :file_path)
+  end
+
+  def create_custom_audience(report)
+    params = {
+      name: report.title,
+      description: report.description,
+      subtype: 'CUSTOM'
+    }
+
+    marketing_api_client = Facebook::MarketingAPIClient.for_user(current_user, params[:ad_account_id])
+    response = marketing_api_client.create_custom_audience(params)
+    report.update(custom_audience_id: response['id'])
   end
 end

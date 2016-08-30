@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825203731) do
+ActiveRecord::Schema.define(version: 20160829194456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,30 +120,31 @@ ActiveRecord::Schema.define(version: 20160825203731) do
   create_table "profile_reports", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "status",      default: 0
-    t.integer  "total",       default: 0
-    t.integer  "matched",     default: 0
-    t.integer  "male",        default: 0
-    t.integer  "female",      default: 0
-    t.integer  "name",        default: 0
-    t.integer  "age",         default: 0
-    t.integer  "gender",      default: 0
-    t.integer  "photo",       default: 0
-    t.integer  "linkedin",    default: 0
-    t.integer  "facebook",    default: 0
-    t.integer  "twitter",     default: 0
-    t.integer  "pinterest",   default: 0
-    t.integer  "location",    default: 0
-    t.integer  "company",     default: 0
-    t.integer  "interests",   default: 0
-    t.jsonb    "ages",        default: {}
-    t.jsonb    "age_ranges",  default: {}
-    t.jsonb    "states",      default: {}
-    t.jsonb    "countries",   default: {}
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "status",             default: 0
+    t.integer  "total",              default: 0
+    t.integer  "matched",            default: 0
+    t.integer  "male",               default: 0
+    t.integer  "female",             default: 0
+    t.integer  "name",               default: 0
+    t.integer  "age",                default: 0
+    t.integer  "gender",             default: 0
+    t.integer  "photo",              default: 0
+    t.integer  "linkedin",           default: 0
+    t.integer  "facebook",           default: 0
+    t.integer  "twitter",            default: 0
+    t.integer  "pinterest",          default: 0
+    t.integer  "location",           default: 0
+    t.integer  "company",            default: 0
+    t.integer  "interests",          default: 0
+    t.jsonb    "ages",               default: {}
+    t.jsonb    "age_ranges",         default: {}
+    t.jsonb    "states",             default: {}
+    t.jsonb    "countries",          default: {}
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.text     "file_path"
     t.integer  "user_id"
+    t.string   "custom_audience_id"
   end
 
   create_table "profiles", force: :cascade do |t|

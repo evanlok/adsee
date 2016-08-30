@@ -1,45 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe ProfileAnalysisReportWorker do
-  let(:report) { create(:profile_report, :with_attachment) }
-  let(:email) { Faker::Internet.email }
-  let(:email_io) { StringIO.new(email) }
-  subject { ProfileAnalysisReportWorker.new(report.id) }
+  let(:report) { create(:profile_report) }
+  let(:emails) { Faker::Internet.email }
+  subject { ProfileAnalysisReportWorker.new }
 
   describe '#perform' do
-    before do
-      expect(subject).to receive(:open_email_file).and_yield(email_io)
-    end
+    context 'for a single batch' do
+      before do
+        expect_any_instance_of(ProfileReport).to receive(:emails_in_batches).and_yield(emails)
+      end
 
-    it 'processes batch of emails' do
-      expect(subject).to receive(:process_batch).with([email])
-      subject.perform
+      it 'processes batch of emails' do
+        expect(subject).to receive(:process_batch).with(emails)
+        subject.perform(report.id)
+      end
+
+      it 'sets report status to processed' do
+        subject.perform(report.id)
+        expect(report.reload.status).to eq('processed')
+      end
     end
 
     context 'for large numbers of emails' do
       let(:emails) { Array.new(6) { Faker::Internet.email } }
-      let(:email_io) { StringIO.new(emails.join("\n")) }
 
       before do
         stub_const('ProfileAnalysisReportWorker::BATCH_SIZE', 5)
+        expect_any_instance_of(ProfileReport).to receive(:emails_in_batches)
+                                                   .and_yield(emails.first(5)).and_yield([emails.last])
       end
 
       it 'processes emails in multiple batches' do
         expect(subject).to receive(:process_batch).twice
-        subject.perform
+        subject.perform(report.id)
       end
 
       it 'merges batch results together' do
         aggregate_results = double(:results, as_json: {})
         allow_any_instance_of(Profiles::AggregateCalculator).to receive(:run) { aggregate_results }
-        expect(subject.instance_variable_get(:@aggregates)).to receive(:merge!).with(aggregate_results).twice
-        subject.perform
+        expect_any_instance_of(Profiles::ReportAggregates).to receive(:merge!).with(aggregate_results).twice
+        subject.perform(report.id)
       end
-    end
-
-    it 'sets report status to processed' do
-      subject.perform
-      expect(report.reload.status).to eq('processed')
     end
   end
 end

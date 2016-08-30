@@ -61,6 +61,7 @@ class AudienceController {
     this.saving = true;
 
     let data = $event.profileReport;
+    data.ad_account_id = $event.adAccountId;
     data.scene_collection_id = this.$state.params.sceneCollectionId;
     let profileReportPromise = this.profileReportService.save({}, data);
 

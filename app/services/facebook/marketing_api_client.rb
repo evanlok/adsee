@@ -8,7 +8,7 @@ module Facebook
     end
 
     def self.for_user(user, ad_account_id)
-      new(ad_account_id, user.facebook_oauth_token)
+      new(user.facebook_oauth_token, ad_account_id)
     end
 
     # https://developers.facebook.com/docs/marketing-api/reference/ad-campaign-group
@@ -78,6 +78,14 @@ module Facebook
       else
         raise ArgumentError, 'video_or_url must be a File or String'
       end
+    end
+
+    def create_custom_audience(params)
+      client.put_connections(ad_account_id, 'customaudiences', params)
+    end
+
+    def add_users_to_custom_audience(custom_audience_id, params)
+      client.put_connections(custom_audience_id, 'users', params)
     end
 
     private
