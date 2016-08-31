@@ -3,6 +3,16 @@ var webpack = require('webpack');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+var jsyaml = require('js-yaml');
+var fs = require('fs');
+var _ = require('lodash');
+
+// Load ENV variables from application.yml
+var doc = jsyaml.safeLoad(fs.readFileSync(path.join(__dirname, '..', 'config', 'application.yml')));
+
+_.each(doc, function (value, key) {
+  process.env[key] = value;
+});
 
 module.exports = {
   // the base path which will be used to resolve entry points
@@ -30,6 +40,10 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.CDN_URL': JSON.stringify(process.env.CDN_URL || '/')
+    }),
     new webpack.ProvidePlugin({
       _: 'lodash'
     }),
