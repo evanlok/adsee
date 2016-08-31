@@ -118,14 +118,14 @@ ActiveRecord::Schema.define(version: 20160829194456) do
   end
 
   create_table "profile_reports", force: :cascade do |t|
-    t.string   "title"
+    t.integer  "name",               default: 0
     t.text     "description"
+    t.integer  "user_id"
     t.integer  "status",             default: 0
     t.integer  "total",              default: 0
     t.integer  "matched",            default: 0
     t.integer  "male",               default: 0
     t.integer  "female",             default: 0
-    t.integer  "name",               default: 0
     t.integer  "age",                default: 0
     t.integer  "gender",             default: 0
     t.integer  "photo",              default: 0
@@ -143,7 +143,6 @@ ActiveRecord::Schema.define(version: 20160829194456) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.text     "file_path"
-    t.integer  "user_id"
     t.string   "custom_audience_id"
   end
 
