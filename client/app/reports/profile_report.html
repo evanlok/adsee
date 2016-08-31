@@ -6,6 +6,24 @@
   </div>
 
   <div class="col-md-4">
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Total</td>
+        <td>Matched</td>
+        <td>Match Rate</td>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>{{ $ctrl.profileReport.total }}</td>
+        <td>{{ $ctrl.profileReport.matched }}</td>
+        <td>{{ $ctrl.profileReport.matched / $ctrl.profileReport.total * 100 | number }}%</td>
+      </tr>
+      </tbody>
+    </table>
+
     <table class="table table-striped">
       <thead>
       <th>Field</th>
