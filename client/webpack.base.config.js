@@ -30,6 +30,10 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.CDN_URL': JSON.stringify(process.env.CDN_URL || '/')
+    }),
     new webpack.ProvidePlugin({
       _: 'lodash'
     }),

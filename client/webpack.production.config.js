@@ -1,9 +1,10 @@
 var webpack = require('webpack');
 var config = require('./webpack.base.config');
+var url = require('url');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // Use this setting when compiling assets for production
-config.output.publicPath = '/assets/webpack/';
+config.output.publicPath = url.resolve(process.env.CDN_URL, '/assets/webpack/');
 
 // Add hash to output file
 config.output.filename = '[name]-bundle-[chunkhash].js';
