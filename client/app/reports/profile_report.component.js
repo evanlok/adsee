@@ -19,8 +19,11 @@ class ProfileReportController {
 
   renderCharts() {
     this.renderMatchBarChart();
+    this.renderAgeRangesColumnChart();
+    this.renderGenerationsColumnChart();
     this.renderUSHeatmap();
     this.renderWorldHeatmap();
+    this.renderGenderPieChart();
   }
 
   renderMatchBarChart() {
@@ -40,6 +43,69 @@ class ProfileReportController {
       };
 
       Plotly.newPlot('matches-bar-chart', data, layout, this.plotlyConfig);
+    });
+  }
+
+  renderAgeRangesColumnChart() {
+    this.plotlyService.load((Plotly) => {
+      let keys = _.keys(this.profileReport.age_ranges).sort();
+      let values = _.map(keys, key => {
+        return this.profileReport.age_ranges[key];
+      });
+
+      let data = [
+        {
+          x: keys,
+          y: values,
+          type: 'bar'
+        }
+      ];
+
+      let layout = {
+        title: 'Age Ranges',
+      };
+
+      Plotly.newPlot('age-range-column-chart', data, layout, this.plotlyConfig);
+    });
+  }
+
+  renderGenerationsColumnChart() {
+    this.plotlyService.load((Plotly) => {
+      let buckets = {
+        'Gen Z': 0,
+        'Millennial': 0,
+        'Gen X': 0,
+        'Baby Boomer': 0,
+        'Silent Generation': 0
+      };
+
+      _.each(this.profileReport.ages, (v, k) => {
+        if (_.inRange(k, 0, 21)) {
+          buckets['Gen Z'] += v;
+        } else if (_.inRange(k, 21, 40)) {
+          buckets['Millennial'] += v;
+        } else if (_.inRange(k, 40, 52)) {
+          buckets['Gen X'] += v;
+        } else if (_.inRange(k, 52, 71)) {
+          buckets['Baby Boomer'] += v;
+        } else if (_.inRange(k, 71, 150)) {
+          buckets['Silent Generation'] += v;
+        }
+      });
+
+      let data = [
+        {
+          x: _.keys(buckets),
+          y: _.values(buckets),
+          type: 'bar'
+        }
+      ];
+
+      let layout = {
+        title: 'Generation',
+      };
+
+      Plotly.newPlot('generation-column-chart', data, layout, this.plotlyConfig);
     });
   }
 
@@ -95,6 +161,24 @@ class ProfileReportController {
       };
 
       Plotly.plot('world-heatmap', data, layout, this.plotlyConfig);
+    });
+  }
+
+  renderGenderPieChart() {
+    this.plotlyService.load((Plotly) => {
+      let data = [
+        {
+          labels: ['Male', 'Female'],
+          values: [this.profileReport.male, this.profileReport.female],
+          type: 'pie'
+        }
+      ];
+
+      let layout = {
+        title: 'Gender',
+      };
+
+      Plotly.newPlot('gender-pie-chart', data, layout, this.plotlyConfig);
     });
   }
 

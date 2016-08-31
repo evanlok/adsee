@@ -17,10 +17,20 @@
       <tr ng-repeat="attrName in $ctrl.tableAttributes">
         <td>{{ attrName | titlecase }}</td>
         <td>{{ $ctrl.profileReport[attrName] }}</td>
-        <td>{{ $ctrl.matchPercentage(attrName) | number }}</td>
+        <td>{{ $ctrl.matchPercentage(attrName) | number }}%</td>
       </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="age-range-column-chart"></div>
+  </div>
+
+  <div class="col-md-6">
+    <div id="generation-column-chart"></div>
   </div>
 </div>
 
@@ -31,5 +41,11 @@
 
   <div class="col-md-6">
     <div id="world-heatmap"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div id="gender-pie-chart"></div>
   </div>
 </div>
