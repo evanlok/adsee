@@ -131,19 +131,22 @@
 // Homepage
 #fullpage, #content-creators, #enterprise, #small-business, #advert-custom-audience, #gaming-page {
   height: 100%;
-  @media screen and (max-width: 991px) { 
-    height: auto;
-  }
   .home-nav {
     position: relative;
     z-index: 1000;
     height: 50px;
     margin-top: 0px;
+    @media screen and (max-width: 700px) { 
+      text-align: center;;
+    }
     .home-nav-list {
       position: absolute;
       right: 0px;
       padding: 20px;
       float: right;
+      @media screen and (max-width: 700px) { 
+        display: none;
+      }
       li {
         display: inline-block;
         vertical-align: middle;
@@ -174,6 +177,9 @@
   .vixer-nav-logo {
     width: 210px;
     padding: 20px;
+    @media screen and (max-width: 700px) { 
+      width: 80%;
+    }
   }
   .section {
     height: 100%;
@@ -182,6 +188,9 @@
     color: white;
     position: relative;
     overflow: hidden;
+    @media screen and (max-width: 700px) { 
+      height: auto;
+    }
     ul {
       padding-left: 18px;
       font-weight: 700;
@@ -269,6 +278,11 @@
     transform: translateY(-50%);
     display: inline-block;
     width: 100%;
+    @media screen and (max-width: 991px) { 
+      top: 0px;
+      transform: none;
+      display: block;
+    }
   }
   .section-subtext {
     display: block;
@@ -283,6 +297,9 @@
     width: 19%;
     vertical-align: top;
     font-weight: 700;
+    @media screen and (max-width: 700px) { 
+      font-size: 12px;
+    }
     img {
       width: 50%;
     }
@@ -432,7 +449,8 @@
     background-size: cover;
     height: 100%;
     @media screen and (max-width: 991px) { 
-      height: 100vh;
+      height: auto;
+      padding-bottom: 40px;
     }
     .text-overlay {
       padding: 50px;
@@ -454,6 +472,9 @@
     .for {
       font-size: 2vw;
       font-weight: 700;
+      @media screen and (max-width: 700px) { 
+        font-size: 20px;
+      }
     }
     h1 {
       margin-top: -2%;
@@ -469,6 +490,7 @@
     background-size: cover;
     @media screen and (max-width: 991px) { 
       height: auto;
+      padding-bottom: 40px;
     }
     .background-overlay {
       opacity: 0.45;
@@ -529,6 +551,9 @@
     .for {
       font-size: 2vw;
       font-weight: 700;
+      @media screen and (max-width: 700px) { 
+        font-size: 20px;
+      }
     }
     h1 {
       margin-top: -3%;
@@ -541,6 +566,8 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    @media screen and (max-width: 991px) { 
+      height: auto;    }
     .background-overlay {
       opacity: 0.45;
     }
@@ -602,6 +629,9 @@
     .for {
       font-size: 2vw;
       font-weight: 700;
+      @media screen and (max-width: 700px) { 
+        font-size: 20px;
+      }
     }
     h1 {
       margin-top: -3%;
@@ -640,6 +670,9 @@
     .for {
       font-size: 2vw;
       font-weight: 700;
+      @media screen and (max-width: 700px) { 
+        font-size: 20px;
+      }
     }
     .section-subtext {
       font-size: 16px;
@@ -692,6 +725,9 @@
     }
     .feature-title {
       font-size: 18px;
+      @media screen and (max-width: 700px) { 
+        font-size: 11px;
+      }
     }
   }
 }
@@ -708,6 +744,9 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    @media screen and (max-width: 991px) { 
+      height:auto;
+    }
     .her-img {
       width: 100%;
       margin-top: 100px;
@@ -718,6 +757,10 @@
       position: absolute;
       bottom: 0px;
       z-index: 100;
+      @media screen and (max-width: 991px) { 
+        position: relative;
+        margin-top: 40px;
+      }
     }
     .section-subtext {
       position: relative;
@@ -759,12 +802,18 @@
       right: -100px;
       z-index: 100;
       position: absolute;
+      @media screen and (max-width: 991px) { 
+        display: none;
+      }
     }
     .pantone {
       position: absolute;
       z-index: 100;
       bottom: -30px;
       right: 10px;
+      @media screen and (max-width: 991px) { 
+        display: none;
+      }
     }
   }
   #section3 {
@@ -773,12 +822,19 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    @media screen and (max-width: 991px) { 
+      height: auto;
+    }
     .section-text {
       position: relative;
       margin: 25% auto 0px;
       z-index: 1;
       width: 90%;
       text-align: center;
+      @media screen and (max-width: 991px) { 
+        padding-top: 25%;
+        padding-bottom: 25%;
+      }
     }
     .section-subtext {
       max-width: 700px;
@@ -793,14 +849,27 @@
     background-color: #d3d3d3;
     overflow: hidden;
     color: $color-9;
+    @media screen and (max-width: 991px) { 
+      height: auto;
+    }
     .text-overlay {
       margin-top: 20%;
       padding: 30px;
       text-align: right;
+      @media screen and (max-width: 991px) { 
+        margin-top: 20px;
+        margin-bottom: 50px;
+        text-align: center;
+        position: relative;
+      }
     }
     .imac {
       margin-top: 40px;
       margin-left: -30px;
+      @media screen and (max-width: 991px) { 
+        width: 80%;
+        margin-left: 10%;
+      }
     }
     .button-ghost {
       border-color: $color-9;
@@ -823,6 +892,9 @@
       position: relative;
       z-index: 100;
       padding: 50px 30px 30px;
+      @media screen and (max-width: 700px) { 
+        text-align: center;
+      }
     }
     .section-subtext {
       max-width: 700px;
@@ -851,6 +923,10 @@
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    @media screen and (max-width: 700px) { 
+      height: auto;
+      padding-top: 20%;
+    }
     .row, .col-md-12 {
       height: 100%;
     }
@@ -862,6 +938,12 @@
       text-align: right;
       right: 0px;
       bottom: 40px;
+      @media screen and (max-width: 991px) { 
+        margin-top: 70px;
+        margin-bottom: 50px;
+        position: relative;
+        text-align: center;
+      }
     }
     .section-subtext {
       max-width: 700px;
@@ -877,6 +959,9 @@
       text-align: right;
       img {
         width: 80%;
+      }
+      @media screen and (max-width: 991px) { 
+        text-align: center;
       }
     }
     .button-ghost {
@@ -902,6 +987,11 @@
     .section-text {
       margin-top: 100px;
       padding: 20px 40px 20px 20px;
+      @media screen and (max-width: 991px) { 
+        margin-top: 0px;
+        padding: 40px;
+        margin-bottom: 50px;
+      }
     }
     .button-ghost {
       border-color: white;
@@ -916,10 +1006,18 @@
       margin-top: 20%;
       padding: 30px;
       text-align: right;
+      @media screen and (max-width: 991px) { 
+        margin-top: 0px;
+        text-align: center;
+      }
     }
     .imac {
       margin-left: -30px;
       margin-top: 40px;
+      @media screen and (max-width: 991px) { 
+        width: 100%;
+        margin-left: -10%;
+      }
     }
     .button-ghost {
       border-color: $color-9;
@@ -1019,6 +1117,10 @@
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    @media screen and (max-width: 700px) { 
+      height: auto;
+      padding-top: 20%;
+    }
     .row, .col-md-12 {
       height: 100%;
     }
@@ -1030,6 +1132,13 @@
       text-align: right;
       right: 0px;
       bottom: 50px;
+      @media screen and (max-width: 991px) { 
+        margin-top: 70px;
+        margin-bottom: 50px;
+        position: relative;
+        text-align: center;
+      }
+
     }
     .section-subtext {
       max-width: 700px;
@@ -1045,6 +1154,12 @@
     }
     img {
       position: absolute;
+      @media screen and (max-width: 991px) { 
+        position: relative;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
     }
   }
   #section2 {
@@ -1060,6 +1175,11 @@
     .section-text {
       margin-top: 100px;
       padding: 20px 40px 20px 20px;
+      @media screen and (max-width: 991px) { 
+        margin-top: 0px;
+        padding: 40px;
+        margin-bottom: 50px;
+      }
     }
     .button-ghost {
       border-color: white;
@@ -1103,12 +1223,18 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    @media screen and (max-width: 991px) { 
+      height: auto    
+    }
     .section-text {
       position: relative;
       margin: 30% auto 0px;
       z-index: 1;
       max-width: 800px;
       text-align: center;
+      @media screen and (max-width: 991px) { 
+        margin-bottom: 70px;
+      }
     }
     .button-ghost {
       border-color: white;
@@ -1157,6 +1283,9 @@
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+    @media screen and (max-width: 991px) { 
+      height: 100vh
+    }
     .row, .col-md-12 {
       height: 100%;
     }
