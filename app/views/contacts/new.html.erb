@@ -1,23 +1,27 @@
-<div id="contact">
-<div class="contact-form-box">
-  <div class="row">
-    <div class="col-md-6 left-column">
-      <h2>Contact Us</h2>
-      <div class="">Send us a note and we'll get back to you really soon.</div>
-    </div>
-    <div class="col-md-6 right-column">
-      <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-        <%= f.input :name, :required => true %>
-        <%= f.input :email, :required => true %>
-        <%= f.input :message, :as => :text, :input_html => {:rows => 7} %>
-        <div class= "hidden">
-          <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+<div id="fullpage">
+  <%= render 'layouts/marketing_nav' %>
+
+  <div id="contact">
+    <div class="contact-form-box">
+      <div class="row">
+        <div class="col-md-6 left-column">
+          <h2>Contact Us</h2>
+          <div>Send us a note and we'll get back to you really soon.</div>
         </div>
-        <div>
-          <%= f.button :submit, 'Send message', :class=> "button" %>
+        <div class="col-md-6 right-column">
+          <%= simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f| %>
+              <%= f.input :name, :required => true %>
+              <%= f.input :email, :required => true %>
+              <%= f.input :message, :as => :text, :input_html => { :rows => 7 } %>
+              <div class="hidden">
+                <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+              </div>
+              <div>
+                <%= f.button :submit, 'Send message', :class => "button" %>
+              </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

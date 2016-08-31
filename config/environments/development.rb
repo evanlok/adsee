@@ -46,4 +46,6 @@ Rails.application.configure do
 
   # Ruby buffers STDOUT so we need this in order for logging to work in foreman
   $stdout.sync = true
+
+  config.action_mailer.delivery_method = :letter_opener
 end

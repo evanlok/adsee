@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  layout 'marketing'
+
   def new
     @contact = Contact.new
   end
@@ -9,6 +11,7 @@ class ContactsController < ApplicationController
 
     if @contact.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
+      redirect_to root_url
     else
       flash.now[:error] = 'Cannot send message.'
       render :new

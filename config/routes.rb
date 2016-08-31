@@ -43,9 +43,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/contacts',     to: 'contacts#new',     via: 'get'
-  resources "contacts", only: [:new, :create]
-
   resources :scenes, only: [:index]
   resources :images, only: [:index, :create, :destroy]
   resources :video_clips, only: [:index, :create, :destroy]
@@ -55,6 +52,9 @@ Rails.application.routes.draw do
   resources :songs, only: :index
   resources :filters, only: :index
   resources :profile_reports, only: [:index, :show, :create, :update]
+
+  get '/contact', to: 'contacts#new', as: :contact
+  resources 'contacts', only: [:new, :create]
 
   post '/hal_callbacks/:video_job_id', to: 'hal_callbacks#create', as: :video_callback
   post '/hal_callbacks/:video_job_id/stream', to: 'hal_callbacks#stream', as: :stream_callback
