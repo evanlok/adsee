@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829194456) do
+ActiveRecord::Schema.define(version: 20160901181112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 20160829194456) do
     t.string   "call_to_action_link"
     t.string   "call_to_action_link_caption"
     t.boolean  "advanced",                    default: false
+    t.string   "facebook_campaign_id"
+    t.string   "facebook_ad_set_id"
+    t.string   "facebook_ad_creative_id"
+    t.string   "facebook_video_id"
   end
 
   create_table "facebook_targeting_specs", force: :cascade do |t|
@@ -118,14 +122,14 @@ ActiveRecord::Schema.define(version: 20160829194456) do
   end
 
   create_table "profile_reports", force: :cascade do |t|
-    t.integer  "name",               default: 0
+    t.string   "title"
     t.text     "description"
-    t.integer  "user_id"
     t.integer  "status",             default: 0
     t.integer  "total",              default: 0
     t.integer  "matched",            default: 0
     t.integer  "male",               default: 0
     t.integer  "female",             default: 0
+    t.integer  "name",               default: 0
     t.integer  "age",                default: 0
     t.integer  "gender",             default: 0
     t.integer  "photo",              default: 0
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(version: 20160829194456) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.text     "file_path"
+    t.integer  "user_id"
     t.string   "custom_audience_id"
   end
 
