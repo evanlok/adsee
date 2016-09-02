@@ -2,10 +2,9 @@ import templateUrl from './audience.html';
 
 class AudienceController {
   /* @ngInject */
-  constructor($state, $q, ezfb, profileReportService, facebookAdService) {
+  constructor($state, $q, profileReportService, facebookAdService) {
     this.$state = $state;
     this.$q = $q;
-    this.ezfb = ezfb;
     this.profileReportService = profileReportService;
     this.facebookAdService = facebookAdService;
   }

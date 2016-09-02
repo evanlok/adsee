@@ -1,0 +1,119 @@
+<div class="ad-insights" style="background-color: #ffffff">
+  <h1>Ad Insights</h1>
+
+  <div ng-if="$ctrl.loading" class="text-center">
+    <i class="fa fa-spin fa-spinner"></i>
+  </div>
+
+  <h2>Performance</h2>
+
+  <table class="table" ng-if="!$ctrl.loading">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Impressions</th>
+      <th>Video Views</th>
+      <th>Reach</th>
+      <th>Frequency</th>
+      <th>Cost Per View</th>
+      <th>Amount Spent</th>
+      <th>Relevance Score</th>
+      <th>Clicks</th>
+      <th>CTR</th>
+      <th>CPC (All)</th>
+      <th>CPM</th>
+      <th>CPP (Cost Per 1000 people reached)</th>
+      <th>Link Clicks</th>
+      <th>CPC (Link Clicks)</th>
+      <th>CTR (Link Clicks)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="data in $ctrl.insightsData">
+      <td><span ng-if="!data.summary">{{ data.date_start }}</span></td>
+      <td>{{ data.impressions | number }}</td>
+      <td>{{ $ctrl.valueForActionType(data, 'video_view') | number }}</td>
+      <td>{{ data.reach | number }}</td>
+      <td>{{ data.frequency | number: 3 }}</td>
+      <td>${{ $ctrl.costPerActionType(data, 'video_view') | number: 2 }}</td>
+      <td>${{ data.spend | number: 2 }}</td>
+      <td>{{ data.relevance_score.score }}</td>
+      <td>{{ data.clicks | number }}</td>
+      <td>{{ data.ctr | number: 4 }}%</td>
+      <td>${{ data.cpc | number: 2 }}</td>
+      <td>${{ data.cpm | number: 2 }}</td>
+      <td>${{ data.cpp | number: 2 }}</td>
+      <td>{{ data.inline_link_clicks | number }}</td>
+      <td>${{ $ctrl.costPerActionType(data, 'link_click') | number: 2 }}</td>
+      <td>{{ data.inline_link_click_ctr | number: 4 }}%</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Engagement</h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>People taking action</th>
+      <th>Likes</th>
+      <th>Comments</th>
+      <th>Shares</th>
+      <th>Link clicks</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="data in $ctrl.insightsData">
+      <td><span ng-if="!data.summary">{{ data.date_start }}</span></td>
+      <td>{{ data.total_unique_actions | number }}</td>
+      <td>{{ $ctrl.valueForActionType(data, 'post_like') | number }}</td>
+      <td>{{ $ctrl.valueForActionType(data, 'comment') | number }}</td>
+      <td>{{ $ctrl.valueForActionType(data, 'post') | number }}</td>
+      <td>{{ $ctrl.valueForActionType(data, 'link_click') | number }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Video Engagement</h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Views</th>
+      <th>Cost Per View</th>
+      <th>10 Second Views</th>
+      <th>Cost Per 10 Second View</th>
+      <th>Reach</th>
+      <th>Average Seconds Watched</th>
+      <th>Average % of Video Viewed</th>
+      <th>Video Views to 25%</th>
+      <th>Video Views to 50%</th>
+      <th>Video Views to 75%</th>
+      <th>Video Views to 95%</th>
+      <th>Video Views to 100%</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="data in $ctrl.insightsData">
+      <td><span ng-if="!data.summary">{{ data.date_start }}</span></td>
+      <td>{{ $ctrl.valueForActionType(data, 'video_view') | number }}</td>
+      <td>${{ $ctrl.costPerActionType(data, 'video_view') | number: 2 }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_10_sec_watched_actions') | number }}</td>
+      <td>${{ $ctrl.valueForVideoViews(data, 'cost_per_10_sec_video_view') | number: 2 }}</td>
+      <td>{{ data.reach | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_avg_sec_watched_actions') | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_avg_pct_watched_actions') | number: 2 }}%</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_p25_watched_actions') | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_p50_watched_actions') | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_p75_watched_actions') | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_p95_watched_actions') | number }}</td>
+      <td>{{ $ctrl.valueForVideoViews(data, 'video_p100_watched_actions') | number }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

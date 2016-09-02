@@ -103,4 +103,5 @@ Rails.application.routes.draw do
   get '/scene_collections/:id/facebook_post', to: 'home#angular'
   get '/reports/:id', to: 'home#angular'
   get '/reports', to: 'home#angular', as: :reports
+  get '/ad_insights/:id', to: 'home#angular'
 end

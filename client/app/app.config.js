@@ -103,6 +103,15 @@ var config = /*@ngInject*/ function ($stateProvider, $urlRouterProvider, $locati
           return profileReportService.get({id: $stateParams.id});
         }
       }
+    })
+    .state('adInsights', {
+      url: '/ad_insights/:id',
+      template: '<ad-insights facebook-ad="$resolve.facebookAd"></ad-insights>',
+      resolve: {
+        facebookAd: /* @ngInject */ function ($stateParams, facebookAdService) {
+          return facebookAdService.get({id: $stateParams.id});
+        }
+      }
     });
 
   $locationProvider.html5Mode(true);
