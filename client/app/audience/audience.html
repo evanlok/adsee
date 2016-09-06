@@ -7,17 +7,18 @@
 
   <div ng-if="$ctrl.loaded">
     <div ng-if="!$ctrl.audienceOption" class="text-center">
-      <div>
-        <button type="button" class="btn btn-primary" ng-click="$ctrl.newAudience()">New Audience</button>
+
+      <div class="">
+        <button type="button" class="button" ng-click="$ctrl.newAudience()">New Audience</button>
       </div>
 
-      <div>
-        <button type="button" class="btn btn-info" ng-click="$ctrl.existingAudience()">Existing Audience
+      <div class="">
+        <button type="button" class="button-ghost" ng-click="$ctrl.existingAudience()">Existing Audience
         </button>
       </div>
 
-      <div>
-        <button type="button" class="btn btn-default" ng-click="$ctrl.skip()">Skip</button>
+      <div class="">
+        <button type="button" class="button-ghost" ng-click="$ctrl.skip()">Skip</button>
       </div>
     </div>
 
