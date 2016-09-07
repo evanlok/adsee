@@ -1,36 +1,34 @@
 <div class="email-uploader">
   <h1>Upload your clients</h1>
 
+  <div class="email-list-description">
+    Upload your email list or select an existing upload to view a detailed report you can then use to adjust to your targeting settings.
+  </div>
+
   <div class="text-center" ng-if="!$ctrl.loaded">
     <i class="fa fa-spin fa-spinner"></i>
   </div>
 
   <div ng-if="$ctrl.loaded">
-    <div ng-if="!$ctrl.audienceOption" class="text-center">
+    <div ng-if="!$ctrl.audienceOption" class="">
 
-      <div class="">
-        <button type="button" class="button" ng-click="$ctrl.newAudience()">New Audience</button>
-      </div>
-
-      <div class="">
-        <button type="button" class="button-ghost" ng-click="$ctrl.existingAudience()">Existing Audience
+      <div class="button-box">
+        <button type="button" class="button" ng-click="$ctrl.newAudience()"><i class=" fa fa-plus"></i> New Audience</button>
+        <button type="button" class="button-ghost" ng-click="$ctrl.existingAudience()"><i class=" fa fa-users"></i> Existing Audience
         </button>
-      </div>
-
-      <div class="">
-        <button type="button" class="button-ghost" ng-click="$ctrl.skip()">Skip</button>
+        <button type="button" class="button-ghost skip-button" ng-click="$ctrl.skip()">Skip this step</button>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6 col-md-offset-3" ng-if="$ctrl.audienceOption === 'new'">
+      <div class="col-md-6" ng-if="$ctrl.audienceOption === 'new'">
         <email-uploader-form profile-report="$ctrl.profileReport" ad-account-id="{{ $ctrl.adAccountId }}"
                              saving="$ctrl.saving"
                              on-save="$ctrl.saveNewAudience($event)" on-cancel="$ctrl.cancel()">
         </email-uploader-form>
       </div>
 
-      <div class="col-md-6 col-md-offset-3" ng-if="$ctrl.audienceOption === 'existing'">
+      <div class="col-md-6" ng-if="$ctrl.audienceOption === 'existing'">
         <existing-audience-form ad-account-id="{{ $ctrl.adAccountId }}"
                            existing-custom-audiences="$ctrl.facebookAd.targeting.custom_audiences"
                            saving="$ctrl.saving"

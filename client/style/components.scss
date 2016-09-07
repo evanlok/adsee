@@ -3831,6 +3831,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   border-radius: 15px;
   display: block;
   position: relative;
+  input[type="text"], select, textarea {
+    border-color: $color-10;
+  }
+  .email-list-description {
+    margin: 20px 0px;
+  }
+  .button {
+    margin-right: 10px;
+  }
+  .skip-button {
+    float: right;
+  }
+}
+
+.email-uploader-form {
+  .button {
+    width: 150px;
+  }
+}
+
+.existing-audience {
+  input[type="text"], select, .form-control {
+    border-color: $color-10;
+  }
+  input {
+    font-size: 14px;
+    padding-left: 12px;
+  }
+  .button {
+    width: 150px;
+  }
 }
 
 //targeting page 
