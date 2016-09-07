@@ -1,5 +1,12 @@
 <form class="existing-audience">
   <div class="form-group">
+
+    <h1>Choose existing audience</h1>
+
+    <div class="email-list-description">
+      Pick a previously created custom audience to target your video ad.
+    </div>
+
     <label for="ad-account">Ad Account</label>
 
     <select class="form-control" ng-model="$ctrl.adAccountId" id="ad-account" ng-change="$ctrl.fetchCustomAudiences()"

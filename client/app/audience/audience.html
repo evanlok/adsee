@@ -1,9 +1,4 @@
 <div class="email-uploader">
-  <h1>Upload your clients</h1>
-
-  <div class="email-list-description">
-    Upload your email list or select an existing upload to view a detailed report you can then use to adjust to your targeting settings.
-  </div>
 
   <div class="text-center" ng-if="!$ctrl.loaded">
     <i class="fa fa-spin fa-spinner"></i>
@@ -11,6 +6,12 @@
 
   <div ng-if="$ctrl.loaded">
     <div ng-if="!$ctrl.audienceOption" class="">
+
+    <h1>Custom Audience</h1>
+
+    <div class="email-list-description">
+      Create a new custom audience using an email list from your CRM data or pick an existing custom audience.
+    </div>
 
       <div class="button-box">
         <button type="button" class="button" ng-click="$ctrl.newAudience()"><i class=" fa fa-plus"></i> New Audience</button>
