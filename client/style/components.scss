@@ -4352,6 +4352,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin: 30px auto;
   }
 }
+.profile-report-list, .report-page {
+  background-color: white;
+  min-height: 100vh;
+  padding: 30px;
+  margin-top: 50px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
 .publish-modal-padding {
   margin-top: 200px;
   color: white;
@@ -4364,6 +4372,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin-bottom: 10px;
     font-weight: 700;
     text-transform: uppercase;    
+  }
+  a {
+    color: $color-3;
   }
   .square:hover {
     // img {
