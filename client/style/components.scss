@@ -3820,6 +3820,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 
+//email uploader
+
+.email-uploader {
+  padding: 30px 60px 60px;
+  margin-left: 140px;
+  margin-top: 50px;
+  background-color: $color-3;
+  min-height: 100%;
+  border-radius: 15px;
+  display: block;
+  position: relative;
+}
+
 //targeting page 
 
 .targeting {
