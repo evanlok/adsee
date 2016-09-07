@@ -2,7 +2,8 @@
   <h1>Profile Report</h1>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
+
       <div class="summary">
         <div class="summary-section">
           <div class="summary-title">Total</div>
@@ -17,13 +18,21 @@
           <div class="summary-number">{{ $ctrl.profileReport.matched / $ctrl.profileReport.total * 100 | number }}%</div>
         </div>
       </div>
+      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="pie-chart">
+        <div id="gender-pie-chart"></div>
+      </div>
+
       <div id="matches-bar-chart"></div>
     </div>
 
     <div class="col-md-4">
-      <div class="pie-chart">
-        <div id="gender-pie-chart"></div>
-      </div>
 
       <table class="table table-striped">
         <thead>
