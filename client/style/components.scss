@@ -3434,6 +3434,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   height: 100%;
   border-radius: 15px;
   position: relative;
+  p {
+    margin-top: 10px;
+  }
+  .button {
+    font-weight: 700;
+    font-size: 18px;
+    width: 200px;
+    text-align: center;
+    margin: 20px 0px 30px;
+  }
+  .theme-list-description {
+    margin: 20px 0px;
+  }
   .theme-preview-expand {
     background-color: hsl(210, 10.3448%, 22.7451%);
   }
@@ -4372,13 +4385,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   h1 {
     margin-bottom: 30px;
   }
+  .table {
+    margin-top: 30px;
+  }
   .summary {
     display: block;
+    margin-bottom: 30px;
   }
   .summary-section {
     width: 30%;
     padding: 30px 0px;
-    margin-right: 2.5%;
+    margin-right: 3%;
     border: 1px solid $color-9;
     text-align: center;
     display: inline-block;

@@ -7,12 +7,14 @@
     <p>{{ $ctrl.themeVariant.theme.description }}</p>
 
     <div>
-      <a ui-sref="sceneEditor" class="btn btn-primary">Next</a>
+      <a ui-sref="sceneEditor" class="button">Next</a>
     </div>
   </div>
 
   <div ng-if="!$ctrl.sceneCollection.theme_variant_id">
-    <h1>Themes</h1>
+    <h1>Recommended Video Design(s)</h1>
+
+    <div class="theme-list-description">These are the recommended video designs based on what you are promoting and your selected target segment. They are the most likely to perform based on our data.</div>
 
     <div ng-if="$ctrl.loading" class="text-center">
       <i class="fa fa-spin fa-spinner"></i>
