@@ -43,9 +43,9 @@ function NewSceneCollectionModalController($scope, $uibModalInstance, $state, $w
       $uibModalInstance.close();
 
       if ($scope.integration === 'facebook_ad') {
-        $window.location = $state.href('targeting', {sceneCollectionId: data.id});
+        $window.location = $state.href('audience', {sceneCollectionId: data.id});
       } else {
-        $window.location = $state.href('sceneEditor', {sceneCollectionId: data.id});
+        $window.location = $state.href('targeting', {sceneCollectionId: data.id});
       }
     });
   };
