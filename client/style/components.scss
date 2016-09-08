@@ -2171,6 +2171,7 @@
   .selected {
     img {
       outline: 3px solid $color-7;
+      width: 100%;
     }
   }
 }
@@ -2536,14 +2537,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   }
 }
 .add-scene-index {
-  background-color: $color-7;
   -webkit-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   -moz-box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   box-shadow: inset 0px 200px 246px -200px rgba(0,0,0,0.25);
   height: 100vh;
-  padding: 40px 50px 240px;
+  padding: 40px 50px 300px;
   position: relative;
-  z-index: 1000;
+  z-index: 1;
   overflow: scroll;
   h2 {
     margin-top: 0px;
@@ -4142,8 +4142,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .advanced-targeting-demographics-form {
   margin-right: 0px;
   padding: 30px 60px 60px;
-  margin-left: 140px;
-  margin-top: 50px;
   background-color: $color-3;
   height: 100%;
   border-radius: 15px;
