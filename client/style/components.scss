@@ -2523,6 +2523,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     margin: 0 auto;
     outline: 5px solid $color-2;
   }
+  .vertical {
+    width: 80px;
+    height: 120px;
+    margin: 0 auto;
+    outline: 5px solid $color-2;
+  }
   .aspect-number {
     color: white;
     font-size: 36px;
