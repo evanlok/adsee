@@ -2,7 +2,7 @@ class Scene < ActiveRecord::Base
   ASPECT_RATIOS = {
     '1:1' => [720, 720],
     '16:9' => [1280, 720],
-    '9:16' => [720, 1280]
+    '9:16' => [480, 720]
   }.freeze
 
   acts_as_taggable
